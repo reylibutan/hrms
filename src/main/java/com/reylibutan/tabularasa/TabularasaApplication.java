@@ -3,12 +3,10 @@ package com.reylibutan.tabularasa;
 import java.util.Arrays;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @SpringBootApplication
 /* These are the added annotations for @SpringBootApplication
@@ -17,7 +15,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  * @EnableWebMvc (added if it sees spring-webmvc on the classpath)
  * @ComponentScan
 */
-public class TabularasaApplication {
+//needed to be able to produce a deployable WAR file
+public class TabularasaApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
     	SpringApplication.run(TabularasaApplication.class, args);
@@ -31,5 +30,11 @@ public class TabularasaApplication {
         for (String beanName : beanNames) {
             System.out.println(beanName);
         }
+    }
+    
+    //needed to be able to produce a deployable WAR file
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(TabularasaApplication.class);
     }
 }

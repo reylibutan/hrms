@@ -4,11 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.reylibutan.tabularasa</groupId>
-	<artifactId>tabula-rasa</artifactId>
+	<artifactId>tabularasa</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<!-- <packaging>jar</packaging> -->
+	<packaging>war</packaging>
 
-	<name>tabula-rasa</name>
+	<name>tabularasa</name>
 	<description>Blank page</description>
 
 	<parent>
@@ -43,6 +44,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- Added to make a deployable WAR file -->
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
 	</dependencies>
 	
 	<build>
