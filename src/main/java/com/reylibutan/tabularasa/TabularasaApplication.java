@@ -15,7 +15,7 @@ import org.springframework.context.ApplicationContext;
  * @EnableWebMvc (added if it sees spring-webmvc on the classpath)
  * @ComponentScan
 */
-//needed to be able to produce a deployable WAR file
+//SpringBootServletInitializer - needed to be able to produce a deployable WAR file
 public class TabularasaApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

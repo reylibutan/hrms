@@ -20,19 +20,21 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 @SpringApplicationConfiguration(classes = MockServletContext.class)
 @WebAppConfiguration
 //@IntegrationTest({"server.port=0"}) //@TODO: study this
-public class HelloControllerTest {
+public class SampleControllerTest {
 
 	private MockMvc mvc;
 
 	@Before
 	public void setUp() throws Exception {
-		mvc = MockMvcBuilders.standaloneSetup(new HelloController()).build();
+		mvc = MockMvcBuilders.standaloneSetup(new SampleController()).build();
 	}
 
 	@Test
-	public void getHello() throws Exception {
-		mvc.perform(MockMvcRequestBuilders.get("/hello/").accept(MediaType.APPLICATION_JSON))
+	public void testGetPerson() throws Exception {
+		String expectedJson = "{\"name\":\"Juan de la Cruz\",\"gender\":\"Male\",\"age\":\"21\",\"occupation\":\"Software Developer\"}";
+		
+		mvc.perform(MockMvcRequestBuilders.get("/sample/getPerson").accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
-				.andExpect(content().string(equalTo("index()")));
+				.andExpect(content().string(equalTo(expectedJson)));
 	}
 }
