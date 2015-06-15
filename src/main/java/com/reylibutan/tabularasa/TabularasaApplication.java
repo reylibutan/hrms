@@ -7,6 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import com.reylibutan.tabularasa.interceptor.SampleInterceptor;
 
 @SpringBootApplication
 /* These are the added annotations for @SpringBootApplication
@@ -15,7 +20,6 @@ import org.springframework.context.ApplicationContext;
  * @EnableWebMvc (added if it sees spring-webmvc on the classpath)
  * @ComponentScan
 */
-//SpringBootServletInitializer - needed to be able to produce a deployable WAR file
 public class TabularasaApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
@@ -32,9 +36,18 @@ public class TabularasaApplication extends SpringBootServletInitializer {
         }
     }
     
-    //needed to be able to produce a deployable WAR file
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(TabularasaApplication.class);
+    }
+    
+    @Bean
+    public WebMvcConfigurerAdapter adapter() {
+        return new WebMvcConfigurerAdapter() {
+            @Override
+            public void addInterceptors(InterceptorRegistry registry) {
+            	registry.addInterceptor(new SampleInterceptor()).addPathPatterns("/sample/*");
+            }
+        };
     }
 }
