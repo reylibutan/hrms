@@ -60,7 +60,7 @@ public class SampleController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/getPersonList")	
+	@RequestMapping("/getPersonList")
 	public List<Person> getPersonList() {
 		List<Person> personList = personService.findAll();
 		

@@ -4,14 +4,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="person")
 public class Person {
 
 	@Id
 	@GeneratedValue
+	//@TODO: study difference with @Identity
+	//@TODO: study types of generation
 	private Long id;
 	
 	@Column(nullable = false)
