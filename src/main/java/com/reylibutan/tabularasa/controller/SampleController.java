@@ -2,14 +2,19 @@ package com.reylibutan.tabularasa.controller;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.reylibutan.tabularasa.entity.Person;
+import com.reylibutan.tabularasa.service.PersonService;
 
 @Controller
 @RequestMapping("/sample")
@@ -17,6 +22,9 @@ public class SampleController {
 	
 	private final String VIEW_ROOT = "sample/";
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
+	
+	@Autowired
+	private PersonService personService;
 	
 	/**
 	 * Example controller method that accepts a request parameter and passes the value to the view.
@@ -49,5 +57,13 @@ public class SampleController {
 		response.put("occupation", "Software Developer");
 		
 		return response;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/getPersonList")	
+	public List<Person> getPersonList() {
+		List<Person> personList = personService.findAll();
+		
+		return personList;
 	}
 }
