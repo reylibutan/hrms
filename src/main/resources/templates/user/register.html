@@ -1,0 +1,46 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1"/>
+		<title>Register</title>
+	</head>
+	<body>
+		<form method="POST" enctype="utf-8">
+			<label>Email</label>
+			<input type="text" name="email" placeholder="Email" value="" />
+		
+			<br/>
+			<br/>
+		
+			<label>First Name</label>
+			<input type="text" name="firstName" placeholder="First Name" value="" />
+			
+			<br/>
+			<br/>
+			
+			<label>Middle Name</label>
+			<input type="text" name="middleName" placeholder="Middle Name" value="" />
+			
+			<br/>
+			<br/>
+			
+			<label>Last Name</label>
+			<input type="text" name="lastName" placeholder="Last Name" value="" />
+			
+			<br/>
+			<br/>
+			
+			<label>Password</label>
+			<input type="password" name="password" placeholder="Password" value="" />
+			
+			<label>Confirm Password</label>
+			<input type="password" name="confirmPassword" placeholder="Confirm Password" value="" />
+			
+			<br/>
+			<br/>
+			
+			<input type="submit" name="action" value="Register" />
+			<input type="button" value="Clear" />
+		</form>
+	</body>
+</html>
