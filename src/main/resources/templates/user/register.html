@@ -7,34 +7,34 @@
 	<body>
 		<form method="POST" enctype="utf-8">
 			<label>Email</label>
-			<input type="text" name="email" placeholder="Email" value="" />
+			<input type="text" name="email" placeholder="Email" value="" th:value="${user.email}" />
 		
 			<br/>
 			<br/>
 		
 			<label>First Name</label>
-			<input type="text" name="firstName" placeholder="First Name" value="" />
+			<input type="text" name="firstName" placeholder="First Name" value="" th:value="${user.firstName}" />
 			
 			<br/>
 			<br/>
 			
 			<label>Middle Name</label>
-			<input type="text" name="middleName" placeholder="Middle Name" value="" />
+			<input type="text" name="middleName" placeholder="Middle Name" value="" th:value="${user.middleName}" />
 			
 			<br/>
 			<br/>
 			
 			<label>Last Name</label>
-			<input type="text" name="lastName" placeholder="Last Name" value="" />
+			<input type="text" name="lastName" placeholder="Last Name" value="" th:value="${user.lastName}" />
 			
 			<br/>
 			<br/>
 			
 			<label>Password</label>
-			<input type="password" name="password" placeholder="Password" value="" />
+			<input type="password" name="password" placeholder="Password" value="" th:value="${user.password}" />
 			
 			<label>Confirm Password</label>
-			<input type="password" name="confirmPassword" placeholder="Confirm Password" value="" />
+			<input type="password" name="confirmPassword" placeholder="Confirm Password" value="" th:value="${user.confirmPassword}" />
 			
 			<br/>
 			<br/>
