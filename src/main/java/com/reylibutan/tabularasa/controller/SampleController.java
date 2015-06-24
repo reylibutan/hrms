@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.reylibutan.tabularasa.entity.Person;
+import com.reylibutan.tabularasa.service.MessageByLocaleService;
 import com.reylibutan.tabularasa.service.PersonService;
 
 @Controller
@@ -25,6 +26,9 @@ public class SampleController {
 	
 	@Autowired
 	private PersonService personService;
+	
+	@Autowired
+	private MessageByLocaleService messageByLocaleService;
 	
 	/**
 	 * Example controller method that accepts a request parameter and passes the value to the view.
@@ -65,5 +69,11 @@ public class SampleController {
 		List<Person> personList = personService.findAll();
 		
 		return personList;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/getMessageFromProperty")
+	public String getMessageFromProperty() {
+		return messageByLocaleService.getMessage("msg.firstName", null);
 	}
 }
