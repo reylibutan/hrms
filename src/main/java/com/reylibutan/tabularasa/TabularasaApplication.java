@@ -3,12 +3,15 @@ package com.reylibutan.tabularasa;
 import java.util.Arrays;
 import java.util.Locale;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -53,6 +56,14 @@ public class TabularasaApplication extends SpringBootServletInitializer {
         LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
         lci.setParamName(this.PARAM_LANGUAGE);
         return lci;
+    }
+    
+    @Bean
+    @Autowired
+    public LocalValidatorFactoryBean validator(MessageSource messageSource) {
+    	LocalValidatorFactoryBean lvfb = new LocalValidatorFactoryBean();
+    	lvfb.setValidationMessageSource(messageSource);
+    	return lvfb;
     }
     
     @Bean

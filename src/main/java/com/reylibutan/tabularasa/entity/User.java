@@ -2,27 +2,26 @@ package com.reylibutan.tabularasa.entity;
 
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 public class User {
 	
-	@NotEmpty
-	@NotNull
+	@NotNull(message="{err.required}")
+	@Size(min=1, message="{err.required}")
 	private String email;
 	
-	@NotEmpty
-	@NotNull
+	@NotNull(message="{err.required}")
+	@Size(min=1, message="{err.required}")
 	private String firstName;
 	
 	private String middleName;
 	
-	@NotEmpty
-	@NotNull
+	@NotNull(message="{err.required}")
+	@Size(min=1, message="{err.required}")
 	private String lastName;
 	
-	@NotEmpty
-	@NotNull
+	@NotNull(message="{err.required}")
+	@Size(min=1, message="{err.required}")
 	private String password;
 	
 	@Transient
