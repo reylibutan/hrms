@@ -13,7 +13,7 @@ import javax.validation.Payload;
 @Retention(RUNTIME)
 @Constraint(validatedBy = ValidEmailValidator.class)
 public @interface ValidEmail {
-	String message() default "{fieldName} is not a valid email.";
+	String message() default "Please enter a valid email.";
     Class<?>[] groups() default { };
     Class<? extends Payload>[] payload() default { };
     String fieldName() default "";

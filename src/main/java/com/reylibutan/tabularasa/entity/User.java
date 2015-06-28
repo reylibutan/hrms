@@ -8,7 +8,7 @@ import com.reylibutan.tabularasa.validator.ValidEmail;
 public class User {
 	
 	@NotNullOrEmpty(message="{err.msg.required}", fieldName="Email")
-	@ValidEmail(message="{err.msg.validEmail}", fieldName="Email")
+	@ValidEmail(message="{err.msg.validEmail}")
 	private String email;
 	
 	@NotNullOrEmpty(message="{err.msg.required}", fieldName="First name")
