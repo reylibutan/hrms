@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.reylibutan.tabularasa.entity.User;
+import com.reylibutan.tabularasa.service.UserService;
 
 @Controller
 @RequestMapping("/user")
@@ -22,6 +23,9 @@ public class UserController {
 	
 	@Autowired
 	private Validator validator;
+	
+	@Autowired
+	private UserService userService;
 	
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
@@ -37,7 +41,11 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public String register(Model model, @Valid User user, BindingResult result) {		
+	public String register(Model model, @Valid User user, BindingResult result) {	
+		if(!result.hasErrors()) {
+			userService.save(user);
+		}
+		
 		model.addAttribute("user", user);
 		return this.VIEW_FOLDER + "register";
 	}
