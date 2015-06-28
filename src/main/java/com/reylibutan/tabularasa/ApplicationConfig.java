@@ -21,12 +21,12 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import com.reylibutan.tabularasa.interceptor.SampleInterceptor;
 
 @SpringBootApplication
-public class TabularasaApplication extends SpringBootServletInitializer {
+public class ApplicationConfig extends SpringBootServletInitializer {
 
     private final String PARAM_LANGUAGE = "lang";
 	
 	public static void main(String[] args) {
-    	SpringApplication.run(TabularasaApplication.class, args);
+    	SpringApplication.run(ApplicationConfig.class, args);
     }
     
     /**
@@ -49,7 +49,7 @@ public class TabularasaApplication extends SpringBootServletInitializer {
      */
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(TabularasaApplication.class);
+        return application.sources(ApplicationConfig.class);
     }
     
     /**
