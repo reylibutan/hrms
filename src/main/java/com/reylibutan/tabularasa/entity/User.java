@@ -2,9 +2,11 @@ package com.reylibutan.tabularasa.entity;
 
 import javax.persistence.Transient;
 
+import com.reylibutan.tabularasa.validator.FieldsMatch;
 import com.reylibutan.tabularasa.validator.NotNullOrEmpty;
 import com.reylibutan.tabularasa.validator.ValidEmail;
 
+@FieldsMatch(message="{err.msg.fieldValuesMatch}", field1="password", field2="confirmPassword", fieldName1="Password", fieldName2="Confirm password")
 public class User {
 	
 	@NotNullOrEmpty(message="{err.msg.required}", fieldName="Email")
@@ -23,6 +25,7 @@ public class User {
 	private String password;
 	
 	@Transient
+	@NotNullOrEmpty(message="{err.msg.required}", fieldName="Confirm password")
 	private String confirmPassword;
 
 	public String getEmail() {

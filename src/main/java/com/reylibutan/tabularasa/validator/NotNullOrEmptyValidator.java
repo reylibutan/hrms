@@ -6,7 +6,7 @@ import javax.validation.ConstraintValidatorContext;
 public class NotNullOrEmptyValidator implements ConstraintValidator<NotNullOrEmpty, String> {
 	
 	@Override
-    public void initialize(NotNullOrEmpty notNullOrEmpty) {        
+    public void initialize(NotNullOrEmpty notNullOrEmpty) {
     }
 
     @Override
