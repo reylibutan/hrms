@@ -3,10 +3,12 @@ package com.reylibutan.tabularasa.entity;
 import javax.persistence.Transient;
 
 import com.reylibutan.tabularasa.validator.NotNullOrEmpty;
+import com.reylibutan.tabularasa.validator.ValidEmail;
 
 public class User {
 	
-	@NotNullOrEmpty(message="{err.msg.required}", fieldName="{msg.email}")
+	@NotNullOrEmpty(message="{err.msg.required}", fieldName="Email")
+	@ValidEmail(message="{err.msg.validEmail}", fieldName="Email")
 	private String email;
 	
 	@NotNullOrEmpty(message="{err.msg.required}", fieldName="First name")

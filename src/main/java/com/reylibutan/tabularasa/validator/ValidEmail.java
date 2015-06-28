@@ -11,9 +11,9 @@ import javax.validation.Payload;
 
 @Target({FIELD, ANNOTATION_TYPE})
 @Retention(RUNTIME)
-@Constraint(validatedBy = NotNullOrEmptyValidator.class)
-public @interface NotNullOrEmpty {
-	String message() default "{fieldName} is required.";
+@Constraint(validatedBy = ValidEmailValidator.class)
+public @interface ValidEmail {
+	String message() default "{fieldName} is not a valid email.";
     Class<?>[] groups() default { };
     Class<? extends Payload>[] payload() default { };
     String fieldName() default "";
