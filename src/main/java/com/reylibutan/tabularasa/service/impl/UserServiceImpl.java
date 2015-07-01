@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.reylibutan.tabularasa.dao.UserDAO;
 import com.reylibutan.tabularasa.entity.User;
 import com.reylibutan.tabularasa.service.UserService;
+import com.reylibutan.tabularasa.utility.StringUtil;
 
 @Service
 @Transactional
@@ -18,6 +19,12 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public void save(User user) {
+		String hashedPassword = StringUtil.hashString(user.getPassword()); 
+		
+		user.setPassword(hashedPassword);
+		// set to pass @FieldMatches validator
+		user.setConfirmPassword(hashedPassword);
+		
 		userDAO.save(user);
 	}
 }
