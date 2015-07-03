@@ -7,8 +7,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.reylibutan.tabularasa.dao.PersonDAO;
 import com.reylibutan.tabularasa.entity.Person;
+import com.reylibutan.tabularasa.repository.PersonRepository;
 import com.reylibutan.tabularasa.service.PersonService;
 
 @Service
@@ -16,7 +16,7 @@ import com.reylibutan.tabularasa.service.PersonService;
 public class PersonServiceImpl implements PersonService {
 	
 	@Autowired
-	private PersonDAO personDAO;
+	private PersonRepository personDAO;
 	
 	@Override
 	public List<Person> findAll() {
