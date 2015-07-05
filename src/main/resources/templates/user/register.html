@@ -6,7 +6,7 @@
 		<link rel="stylesheet" type="text/css" media="all" href="/css/site.css"/>
 	</head>
 	<body>
-		<form th:object="${user}" method="POST" enctype="utf-8">
+		<form th:object="${userDTO}" method="POST" enctype="utf-8">
 			<div class="errorContainer" th:if="${#fields.hasErrors('*')}">
 				<ul>
 				  <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.reylibutan.tabularasa.entity.User;
+import com.reylibutan.tabularasa.dto.UserDTO;
 import com.reylibutan.tabularasa.service.UserService;
 
 @Controller
@@ -34,19 +34,18 @@ public class UserController {
 	
 	@RequestMapping(value="/register", method=RequestMethod.GET)
 	public String register(Model model) {
-		User user = new User();
+		UserDTO userDto = new UserDTO();
 		
-		model.addAttribute("user", user);
+		model.addAttribute("userDTO", userDto);
 		return this.VIEW_FOLDER + "register";
 	}
 	
 	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public String register(Model model, @Valid User user, BindingResult result) {	
+	public String register(Model model, @Valid UserDTO userDTO, BindingResult result) {	
 		if(!result.hasErrors()) {
-			userService.save(user);
+			userService.save(userDTO);
 		}
 		
-		model.addAttribute("user", user);
 		return this.VIEW_FOLDER + "register";
 	}
 }

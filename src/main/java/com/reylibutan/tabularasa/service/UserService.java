@@ -1,8 +1,8 @@
 package com.reylibutan.tabularasa.service;
 
-import com.reylibutan.tabularasa.entity.User;
+import com.reylibutan.tabularasa.dto.UserDTO;
 
 public interface UserService {
 	
-	public void save(User user);
+	public void save(UserDTO userDto);
 }

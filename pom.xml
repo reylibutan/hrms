@@ -23,6 +23,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<start-class>com.reylibutan.tabularasa.TabularasaApplication</start-class>
 		<java.version>1.7</java.version>
+		<org.mapstruct.version>1.0.0.CR1</org.mapstruct.version>
 	</properties>
 
 	<dependencies>
@@ -62,6 +63,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+		<!-- MapStruct: for DTO <-> Entity conversion -->
+		<dependency>
+	        <groupId>org.mapstruct</groupId>
+	        <artifactId>mapstruct</artifactId>
+	        <version>${org.mapstruct.version}</version>
+	    </dependency>
 	</dependencies>
 	
 	<build>
@@ -70,7 +77,70 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<!-- MapStruct: for DTO <-> Entity conversion -->
+			<plugin>
+	            <groupId>org.bsc.maven</groupId>
+	            <artifactId>maven-processor-plugin</artifactId>
+	            <version>2.2.3</version>
+	            <configuration>
+	                <defaultOutputDirectory>
+	                    ${project.build.directory}/generated-sources
+	                </defaultOutputDirectory>
+	                <processors>
+	                    <processor>org.mapstruct.ap.MappingProcessor</processor>
+	                </processors>
+	            </configuration>
+	            <executions>
+	                <execution>
+	                    <id>process</id>
+	                    <phase>generate-sources</phase>
+	                    <goals>
+	                        <goal>process</goal>
+	                    </goals>
+	                </execution>
+	            </executions>
+	            <dependencies>
+	                <dependency>
+	                    <groupId>org.mapstruct</groupId>
+	                    <artifactId>mapstruct-processor</artifactId>
+	                    <version>${org.mapstruct.version}</version>
+	                </dependency>
+	            </dependencies>
+	        </plugin>
 		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!-- Added to suppress errors after adding MapStruct plugin saying "Plugin execution not covered by lifecycle configuration" -->
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.bsc.maven</groupId>
+										<artifactId>
+											maven-processor-plugin
+										</artifactId>
+										<versionRange>
+											[2.2.3,)
+										</versionRange>
+										<goals>
+											<goal>process</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
-
 </project>

@@ -10,8 +10,6 @@ public class Person {
 
 	@Id
 	@GeneratedValue
-	//@TODO: study difference with @Identity
-	//@TODO: study types of generation
 	private Long id;
 	
 	@Column(nullable = false)
