@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.reylibutan.tabularasa.entity.Person;
+import com.reylibutan.tabularasa.dto.PersonDTO;
 import com.reylibutan.tabularasa.service.MessageByLocaleService;
-import com.reylibutan.tabularasa.service.PersonService;
+import com.reylibutan.tabularasa.service.SampleService;
 
 @Controller
 @RequestMapping("/sample")
@@ -25,7 +25,7 @@ public class SampleController {
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
-	private PersonService personService;
+	private SampleService sampleService;
 	
 	@Autowired
 	private MessageByLocaleService messageByLocaleService;
@@ -65,8 +65,8 @@ public class SampleController {
 	
 	@ResponseBody
 	@RequestMapping("/getPersonList")
-	public List<Person> getPersonList() {
-		List<Person> personList = personService.findAll();
+	public List<PersonDTO> getPersonList() {
+		List<PersonDTO> personList = sampleService.findAll();
 		
 		return personList;
 	}
