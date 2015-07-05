@@ -16,10 +16,10 @@ import com.reylibutan.tabularasa.service.PersonService;
 public class PersonServiceImpl implements PersonService {
 	
 	@Autowired
-	private PersonRepository personDAO;
+	private PersonRepository personRepo;
 	
 	@Override
 	public List<Person> findAll() {
-		return personDAO.findAll();
+		return personRepo.findAll();
 	}
 }
