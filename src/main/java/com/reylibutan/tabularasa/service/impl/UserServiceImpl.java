@@ -17,11 +17,14 @@ import com.reylibutan.tabularasa.utility.StringUtil;
 public class UserServiceImpl implements UserService  {
 	
 	@Autowired
+	private GeneralMapper generalMapper;
+	
+	@Autowired
 	private UserRepository userRepo;
 	
 	@Override
 	public void save(UserDTO userDto) {
-		User user = GeneralMapper.INSTANCE.userDtoToUser(userDto);
+		User user = generalMapper.userDtoToUser(userDto);
 		String hashedPassword = StringUtil.hashString(userDto.getPassword());
 			
 		user.setPassword(hashedPassword);
