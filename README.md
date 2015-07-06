@@ -1,5 +1,5 @@
-# tabula-rasa
+# HRMS
 
-Spring Boot and Thymeleaf test project. This will serve as a base code for all future projects.
+Hospital Records Management System
 
-Live: http://rey.libutan.com
+Status: Draft
