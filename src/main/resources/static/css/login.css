@@ -1,0 +1,71 @@
+body {
+	background: radial-gradient(circle at 1.99% 43.04%,#81B078,transparent 100%),
+	radial-gradient(circle at 99.79% 73.72%,#81B078,transparent 58%),
+	radial-gradient(circle at 50% 50%,#156879,#156879 100%);
+}
+
+.outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto; 
+    width: 350px;
+}
+
+#loginCard {
+	box-shadow: 0 5px 10px 0 rgba(0,0,0,.16), 0 5px 15px 0 rgba(0,0,0,.12);
+}
+
+#siteLogo {
+	height: 200px;
+	width: 200px;
+}
+
+#loginCard div.card-head {
+	padding: 20px;
+	padding-bottom: 0px;
+}
+
+#loginCard div.card-body {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	/* border-bottom: 1px solid rgba(150, 156, 156, 0.4); */
+}
+
+#loginForm {
+	margin-bottom: 0;
+}
+
+#loginForm div.checkbox {
+	padding-top: 10px;
+}
+
+#loginBtn {
+	margin-left: 5px;
+}
+
+.loginBtn {
+	font-size: 13px;
+	padding: 5px 25px;
+	text-transform: none;
+	/* margin-top: 15px; */
+	margin-bottom: 5px;
+}
+
+.card-head header {
+	padding: 20px;
+}
+
+span.rememberMe {
+	font-size: 12px;
+}

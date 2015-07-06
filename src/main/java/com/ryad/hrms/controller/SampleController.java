@@ -8,6 +8,6 @@ public class SampleController {
 	
 	@RequestMapping("/login")
 	public String index() {
-		return "index";
+		return "login";
 	}
 }
