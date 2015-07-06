@@ -3,14 +3,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.reylibutan.tabularasa</groupId>
-	<artifactId>tabularasa</artifactId>
+	<groupId>com.ryad.hrms</groupId>
+	<artifactId>hrms</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<!-- <packaging>jar</packaging> -->
 	<packaging>war</packaging>
 
-	<name>tabularasa</name>
-	<description>Blank page</description>
+	<name>hrms</name>
+	<description>Hospital Records Management System</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -21,7 +21,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<start-class>com.reylibutan.tabularasa.TabularasaApplication</start-class>
+		<start-class>com.ryad.hrms.ApplicationConfig</start-class>
 		<java.version>1.7</java.version>
 		<org.mapstruct.version>1.0.0.CR1</org.mapstruct.version>
 	</properties>
@@ -50,10 +50,10 @@
         	<groupId>org.springframework.boot</groupId>
         	<artifactId>spring-boot-starter-logging</artifactId>
         </dependency>
-        <dependency>
+        <!-- <dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
