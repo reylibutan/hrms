@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Material Admin - Blank page</title>
+		<title>HRMS | Home</title>
 
 		<!-- BEGIN META -->
 		<meta charset="utf-8"/>
@@ -16,6 +16,10 @@
 		<link type="text/css" rel="stylesheet" href="/theme/material-admin/assets/css/theme-default/materialadmin.css?1425466319" />
 		<link type="text/css" rel="stylesheet" href="/theme/material-admin/assets/css/theme-default/font-awesome.min.css?1422529194" />
 		<link type="text/css" rel="stylesheet" href="/theme/material-admin/assets/css/theme-default/material-design-iconic-font.min.css?1421434286" />
+		<link type="text/css" rel="stylesheet" href="/theme/material-admin/assets/css/theme-default/libs/DataTables/jquery.dataTables.css?1423553989" />
+		<link type="text/css" rel="stylesheet" href="/theme/material-admin/assets/css/theme-default/libs/DataTables/extensions/dataTables.colVis.css?1423553990" />
+		<link type="text/css" rel="stylesheet" href="/theme/material-admin/assets/css/theme-default/libs/DataTables/extensions/dataTables.tableTools.css?1423553990" />
+		
 		<link type="text/css" rel="stylesheet" href="/css/site.css" />
 		<!-- END STYLESHEETS -->
 
@@ -89,14 +93,487 @@
 
 				<!-- BEGIN BLANK SECTION -->
 				<section>
-					<div class="section-header">
+					<!-- <div class="section-header">
 						<ol class="breadcrumb">
 							<li><a href="/home">home</a></li>
-							<li class="active">Blank page</li>
+							<li class="active">Patient List</li>
 						</ol>
-					</div><!--end .section-header -->
+					</div> --><!--end .section-header -->
 					<div class="section-body">
-					</div><!--end .section-body -->
+						<div class="card card-underline">
+							<div class="card-head style-primary card-head-sm">
+								<header class="text-normal">Search Patients</header>
+								<div class="tools">
+									<div class="btn-group">
+										<a class="btn btn-icon-toggle btn-collapse"><i class="fa fa-angle-down"></i></a>
+									</div>
+								</div>
+							</div>
+							<div class="card-body cardNoBottomPadding">
+								<form class="form" autocomplete="off">
+									<div class="row">
+										<div class="col-md-2">
+											<div class="form-group">
+												<input type="text" class="form-control input-sm"/>
+												<label for="codeName">Code name</label>
+											</div>
+										</div>
+										<div class="col-md-2">
+											<div class="form-group">
+												<input type="text" class="form-control input-sm"/>
+												<label for="sacclCode">SACCL code</label>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<input type="text" class="form-control input-sm"/>
+												<label for="firstName">First name</label>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<input type="text" class="form-control input-sm"/>
+												<label for="lastName">Last name</label>
+											</div>
+										</div>
+										<div id="searchBtnDiv" class="col-md-2">
+											<button type="button" class="normalBtn widerBtn btn ink-reaction btn-raised btn-default-bright normalizeButton">
+												<i class="fa fa-search"></i>
+												<span class="btnLblWithIcon">Search</span>
+											</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>					
+					</div>
+					
+					<div class="section-body">
+						<div class="card">
+							<div class="card-body">
+								<!-- BEGIN DATATABLE 1 -->
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="table-responsive">
+											<table id="datatable1" class="table table-striped table-hover">
+												<thead>
+													<tr>
+														<th>Rendering engine</th>
+														<th>Browser</th>
+														<th>Platform(s)</th>
+														<th class="sort-numeric">Engine version</th>
+														<th class="sort-alpha">CSS grade</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr class="gradeX">
+														<td>Trident</td>
+														<td>Internet Explorer 4.0</td>
+														<td>Win 95+</td>
+														<td>4</td>
+														<td>X</td>
+													</tr>
+													<tr class="gradeC">
+														<td>Trident</td>
+														<td>Internet Explorer 5.0</td>
+														<td>Win 95+</td>
+														<td>5</td>
+														<td>C</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Trident</td>
+														<td>Internet Explorer 5.5</td>
+														<td>Win 95+</td>
+														<td>5.5</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Trident</td>
+														<td>Internet Explorer 6</td>
+														<td>Win 98+</td>
+														<td>6</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Trident</td>
+														<td>Internet Explorer 7</td>
+														<td>Win XP SP2+</td>
+														<td>7</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Trident</td>
+														<td>AOL browser (AOL desktop)</td>
+														<td>Win XP</td>
+														<td>6</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Gecko</td>
+														<td>Firefox 1.0</td>
+														<td>Win 98+ / OSX.2+</td>
+														<td>1.7</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Gecko</td>
+														<td>Firefox 1.5</td>
+														<td>Win 98+ / OSX.2+</td>
+														<td>1.8</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Gecko</td>
+														<td>Firefox 2.0</td>
+														<td>Win 98+ / OSX.2+</td>
+														<td>1.8</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Gecko</td>
+														<td>Firefox 3.0</td>
+														<td>Win 2k+ / OSX.3+</td>
+														<td>1.9</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Gecko</td>
+														<td>Camino 1.0</td>
+														<td>OSX.2+</td>
+														<td>1.8</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Gecko</td>
+														<td>Camino 1.5</td>
+														<td>OSX.3+</td>
+														<td>1.8</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Gecko</td>
+														<td>Netscape 7.2</td>
+														<td>Win 95+ / Mac OS 8.6-9.2</td>
+														<td>1.7</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Gecko</td>
+														<td>Netscape Browser 8</td>
+														<td>Win 98SE+</td>
+														<td>1.7</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Gecko</td>
+														<td>Netscape Navigator 9</td>
+														<td>Win 98+ / OSX.2+</td>
+														<td>1.8</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Gecko</td>
+														<td>Mozilla 1.0</td>
+														<td>Win 95+ / OSX.1+</td>
+														<td>1</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Gecko</td>
+														<td>Mozilla 1.1</td>
+														<td>Win 95+ / OSX.1+</td>
+														<td>1.1</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Gecko</td>
+														<td>Mozilla 1.2</td>
+														<td>Win 95+ / OSX.1+</td>
+														<td>1.2</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Gecko</td>
+														<td>Mozilla 1.3</td>
+														<td>Win 95+ / OSX.1+</td>
+														<td>1.3</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Gecko</td>
+														<td>Mozilla 1.4</td>
+														<td>Win 95+ / OSX.1+</td>
+														<td>1.4</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Gecko</td>
+														<td>Mozilla 1.5</td>
+														<td>Win 95+ / OSX.1+</td>
+														<td>1.5</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Gecko</td>
+														<td>Mozilla 1.6</td>
+														<td>Win 95+ / OSX.1+</td>
+														<td>1.6</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Gecko</td>
+														<td>Mozilla 1.7</td>
+														<td>Win 98+ / OSX.1+</td>
+														<td>1.7</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Gecko</td>
+														<td>Mozilla 1.8</td>
+														<td>Win 98+ / OSX.1+</td>
+														<td>1.8</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Gecko</td>
+														<td>Seamonkey 1.1</td>
+														<td>Win 98+ / OSX.2+</td>
+														<td>1.8</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Gecko</td>
+														<td>Epiphany 2.20</td>
+														<td>Gnome</td>
+														<td>1.8</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Webkit</td>
+														<td>Safari 1.2</td>
+														<td>OSX.3</td>
+														<td>125.5</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Webkit</td>
+														<td>Safari 1.3</td>
+														<td>OSX.3</td>
+														<td>312.8</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Webkit</td>
+														<td>Safari 2.0</td>
+														<td>OSX.4+</td>
+														<td>419.3</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Webkit</td>
+														<td>Safari 3.0</td>
+														<td>OSX.4+</td>
+														<td>522.1</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Webkit</td>
+														<td>OmniWeb 5.5</td>
+														<td>OSX.4+</td>
+														<td>420</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Webkit</td>
+														<td>iPod Touch / iPhone</td>
+														<td>iPod</td>
+														<td>420.1</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Webkit</td>
+														<td>S60</td>
+														<td>S60</td>
+														<td>413</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Presto</td>
+														<td>Opera 7.0</td>
+														<td>Win 95+ / OSX.1+</td>
+														<td>-</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Presto</td>
+														<td>Opera 7.5</td>
+														<td>Win 95+ / OSX.2+</td>
+														<td>-</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Presto</td>
+														<td>Opera 8.0</td>
+														<td>Win 95+ / OSX.2+</td>
+														<td>-</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Presto</td>
+														<td>Opera 8.5</td>
+														<td>Win 95+ / OSX.2+</td>
+														<td>-</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Presto</td>
+														<td>Opera 9.0</td>
+														<td>Win 95+ / OSX.3+</td>
+														<td>-</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Presto</td>
+														<td>Opera 9.2</td>
+														<td>Win 88+ / OSX.3+</td>
+														<td>-</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Presto</td>
+														<td>Opera 9.5</td>
+														<td>Win 88+ / OSX.3+</td>
+														<td>-</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Presto</td>
+														<td>Opera for Wii</td>
+														<td>Wii</td>
+														<td>-</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Presto</td>
+														<td>Nokia N800</td>
+														<td>N800</td>
+														<td>-</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Presto</td>
+														<td>Nintendo DS browser</td>
+														<td>Nintendo DS</td>
+														<td>8.5</td>
+														<td>C/A<sup>1</sup></td>
+													</tr>
+													<tr class="gradeC">
+														<td>KHTML</td>
+														<td>Konqureror 3.1</td>
+														<td>KDE 3.1</td>
+														<td>3.1</td>
+														<td>C</td>
+													</tr>
+													<tr class="gradeA">
+														<td>KHTML</td>
+														<td>Konqureror 3.3</td>
+														<td>KDE 3.3</td>
+														<td>3.3</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeA">
+														<td>KHTML</td>
+														<td>Konqureror 3.5</td>
+														<td>KDE 3.5</td>
+														<td>3.5</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeX">
+														<td>Tasman</td>
+														<td>Internet Explorer 4.5</td>
+														<td>Mac OS 8-9</td>
+														<td>-</td>
+														<td>X</td>
+													</tr>
+													<tr class="gradeC">
+														<td>Tasman</td>
+														<td>Internet Explorer 5.1</td>
+														<td>Mac OS 7.6-9</td>
+														<td>1</td>
+														<td>C</td>
+													</tr>
+													<tr class="gradeC">
+														<td>Tasman</td>
+														<td>Internet Explorer 5.2</td>
+														<td>Mac OS 8-X</td>
+														<td>1</td>
+														<td>C</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Misc</td>
+														<td>NetFront 3.1</td>
+														<td>Embedded devices</td>
+														<td>-</td>
+														<td>C</td>
+													</tr>
+													<tr class="gradeA">
+														<td>Misc</td>
+														<td>NetFront 3.4</td>
+														<td>Embedded devices</td>
+														<td>-</td>
+														<td>A</td>
+													</tr>
+													<tr class="gradeX">
+														<td>Misc</td>
+														<td>Dillo 0.8</td>
+														<td>Embedded devices</td>
+														<td>-</td>
+														<td>X</td>
+													</tr>
+													<tr class="gradeX">
+														<td>Misc</td>
+														<td>Links</td>
+														<td>Text only</td>
+														<td>-</td>
+														<td>X</td>
+													</tr>
+													<tr class="gradeX">
+														<td>Misc</td>
+														<td>Lynx</td>
+														<td>Text only</td>
+														<td>-</td>
+														<td>X</td>
+													</tr>
+													<tr class="gradeC">
+														<td>Misc</td>
+														<td>IE Mobile</td>
+														<td>Windows Mobile 6</td>
+														<td>-</td>
+														<td>C</td>
+													</tr>
+													<tr class="gradeC">
+														<td>Misc</td>
+														<td>PSP browser</td>
+														<td>PSP</td>
+														<td>-</td>
+														<td>C</td>
+													</tr>
+													<tr class="gradeU">
+														<td>Other browsers</td>
+														<td>All others</td>
+														<td>-</td>
+														<td>-</td>
+														<td>U</td>
+													</tr>
+												</tbody>
+											</table>
+										</div><!--end .table-responsive -->
+									</div><!--end .col -->
+								</div><!--end .row -->
+								<!-- END DATATABLE 1 -->
+							</div>
+						</div>					
+					</div>
 				</section>
 
 				<!-- BEGIN BLANK SECTION -->
@@ -119,158 +596,55 @@
 						</li><!--end /menu-li -->
 						<!-- END DASHBOARD -->
 
-						<!-- BEGIN EMAIL -->
-						<li class="gui-folder">
+						<!-- BEGIN RECORDS -->
+						<li class="gui-folder expanded">
 							<a>
-								<div class="gui-icon"><i class="md md-email"></i></div>
-								<span class="title">Email</span>
+								<div class="gui-icon"><i class="md md-face-unlock"></i></div>
+								<span class="title">Records</span>
 							</a>
-							<!--start submenu -->
 							<ul>
-								<li><a href="/theme/material-admin/html/mail/inbox.html" ><span class="title">Inbox</span></a></li>
-								<li><a href="/theme/material-admin/html/mail/compose.html" ><span class="title">Compose</span></a></li>
-								<li><a href="/theme/material-admin/html/mail/reply.html" ><span class="title">Reply</span></a></li>
-								<li><a href="/theme/material-admin/html/mail/message.html" ><span class="title">View message</span></a></li>
-							</ul><!--end /submenu -->
-						</li><!--end /menu-li -->
-						<!-- END EMAIL -->
-
-						<!-- BEGIN DASHBOARD -->
-						<li>
-							<a href="/theme/material-admin/html/layouts/builder.html" >
-								<div class="gui-icon"><i class="md md-web"></i></div>
-								<span class="title">Layouts</span>
-							</a>
-						</li><!--end /menu-li -->
-						<!-- END DASHBOARD -->
-
-						<!-- BEGIN UI -->
-						<li class="gui-folder">
-							<a>
-								<div class="gui-icon"><i class="fa fa-puzzle-piece fa-fw"></i></div>
-								<span class="title">UI elements</span>
-							</a>
-							<!--start submenu -->
-							<ul>
-								<li><a href="/theme/material-admin/html/ui/colors.html" ><span class="title">Colors</span></a></li>
-								<li><a href="/theme/material-admin/html/ui/typography.html" ><span class="title">Typography</span></a></li>
-								<li><a href="/theme/material-admin/html/ui/cards.html" ><span class="title">Cards</span></a></li>
-								<li><a href="/theme/material-admin/html/ui/buttons.html" ><span class="title">Buttons</span></a></li>
-								<li><a href="/theme/material-admin/html/ui/lists.html" ><span class="title">Lists</span></a></li>
-								<li><a href="/theme/material-admin/html/ui/tabs.html" ><span class="title">Tabs</span></a></li>
-								<li><a href="/theme/material-admin/html/ui/accordions.html" ><span class="title">Accordions</span></a></li>
-								<li><a href="/theme/material-admin/html/ui/messages.html" ><span class="title">Messages</span></a></li>
-								<li><a href="/theme/material-admin/html/ui/offcanvas.html" ><span class="title">Off-canvas</span></a></li>
-								<li><a href="/theme/material-admin/html/ui/grid.html" ><span class="title">Grid</span></a></li>
-								<li class="gui-folder">
-									<a href="javascript:void(0);">
-										<span class="title">Icons</span>
-									</a>
-									<!--start submenu -->
+								<li><a href="#"><span class="title">List / Search</span></a></li>
+								<li class="gui-folder expanded">
+									<a href="#"><span class="title">Create New Record</span></a>
 									<ul>
-										<li><a href="/theme/material-admin/html/ui/icons/materialicons.html" ><span class="title">Material Design Icons</span></a></li>
-										<li><a href="/theme/material-admin/html/ui/icons/fontawesome.html" ><span class="title">Font Awesome</span></a></li>
-										<li><a href="/theme/material-admin/html/ui/icons/glyphicons.html" ><span class="title">Glyphicons</span></a></li>
-										<li><a href="/theme/material-admin/html/ui/icons/skycons.html" ><span class="title">Skycons</span></a></li>
-									</ul><!--end /submenu -->
-								</li><!--end /menu-li -->
-							</ul><!--end /submenu -->
+										<li><a href="#"><span class="title">VCT</span></a></li>
+										<li><a href="#"><span class="title">Enrollment</span></a></li>
+									</ul>
+								</li>
+							</ul>
 						</li><!--end /menu-li -->
-						<!-- END UI -->
-
-						<!-- BEGIN TABLES -->
+						<!-- END RECORDS -->
+						
+						<!-- BEGIN INVENTORY OF STOCKS -->
+						<li class="gui-folder expanded">
+							<a>
+								<div class="gui-icon"><i class="md md-assignment"></i></div>
+								<span class="title">Inventory of Stocks</span>
+							</a>
+							<ul>
+								<li><a href="#"><span class="title">List / Search</span></a></li>
+								<li><a href="#"><span class="title">Add New</span></a></li>
+							</ul>
+						</li><!--end /menu-li -->
+						<!-- END INVENTORY OF STOCKS -->
+						
+						<!-- BEGIN REPORTS -->
 						<li class="gui-folder">
 							<a>
-								<div class="gui-icon"><i class="fa fa-table"></i></div>
-								<span class="title">Tables</span>
-							</a>
-							<!--start submenu -->
-							<ul>
-								<li><a href="/theme/material-admin/html/tables/static.html" ><span class="title">Static Tables</span></a></li>
-								<li><a href="/theme/material-admin/html/tables/dynamic.html" ><span class="title">Dynamic Tables</span></a></li>
-								<li><a href="/theme/material-admin/html/tables/responsive.html" ><span class="title">Responsive Table</span></a></li>
-							</ul><!--end /submenu -->
-						</li><!--end /menu-li -->
-						<!-- END TABLES -->
-
-						<!-- BEGIN FORMS -->
-						<li class="gui-folder">
-							<a>
-								<div class="gui-icon"><span class="glyphicon glyphicon-list-alt"></span></div>
-								<span class="title">Forms</span>
-							</a>
-							<!--start submenu -->
-							<ul>
-								<li><a href="/theme/material-admin/html/forms/basic.html" ><span class="title">Form basic</span></a></li>
-								<li><a href="/theme/material-admin/html/forms/advanced.html" ><span class="title">Form advanced</span></a></li>
-								<li><a href="/theme/material-admin/html/forms/layouts.html" ><span class="title">Form layouts</span></a></li>
-								<li><a href="/theme/material-admin/html/forms/editors.html" ><span class="title">Editors</span></a></li>
-								<li><a href="/theme/material-admin/html/forms/validation.html" ><span class="title">Form validation</span></a></li>
-								<li><a href="/theme/material-admin/html/forms/wizard.html" ><span class="title">Form wizard</span></a></li>
-							</ul><!--end /submenu -->
-						</li><!--end /menu-li -->
-						<!-- END FORMS -->
-
-						<!-- BEGIN CHARTS -->
-						<li>
-							<a href="/theme/material-admin/html/charts/charts.html" >
 								<div class="gui-icon"><i class="md md-assessment"></i></div>
-								<span class="title">Charts</span>
+								<span class="title">Reports</span>
 							</a>
-						</li><!--end /menu-li -->
-						<!-- END CHARTS -->
-
-						<!-- BEGIN LEVELS -->
-						<li class="gui-folder">
-							<a>
-								<div class="gui-icon"><i class="fa fa-folder-open fa-fw"></i></div>
-								<span class="title">Menu levels demo</span>
-							</a>
-							<!--start submenu -->
 							<ul>
-								<li><a href="#"><span class="title">Item 1</span></a></li>
-								<li><a href="#"><span class="title">Item 1</span></a></li>
-								<li class="gui-folder">
-									<a href="javascript:void(0);">
-										<span class="title">Open level 2</span>
-									</a>
-									<!--start submenu -->
-									<ul>
-										<li><a href="#"><span class="title">Item 2</span></a></li>
-										<li class="gui-folder">
-											<a href="javascript:void(0);">
-												<span class="title">Open level 3</span>
-											</a>
-											<!--start submenu -->
-											<ul>
-												<li><a href="#"><span class="title">Item 3</span></a></li>
-												<li><a href="#"><span class="title">Item 3</span></a></li>
-												<li class="gui-folder">
-													<a href="javascript:void(0);">
-														<span class="title">Open level 4</span>
-													</a>
-													<!--start submenu -->
-													<ul>
-														<li><a href="#"><span class="title">Item 4</span></a></li>
-														<li class="gui-folder">
-															<a href="javascript:void(0);">
-																<span class="title">Open level 5</span>
-															</a>
-															<!--start submenu -->
-															<ul>
-																<li><a href="#"><span class="title">Item 5</span></a></li>
-																<li><a href="#"><span class="title">Item 5</span></a></li>
-															</ul><!--end /submenu -->
-														</li><!--end /submenu-li -->
-													</ul><!--end /submenu -->
-												</li><!--end /submenu-li -->
-											</ul><!--end /submenu -->
-										</li><!--end /submenu-li -->
-									</ul><!--end /submenu -->
-								</li><!--end /submenu-li -->
-							</ul><!--end /submenu -->
+								<li><a href="#"><span class="title">HCT Daily Registry</span></a></li>
+								<li><a href="#"><span class="title">HCT Monthly Report</span></a></li>
+								<li><a href="#"><span class="title">Monthly ART Registry</span></a></li>
+								<li><a href="#"><span class="title">HIV Care Monthly Report</span></a></li>
+								<li><a href="#"><span class="title">Pharmacy Inventory Report</span></a></li>
+								<li><a href="#"><span class="title">HIV Statistic Monthly Report</span></a></li>
+								<li><a href="#"><span class="title">Client Master List</span></a></li>
+							</ul>
 						</li><!--end /menu-li -->
-						<!-- END LEVELS -->
+						<!-- END REPORTS -->
 
 					</ul><!--end .main-menu -->
 					<!-- END MAIN MENU -->
@@ -306,7 +680,11 @@
 		<script src="/theme/material-admin/assets/js/core/source/AppForm.js"></script>
 		<script src="/theme/material-admin/assets/js/core/source/AppNavSearch.js"></script>
 		<script src="/theme/material-admin/assets/js/core/source/AppVendor.js"></script>
+		<script src="/theme/material-admin/assets/js/libs/DataTables/jquery.dataTables.min.js"></script>
+		<script src="/theme/material-admin/assets/js/libs/DataTables/extensions/ColVis/js/dataTables.colVis.min.js"></script>
+		<script src="/theme/material-admin/assets/js/libs/DataTables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 		<script src="/theme/material-admin/assets/js/core/demo/Demo.js"></script>
+		<script src="/theme/material-admin/assets/js/core/demo/DemoTableDynamic.js"></script>
 		<!-- END JAVASCRIPT -->
 	</body>
 </html>

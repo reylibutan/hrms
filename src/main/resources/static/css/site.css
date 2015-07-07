@@ -2,9 +2,32 @@
 	border: 1px solid red;
 }
 
+.normalBtn {
+	text-transform: none;
+	font-size: 12px;
+}
+
+.widerBtn {
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+.btnLblWithIcon {
+	margin-left: 5px;
+}
+
+.cardNoBottomPadding {
+	padding-bottom: 0px;
+}
+
 .brand-holder div {
 	display: inherit;
 	height: 100%;
 	line-height: 48px;
 	padding-left: 5px;
+}
+
+#searchBtnDiv {
+	padding-top: 12px;
+	text-align: right;
 }
