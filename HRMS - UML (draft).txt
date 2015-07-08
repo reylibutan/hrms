@@ -1,0 +1,69 @@
+============================================================
+Patient
+============================================================
+	id
+	first_name
+	middle_name
+	last_name
+	sex
+	unique_id_code
+	birthdate
+	mom_first_name
+	mom_middle_name
+	mom_last_name
+	address
+	city
+	contact_number
+	created_by
+	updated_by
+	created_date
+	updated_date
+	hiv_risks (comma separated hiv_risk_ids)
+	hiv_risks_others
+
+============================================================
+Vct
+============================================================
+	id
+	patient_id
+	date_of_vct - DATE
+	is_hiv_tested
+	is_hiv_positive
+	provide_result (boolean)
+	created_by
+	updated_by
+	created_date
+	updated_date
+
+============================================================
+Enrollment (Demographics)
+============================================================
+	id
+	patient_id
+	code_name
+	saccl_code
+	diagnosis_date
+	civil_status
+	birthplace
+	philhealth_number
+	attending_physician
+	created_by
+	updated_by
+	created_date
+	updated_date
+
+============================================================
+Hiv_risk
+============================================================
+	id
+	name
+	parent_id (to accomodate sub-options)
+
+============================================================
+Physician
+============================================================
+	id
+	first_name
+	middle_name
+	last_name
+	suffix
