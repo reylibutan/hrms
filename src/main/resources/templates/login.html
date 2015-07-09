@@ -1,4 +1,5 @@
-<html lang="en">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 	<head>
 		<title>HRMS | Login</title>
 
@@ -11,17 +12,17 @@
 
 		<!-- BEGIN STYLESHEETS -->
 		<link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css'/>
-		<link type="text/css" rel="stylesheet" href="/theme/material-admin/assets/css/theme-default/bootstrap.css" />
-		<link type="text/css" rel="stylesheet" href="/theme/material-admin/assets/css/theme-default/materialadmin.css" />
-		<link type="text/css" rel="stylesheet" href="/theme/material-admin/assets/css/theme-default/font-awesome.min.css" /> <!--Font Awesome Icon Font-->
-		<link type="text/css" rel="stylesheet" href="/theme/material-admin/assets/css/theme-default/material-design-iconic-font.min.css" /> <!--Material Design Iconic Font-->
+		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/bootstrap.css}" />
+		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/materialadmin.css}" />
+		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/font-awesome.min.css}" /> <!--Font Awesome Icon Font-->
+		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/material-design-iconic-font.min.css}" /> <!--Material Design Iconic Font-->
 		<!-- Additional CSS includes -->
-		<link type="text/css" rel="stylesheet" href="/css/login.css" />
+		<link type="text/css" rel="stylesheet" th:href="@{/css/login.css}" />
 		
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
-		<script type="text/javascript" src="/theme/material-admin/assets/js/libs/utils/html5shiv.js"></script>
-		<script type="text/javascript" src="/theme/material-admin/assets/js/libs/utils/respond.min.js"></script>
+		<script type="text/javascript" th:src="@{/theme/material-admin/assets/js/libs/utils/html5shiv.js}"></script>
+		<script type="text/javascript" th:src="@{/theme/material-admin/assets/js/libs/utils/respond.min.js}"></script>
 		<![endif]-->
 	</head>
 	<body>
@@ -30,7 +31,7 @@
 				<div class="inner">
 					<div id="loginCard" class="card">
 						<div class="card-head card-head-sm text-center">
-							<img id="siteLogo" src="/img/clmmrh_logo.png" alt="CLMMRRH Logo"/>
+							<img id="siteLogo" th:src="@{/img/clmmrh_logo.png}" alt="CLMMRRH Logo"/>
 						</div>
 						<div class="card-body">
 							<form class="form" autocomplete="off">
@@ -42,16 +43,26 @@
 									<input type="password" class="form-control input-sm"/>
 									<label for="password">Password</label>
 								</div>
-								<div class="checkbox checkbox-inline checkbox-styled">
-									<label>
-										<input type="checkbox" class="input-sm"/> <span class="rememberMe">Remember me</span>
-									</label>
+								<div class="rememberMeFormGroup form-group">
+									<div class="checkbox checkbox-inline checkbox-styled">
+										<label>
+											<input type="checkbox" class="input-sm"/> <span class="rememberMe">Remember me</span>
+										</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="alert alert-info" role="alert">
+											<strong>Note:</strong> This is still a mock-up. Just login without entering any credenditals to proceed.
+										</div>
+									</div>
 								</div>
 							</form>
 						</div>
 						<div class="card-actionbar">
 							<div class="card-actionbar-row">
-								<button id="loginBtn" type="button" class="loginBtn btn ink-reaction btn-raised btn-primary btn-block" onclick="location.href='/home'">Login</button>
+								<!-- <button id="loginBtn" type="button" class="loginBtn btn ink-reaction btn-raised btn-primary btn-block">Login</button> -->
+								<a id="loginBtn" th:href="@{/home}" class="loginBtn btn ink-reaction btn-raised btn-primary btn-block">Login</a>
 							</div>
 						</div>
 					</div>
@@ -60,12 +71,12 @@
 		</div>
 
 		<!-- BEGIN JAVASCRIPT -->
-		<script src="/theme/material-admin/assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
-		<script src="/theme/material-admin/assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
-		<script src="/theme/material-admin/assets/js/libs/bootstrap/bootstrap.min.js"></script>
-		<script src="/theme/material-admin/assets/js/libs/nanoscroller/jquery.nanoscroller.min.js"></script>
+		<script th:src="@{/theme/material-admin/assets/js/libs/jquery/jquery-1.11.2.min.js}"></script>
+		<script th:src="@{/theme/material-admin/assets/js/libs/jquery/jquery-migrate-1.2.1.min.js}"></script>
+		<script th:src="@{/theme/material-admin/assets/js/libs/bootstrap/bootstrap.min.js}"></script>
+		<script th:src="@{/theme/material-admin/assets/js/libs/nanoscroller/jquery.nanoscroller.min.js}"></script>
 		
 		<!-- Put App.js last in your javascript imports -->
-		<script src="/theme/material-admin/assets/js/core/source/App.min.js"></script>
+		<script th:src="@{/theme/material-admin/assets/js/core/source/App.min.js}"></script>
 	</body>
 </html>

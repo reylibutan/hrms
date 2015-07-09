@@ -69,3 +69,7 @@ body {
 span.rememberMe {
 	font-size: 12px;
 }
+
+div.rememberMeFormGroup {
+	padding-top: 0 !important;
+}
