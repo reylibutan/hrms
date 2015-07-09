@@ -2,4 +2,6 @@
 
 Hospital Records Management System
 
-Status: Draft
+Status: Live (mock-up)
+
+http://libutan.com/hrms
