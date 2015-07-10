@@ -166,7 +166,7 @@
 														<th class="sort-alpha">Unique ID Code</th>
 														<th>Birthdate</th>
 														<th>Sex</th>
-														<th class="actionsCol text-right">Actions</th>
+														<th class="actionsCol text-right">Update</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -177,8 +177,7 @@
 												        <td th:text="${patient.birthdate}">Jun 11, 1992</td>
 												        <td th:text="${patient.sex}">male</td>
 												        <td class="text-right">
-															<button type="button" class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Update record"><i class="fa fa-pencil"></i></button>
-															<button type="button" class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Delete record"><i class="fa fa-trash-o"></i></button>
+															<button type="button" class="updatePatientBtn btn btn-icon-toggle style-default"><i class="fa fa-pencil"></i></button>
 														</td>
 												      </tr>
 												</tbody>
