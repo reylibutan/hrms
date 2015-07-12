@@ -11,13 +11,14 @@
 		<meta name="description" content="Short explanation about this website"/>
 
 		<!-- BEGIN STYLESHEETS -->
+		<link rel="icon" th:href="@{/img/favicon.ico}" href="../static/img/favicon.ico" type="image/x-icon"/>
 		<link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css'/>
-		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/bootstrap.css}" />
-		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/materialadmin.css}" />
-		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/font-awesome.min.css}" /> <!--Font Awesome Icon Font-->
-		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/material-design-iconic-font.min.css}" /> <!--Material Design Iconic Font-->
+		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/bootstrap.css}" href="../static/theme/material-admin/assets/css/theme-default/bootstrap.css" />
+		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/materialadmin.css}" href="../static/theme/material-admin/assets/css/theme-default/materialadmin.css" />
+		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/font-awesome.min.css}" href="../static/theme/material-admin/assets/css/theme-default/font-awesome.min.css" />
+		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/material-design-iconic-font.min.css}" href="../static/theme/material-admin/assets/css/theme-default/material-design-iconic-font.min.css" />
 		<!-- Additional CSS includes -->
-		<link type="text/css" rel="stylesheet" th:href="@{/css/login.css}" />
+		<link type="text/css" rel="stylesheet" th:href="@{/css/login.css}" href="../static/css/login.css" />
 		
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
@@ -31,7 +32,7 @@
 				<div class="inner">
 					<div id="loginCard" class="card">
 						<div class="card-head card-head-sm text-center">
-							<img id="siteLogo" th:src="@{/img/clmmrh_logo.png}" alt="CLMMRRH Logo"/>
+							<img id="siteLogo" th:src="@{/img/clmmrh_logo.png}" src="../static/img/clmmrh_logo.png" alt="CLMMRRH Logo"/>
 						</div>
 						<div class="card-body">
 							<form class="form" autocomplete="off">
@@ -71,12 +72,11 @@
 		</div>
 
 		<!-- BEGIN JAVASCRIPT -->
-		<script th:src="@{/theme/material-admin/assets/js/libs/jquery/jquery-1.11.2.min.js}"></script>
-		<script th:src="@{/theme/material-admin/assets/js/libs/jquery/jquery-migrate-1.2.1.min.js}"></script>
-		<script th:src="@{/theme/material-admin/assets/js/libs/bootstrap/bootstrap.min.js}"></script>
-		<script th:src="@{/theme/material-admin/assets/js/libs/nanoscroller/jquery.nanoscroller.min.js}"></script>
-		
+		<script th:src="@{/theme/material-admin/assets/js/libs/jquery/jquery-1.11.2.min.js}" src="../static/theme/material-admin/assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
+		<script th:src="@{/theme/material-admin/assets/js/libs/jquery/jquery-migrate-1.2.1.min.js}" src="../static/theme/material-admin/assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
+		<script th:src="@{/theme/material-admin/assets/js/libs/bootstrap/bootstrap.min.js}" src="../static/theme/material-admin/assets/js/libs/bootstrap/bootstrap.min.js"></script>
+		<script th:src="@{/theme/material-admin/assets/js/libs/nanoscroller/jquery.nanoscroller.min.js}" src="../static/theme/material-admin/assets/js/libs/nanoscroller/jquery.nanoscroller.min.js"></script>		
 		<!-- Put App.js last in your javascript imports -->
-		<script th:src="@{/theme/material-admin/assets/js/core/source/App.min.js}"></script>
+		<script th:src="@{/theme/material-admin/assets/js/core/source/App.js}" src="../static/theme/material-admin/assets/js/core/source/App.js"></script>
 	</body>
 </html>
