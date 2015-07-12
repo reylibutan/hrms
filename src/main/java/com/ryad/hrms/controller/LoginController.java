@@ -8,7 +8,7 @@ public class LoginController {
 	
 	@RequestMapping("/")
 	public String index() {
-		// @TODO: if logged-in then redirect to patient/list. else, /login		
+		// @TODO: if logged-in then redirect to vct/list. else, /login		
 		return "redirect:login";
 	}
 	
@@ -19,6 +19,6 @@ public class LoginController {
 	
 	@RequestMapping("/home")
 	public String home() {
-		return "redirect:patient/list";
+		return "redirect:vct/list";
 	}
 }

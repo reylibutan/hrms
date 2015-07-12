@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"> 
 <head>
-	<title th:fragment="title">Patients | List</title>
+	<title th:fragment="title">VCT | List</title>
 	
 	<!-- BEGIN META -->
 	<meta charset="utf-8"/>
@@ -19,7 +19,6 @@
 	<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/DataTables/jquery.dataTables.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/DataTables/jquery.dataTables.css" />
 	<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/DataTables/extensions/dataTables.colVis.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/DataTables/extensions/dataTables.colVis.css" />
 	<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/DataTables/extensions/dataTables.tableTools.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/DataTables/extensions/dataTables.tableTools.css" />
-	
 	<link type="text/css" rel="stylesheet" th:href="@{/css/site.css}" href="../../static/css/site.css" />
 	<!-- END STYLESHEETS -->
 
@@ -35,7 +34,7 @@
 		<div class="section-body">
 			<div class="card card-underline">
 				<div class="card-head style-primary card-head-sm">
-					<header class="text-normal">Search Patients</header>
+					<header class="text-normal">Search VCT Records</header>
 					<div class="tools">
 						<div class="btn-group">
 							<a class="btn btn-icon-toggle btn-collapse"><i class="fa fa-angle-down"></i></a>
@@ -87,11 +86,11 @@
 					<!-- BEGIN DATATABLE 1 -->
 					<div class="row">
 						<div class="col-lg-12">
-							<button id="addPatientBtn" type="button" class="btn ink-reaction btn-floating-action btn-primary" data-toggle="tooltip" data-placement="top" data-original-title="Create new record">
+							<a th:href="@{/vct/create}" href="#" id="addVctBtn" type="button" class="btn ink-reaction btn-floating-action btn-primary" data-toggle="tooltip" data-placement="top" data-original-title="Create VCT record">
 								<i class="fa fa-plus"></i>
-							</button>
+							</a>
 							<div class="table-responsive">
-								<table id="patientsDataTable" class="table table-striped table-hover">
+								<table id="vctDataTable" class="table table-striped table-hover">
 									<thead>
 										<tr>
 											<th class="sort-alpha">Full Name</th>
@@ -110,7 +109,7 @@
 									        <td th:text="${patient.birthdate}">Jun 11, 1992</td>
 									        <td th:text="${patient.sex}">male</td>
 									        <td class="text-right">
-												<button type="button" class="updatePatientBtn btn btn-icon-toggle style-default"><i class="fa fa-pencil"></i></button>
+												<button type="button" class="updateVctBtn btn btn-icon-toggle style-default"><i class="fa fa-pencil"></i></button>
 											</td>
 									      </tr>
 									</tbody>

@@ -122,24 +122,31 @@
 						</li><!--end /menu-li -->
 						<!-- END DASHBOARD -->
 
-						<!-- BEGIN RECORDS -->
+						<!-- VCT RECORDS -->
 						<li class="gui-folder expanded">
 							<a>
-								<div class="gui-icon"><i class="md md-face-unlock"></i></div>
-								<span class="title">Records</span>
+								<div class="gui-icon"><i class="md md-chat"></i></div>
+								<span class="title">VCT</span>
 							</a>
 							<ul>
-								<li><a th:href="@{/patient/list}" href="#"><span class="title">List / Search</span></a></li>
-								<li class="gui-folder expanded">
-									<a href="#"><span class="title">Create New Record</span></a>
-									<ul>
-										<li><a href="#"><span class="title">VCT</span></a></li>
-										<li><a href="#"><span class="title">Enrollment</span></a></li>
-									</ul>
-								</li>
+								<li><a th:href="@{/vct/list}" href="#"><span class="title">List / Search</span></a></li>
+								<li><a th:href="@{/vct/create}" href="#"><span class="title">Create New Record</span></a></li>
 							</ul>
 						</li><!--end /menu-li -->
-						<!-- END RECORDS -->
+						<!-- END VCT RECORDS -->
+						
+						<!-- ENROLLMENT RECORDS -->
+						<li class="gui-folder expanded">
+							<a>
+								<div class="gui-icon"><i class="md md-person-add"></i></div>
+								<span class="title">Enrollment</span>
+							</a>
+							<ul>
+								<li><a th:href="@{/vct/list}" href="#"><span class="title">List / Search</span></a></li>
+								<li><a th:href="@{/vct/create}" href="#"><span class="title">Create New Record</span></a></li>
+							</ul>
+						</li><!--end /menu-li -->
+						<!-- END ENROLLMENT RECORDS -->
 						
 						<!-- BEGIN INVENTORY OF STOCKS -->
 						<li class="gui-folder expanded">
@@ -199,6 +206,7 @@
 		<script th:src="@{/theme/material-admin/assets/js/libs/spin.js/spin.min.js}" src="../../static/theme/material-admin/assets/js/libs/spin.js/spin.min.js"></script>
 		<script th:src="@{/theme/material-admin/assets/js/libs/autosize/jquery.autosize.min.js}" src="../../static/theme/material-admin/assets/js/libs/autosize/jquery.autosize.min.js"></script>
 		<script th:src="@{/theme/material-admin/assets/js/libs/nanoscroller/jquery.nanoscroller.min.js}" src="../../static/theme/material-admin/assets/js/libs/nanoscroller/jquery.nanoscroller.min.js"></script>
+		<script th:src="@{/theme/material-admin/assets/js/core/source/App.js}" src="../../static/theme/material-admin/assets/js/core/source/App.js"></script>
 		<script th:src="@{/theme/material-admin/assets/js/core/source/AppNavigation.js}" src="../../static/theme/material-admin/assets/js/core/source/AppNavigation.js"></script>
 		<script th:src="@{/theme/material-admin/assets/js/core/source/AppOffcanvas.js}" src="../../static/theme/material-admin/assets/js/core/source/AppOffcanvas.js"></script>
 		<script th:src="@{/theme/material-admin/assets/js/core/source/AppCard.js}" src="../../static/theme/material-admin/assets/js/core/source/AppCard.js"></script>
@@ -210,8 +218,6 @@
 		<script th:src="@{/theme/material-admin/assets/js/libs/DataTables/extensions/TableTools/js/dataTables.tableTools.min.js}" src="../../static/theme/material-admin/assets/js/libs/DataTables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 		<script th:src="@{/theme/material-admin/assets/js/core/demo/Demo.js}" src="../../static/theme/material-admin/assets/js/core/demo/Demo.js"></script>
 		<script th:src="@{/theme/material-admin/assets/js/core/demo/DemoTableDynamic.js}" src="../../static/theme/material-admin/assets/js/core/demo/DemoTableDynamic.js"></script>
-		<!-- Put App.js last in your javascript imports -->
-		<script th:src="@{/theme/material-admin/assets/js/core/source/App.js}" src="../../static/theme/material-admin/assets/js/core/source/App.js"></script>
 		<!-- END JAVASCRIPT -->
 	</body>
 </html>

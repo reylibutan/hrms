@@ -30,11 +30,11 @@
 		}
 
 		// Init the demo DataTables
-		this._createPatientsDataTable();
+		this._createVctDataTable();
 	};
 
-	p._createPatientsDataTable = function() {
-		$('#patientsDataTable').DataTable({
+	p._createVctDataTable = function() {
+		$('#vctDataTable').DataTable({
 			searching: false,
 			"order": [],
 			"aoColumnDefs": [{

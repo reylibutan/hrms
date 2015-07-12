@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"> 
+<head>
+	<title th:fragment="title">VCT | List</title>
+	
+	<!-- BEGIN META -->
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="keywords" content="your,keywords"/>
+	<meta name="description" content="Short explanation about this website"/>
+	<!-- END META -->
+
+	<!-- BEGIN STYLESHEETS -->
+	<link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css'/>
+	<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/bootstrap.css}" href="../../static/theme/material-admin/assets/css/theme-default/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/materialadmin.css}" href="../../static/theme/material-admin/assets/css/theme-default/materialadmin.css" />
+	<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/font-awesome.min.css}" href="../../static/theme/material-admin/assets/css/theme-default/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/material-design-iconic-font.min.css}" href="../../static/theme/material-admin/assets/css/theme-default/material-design-iconic-font.min.css" />
+	<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/DataTables/jquery.dataTables.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/DataTables/jquery.dataTables.css" />
+	<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/DataTables/extensions/dataTables.colVis.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/DataTables/extensions/dataTables.colVis.css" />
+	<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/DataTables/extensions/dataTables.tableTools.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/DataTables/extensions/dataTables.tableTools.css" />
+	<link type="text/css" rel="stylesheet" th:href="@{/css/site.css}" href="../../static/css/site.css" />
+	<!-- END STYLESHEETS -->
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	<script type="text/javascript" th:src="@{/theme/material-admin/assets/js/libs/utils/html5shiv.js?1403934957"></script>
+	<script type="text/javascript" th:src="@{/theme/material-admin/assets/js/libs/utils/respond.min.js?1403934956"></script>
+	<![endif]-->
+</head>
+<body>
+<div id="content" th:fragment="content">
+	<section>
+		<div class="section-body">
+			CREATE VCT
+		</div>
+	</section>
+</div><!--end #content-->
+
+<!-- BEGIN JAVASCRIPT -->
+<script th:src="@{/theme/material-admin/assets/js/libs/jquery/jquery-1.11.2.min.js}" src="../../static/theme/material-admin/assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
+<script th:src="@{/theme/material-admin/assets/js/libs/jquery/jquery-migrate-1.2.1.min.js}" src="../../static/theme/material-admin/assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
+<script th:src="@{/theme/material-admin/assets/js/libs/bootstrap/bootstrap.min.js}" src="../../static/theme/material-admin/assets/js/libs/bootstrap/bootstrap.min.js"></script>
+<script th:src="@{/theme/material-admin/assets/js/libs/spin.js/spin.min.js}" src="../../static/theme/material-admin/assets/js/libs/spin.js/spin.min.js"></script>
+<script th:src="@{/theme/material-admin/assets/js/libs/autosize/jquery.autosize.min.js}" src="../../static/theme/material-admin/assets/js/libs/autosize/jquery.autosize.min.js"></script>
+<script th:src="@{/theme/material-admin/assets/js/libs/nanoscroller/jquery.nanoscroller.min.js}" src="../../static/theme/material-admin/assets/js/libs/nanoscroller/jquery.nanoscroller.min.js"></script>
+<script th:src="@{/theme/material-admin/assets/js/core/source/App.js}" src="../../static/theme/material-admin/assets/js/core/source/App.js"></script>
+<script th:src="@{/theme/material-admin/assets/js/core/source/AppNavigation.js}" src="../../static/theme/material-admin/assets/js/core/source/AppNavigation.js"></script>
+<script th:src="@{/theme/material-admin/assets/js/core/source/AppOffcanvas.js}" src="../../static/theme/material-admin/assets/js/core/source/AppOffcanvas.js"></script>
+<script th:src="@{/theme/material-admin/assets/js/core/source/AppCard.js}" src="../../static/theme/material-admin/assets/js/core/source/AppCard.js"></script>
+<script th:src="@{/theme/material-admin/assets/js/core/source/AppForm.js}" src="../../static/theme/material-admin/assets/js/core/source/AppForm.js"></script>
+<script th:src="@{/theme/material-admin/assets/js/core/source/AppNavSearch.js}" src="../../static/theme/material-admin/assets/js/core/source/AppNavSearch.js"></script>
+<script th:src="@{/theme/material-admin/assets/js/core/source/AppVendor.js}" src="../../static/theme/material-admin/assets/js/core/source/AppVendor.js"></script>
+<script th:src="@{/theme/material-admin/assets/js/libs/DataTables/jquery.dataTables.min.js}" src="../../static/theme/material-admin/assets/js/libs/DataTables/jquery.dataTables.min.js"></script>
+<script th:src="@{/theme/material-admin/assets/js/libs/DataTables/extensions/ColVis/js/dataTables.colVis.min.js}" src="../../static/theme/material-admin/assets/js/libs/DataTables/extensions/ColVis/js/dataTables.colVis.min.js"></script>
+<script th:src="@{/theme/material-admin/assets/js/libs/DataTables/extensions/TableTools/js/dataTables.tableTools.min.js}" src="../../static/theme/material-admin/assets/js/libs/DataTables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+<script th:src="@{/theme/material-admin/assets/js/core/demo/Demo.js}" src="../../static/theme/material-admin/assets/js/core/demo/Demo.js"></script>
+<script th:src="@{/theme/material-admin/assets/js/core/demo/DemoTableDynamic.js}" src="../../static/theme/material-admin/assets/js/core/demo/DemoTableDynamic.js"></script>
+<!-- END JAVASCRIPT -->
+</body>
+</html>

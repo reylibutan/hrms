@@ -14,11 +14,11 @@ import com.ryad.hrms.annotation.Layout;
 import com.ryad.hrms.dto.PatientDTO;
 
 @Controller
-@RequestMapping("/patient")
+@RequestMapping("/vct")
 @Layout("layouts/default")
-public class PatientController {
+public class VctController {
 	
-	private final String VIEW_FOLDER = "patient/";
+	private final String VIEW_FOLDER = "vct/";
 	
 	@RequestMapping("/list")
 	public String list(Model model) {
@@ -43,5 +43,10 @@ public class PatientController {
 		model.addAttribute("patients", patients);
 		
 		return this.VIEW_FOLDER + "list";
+	}
+	
+	@RequestMapping("/create")
+	public String create() {
+		return this.VIEW_FOLDER + "create";
 	}
 }
