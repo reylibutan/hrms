@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+	<head>
+		<title th:replace="${view} :: title">HRMS</title>
+
+		<!-- BEGIN META -->
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta name="keywords" content="your,keywords"/>
+		<meta name="description" content="Short explanation about this website"/>
+		<!-- END META -->
+
+		<!-- BEGIN STYLESHEETS -->
+		<link rel="icon" th:href="@{/img/favicon.ico}" href="../../static/img/favicon.ico" type="image/x-icon"/>
+		<link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css'/>
+		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/bootstrap.css}" href="../../static/theme/material-admin/assets/css/theme-default/bootstrap.css" />
+		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/materialadmin.css}" href="../../static/theme/material-admin/assets/css/theme-default/materialadmin.css" />
+		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/font-awesome.min.css}" href="../../static/theme/material-admin/assets/css/theme-default/font-awesome.min.css" />
+		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/material-design-iconic-font.min.css}" href="../../static/theme/material-admin/assets/css/theme-default/material-design-iconic-font.min.css" />
+		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/DataTables/jquery.dataTables.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/DataTables/jquery.dataTables.css" />
+		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/DataTables/extensions/dataTables.colVis.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/DataTables/extensions/dataTables.colVis.css" />
+		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/DataTables/extensions/dataTables.tableTools.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/DataTables/extensions/dataTables.tableTools.css" />
+		
+		<link type="text/css" rel="stylesheet" th:href="@{/css/site.css}" href="../../static/css/site.css" />
+		<!-- END STYLESHEETS -->
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		<script type="text/javascript" th:src="@{/theme/material-admin/assets/js/libs/utils/html5shiv.js?1403934957"></script>
+		<script type="text/javascript" th:src="@{/theme/material-admin/assets/js/libs/utils/respond.min.js?1403934956"></script>
+		<![endif]-->
+	</head>
+	<body class="menubar-hoverable header-fixed menubar-pin ">
+
+		<!-- BEGIN HEADER-->
+		<header id="header" >
+			<div class="headerbar">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="headerbar-left">
+					<ul class="header-nav header-nav-options">
+						<li class="header-nav-brand" >
+							<div class="brand-holder">
+								<a href="javascript:void(0);">
+									<img th:src="@{/img/clmmrh_logo.png}" src="../../static/img/clmmrh_logo.png" alt="" />
+								</a>
+								<div>
+									<a href="/home">
+										<span class="text-lg text-bold text-primary">CLMMRH HRMS</span>
+									</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<a class="btn btn-icon-toggle menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
+								<i class="fa fa-bars"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="headerbar-right">
+					<ul class="header-nav header-nav-profile">
+						<li class="dropdown">
+							<a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
+								<img src="http://img07.deviantart.net/c887/i/2008/208/9/4/gregory_house_m_d__by_zootcadillac.jpg" alt="" />
+								<span class="profile-info">
+									Gregory House
+									<small>Administrator</small>
+								</span>
+							</a>
+							<ul class="dropdown-menu animation-dock">
+								<li class="dropdown-header">Config</li>
+								<li><a th:href="@{/theme/material-admin/html/pages/profile.html}">My profile</a></li>
+								<li class="divider"></li>
+								<li><a th:href="@{/login}"><i class="fa fa-fw fa-power-off text-danger"></i> Logout</a></li>
+							</ul><!--end .dropdown-menu -->
+						</li><!--end .dropdown -->
+					</ul><!--end .header-nav-profile -->
+				</div><!--end #header-navbar-collapse -->
+			</div>
+		</header>
+		<!-- END HEADER-->
+
+		<!-- BEGIN BASE-->
+		<div id="base">
+
+			<!-- BEGIN OFFCANVAS LEFT -->
+			<div class="offcanvas">
+			</div><!--end .offcanvas-->
+			<!-- END OFFCANVAS LEFT -->
+
+			<!-- BEGIN CONTENT-->
+			<div id="content" th:replace="${view} :: content">
+				<!-- BEGIN BLANK SECTION -->
+				<section>
+					<div class="section-header">
+						<ol class="breadcrumb">
+							<li><a href="#">home</a></li>
+							<li class="active">Blank page</li>
+						</ol>
+					</div><!--end .section-header -->
+					<div class="section-body">
+					</div><!--end .section-body -->
+				</section>
+				<!-- END BLANK SECTION -->
+			</div>
+			<!-- END CONTENT -->
+
+			<!-- BEGIN MENUBAR-->
+			<div id="menubar" class="menubar-inverse">
+				<div class="menubar-scroll-panel">
+
+					<!-- BEGIN MAIN MENU -->
+					<ul id="main-menu" class="gui-controls">
+
+						<!-- BEGIN DASHBOARD -->
+						<li>
+							<a th:href="@{/home}" >
+								<div class="gui-icon"><i class="md md-home"></i></div>
+								<span class="title">Home</span>
+							</a>
+						</li><!--end /menu-li -->
+						<!-- END DASHBOARD -->
+
+						<!-- BEGIN RECORDS -->
+						<li class="gui-folder expanded">
+							<a>
+								<div class="gui-icon"><i class="md md-face-unlock"></i></div>
+								<span class="title">Records</span>
+							</a>
+							<ul>
+								<li><a th:href="@{/patient/list}" href="#"><span class="title">List / Search</span></a></li>
+								<li class="gui-folder expanded">
+									<a href="#"><span class="title">Create New Record</span></a>
+									<ul>
+										<li><a href="#"><span class="title">VCT</span></a></li>
+										<li><a href="#"><span class="title">Enrollment</span></a></li>
+									</ul>
+								</li>
+							</ul>
+						</li><!--end /menu-li -->
+						<!-- END RECORDS -->
+						
+						<!-- BEGIN INVENTORY OF STOCKS -->
+						<li class="gui-folder expanded">
+							<a>
+								<div class="gui-icon"><i class="md md-assignment"></i></div>
+								<span class="title">Inventory of Stocks</span>
+							</a>
+							<ul>
+								<li><a href="#"><span class="title">List / Search</span></a></li>
+								<li><a href="#"><span class="title">Add New</span></a></li>
+							</ul>
+						</li><!--end /menu-li -->
+						<!-- END INVENTORY OF STOCKS -->
+						
+						<!-- BEGIN REPORTS -->
+						<li class="gui-folder">
+							<a>
+								<div class="gui-icon"><i class="md md-assessment"></i></div>
+								<span class="title">Reports</span>
+							</a>
+							<ul>
+								<li><a href="#"><span class="title">HCT Daily Registry</span></a></li>
+								<li><a href="#"><span class="title">HCT Monthly Report</span></a></li>
+								<li><a href="#"><span class="title">Monthly ART Registry</span></a></li>
+								<li><a href="#"><span class="title">HIV Care Monthly Report</span></a></li>
+								<li><a href="#"><span class="title">Pharmacy Inventory Report</span></a></li>
+								<li><a href="#"><span class="title">HIV Statistic Monthly Report</span></a></li>
+								<li><a href="#"><span class="title">Client Master List</span></a></li>
+							</ul>
+						</li><!--end /menu-li -->
+						<!-- END REPORTS -->
+
+					</ul><!--end .main-menu -->
+					<!-- END MAIN MENU -->
+
+					<div class="menubar-foot-panel">
+						<small class="no-linebreak hidden-folded">
+							<span class="opacity-75">Copyright &copy; 2015</span> | <a href="http://rey.libutan.com" target="blank"><strong>Rey Libutan</strong></a>
+						</small>
+					</div>
+				</div><!--end .menubar-scroll-panel-->
+			</div><!--end #menubar-->
+			<!-- END MENUBAR -->
+
+			<!-- BEGIN OFFCANVAS RIGHT -->
+			<div class="offcanvas">
+			</div><!--end .offcanvas-->
+			<!-- END OFFCANVAS RIGHT -->
+
+		</div>
+		<!-- END BASE -->
+
+		<!-- BEGIN JAVASCRIPT -->
+		<script th:src="@{/theme/material-admin/assets/js/libs/jquery/jquery-1.11.2.min.js}" src="../../static/theme/material-admin/assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
+		<script th:src="@{/theme/material-admin/assets/js/libs/jquery/jquery-migrate-1.2.1.min.js}" src="../../static/theme/material-admin/assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
+		<script th:src="@{/theme/material-admin/assets/js/libs/bootstrap/bootstrap.min.js}" src="../../static/theme/material-admin/assets/js/libs/bootstrap/bootstrap.min.js"></script>
+		<script th:src="@{/theme/material-admin/assets/js/libs/spin.js/spin.min.js}" src="../../static/theme/material-admin/assets/js/libs/spin.js/spin.min.js"></script>
+		<script th:src="@{/theme/material-admin/assets/js/libs/autosize/jquery.autosize.min.js}" src="../../static/theme/material-admin/assets/js/libs/autosize/jquery.autosize.min.js"></script>
+		<script th:src="@{/theme/material-admin/assets/js/libs/nanoscroller/jquery.nanoscroller.min.js}" src="../../static/theme/material-admin/assets/js/libs/nanoscroller/jquery.nanoscroller.min.js"></script>
+		<script th:src="@{/theme/material-admin/assets/js/core/source/App.js}" src="../../static/theme/material-admin/assets/js/core/source/App.js"></script>
+		<script th:src="@{/theme/material-admin/assets/js/core/source/AppNavigation.js}" src="../../static/theme/material-admin/assets/js/core/source/AppNavigation.js"></script>
+		<script th:src="@{/theme/material-admin/assets/js/core/source/AppOffcanvas.js}" src="../../static/theme/material-admin/assets/js/core/source/AppOffcanvas.js"></script>
+		<script th:src="@{/theme/material-admin/assets/js/core/source/AppCard.js}" src="../../static/theme/material-admin/assets/js/core/source/AppCard.js"></script>
+		<script th:src="@{/theme/material-admin/assets/js/core/source/AppForm.js}" src="../../static/theme/material-admin/assets/js/core/source/AppForm.js"></script>
+		<script th:src="@{/theme/material-admin/assets/js/core/source/AppNavSearch.js}" src="../../static/theme/material-admin/assets/js/core/source/AppNavSearch.js"></script>
+		<script th:src="@{/theme/material-admin/assets/js/core/source/AppVendor.js}" src="../../static/theme/material-admin/assets/js/core/source/AppVendor.js"></script>
+		<script th:src="@{/theme/material-admin/assets/js/libs/DataTables/jquery.dataTables.min.js}" src="../../static/theme/material-admin/assets/js/libs/DataTables/jquery.dataTables.min.js"></script>
+		<script th:src="@{/theme/material-admin/assets/js/libs/DataTables/extensions/ColVis/js/dataTables.colVis.min.js}" src="../../static/theme/material-admin/assets/js/libs/DataTables/extensions/ColVis/js/dataTables.colVis.min.js"></script>
+		<script th:src="@{/theme/material-admin/assets/js/libs/DataTables/extensions/TableTools/js/dataTables.tableTools.min.js}" src="../../static/theme/material-admin/assets/js/libs/DataTables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+		<script th:src="@{/theme/material-admin/assets/js/core/demo/Demo.js}" src="../../static/theme/material-admin/assets/js/core/demo/Demo.js"></script>
+		<script th:src="@{/theme/material-admin/assets/js/core/demo/DemoTableDynamic.js}" src="../../static/theme/material-admin/assets/js/core/demo/DemoTableDynamic.js"></script>
+		<!-- END JAVASCRIPT -->
+	</body>
+</html>

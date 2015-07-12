@@ -10,24 +10,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ryad.hrms.annotation.Layout;
 import com.ryad.hrms.dto.PatientDTO;
 
 @Controller
-public class SampleController {
+@RequestMapping("/patient")
+@Layout("layouts/default")
+public class PatientController {
 	
-	@RequestMapping("/")
-	public String index() {
-		return this.login();
-	}
+	private final String VIEW_FOLDER = "patient/";
 	
-	@RequestMapping("/login")
-	public String login() {
-		return "login";
-	}
-	
-	@RequestMapping("/home")
-	public String home(Model model) {
-		int max = 125;
+	@RequestMapping("/list")
+	public String list(Model model) {
+		int max = 3;
 		List<PatientDTO> patients = new ArrayList<PatientDTO>(max);
 		
 		LocalDate localDate = new LocalDate();
@@ -47,6 +42,6 @@ public class SampleController {
 		
 		model.addAttribute("patients", patients);
 		
-		return "home";
+		return this.VIEW_FOLDER + "list";
 	}
 }

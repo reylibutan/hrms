@@ -19,6 +19,7 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import com.ryad.hrms.interceptor.SampleInterceptor;
+import com.ryad.hrms.interceptor.ThymeleafLayoutInterceptor;
 
 @SpringBootApplication
 public class ApplicationConfig extends SpringBootServletInitializer {
@@ -101,8 +102,9 @@ public class ApplicationConfig extends SpringBootServletInitializer {
         return new WebMvcConfigurerAdapter() {
             @Override
             public void addInterceptors(InterceptorRegistry registry) {
-            	registry.addInterceptor(new SampleInterceptor()).addPathPatterns("/sample/*");
             	registry.addInterceptor(localeChangeInterceptor());
+            	registry.addInterceptor(new ThymeleafLayoutInterceptor());
+            	registry.addInterceptor(new SampleInterceptor()).addPathPatterns("/sample/*");
             }
         };
     }

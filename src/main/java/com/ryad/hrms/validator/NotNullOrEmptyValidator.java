@@ -3,6 +3,8 @@ package com.ryad.hrms.validator;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+import com.ryad.hrms.annotation.NotNullOrEmpty;
+
 public class NotNullOrEmptyValidator implements ConstraintValidator<NotNullOrEmpty, String> {
 	
 	@Override

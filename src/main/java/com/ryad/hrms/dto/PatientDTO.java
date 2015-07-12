@@ -1,7 +1,5 @@
 package com.ryad.hrms.dto;
 
-import java.util.Date;
-
 public class PatientDTO {
 	
 	private String fullName;
