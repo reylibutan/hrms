@@ -213,11 +213,7 @@
 		<script th:src="@{/theme/material-admin/assets/js/core/source/AppForm.js}" src="../../static/theme/material-admin/assets/js/core/source/AppForm.js"></script>
 		<script th:src="@{/theme/material-admin/assets/js/core/source/AppNavSearch.js}" src="../../static/theme/material-admin/assets/js/core/source/AppNavSearch.js"></script>
 		<script th:src="@{/theme/material-admin/assets/js/core/source/AppVendor.js}" src="../../static/theme/material-admin/assets/js/core/source/AppVendor.js"></script>
-		<script th:src="@{/theme/material-admin/assets/js/libs/DataTables/jquery.dataTables.min.js}" src="../../static/theme/material-admin/assets/js/libs/DataTables/jquery.dataTables.min.js"></script>
-		<script th:src="@{/theme/material-admin/assets/js/libs/DataTables/extensions/ColVis/js/dataTables.colVis.min.js}" src="../../static/theme/material-admin/assets/js/libs/DataTables/extensions/ColVis/js/dataTables.colVis.min.js"></script>
-		<script th:src="@{/theme/material-admin/assets/js/libs/DataTables/extensions/TableTools/js/dataTables.tableTools.min.js}" src="../../static/theme/material-admin/assets/js/libs/DataTables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
-		<script th:src="@{/theme/material-admin/assets/js/core/demo/Demo.js}" src="../../static/theme/material-admin/assets/js/core/demo/Demo.js"></script>
-		<script th:src="@{/theme/material-admin/assets/js/core/demo/DemoTableDynamic.js}" src="../../static/theme/material-admin/assets/js/core/demo/DemoTableDynamic.js"></script>
+		<th:block th:replace="${view} :: scripts"></th:block>
 		<!-- END JAVASCRIPT -->
 	</body>
 </html>

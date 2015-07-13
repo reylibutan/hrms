@@ -2,6 +2,7 @@ package com.ryad.hrms.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ryad.hrms.annotation.Layout;
 import com.ryad.hrms.dto.PatientDTO;
+import com.thedeanda.lorem.Lorem;
 
 @Controller
 @RequestMapping("/vct")
@@ -22,7 +24,7 @@ public class VctController {
 	
 	@RequestMapping("/list")
 	public String list(Model model) {
-		int max = 3;
+		int max = 125;
 		List<PatientDTO> patients = new ArrayList<PatientDTO>(max);
 		
 		LocalDate localDate = new LocalDate();
@@ -31,10 +33,10 @@ public class VctController {
 		PatientDTO patient;
 		for(int i = 0 ; i < max; i++) {
 			patient = new PatientDTO();
-			patient.setFullName("Juan de la Cruz #" + i);
-			patient.setCodeName("JUAN#" + i);
-			patient.setUniqueIdCode("AA-BB-" + String.format("%02d", (i % 100)));
-			patient.setBirthdate(dateDisplayFormat.print(localDate.plusDays(i)));
+			patient.setFullName(i % 3 < 2 ? Lorem.getNameMale() : Lorem.getNameMale());
+			patient.setCodeName((i % 3 < 2 ? Lorem.getFirstNameMale() : Lorem.getFirstNameFemale()).toUpperCase());
+			patient.setUniqueIdCode("" + getRandomChar() + getRandomChar() + "-" + getRandomChar() + getRandomChar() + "-" + String.format("%02d", (i % 100)));
+			patient.setBirthdate(dateDisplayFormat.print(localDate.plusDays(i).minusYears(20)));
 			patient.setSex(i % 3 < 2 ? "Male" : "Female");
 			
 			patients.add(patient);
@@ -48,5 +50,10 @@ public class VctController {
 	@RequestMapping("/create")
 	public String create() {
 		return this.VIEW_FOLDER + "create";
+	}
+	
+	private char getRandomChar() {
+		Random r = new Random();
+		return (char)(r.nextInt(26) + 'A');
 	}
 }
