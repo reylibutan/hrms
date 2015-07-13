@@ -17,9 +17,7 @@
 		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/materialadmin.css}" href="../../static/theme/material-admin/assets/css/theme-default/materialadmin.css" />
 		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/font-awesome.min.css}" href="../../static/theme/material-admin/assets/css/theme-default/font-awesome.min.css" />
 		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/material-design-iconic-font.min.css}" href="../../static/theme/material-admin/assets/css/theme-default/material-design-iconic-font.min.css" />
-		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/DataTables/jquery.dataTables.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/DataTables/jquery.dataTables.css" />
-		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/DataTables/extensions/dataTables.colVis.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/DataTables/extensions/dataTables.colVis.css" />
-		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/DataTables/extensions/dataTables.tableTools.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/DataTables/extensions/dataTables.tableTools.css" />
+		<th:block th:replace="${view} :: styles"></th:block>
 		<!-- Additional CSS includes -->
 		<link type="text/css" rel="stylesheet" th:href="@{/css/site.css}" href="../../static/css/site.css" />
 		<!-- END STYLESHEETS -->
