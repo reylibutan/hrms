@@ -76,3 +76,18 @@
 	
 	transition: all 0.5s;
 }
+
+/* Patient Information ============================================== */
+.sexBtnGroup label.btn {
+	text-transform: none;
+}
+
+.sexBtnGroup label.btn-default.active {
+	color: #FFFFFF;
+	background-color: #606060;
+	border-color: #606060;
+}
+
+.help-block {
+	font-size: 11px;
+}

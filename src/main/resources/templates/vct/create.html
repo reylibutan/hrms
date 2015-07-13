@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"> 
 <head>
-	<title th:fragment="title">VCT | List</title>
+	<title th:fragment="title">VCT | Create</title>
 	
 	<!-- BEGIN META -->
 	<meta charset="utf-8"/>
@@ -19,6 +19,9 @@
 	<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/DataTables/jquery.dataTables.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/DataTables/jquery.dataTables.css" />
 	<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/DataTables/extensions/dataTables.colVis.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/DataTables/extensions/dataTables.colVis.css" />
 	<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/DataTables/extensions/dataTables.tableTools.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/DataTables/extensions/dataTables.tableTools.css" />
+	<th:block th:fragment="styles">
+		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/bootstrap-datepicker/datepicker3.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/bootstrap-datepicker/datepicker3.css" />
+	</th:block>
 	<link type="text/css" rel="stylesheet" th:href="@{/css/site.css}" href="../../static/css/site.css" />
 	<!-- END STYLESHEETS -->
 
@@ -32,7 +35,146 @@
 <div id="content" th:fragment="content">
 	<section>
 		<div class="section-body">
-			CREATE VCT
+			<form class="form" autocomplete="off">
+				<div class="row">
+					<div class="col-md-5">
+						<div class="card">
+							<div class="card-head card-head-sm style-primary">
+								<header>Patient Information</header>
+							</div>
+							<div class="card-body">
+								<fieldset>
+									<legend>Basic Information</legend>
+									<div class="row">
+							            <div class="col-md-6">    
+							                <div class="form-group floating-label">
+												<input type="text" class="form-control input-sm"/>
+												<label for="firstName">First name</label>
+											</div>
+							            </div>
+							            <div class="col-md-6">    
+							                <div class="form-group floating-label">
+												<input type="text" class="form-control input-sm"/>
+												<label for="middleName">Last name</label>
+											</div>
+							            </div>
+							        </div>
+							        <div class="row">
+							            <div class="col-md-6">    
+							                <div class="form-group floating-label">
+												<input type="text" class="form-control input-sm"/>
+												<label for="middleName">Middle name</label>
+											</div>
+							            </div>
+							            <div class="col-md-6">    
+							                <div class="form-group floating-label">
+												<input type="text" class="form-control input-sm" value="XX-YY-99" readonly="readonly"/>
+												<label for="uniqueCodeIdentifier">Unique Code Identifier</label>
+											</div>
+							            </div>
+							        </div>
+							        <div class="row">
+							            <div class="col-md-6">    
+							                <div class="form-group control-width-normal">
+												<div class="input-group date" id="demo-date-format">
+													<div class="input-group-content">
+														<input type="text" class="form-control input-sm" />
+														<label>Birthdate</label>
+														<p class="help-block">yyyy/mm/dd</p>
+													</div>
+													<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+												</div>
+											</div>
+							            </div>
+							            <div class="col-md-6">
+							            	<div class="form-group floating-label">
+												<input type="text" class="form-control input-sm" value="24" readonly="readonly"/>
+												<label for="age">Age</label>
+											</div>
+							            </div>
+							        </div>
+							        <div class="row">
+							            <div class="col-md-12">
+							            	<div class="form-group text-right">
+							            		<div class="sexBtnGroup btn-group" data-toggle="buttons">
+													<label class="btn btn-sm ink-reaction btn-default active">
+														<input type="radio" name="options" id="option1" /><i class="fa fa-male fa-fw"></i> Male
+													</label>
+													<label class="btn btn-sm ink-reaction btn-default">
+														<input type="radio" name="options" id="option2" /><i class="fa fa-female fa-fw"></i> Female
+													</label>
+												</div>
+							            	</div>
+							            </div>
+							        </div>
+						        </fieldset>
+						        <fieldset>
+									<legend>Contact Information</legend>
+									<div class="row">
+							            <div class="col-md-12">    
+							                <div class="form-group floating-label">
+												<input type="text" class="form-control input-sm"/>
+												<label for="address">Address</label>
+											</div>
+							            </div>
+							        </div>
+							        <div class="row">
+							            <div class="col-md-6">    
+							                <div class="form-group floating-label">
+												<input type="text" class="form-control input-sm"/>
+												<label for="city">City</label>
+											</div>
+							            </div>
+							            <div class="col-md-6">    
+							                <div class="form-group">
+												<input type="text" class="form-control input-sm" data-inputmask="'mask': '+63999-999-9999'" />
+												<label>Mobile number</label>
+												<p class="help-block">+639 00-123-4567</p>
+											</div>
+							            </div>
+							        </div>
+						        </fieldset>
+						        <div class="height-1"></div> 
+						        <fieldset>
+									<legend>Mother's Information</legend>
+									<div class="row">
+							            <div class="col-md-6">    
+							                <div class="form-group floating-label">
+												<input type="text" class="form-control input-sm"/>
+												<label for="momFirstName">First name</label>
+											</div>
+							            </div>
+							            <div class="col-md-6">    
+							                <div class="form-group floating-label">
+												<input type="text" class="form-control input-sm"/>
+												<label for="momMiddleName">Last name</label>
+											</div>
+							            </div>
+							        </div>
+							        <div class="row">
+							            <div class="col-md-6">    
+							                <div class="form-group floating-label">
+												<input type="text" class="form-control input-sm"/>
+												<label for="momMiddleName">Middle name</label>
+											</div>
+							            </div>
+							        </div>
+						        </fieldset>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-7">
+						<div class="card">
+							<div class="card-head card-head-sm style-primary">
+								<header>VCT Information</header>
+							</div>
+							<div class="card-body">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
 		</div>
 	</section>
 </div><!--end #content-->
@@ -51,11 +193,13 @@
 <script th:src="@{/theme/material-admin/assets/js/core/source/AppForm.js}" src="../../static/theme/material-admin/assets/js/core/source/AppForm.js"></script>
 <script th:src="@{/theme/material-admin/assets/js/core/source/AppNavSearch.js}" src="../../static/theme/material-admin/assets/js/core/source/AppNavSearch.js"></script>
 <script th:src="@{/theme/material-admin/assets/js/core/source/AppVendor.js}" src="../../static/theme/material-admin/assets/js/core/source/AppVendor.js"></script>
-<script th:src="@{/theme/material-admin/assets/js/libs/DataTables/jquery.dataTables.min.js}" src="../../static/theme/material-admin/assets/js/libs/DataTables/jquery.dataTables.min.js"></script>
-<script th:src="@{/theme/material-admin/assets/js/libs/DataTables/extensions/ColVis/js/dataTables.colVis.min.js}" src="../../static/theme/material-admin/assets/js/libs/DataTables/extensions/ColVis/js/dataTables.colVis.min.js"></script>
-<script th:src="@{/theme/material-admin/assets/js/libs/DataTables/extensions/TableTools/js/dataTables.tableTools.min.js}" src="../../static/theme/material-admin/assets/js/libs/DataTables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
-<script th:src="@{/theme/material-admin/assets/js/core/demo/Demo.js}" src="../../static/theme/material-admin/assets/js/core/demo/Demo.js"></script>
-<script th:src="@{/theme/material-admin/assets/js/core/demo/DemoTableDynamic.js}" src="../../static/theme/material-admin/assets/js/core/demo/DemoTableDynamic.js"></script>
+<th:block th:fragment="scripts">
+	<script th:src="@{/theme/material-admin/assets/js/libs/inputmask/jquery.inputmask.bundle.min.js}" src="../../theme/material-admin/assets/js/libs/inputmask/jquery.inputmask.bundle.min.js"></script>
+	<script th:src="@{/theme/material-admin/assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js}" src="../../statuc/theme/material-admin/assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+	<script th:src="@{/theme/material-admin/assets/js/libs/moment/moment.min.js}" src="../../static/theme/assets/js/libs/moment/moment.min.js"></script>
+	<script th:src="@{/theme/material-admin/assets/js/core/demo/Demo.js}" src="../../static/theme/assets/js/core/demo/Demo.js"></script>
+	<script th:src="@{/theme/material-admin/assets/js/core/demo/DemoFormComponents.js}" src="../../static/theme/assets/js/core/demo/DemoFormComponents.js"></script>
+</th:block>
 <!-- END JAVASCRIPT -->
 </body>
 </html>
