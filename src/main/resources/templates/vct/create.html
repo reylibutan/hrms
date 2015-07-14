@@ -38,7 +38,7 @@
 			<form class="form" autocomplete="off">
 				<div class="row">
 					<div class="col-md-5">
-						<div class="card cardNoBottomMargin">
+						<div class="card noBottomMargin">
 							<div class="card-head card-head-sm style-primary">
 								<header>Patient Information</header>
 								<div class="tools">
@@ -74,7 +74,7 @@
 							            <div class="col-md-6">    
 							                <div class="form-group floating-label">
 												<input type="text" class="form-control input-sm" value="XX-YY-99" readonly="readonly"/>
-												<label for="uniqueCodeIdentifier">Unique Code Identifier</label>
+												<label for="uniqueIdentifierCode">Unique Identifier Code</label>
 											</div>
 							            </div>
 							        </div>
@@ -83,7 +83,7 @@
 							                <div class="form-group control-width-normal">
 												<div class="input-group date" id="demo-date-format">
 													<div class="input-group-content">
-														<input type="text" class="form-control input-sm" />
+														<input type="text" class="form-control input-sm" data-inputmask="'mask': '9999/99/99'" />
 														<label>Birthdate</label>
 														<p class="help-block">yyyy/mm/dd</p>
 													</div>
@@ -120,6 +120,7 @@
 							                <div class="form-group floating-label">
 												<input type="text" class="form-control input-sm"/>
 												<label for="address">Address</label>
+												<p class="help-block">Street, Purok, Barangay</p>
 											</div>
 							            </div>
 							        </div>
@@ -131,10 +132,9 @@
 											</div>
 							            </div>
 							            <div class="col-md-6">    
-							                <div class="form-group">
-												<input type="text" class="form-control input-sm" data-inputmask="'mask': '+63999-999-9999'" />
-												<label>Mobile number</label>
-												<p class="help-block">+639 00-123-4567</p>
+							                <div class="form-group floating-label">
+												<input type="text" class="form-control input-sm"/>
+												<label for="contactNumber">Contact Number</label>
 											</div>
 							            </div>
 							        </div>
@@ -179,7 +179,101 @@
 								</div>
 							</div>
 							<div class="card-body">
-								
+								<fieldset class="hivRisksFieldset">
+									<legend class="noBottomMargin">HIV Risks</legend>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="checkbox checkbox-styled">
+													<label>
+														<input type="checkbox" value="" />
+														<span>Blood Transfusion (BT) Recipient</span>
+													</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="checkbox checkbox-styled">
+													<label>
+														<input type="checkbox" value="" />
+														<span>Injecting Drug User (IDU)</span>
+													</label>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="checkbox checkbox-styled">
+													<label>
+														<input type="checkbox" value="" />
+														<span>Substance Abuse</span>
+													</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="checkbox checkbox-styled">
+													<label>
+														<input type="checkbox" value="" />
+														<span>Occupational Exposure (OE)</span>
+													</label>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="checkbox checkbox-styled">
+													<label>
+														<input type="checkbox" value="" />
+														<span>Sexually Transmitted Infections (STI)</span>
+													</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="checkbox checkbox-styled">
+													<label>
+														<input type="checkbox" value="" />
+														<span>Multiple Sexual Partners</span>
+													</label>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="checkbox checkbox-styled">
+													<label>
+														<input type="checkbox" value="" />
+														<span>Male having Sex with other Males (MSM)</span>
+													</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="checkbox checkbox-styled">
+													<label>
+														<input type="checkbox" value="" />
+														<span>Client of a Sex Worker</span>
+													</label>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="checkbox checkbox-styled">
+													<label>
+														<input type="checkbox" value="" />
+														<span>Sex Worker</span>
+													</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="checkbox checkbox-styled">
+													<label>
+														<input type="checkbox" value="" />
+														<span>Child of HIV Infected Mother</span>
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</fieldset>
 							</div>
 						</div>
 					</div>
