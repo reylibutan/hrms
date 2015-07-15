@@ -1,3 +1,7 @@
+body {
+	font-size: 12px;
+}
+
 .errorField {
 	border: 1px solid red;
 }
@@ -34,6 +38,25 @@
 #searchBtnDiv {
 	padding-top: 12px;
 	text-align: right;
+}
+
+fieldset span
+fieldset label {
+	opacity: 0.8;
+}
+
+.cardActionBarBtn {
+	font-size: 13px;
+	padding: 5px 15px;
+	text-transform: none;
+	margin-bottom: 5px;
+	margin-left: 7px;
+}
+
+.cardActionBarForm {
+	padding-top: 10px;
+	border-top: 1px solid #E0E0E0;
+	margin-top: 30px;
 }
 
 /* VCT Datatable ============================================== */
@@ -82,14 +105,18 @@
 }
 
 /* Patient Information ============================================== */
-.sexBtnGroup label.btn {
+.customBtnGroup label.btn {
 	text-transform: none;
 }
 
-.sexBtnGroup label.btn-default.active {
+.customBtnGroup label.btn-default.active {
 	color: #FFFFFF;
 	background-color: #606060;
 	border-color: #606060;
+}
+
+.customBtnGroup.btn-group > .btn:last-child:hover {
+	border-left-color: #606060;
 }
 
 .help-block {
