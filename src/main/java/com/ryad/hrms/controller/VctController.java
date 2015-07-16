@@ -24,7 +24,7 @@ public class VctController {
 	
 	@RequestMapping("/list")
 	public String list(Model model) {
-		int max = 125;
+		int max = 3;
 		List<PatientDTO> patients = new ArrayList<PatientDTO>(max);
 		
 		LocalDate localDate = new LocalDate();

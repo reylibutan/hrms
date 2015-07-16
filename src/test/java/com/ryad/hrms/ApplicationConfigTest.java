@@ -6,10 +6,10 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.ryad.hrms.ApplicationConfig;
+import com.ryad.hrms.AppConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = ApplicationConfig.class)
+@SpringApplicationConfiguration(classes = AppConfig.class)
 @WebAppConfiguration
 public class ApplicationConfigTest {
 

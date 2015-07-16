@@ -22,12 +22,12 @@ import com.ryad.hrms.interceptor.SampleInterceptor;
 import com.ryad.hrms.interceptor.ThymeleafLayoutInterceptor;
 
 @SpringBootApplication
-public class ApplicationConfig extends SpringBootServletInitializer {
+public class AppConfig extends SpringBootServletInitializer {
 
     private final String PARAM_LANGUAGE = "lang";
 	
 	public static void main(String[] args) {
-    	SpringApplication.run(ApplicationConfig.class, args);
+    	SpringApplication.run(AppConfig.class, args);
     }
     
     /**
@@ -50,7 +50,7 @@ public class ApplicationConfig extends SpringBootServletInitializer {
      */
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(ApplicationConfig.class);
+        return application.sources(AppConfig.class);
     }
     
     /**

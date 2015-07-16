@@ -97,6 +97,10 @@ fieldset label {
 	line-height: 50px;
 }
 
+.updateVctBtn {
+	transition: all 0.5s;
+}
+
 .updateVctBtn:hover {
 	background-color: #F2F3F3 !important;
 	box-shadow: 0 5px 8px #AFB6B6;
