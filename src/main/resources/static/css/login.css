@@ -77,3 +77,9 @@ span.rememberMe {
 div.rememberMeFormGroup {
 	padding-top: 0 !important;
 }
+
+div.alert {
+	font-size: 12px;
+	padding: 8px;
+	border: none;
+}

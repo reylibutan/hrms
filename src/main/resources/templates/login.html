@@ -36,12 +36,24 @@
 						</div>
 						<form class="form" th:action="@{/login}" method="POST">
 							<div class="card-body">
+								<!-- @TODO:
+									1. How to remove error message in session after displaying? Or how to use flash messages instead?
+									2. Is it possible to get error message not from resource but from UserDetailsServiceImpl?
+								 -->
+								<div class="row" th:if="${session[SPRING_SECURITY_LAST_EXCEPTION] != null and !#strings.isEmpty(session[SPRING_SECURITY_LAST_EXCEPTION].message)}" th:with='errorMsg=${session[SPRING_SECURITY_LAST_EXCEPTION].message}'>
+									<br/>
+									<div class="alert alert-danger" role="alert">
+										<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										<i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+										<span th:text="${errorMsg}">Bad credentials</span>
+									</div>
+								</div>
 								<div class="form-group floating-label">
-									<input type="text" name="username" class="form-control input-sm"/>
+									<input type="text" name="username" class="form-control input-sm" value="admin" />
 									<label for="username">Username</label>
 								</div>
 								<div class="form-group floating-label">
-									<input type="password" name="password" class="form-control input-sm"/>
+									<input type="password" name="password" class="form-control input-sm" value="1qaz2wsx" />
 									<label for="password">Password</label>
 								</div>
 								<div class="rememberMeFormGroup form-group">
@@ -77,5 +89,6 @@
 		<script th:src="@{/theme/material-admin/assets/js/core/source/AppForm.js}" src="../../static/theme/material-admin/assets/js/core/source/AppForm.js"></script>
 		<script th:src="@{/theme/material-admin/assets/js/core/source/AppNavSearch.js}" src="../../static/theme/material-admin/assets/js/core/source/AppNavSearch.js"></script>
 		<script th:src="@{/theme/material-admin/assets/js/core/source/AppVendor.js}" src="../../static/theme/material-admin/assets/js/core/source/AppVendor.js"></script>
+		<script th:src="@{/js/site.js}" src="../../static/js/site.js"></script>
 	</body>
 </html>
