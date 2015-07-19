@@ -27,10 +27,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	private UserRepository userRepo;
 	
 	@Override
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		User user = userRepo.findByEmail(email);
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		User user = userRepo.findByUsername(username);
 		if (user == null) {
-			throw new UsernameNotFoundException("User with email: " + email + " does not exist.");
+			throw new UsernameNotFoundException("User with username: " + username + " does not exist.");
 		}
 		
 		boolean enabled = true;

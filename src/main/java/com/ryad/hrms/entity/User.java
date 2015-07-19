@@ -13,8 +13,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 @Entity
 @Table(name="`user`") //backticks are needed because PostgreSQL uses "user" as a keyword
 public class User {
@@ -25,7 +23,9 @@ public class User {
 	private Long id;
 	
 	@Column
-	@NotEmpty
+	private String username;
+	
+	@Column
 	private String email;
 	
 	@Column
