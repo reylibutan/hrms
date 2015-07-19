@@ -70,8 +70,9 @@
 								<li class="dropdown-header">Config</li>
 								<li><a href="#">My profile</a></li>
 								<li class="divider"></li>
-								<li><a th:href="@{/login}"><i class="fa fa-fw fa-power-off text-danger"></i> Logout</a></li>
+								<li><a id="logoutBtn" href="javascript:void(0);"><i class="fa fa-fw fa-power-off text-danger"></i> Logout</a></li>
 							</ul><!--end .dropdown-menu -->
+							<form id="logoutForm" class="form" th:action="@{/logout}" style="display:none" method="POST"></form>
 						</li><!--end .dropdown -->
 					</ul><!--end .header-nav-profile -->
 				</div><!--end #header-navbar-collapse -->
@@ -211,6 +212,7 @@
 		<script th:src="@{/theme/material-admin/assets/js/core/source/AppForm.js}" src="../../static/theme/material-admin/assets/js/core/source/AppForm.js"></script>
 		<script th:src="@{/theme/material-admin/assets/js/core/source/AppNavSearch.js}" src="../../static/theme/material-admin/assets/js/core/source/AppNavSearch.js"></script>
 		<script th:src="@{/theme/material-admin/assets/js/core/source/AppVendor.js}" src="../../static/theme/material-admin/assets/js/core/source/AppVendor.js"></script>
+		<script th:src="@{/js/site.js}" src="../../static/js/site.js"></script>
 		<th:block th:replace="${view} :: scripts"></th:block>
 		<!-- END JAVASCRIPT -->
 	</body>

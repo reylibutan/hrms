@@ -1,6 +1,7 @@
 package com.ryad.hrms.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,18 +17,12 @@ public class LoginController {
 	
 	@RequestMapping("/")
 	public String index() {
-		// @TODO: if logged-in then redirect to vct/list. else, /login		
-		return "redirect:login";
+		return "redirect:vct/list";
 	}
 	
 	@RequestMapping("/login")
 	public String login() {
 		return "login";
-	}
-	
-	@RequestMapping("/home")
-	public String home() {
-		return "redirect:vct/list";
 	}
 	
 	@RequestMapping("/test")
