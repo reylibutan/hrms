@@ -1,4 +1,4 @@
-package com.ryad.hrms.impl;
+package com.ryad.hrms.service.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
