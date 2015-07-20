@@ -36,16 +36,28 @@
 						</div>
 						<form class="form" th:action="@{/login}" method="POST">
 							<div class="card-body">
-								<!-- @TODO:
+								<!-- @TODO: [Spring Security] - Displaying error messages
 									1. How to remove error message in session after displaying? Or how to use flash messages instead?
 									2. Is it possible to get error message not from resource but from UserDetailsServiceImpl?
 								 -->
-								<div class="row" th:if="${session[SPRING_SECURITY_LAST_EXCEPTION] != null and !#strings.isEmpty(session[SPRING_SECURITY_LAST_EXCEPTION].message)}" th:with='errorMsg=${session[SPRING_SECURITY_LAST_EXCEPTION].message}'>
+								<div class="row" th:if="${param.error}">
 									<br/>
 									<div class="alert alert-danger" role="alert">
 										<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 										<i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
-										<span th:text="${errorMsg}">Bad credentials</span>
+										<span th:text="${session[SPRING_SECURITY_LAST_EXCEPTION] != null ? 
+											session[SPRING_SECURITY_LAST_EXCEPTION].message : 
+											#messages.msg('AbstractUserDetailsAuthenticationProvider.badCredentials')}">
+											Invalid credentials
+										</span>
+									</div>
+								</div>
+								<div class="row" th:if="${param.logout}">
+									<br/>
+									<div class="alert alert-info" role="alert">
+										<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										<i class="fa fa-check"></i>&nbsp;&nbsp;
+										<span th:text="#{info.msg.logout.success}">Logout successful</span>
 									</div>
 								</div>
 								<div class="form-group floating-label">
