@@ -82,4 +82,5 @@ div.alert {
 	font-size: 12px;
 	padding: 8px;
 	border: none;
+	display: none;
 }
