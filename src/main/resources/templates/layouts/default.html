@@ -62,8 +62,8 @@
 							<a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
 								<img th:src="@{/img/gregory_house.jpg}" src="../../static/img/gregory_house.jpg" alt="" />
 								<span class="profile-info">
-									Gregory House
-									<small>Administrator</small>
+									<span th:text="${activeUser.displayName}">Juan de la Cruz</span>
+									<small th:text="${activeUser.displayRole}">Administrator</small>
 								</span>
 							</a>
 							<ul class="dropdown-menu animation-dock">

@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.4.4
 -- Dumped by pg_dump version 9.4.0
--- Started on 2015-07-19 23:04:36
+-- Started on 2015-07-22 03:41:36
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -144,8 +144,8 @@ ALTER TABLE ONLY "user" ALTER COLUMN id SET DEFAULT nextval('user_id_seq'::regcl
 -- Data for Name: role; Type: TABLE DATA; Schema: hrms; Owner: hrms_user
 --
 
-INSERT INTO role (id, code, name) VALUES (1, 'ADMIN', 'Administrator');
-INSERT INTO role (id, code, name) VALUES (2, 'USER', 'User');
+INSERT INTO role (id, code, name) VALUES (1, 'ROLE_ADMIN', 'Administrator');
+INSERT INTO role (id, code, name) VALUES (2, 'ROLE_USER', 'User');
 
 
 --
@@ -182,6 +182,7 @@ SELECT pg_catalog.setval('user_id_seq', 1, true);
 --
 
 INSERT INTO user_role (user_id, role_id) VALUES (1, 1);
+INSERT INTO user_role (user_id, role_id) VALUES (1, 2);
 
 
 --
@@ -256,7 +257,7 @@ ALTER TABLE ONLY user_role
     ADD CONSTRAINT user_role_user_id_fkey FOREIGN KEY (user_id) REFERENCES "user"(id);
 
 
--- Completed on 2015-07-19 23:04:37
+-- Completed on 2015-07-22 03:41:36
 
 --
 -- PostgreSQL database dump complete

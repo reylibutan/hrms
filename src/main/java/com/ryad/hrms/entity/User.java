@@ -44,6 +44,10 @@ public class User {
 	@JoinTable(name = "USER_ROLE", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "ROLE_ID"))
 	private Set<Role> roles = new HashSet<Role>();
 
+	// ========================================================================
+	// getters and setters
+	// ========================================================================
+	
 	public Long getId() {
 		return id;
 	}
@@ -98,6 +102,32 @@ public class User {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+	
+	// ========================================================================
+	// logic
+	// ========================================================================
+	
+	public String getDisplayName() {
+		return this.firstName + " " + this.lastName;
+	}
+	
+	public String getDisplayRole() {
+		Role displayRole = null;
+		String displayRoleName = "";
+		Set<Role> roles = this.getRoles();
+		
+		if(!roles.isEmpty()) {
+			for(Role role : roles) {
+				if(displayRole == null || role.getId().compareTo(displayRole.getId()) < 1) {
+					displayRole = role;
+				}
+			}
+			
+			displayRoleName = displayRole.getName();
+		}
+		
+		return displayRoleName;
 	}
 
 	@Override

@@ -7,6 +7,8 @@ import java.util.Random;
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +25,7 @@ public class VctController {
 	private final String VIEW_FOLDER = "vct/";
 	
 	@RequestMapping("/list")
-	public String list(Model model) {
+	public String list(@AuthenticationPrincipal User activeUser, Model model) {
 		int max = 3;
 		List<PatientDTO> patients = new ArrayList<PatientDTO>(max);
 		
@@ -42,6 +44,7 @@ public class VctController {
 			patients.add(patient);
 		}
 		
+		model.addAttribute("activeUser", activeUser);
 		model.addAttribute("patients", patients);
 		
 		return this.VIEW_FOLDER + "list";
