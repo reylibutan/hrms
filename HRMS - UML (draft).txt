@@ -67,17 +67,3 @@ Physician
 	middle_name
 	last_name
 	suffix
-	
-Blood Transfusion (BT) Recipient
-Injecting Drug User (IDU)
-Substance Abuse
-Occupational Exposure (OE)
-Provided Post Exposure Prophylaxis (checkbox)
-YES
-NO
-Sexually Transmitted Infections (STI)
-Multiple Sexual Partners
-Male having Sex with other Males (MSM)
-Client of a Sex Worker
-Sex Worker
-Child of HIV Infected Mother

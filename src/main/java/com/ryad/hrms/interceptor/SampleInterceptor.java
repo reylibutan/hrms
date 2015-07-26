@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-public class SampleInterceptor extends HandlerInterceptorAdapter  {
+public class SampleInterceptor extends HandlerInterceptorAdapter {
 	
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 	

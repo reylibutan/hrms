@@ -1,6 +1,11 @@
 $(document).ready(function() {
 	initButtonEvents();
 	initAlertEvents();
+	
+	// ======================================================
+	// @TODO: 
+	// 		initSameHeightColumns(); 
+	// ======================================================
 });
 
 function initButtonEvents() {

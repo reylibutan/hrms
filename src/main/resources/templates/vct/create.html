@@ -53,21 +53,21 @@
 									<div class="row">
 							            <div class="col-md-6">    
 							                <div class="form-group floating-label">
-												<input type="text" class="form-control input-sm"/>
+												<input type="text" class="form-control input-sm" name="firstName" />
 												<label for="firstName">First name</label>
 											</div>
 							            </div>
 							            <div class="col-md-6">    
 							                <div class="form-group floating-label">
-												<input type="text" class="form-control input-sm"/>
-												<label for="middleName">Last name</label>
+												<input type="text" class="form-control input-sm" name="lastName" />
+												<label for="lastName">Last name</label>
 											</div>
 							            </div>
 							        </div>
 							        <div class="row">
 							            <div class="col-md-6">    
 							                <div class="form-group floating-label">
-												<input type="text" class="form-control input-sm"/>
+												<input type="text" class="form-control input-sm" name="" />
 												<label for="middleName">Middle name</label>
 											</div>
 							            </div>
@@ -181,108 +181,26 @@
 							<div class="card-body">
 								<fieldset class="hivRisksFieldset">
 									<legend class="noBottomMargin">HIV Risks</legend>
-									<div class="form-group">
-										<div class="row">
-											<div class="col-md-6">
+									<div th:unless="${#lists.isEmpty(hivRiskList)}" class="form-group">
+										<div class="row" th:each="hivRisk, stat : ${hivRiskList}" th:if="${stat.even}">
+											<div class="col-md-6" th:with="leftRisk=${hivRiskList.get(stat.index)}">
 												<div class="checkbox checkbox-styled">
 													<label>
-														<input type="checkbox" value="" />
-														<span>Blood Transfusion (BT) Recipient</span>
+														<input type="checkbox" value="-1" th:value="${leftRisk.id}"/>
+														<span th:text="${leftRisk.name}">HIV Risk</span>
 													</label>
 												</div>
 											</div>
-											<div class="col-md-6">
+											<div class="col-md-6" th:if="${stat.index + 1 &lt; hivRiskList.size()}" th:with="rightRisk=${hivRiskList.get(stat.index + 1)}">
 												<div class="checkbox checkbox-styled">
 													<label>
-														<input type="checkbox" value="" />
-														<span>Injecting Drug User (IDU)</span>
-													</label>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="checkbox checkbox-styled">
-													<label>
-														<input type="checkbox" value="" />
-														<span>Substance Abuse</span>
-													</label>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="checkbox checkbox-styled">
-													<label>
-														<input type="checkbox" value="" />
-														<span>Occupational Exposure (OE)</span>
+														<input type="checkbox" value="-1" th:value="${rightRisk.id}"/>
+														<span th:text="${rightRisk.name}">HIV Risk</span>
 													</label>
 												</div>
 											</div>
 										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="checkbox checkbox-styled">
-													<label>
-														<input type="checkbox" value="" />
-														<span>Sexually Transmitted Infections (STI)</span>
-													</label>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="checkbox checkbox-styled">
-													<label>
-														<input type="checkbox" value="" />
-														<span>Multiple Sexual Partners</span>
-													</label>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="checkbox checkbox-styled">
-													<label>
-														<input type="checkbox" value="" />
-														<span>Male having Sex with other Males (MSM)</span>
-													</label>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="checkbox checkbox-styled">
-													<label>
-														<input type="checkbox" value="" />
-														<span>Client of a Sex Worker</span>
-													</label>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="checkbox checkbox-styled">
-													<label>
-														<input type="checkbox" value="" />
-														<span>Sex Worker</span>
-													</label>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="checkbox checkbox-styled">
-													<label>
-														<input type="checkbox" value="" />
-														<span>Child of HIV Infected Mother</span>
-													</label>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-12">
-												<div class="checkbox checkbox-styled">
-													<label>
-														<input type="checkbox" value="" />
-														<span>Occupational Exposure (OE)</span>
-													</label>
-												</div>
-											</div>
-										</div>
-										<div class="row">
+										<!-- <div class="row">
 											<div class="col-md-12" style="padding-left: 43px; font-size: 12px;">
 												<label>Provided Post Exposure Prophylaxis</label>
 												<div class="customBtnGroup btn-group" data-toggle="buttons" style="margin-left: 20px;">
@@ -294,7 +212,7 @@
 													</label>
 												</div>
 											</div>
-										</div>
+										</div> -->
 									</div>
 								</fieldset>
 								<div class="height-1"></div>

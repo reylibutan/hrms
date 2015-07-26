@@ -18,6 +18,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
+import com.ryad.hrms.interceptor.CommonViewDataInterceptor;
 import com.ryad.hrms.interceptor.SampleInterceptor;
 import com.ryad.hrms.interceptor.ThymeleafLayoutInterceptor;
 
@@ -105,6 +106,7 @@ public class AppConfig extends SpringBootServletInitializer {
             	registry.addInterceptor(localeChangeInterceptor());
             	registry.addInterceptor(new ThymeleafLayoutInterceptor());
             	registry.addInterceptor(new SampleInterceptor()).addPathPatterns("/sample/*");
+            	registry.addInterceptor(new CommonViewDataInterceptor()).addPathPatterns("/vct/*");
             }
         };
     }

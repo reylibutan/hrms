@@ -7,14 +7,14 @@ import java.util.Random;
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ryad.hrms.annotation.Layout;
 import com.ryad.hrms.dto.PatientDTO;
+import com.ryad.hrms.service.VctService;
 import com.thedeanda.lorem.Lorem;
 
 @Controller
@@ -24,8 +24,11 @@ public class VctController {
 	
 	private final String VIEW_FOLDER = "vct/";
 	
+	@Autowired
+	private VctService vctService;
+	
 	@RequestMapping("/list")
-	public String list(@AuthenticationPrincipal User activeUser, Model model) {
+	public String list(Model model) {
 		int max = 3;
 		List<PatientDTO> patients = new ArrayList<PatientDTO>(max);
 		
@@ -44,14 +47,15 @@ public class VctController {
 			patients.add(patient);
 		}
 		
-		model.addAttribute("activeUser", activeUser);
 		model.addAttribute("patients", patients);
 		
 		return this.VIEW_FOLDER + "list";
 	}
 	
 	@RequestMapping("/create")
-	public String create() {
+	public String create(Model model) {
+		
+		model.addAttribute("hivRiskList", vctService.getHivRisks());
 		return this.VIEW_FOLDER + "create";
 	}
 	
