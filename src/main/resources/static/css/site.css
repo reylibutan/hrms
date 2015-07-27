@@ -61,7 +61,7 @@ fieldset label {
 	}
 }
 
-/* VCT Datatable ============================================== */
+/* VCT Datatable =========================================================== */
 .dataTables_wrapper {
 	font-size: 12px;
 	overflow: hidden;
@@ -110,7 +110,7 @@ fieldset label {
 	transition: all 0.5s;
 }
 
-/* Patient Information ============================================== */
+/* Patient Information ===================================================== */
 .customBtnGroup label.btn {
 	text-transform: none;
 }
@@ -131,4 +131,14 @@ fieldset label {
 
 fieldset.hivRisksFieldset div.checkbox span {
 	font-size: 12px;
+}
+
+/* VCT Information ========================================================= */
+div.subHivRisk {
+	padding-left: 43px;
+	font-size: 12px;
+}
+
+.subHivRiskBtnGroup {
+	margin-left: 20px;
 }

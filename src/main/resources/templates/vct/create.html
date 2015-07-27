@@ -182,37 +182,46 @@
 								<fieldset class="hivRisksFieldset">
 									<legend class="noBottomMargin">HIV Risks</legend>
 									<div th:unless="${#lists.isEmpty(hivRiskList)}" class="form-group">
-										<div class="row" th:each="hivRisk, stat : ${hivRiskList}" th:if="${stat.even}">
-											<div class="col-md-6" th:with="leftRisk=${hivRiskList.get(stat.index)}">
-												<div class="checkbox checkbox-styled">
-													<label>
-														<input type="checkbox" value="-1" th:value="${leftRisk.id}"/>
-														<span th:text="${leftRisk.name}">HIV Risk</span>
-													</label>
-												</div>
-											</div>
-											<div class="col-md-6" th:if="${stat.index + 1 &lt; hivRiskList.size()}" th:with="rightRisk=${hivRiskList.get(stat.index + 1)}">
-												<div class="checkbox checkbox-styled">
-													<label>
-														<input type="checkbox" value="-1" th:value="${rightRisk.id}"/>
-														<span th:text="${rightRisk.name}">HIV Risk</span>
-													</label>
-												</div>
-											</div>
+										<div class="row" th:each="hivRisk, stat : ${hivRiskList}" th:if="${stat.even or hivRisk.hasChildren}">
+											<th:block th:switch="${hivRisk.hasChildren}">
+												<th:block th:case="false">
+													<div class="col-md-6" th:with="leftRisk=${hivRiskList.get(stat.index)}">
+														<div class="checkbox checkbox-styled">
+															<label>
+																<input type="checkbox" value="-1" th:value="${leftRisk.id}"/>
+																<span th:text="${leftRisk.name}">HIV Risk</span>
+															</label>
+														</div>
+													</div>
+													<div class="col-md-6" th:if="${stat.index + 1 &lt; hivRiskList.size()}" th:with="rightRisk=${hivRiskList.get(stat.index + 1)}">
+														<div class="checkbox checkbox-styled">
+															<label>
+																<input type="checkbox" value="-1" th:value="${rightRisk.id}"/>
+																<span th:text="${rightRisk.name}">HIV Risk</span>
+															</label>
+														</div>
+													</div>
+												</th:block>
+												<th:block th:case="true">
+													<div class="col-md-12">
+														<div class="checkbox checkbox-styled">
+															<label>
+																<input type="checkbox" value="-1" th:value="${hivRisk.id}"/>
+																<span th:text="${hivRisk.name}">HIV Risk</span>
+															</label>
+														</div>
+													</div>
+													<div class="subHivRisk col-md-12" th:each="subHivRiskEntry, subStat : ${hivRisk.children}">
+														<label th:text="${subHivRiskEntry.key}">Sub HIV Risk</label>
+														<div class="customBtnGroup subHivRiskBtnGroup btn-group" data-toggle="buttons">
+															<label class="btn btn-sm ink-reaction btn-default" th:classappend="${subRiskStat.first ? 'active' : ''}" th:each="subHivRisk, subRiskStat : ${subHivRiskEntry.value}">
+																<input type="radio" name="options" id="-1" th:id="${subHivRisk.id}"/> <span th:text="${subHivRisk.name}">Yes</span>
+															</label>
+														</div>
+													</div>
+												</th:block>
+											</th:block>
 										</div>
-										<!-- <div class="row">
-											<div class="col-md-12" style="padding-left: 43px; font-size: 12px;">
-												<label>Provided Post Exposure Prophylaxis</label>
-												<div class="customBtnGroup btn-group" data-toggle="buttons" style="margin-left: 20px;">
-													<label class="btn btn-sm ink-reaction btn-default active">
-														<input type="radio" name="options" id="option1" /> Yes
-													</label>
-													<label class="btn btn-sm ink-reaction btn-default">
-														<input type="radio" name="options" id="option2" />No
-													</label>
-												</div>
-											</div>
-										</div> -->
 									</div>
 								</fieldset>
 								<div class="height-1"></div>
