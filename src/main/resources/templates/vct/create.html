@@ -35,7 +35,7 @@
 <div id="content" th:fragment="content">
 	<section>
 		<div class="section-body">
-			<form class="form" autocomplete="off">
+			<form class="form" autocomplete="off" method="POST" th:object="${vctDTO}" th:action="@{/vct/save}">
 				<div class="row">
 					<div class="col-md-5">
 						<div class="card noBottomMargin">
@@ -53,13 +53,13 @@
 									<div class="row">
 							            <div class="col-md-6">    
 							                <div class="form-group floating-label">
-												<input type="text" class="form-control input-sm" name="firstName" />
+												<input type="text" class="form-control input-sm" th:field="*{firstName}" th:errorclass="errorField"/>
 												<label for="firstName">First name</label>
 											</div>
 							            </div>
 							            <div class="col-md-6">    
 							                <div class="form-group floating-label">
-												<input type="text" class="form-control input-sm" name="lastName" />
+												<input type="text" class="form-control input-sm" th:field="*{lastName}" th:errorclass="errorField"/>
 												<label for="lastName">Last name</label>
 											</div>
 							            </div>
@@ -67,13 +67,13 @@
 							        <div class="row">
 							            <div class="col-md-6">    
 							                <div class="form-group floating-label">
-												<input type="text" class="form-control input-sm" name="" />
+												<input type="text" class="form-control input-sm" th:field="*{middleName}" th:errorclass="errorField"/>
 												<label for="middleName">Middle name</label>
 											</div>
 							            </div>
 							            <div class="col-md-6">    
 							                <div class="form-group floating-label">
-												<input type="text" class="form-control input-sm" value="XX-YY-99" readonly="readonly"/>
+												<input type="text" class="form-control input-sm" value="XX-YY-99" readonly="readonly" th:field="*{uniqueIdCode}"/>
 												<label for="uniqueIdentifierCode">Unique Identifier Code</label>
 											</div>
 							            </div>
@@ -83,7 +83,7 @@
 							                <div class="form-group control-width-normal">
 												<div class="input-group date" id="demo-date-format">
 													<div class="input-group-content">
-														<input type="text" class="form-control input-sm" data-inputmask="'mask': '9999/99/99'" />
+														<input type="text" class="form-control input-sm" data-inputmask="'mask': '9999/99/99'" th:field="*{birthdate}" th:errorclass="errorField" />
 														<label>Birthdate</label>
 														<p class="help-block">yyyy/mm/dd</p>
 													</div>
@@ -103,10 +103,10 @@
 							            	<div class="form-group text-right">
 							            		<div class="customBtnGroup btn-group" data-toggle="buttons">
 													<label class="btn btn-sm ink-reaction btn-default active">
-														<input type="radio" name="options" id="option1" /><i class="fa fa-male fa-fw"></i> Male
+														<input type="radio" name="sex" id="option1" value="MALE"/><i class="fa fa-male fa-fw"></i> Male
 													</label>
 													<label class="btn btn-sm ink-reaction btn-default">
-														<input type="radio" name="options" id="option2" /><i class="fa fa-female fa-fw"></i> Female
+														<input type="radio" name="sex" id="option2" value="FEMALE"/><i class="fa fa-female fa-fw"></i> Female
 													</label>
 												</div>
 							            	</div>
@@ -118,7 +118,7 @@
 									<div class="row">
 							            <div class="col-md-12">    
 							                <div class="form-group floating-label">
-												<input type="text" class="form-control input-sm"/>
+												<input type="text" class="form-control input-sm" th:field="*{address}" th:errorclass="errorField"/>
 												<label for="address">Address</label>
 												<p class="help-block">Street, Purok, Barangay</p>
 											</div>
@@ -127,13 +127,13 @@
 							        <div class="row">
 							            <div class="col-md-6">    
 							                <div class="form-group floating-label">
-												<input type="text" class="form-control input-sm"/>
+												<input type="text" class="form-control input-sm" th:field="*{city}" th:errorclass="errorField"/>
 												<label for="city">City</label>
 											</div>
 							            </div>
 							            <div class="col-md-6">    
 							                <div class="form-group floating-label">
-												<input type="text" class="form-control input-sm"/>
+												<input type="text" class="form-control input-sm" th:field="*{contactNumber}" th:errorclass="errorField"/>
 												<label for="contactNumber">Contact Number</label>
 											</div>
 							            </div>
@@ -145,13 +145,13 @@
 									<div class="row">
 							            <div class="col-md-6">    
 							                <div class="form-group floating-label">
-												<input type="text" class="form-control input-sm"/>
+												<input type="text" class="form-control input-sm" th:field="*{momFirstName}" th:errorclass="errorField"/>
 												<label for="momFirstName">First name</label>
 											</div>
 							            </div>
 							            <div class="col-md-6">    
 							                <div class="form-group floating-label">
-												<input type="text" class="form-control input-sm"/>
+												<input type="text" class="form-control input-sm" th:field="*{momLastName}" th:errorclass="errorField"/>
 												<label for="momMiddleName">Last name</label>
 											</div>
 							            </div>
@@ -159,7 +159,7 @@
 							        <div class="row">
 							            <div class="col-md-6">    
 							                <div class="form-group floating-label">
-												<input type="text" class="form-control input-sm"/>
+												<input type="text" class="form-control input-sm" th:field="*{momMiddleName}" th:errorclass="errorField"/>
 												<label for="momMiddleName">Middle name</label>
 											</div>
 							            </div>
@@ -179,6 +179,7 @@
 								</div>
 							</div>
 							<div class="card-body">
+								<!-- HIV Risks -->
 								<fieldset class="hivRisksFieldset">
 									<legend class="noBottomMargin">HIV Risks</legend>
 									<div th:unless="${#lists.isEmpty(hivRiskList)}" class="form-group">
@@ -224,6 +225,7 @@
 										</div>
 									</div>
 								</fieldset>
+								<!-- end of HIV Risks -->
 								<div class="height-1"></div>
 								<fieldset>
 									<legend class="noBottomMargin">Test Information</legend>
@@ -282,7 +284,7 @@
 							</div>
 							<div class="cardActionBarForm card-actionbar">
 								<div class="card-actionbar-row">
-									<a class="cardActionBarBtn btn ink-reaction btn-raised btn-primary" href="javascript:void(0);">Save</a>
+									<input type="submit" class="cardActionBarBtn btn ink-reaction btn-raised btn-primary" value="Save"/>
 									<a class="cardActionBarBtn btn ink-reaction btn-raised btn-default" href="javascript:void(0);">Cancel</a>
 								</div>
 							</div>

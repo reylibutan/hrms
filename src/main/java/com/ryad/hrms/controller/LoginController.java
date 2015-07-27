@@ -16,7 +16,7 @@ public class LoginController {
 	
 	@RequestMapping("/")
 	public String index() {
-		return "redirect:vct/list";
+		return "redirect:/vct/list";
 	}
 	
 	@RequestMapping("/login")

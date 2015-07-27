@@ -5,15 +5,14 @@ import java.util.List;
 import java.util.Random;
 
 import org.joda.time.LocalDate;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ryad.hrms.annotation.Layout;
-import com.ryad.hrms.dto.PatientDTO;
+import com.ryad.hrms.dto.VctDTO;
 import com.ryad.hrms.service.VctService;
 import com.thedeanda.lorem.Lorem;
 
@@ -27,35 +26,52 @@ public class VctController {
 	@Autowired
 	private VctService vctService;
 	
+	@RequestMapping("/")
+	public String index() {
+		return "redirect:/vct/list";
+	}
+	
 	@RequestMapping("/list")
 	public String list(Model model) {
 		int max = 3;
-		List<PatientDTO> patients = new ArrayList<PatientDTO>(max);
+		List<VctDTO> vctRecs = new ArrayList<VctDTO>(max);
 		
 		LocalDate localDate = new LocalDate();
-		DateTimeFormatter dateDisplayFormat = DateTimeFormat.forPattern("MMM dd, yyyy");
+		//DateTimeFormatter dateDisplayFormat = DateTimeFormat.forPattern("MMM dd, yyyy");
 		
-		PatientDTO patient;
+		VctDTO vctRec;
 		for(int i = 0 ; i < max; i++) {
-			patient = new PatientDTO();
-			patient.setFullName(i % 3 < 2 ? Lorem.getNameMale() : Lorem.getNameMale());
-			patient.setCodeName((i % 3 < 2 ? Lorem.getFirstNameMale() : Lorem.getFirstNameFemale()).toUpperCase());
-			patient.setUniqueIdCode("" + getRandomChar() + getRandomChar() + "-" + getRandomChar() + getRandomChar() + "-" + String.format("%02d", (i % 100)));
-			patient.setBirthdate(dateDisplayFormat.print(localDate.plusDays(i).minusYears(20)));
-			patient.setSex(i % 3 < 2 ? "Male" : "Female");
+			vctRec = new VctDTO();
+			vctRec.setFullName(i % 3 < 2 ? Lorem.getNameMale() : Lorem.getNameMale());
+			vctRec.setCodeName((i % 3 < 2 ? Lorem.getFirstNameMale() : Lorem.getFirstNameFemale()).toUpperCase());
+			vctRec.setUniqueIdCode("" + getRandomChar() + getRandomChar() + "-" + getRandomChar() + getRandomChar() + "-" + String.format("%02d", (i % 100)));
+			vctRec.setBirthdate(localDate.plusDays(i).minusYears(20).toDate());
+			vctRec.setSex(i % 3 < 2 ? "Male" : "Female");
 			
-			patients.add(patient);
+			vctRecs.add(vctRec);
 		}
 		
-		model.addAttribute("patients", patients);
+		model.addAttribute("vctRecs", vctRecs);
 		
 		return this.VIEW_FOLDER + "list";
 	}
 	
 	@RequestMapping("/create")
 	public String create(Model model) {
-		
+		model.addAttribute("vctDTO", new VctDTO());
 		model.addAttribute("hivRiskList", vctService.getHivRisks());
+		return this.VIEW_FOLDER + "create";
+	}
+	
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public String save(VctDTO vctDTO, Model model) {
+		// ==================================================================
+		// ==================================================================
+		// @TODO: get sex field here and research best way to bind / save it 
+		// ==================================================================
+		// ==================================================================
+		
+		model.addAttribute("vctDTO", vctDTO);
 		return this.VIEW_FOLDER + "create";
 	}
 	
