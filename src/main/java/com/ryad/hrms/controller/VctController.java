@@ -1,6 +1,7 @@
 package com.ryad.hrms.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ryad.hrms.annotation.Layout;
 import com.ryad.hrms.dto.VctDTO;
+import com.ryad.hrms.enums.SexType;
 import com.ryad.hrms.service.VctService;
 import com.thedeanda.lorem.Lorem;
 
@@ -57,21 +59,27 @@ public class VctController {
 	}
 	
 	@RequestMapping("/create")
-	public String create(Model model) {
-		model.addAttribute("vctDTO", new VctDTO());
+	public String create(Model model) {		
+		VctDTO vctDTO = new VctDTO();
+		
+		model.addAttribute("vctDTO", vctDTO);
+		model.addAttribute("sexList", Arrays.asList(SexType.values()));
 		model.addAttribute("hivRiskList", vctService.getHivRisks());
 		return this.VIEW_FOLDER + "create";
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(VctDTO vctDTO, Model model) {
-		// ==================================================================
-		// ==================================================================
-		// @TODO: get sex field here and research best way to bind / save it 
-		// ==================================================================
-		// ==================================================================
+		// ====================================================================
+		// ====================================================================
+		// @TODO: Find a better way to bind Date field (set default timezone also)
+		// ====================================================================
+		// ====================================================================
+		
 		
 		model.addAttribute("vctDTO", vctDTO);
+		model.addAttribute("sexList", Arrays.asList(SexType.values()));
+		model.addAttribute("hivRiskList", vctService.getHivRisks());
 		return this.VIEW_FOLDER + "create";
 	}
 	

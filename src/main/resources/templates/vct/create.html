@@ -11,7 +11,7 @@
 	<!-- END META -->
 
 	<!-- BEGIN STYLESHEETS -->
-	<link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css'/>
+	<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900" />
 	<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/bootstrap.css}" href="../../static/theme/material-admin/assets/css/theme-default/bootstrap.css" />
 	<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/materialadmin.css}" href="../../static/theme/material-admin/assets/css/theme-default/materialadmin.css" />
 	<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/font-awesome.min.css}" href="../../static/theme/material-admin/assets/css/theme-default/font-awesome.min.css" />
@@ -102,11 +102,8 @@
 							            <div class="col-md-12">
 							            	<div class="form-group text-right">
 							            		<div class="customBtnGroup btn-group" data-toggle="buttons">
-													<label class="btn btn-sm ink-reaction btn-default active">
-														<input type="radio" name="sex" id="option1" value="MALE"/><i class="fa fa-male fa-fw"></i> Male
-													</label>
-													<label class="btn btn-sm ink-reaction btn-default">
-														<input type="radio" name="sex" id="option2" value="FEMALE"/><i class="fa fa-female fa-fw"></i> Female
+													<label class="btn btn-sm ink-reaction btn-default" th:each="sexType, sexTypeStat : ${sexList}" th:classappend="${sexTypeStat.first ? 'active' : ''}">
+														<input type="radio" th:field="*{sex}" th:value="${sexType}"/><i class="fa fa-fw" th:classappend="'fa-' + ${#strings.toLowerCase(sexType.getName())}"></i><span th:text="${sexType.getName()}">Sex Type</span>
 													</label>
 												</div>
 							            	</div>
