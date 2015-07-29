@@ -72,10 +72,10 @@ public class VctController {
 	public String save(VctDTO vctDTO, Model model) {
 		// ====================================================================
 		// ====================================================================
-		// @TODO: Find a better way to bind Date field (set default timezone also)
+		// @TODO:
+		//		- Validation (annotations)
 		// ====================================================================
 		// ====================================================================
-		
 		
 		model.addAttribute("vctDTO", vctDTO);
 		model.addAttribute("sexList", Arrays.asList(SexType.values()));

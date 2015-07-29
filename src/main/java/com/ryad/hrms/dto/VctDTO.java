@@ -2,27 +2,49 @@ package com.ryad.hrms.dto;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class VctDTO {
 	
 	private Long id;
+	
 	private String firstName;
+	
 	private String middleName;
+	
 	private String lastName;
+	
 	private String sex;
+	
 	private String uniqueIdCode;
+	
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private Date birthdate;
+	
+	private int age;
+	
 	private String momFirstName;
+	
 	private String momMiddleName;
+	
 	private String momLastName;
+	
 	private String address;
+	
 	private String city;
+	
 	private String contactNumber;
+	
 	private Long createdBy;
+	
 	private Long updatedBy;
+	
 	private Date createdDate;
+	
 	private Date updatedDate;
 
 	private String fullName;
+	
 	private String codeName;
 
 	public Long getId() {
@@ -79,6 +101,14 @@ public class VctDTO {
 
 	public void setBirthdate(Date birthdate) {
 		this.birthdate = birthdate;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
 	}
 
 	public String getMomFirstName() {

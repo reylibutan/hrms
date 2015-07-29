@@ -72,9 +72,10 @@
 											</div>
 							            </div>
 							            <div class="col-md-6">    
-							                <div class="form-group floating-label">
-												<input type="text" class="form-control input-sm" value="XX-YY-99" readonly="readonly" th:field="*{uniqueIdCode}"/>
+							                <div class="form-group">
+												<input type="text" class="form-control input-sm" placeholder="XX-YY-99" data-inputmask="'mask': 'aa-aa-99'" th:field="*{uniqueIdCode}"/>
 												<label for="uniqueIdentifierCode">Unique Identifier Code</label>
+												<p class="help-block">XX-YY-99</p>
 											</div>
 							            </div>
 							        </div>
@@ -93,7 +94,7 @@
 							            </div>
 							            <div class="col-md-6">
 							            	<div class="form-group floating-label">
-												<input type="text" class="form-control input-sm" value="24" readonly="readonly"/>
+												<input id="age" type="text" class="form-control input-sm" value="" readonly="readonly" th:field="*{age}"/>
 												<label for="age">Age</label>
 											</div>
 							            </div>
@@ -102,7 +103,7 @@
 							            <div class="col-md-12">
 							            	<div class="form-group text-right">
 							            		<div class="customBtnGroup btn-group" data-toggle="buttons">
-													<label class="btn btn-sm ink-reaction btn-default" th:each="sexType, sexTypeStat : ${sexList}" th:classappend="${sexTypeStat.first ? 'active' : ''}">
+													<label class="btn btn-sm ink-reaction btn-default" th:each="sexType, sexTypeStat : ${sexList}" th:classappend="${sexType.toString() == vctDTO.sex ? 'active' : ''}">
 														<input type="radio" th:field="*{sex}" th:value="${sexType}"/><i class="fa fa-fw" th:classappend="'fa-' + ${#strings.toLowerCase(sexType.getName())}"></i><span th:text="${sexType.getName()}">Sex Type</span>
 													</label>
 												</div>
@@ -313,6 +314,7 @@
 	<script th:src="@{/theme/material-admin/assets/js/libs/moment/moment.min.js}" src="../../static/theme/assets/js/libs/moment/moment.min.js"></script>
 	<script th:src="@{/theme/material-admin/assets/js/core/demo/Demo.js}" src="../../static/theme/assets/js/core/demo/Demo.js"></script>
 	<script th:src="@{/theme/material-admin/assets/js/core/demo/DemoFormComponents.js}" src="../../static/theme/assets/js/core/demo/DemoFormComponents.js"></script>
+	<script th:src="@{/js/vct/create.js}" src="../../static/js/vct/create.js"></script>
 </th:block>
 <!-- END JAVASCRIPT -->
 </body>
