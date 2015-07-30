@@ -2,6 +2,6 @@
 
 Hospital Records Management System
 
-Status: Live (mock-up)
+Status: Offline (VCT module under development)
 
 http://libutan.com/hrms
