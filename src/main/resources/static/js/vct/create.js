@@ -1,6 +1,20 @@
+var YES = "1";
+var NO = "0";
+
 $(document).ready(function() {
+	initDatePickers();
 	initDerivedValuesEvents();
+	initSubHivRiskEvents();	
+	initResultsEvents();
 });
+
+function initDatePickers() {
+	$(".date_input").datepicker({
+		autoclose: true,
+		todayHighlight: true,
+		format: "yyyy/mm/dd"
+	});
+}
 
 function initDerivedValuesEvents() {
 	// compute Age based on Birthdate
@@ -21,5 +35,32 @@ function initDerivedValuesEvents() {
 		}
 		
 		$age.val(age);
+	});
+}
+
+function initSubHivRiskEvents() {
+	$("input.parentHivRisk").click(function() {
+		var $this = $(this);
+		if($this.is(":checked")) {
+			// show sub HIV risks
+			$this.closest("div.col").siblings("div.subHivRisk").slideDown(HRMS.DEFAULT_EASE_TIME);
+		} else {
+			$this.closest("div.col").siblings("div.subHivRisk").slideUp(HRMS.DEFAULT_EASE_TIME);
+		}
+	});
+	
+	$("input[name=hivRisks]:checked").closest("label").addClass("active");
+}
+
+function initResultsEvents() {
+	$("input[type=radio][name=testedForHiv]").change(function() {
+		var $this = $(this);
+		if($this.val() === HRMS.YES_VAL) {
+			$this.closest("div.row").siblings("div.positiveForHivRow").slideDown(HRMS.DEFAULT_EASE_TIME);
+			$this.closest("div.row").siblings("div.reasonForNotTestingRow").slideUp(HRMS.DEFAULT_EASE_TIME);
+		} else {
+			$this.closest("div.row").siblings("div.positiveForHivRow").slideUp(HRMS.DEFAULT_EASE_TIME);
+			$this.closest("div.row").siblings("div.reasonForNotTestingRow").slideDown(HRMS.DEFAULT_EASE_TIME);
+		}
 	});
 }

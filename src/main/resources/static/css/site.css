@@ -61,6 +61,10 @@ fieldset label {
 	}
 }
 
+textarea.customTextArea {
+	resize: vertical;
+}
+
 /* VCT Datatable =========================================================== */
 .dataTables_wrapper {
 	font-size: 12px;
@@ -121,8 +125,9 @@ fieldset label {
 	border-color: #606060;
 }
 
-.customBtnGroup.btn-group > .btn:last-child:hover {
-	border-left-color: #606060;
+.customBtnGroup > .btn:not(:first-child) {
+	margin-left: 0px;
+	border-left: 1px solid #CCCCCC;
 }
 
 .help-block {
@@ -141,4 +146,12 @@ div.subHivRisk {
 
 .subHivRiskBtnGroup {
 	margin-left: 20px;
+}
+
+.hdn {
+	display: none;
+}
+
+input[name=hivRisks] + span:not(.radioLabel) {
+	display: none !important;
 }

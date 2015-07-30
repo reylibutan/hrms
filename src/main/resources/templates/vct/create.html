@@ -16,9 +16,6 @@
 	<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/materialadmin.css}" href="../../static/theme/material-admin/assets/css/theme-default/materialadmin.css" />
 	<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/font-awesome.min.css}" href="../../static/theme/material-admin/assets/css/theme-default/font-awesome.min.css" />
 	<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/material-design-iconic-font.min.css}" href="../../static/theme/material-admin/assets/css/theme-default/material-design-iconic-font.min.css" />
-	<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/DataTables/jquery.dataTables.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/DataTables/jquery.dataTables.css" />
-	<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/DataTables/extensions/dataTables.colVis.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/DataTables/extensions/dataTables.colVis.css" />
-	<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/DataTables/extensions/dataTables.tableTools.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/DataTables/extensions/dataTables.tableTools.css" />
 	<th:block th:fragment="styles">
 		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/bootstrap-datepicker/datepicker3.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/bootstrap-datepicker/datepicker3.css" />
 	</th:block>
@@ -35,7 +32,7 @@
 <div id="content" th:fragment="content">
 	<section>
 		<div class="section-body">
-			<form class="form" autocomplete="off" method="POST" th:object="${vctDTO}" th:action="@{/vct/save}">
+			<form class="form form-validate" autocomplete="off" method="POST" th:object="${vctDTO}" th:action="@{/vct/save}">
 				<div class="row">
 					<div class="col-md-5">
 						<div class="card noBottomMargin">
@@ -53,13 +50,13 @@
 									<div class="row">
 							            <div class="col-md-6">    
 							                <div class="form-group floating-label">
-												<input type="text" class="form-control input-sm" th:field="*{firstName}" th:errorclass="errorField"/>
+												<input type="text" class="form-control input-sm" th:field="*{firstName}" th:errorclass="errorField" required="required"/>
 												<label for="firstName">First name</label>
 											</div>
 							            </div>
 							            <div class="col-md-6">    
 							                <div class="form-group floating-label">
-												<input type="text" class="form-control input-sm" th:field="*{lastName}" th:errorclass="errorField"/>
+												<input type="text" class="form-control input-sm" th:field="*{lastName}" th:errorclass="errorField" required="required"/>
 												<label for="lastName">Last name</label>
 											</div>
 							            </div>
@@ -73,7 +70,7 @@
 							            </div>
 							            <div class="col-md-6">    
 							                <div class="form-group">
-												<input type="text" class="form-control input-sm" placeholder="XX-YY-99" data-inputmask="'mask': 'aa-aa-99'" th:field="*{uniqueIdCode}"/>
+												<input type="text" class="form-control input-sm" placeholder="XX-YY-99" data-inputmask="'mask': 'aa-aa-99'" th:field="*{uniqueIdCode}" required="required"/>
 												<label for="uniqueIdentifierCode">Unique Identifier Code</label>
 												<p class="help-block">XX-YY-99</p>
 											</div>
@@ -81,15 +78,10 @@
 							        </div>
 							        <div class="row">
 							            <div class="col-md-6">    
-							                <div class="form-group control-width-normal">
-												<div class="input-group date" id="demo-date-format">
-													<div class="input-group-content">
-														<input type="text" class="form-control input-sm" data-inputmask="'mask': '9999/99/99'" th:field="*{birthdate}" th:errorclass="errorField" />
-														<label>Birthdate</label>
-														<p class="help-block">yyyy/mm/dd</p>
-													</div>
-													<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-												</div>
+							                <div class="form-group">
+												<input type="text" class="form-control input-sm date_input" data-inputmask="'mask': '9999/99/99'" th:field="*{birthdate}" th:errorclass="errorField" required="required"/>
+												<label>Birthdate</label>
+												<p class="help-block">yyyy/mm/dd</p>
 											</div>
 							            </div>
 							            <div class="col-md-6">
@@ -104,7 +96,7 @@
 							            	<div class="form-group text-right">
 							            		<div class="customBtnGroup btn-group" data-toggle="buttons">
 													<label class="btn btn-sm ink-reaction btn-default" th:each="sexType, sexTypeStat : ${sexList}" th:classappend="${sexType.toString() == vctDTO.sex ? 'active' : ''}">
-														<input type="radio" th:field="*{sex}" th:value="${sexType}"/><i class="fa fa-fw" th:classappend="'fa-' + ${#strings.toLowerCase(sexType.getName())}"></i><span th:text="${sexType.getName()}">Sex Type</span>
+														<input type="radio" th:field="*{sex}" th:value="${sexType}" required="required"/><i class="fa fa-fw" th:classappend="'fa-' + ${#strings.toLowerCase(sexType.getName())}" ></i><span th:text="${sexType.getName()}">Sex Type</span>
 													</label>
 												</div>
 							            	</div>
@@ -180,6 +172,9 @@
 								<!-- HIV Risks -->
 								<fieldset class="hivRisksFieldset">
 									<legend class="noBottomMargin">HIV Risks</legend>
+									<!-- <label class="btn btn-sm ink-reaction btn-default" th:each="sexType, sexTypeStat : ${sexList}" th:classappend="${sexType.toString() == vctDTO.sex ? 'active' : ''}">
+										<input type="radio" th:field="*{sex}" th:value="${sexType}" required="required"/><i class="fa fa-fw" th:classappend="'fa-' + ${#strings.toLowerCase(sexType.getName())}" ></i><span th:text="${sexType.getName()}">Sex Type</span>
+									</label> -->
 									<div th:unless="${#lists.isEmpty(hivRiskList)}" class="form-group">
 										<div class="row" th:each="hivRisk, stat : ${hivRiskList}" th:if="${stat.even or hivRisk.hasChildren}">
 											<th:block th:switch="${hivRisk.hasChildren}">
@@ -187,7 +182,7 @@
 													<div class="col-md-6" th:with="leftRisk=${hivRiskList.get(stat.index)}">
 														<div class="checkbox checkbox-styled">
 															<label>
-																<input type="checkbox" value="-1" th:value="${leftRisk.id}"/>
+																<input type="checkbox" value="-1" th:field="*{hivRisks}" th:value="${leftRisk.id}"/>
 																<span th:text="${leftRisk.name}">HIV Risk</span>
 															</label>
 														</div>
@@ -195,26 +190,28 @@
 													<div class="col-md-6" th:if="${stat.index + 1 &lt; hivRiskList.size()}" th:with="rightRisk=${hivRiskList.get(stat.index + 1)}">
 														<div class="checkbox checkbox-styled">
 															<label>
-																<input type="checkbox" value="-1" th:value="${rightRisk.id}"/>
+																<input type="checkbox" value="-1" th:field="*{hivRisks}" th:value="${rightRisk.id}"/>
 																<span th:text="${rightRisk.name}">HIV Risk</span>
 															</label>
 														</div>
 													</div>
 												</th:block>
 												<th:block th:case="true">
-													<div class="col-md-12">
+													<div class="col col-md-12">
 														<div class="checkbox checkbox-styled">
 															<label>
-																<input type="checkbox" value="-1" th:value="${hivRisk.id}"/>
+																<input type="checkbox" value="-1" class="parentHivRisk" th:field="*{hivRisks}" th:value="${hivRisk.id}"/>
 																<span th:text="${hivRisk.name}">HIV Risk</span>
 															</label>
 														</div>
 													</div>
-													<div class="subHivRisk col-md-12" th:each="subHivRiskEntry, subStat : ${hivRisk.children}">
+													<div class="subHivRisk col-md-12" th:each="subHivRiskEntry, subStat : ${hivRisk.children}" th:classappend="${vctDTO.hivRisks.contains(hivRisk.id) ? '' : 'hdn'}">
 														<label th:text="${subHivRiskEntry.key}">Sub HIV Risk</label>
 														<div class="customBtnGroup subHivRiskBtnGroup btn-group" data-toggle="buttons">
-															<label class="btn btn-sm ink-reaction btn-default" th:classappend="${subRiskStat.first ? 'active' : ''}" th:each="subHivRisk, subRiskStat : ${subHivRiskEntry.value}">
-																<input type="radio" name="options" id="-1" th:id="${subHivRisk.id}"/> <span th:text="${subHivRisk.name}">Yes</span>
+															<!-- th:classappend="${subRiskStat.first ? 'active' : ''}" -->
+															<label class="btn btn-sm ink-reaction btn-default" th:each="subHivRisk, subRiskStat : ${subHivRiskEntry.value}">
+																<input type="radio" th:field="*{hivRisks}" th:value="${subHivRisk.id}"/>
+																<span class="radioLabel" th:text="${subHivRisk.name}">Yes</span>
 															</label>
 														</div>
 													</div>
@@ -235,31 +232,39 @@
 						            		<div class="col-md-5">
 						            			<div class="customBtnGroup btn-group" data-toggle="buttons">
 													<label class="btn btn-sm ink-reaction btn-default active">
-														<input type="radio" name="options" id="option1" /> Yes
+														<input type="radio" name="testedForHiv" value="1"/> Yes
 													</label>
 													<label class="btn btn-sm ink-reaction btn-default">
-														<input type="radio" name="options" id="option2" />No
+														<input type="radio" name="testedForHiv" value="0"/> No
 													</label>
 												</div>
 						            		</div>
 						            	</div>
 							        </div>
-							        <div class="row">
+							        <div class="positiveForHivRow row">
 						            	<div class="form-group">
 						            		<div class="col-md-7">
 						            			<label>Positive for HIV?</label>
 						            		</div>
 						            		<div class="col-md-5">
 						            			<div class="customBtnGroup btn-group" data-toggle="buttons">
-													<label class="btn btn-sm ink-reaction btn-default active">
-														<input type="radio" name="options" id="option1" /> Yes
-													</label>
 													<label class="btn btn-sm ink-reaction btn-default">
-														<input type="radio" name="options" id="option2" />No
+														<input type="radio" name="positiveForHiv" value="1"/> Yes
+													</label>
+													<label class="btn btn-sm ink-reaction btn-default active">
+														<input type="radio" name="positiveForHiv" value="0"/> No
 													</label>
 												</div>
 						            		</div>
 						            	</div>
+							        </div>
+							        <div class="hdn reasonForNotTestingRow row">
+							        	<div class="col-md-12">
+							        		<div class="form-group floating-label">
+												<textarea class="customTextArea form-control input-sm" rows="2"></textarea>
+												<label for="textarea2">Reason for not testing</label>
+											</div>
+							        	</div>
 							        </div>
 							        <div class="row">
 						            	<div class="form-group">
@@ -268,10 +273,10 @@
 						            		</div>
 						            		<div class="col-md-5">
 						            			<div class="customBtnGroup btn-group" data-toggle="buttons">
-													<label class="btn btn-sm ink-reaction btn-default active">
+													<label class="btn btn-sm ink-reaction btn-default">
 														<input type="radio" name="options" id="option1" /> Yes
 													</label>
-													<label class="btn btn-sm ink-reaction btn-default">
+													<label class="btn btn-sm ink-reaction btn-default active">
 														<input type="radio" name="options" id="option2" />No
 													</label>
 												</div>
@@ -309,11 +314,13 @@
 <script th:src="@{/theme/material-admin/assets/js/core/source/AppNavSearch.js}" src="../../static/theme/material-admin/assets/js/core/source/AppNavSearch.js"></script>
 <script th:src="@{/theme/material-admin/assets/js/core/source/AppVendor.js}" src="../../static/theme/material-admin/assets/js/core/source/AppVendor.js"></script>
 <th:block th:fragment="scripts">
-	<script th:src="@{/theme/material-admin/assets/js/libs/inputmask/jquery.inputmask.bundle.min.js}" src="../../theme/material-admin/assets/js/libs/inputmask/jquery.inputmask.bundle.min.js"></script>
-	<script th:src="@{/theme/material-admin/assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js}" src="../../statuc/theme/material-admin/assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
-	<script th:src="@{/theme/material-admin/assets/js/libs/moment/moment.min.js}" src="../../static/theme/assets/js/libs/moment/moment.min.js"></script>
-	<script th:src="@{/theme/material-admin/assets/js/core/demo/Demo.js}" src="../../static/theme/assets/js/core/demo/Demo.js"></script>
-	<script th:src="@{/theme/material-admin/assets/js/core/demo/DemoFormComponents.js}" src="../../static/theme/assets/js/core/demo/DemoFormComponents.js"></script>
+	<script th:src="@{/theme/material-admin/assets/js/libs/inputmask/jquery.inputmask.bundle.min.js}" src="../../static/theme/material-admin/assets/js/libs/inputmask/jquery.inputmask.bundle.min.js"></script>
+	<script th:src="@{/theme/material-admin/assets/js/libs/moment/moment.min.js}" src="../../static/theme/material-admin/assets/js/libs/moment/moment.min.js"></script>
+	<script th:src="@{/theme/material-admin/assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js}" src="../../static/theme/material-admin/assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+	<script th:src="@{/theme/material-admin/assets/js/core/demo/Demo.js}" src="../../static/theme/material-admin/assets/js/core/demo/Demo.js"></script>
+	<script th:src="@{/theme/material-admin/assets/js/core/demo/DemoFormComponents.js}" src="../../static/theme/material-admin/assets/js/core/demo/DemoFormComponents.js"></script>
+	<script th:src="@{/theme/material-admin/assets/js/libs/jquery-validation/dist/jquery.validate.min.js}" src="../../static/theme/material-admin/assets/js/libs/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script th:src="@{/theme/material-admin/assets/js/libs/jquery-validation/dist/additional-methods.min.js}" src="../../static/theme/material-admin/assets/js/libs/jquery-validation/dist/additional-methods.min.js"></script>
 	<script th:src="@{/js/vct/create.js}" src="../../static/js/vct/create.js"></script>
 </th:block>
 <!-- END JAVASCRIPT -->

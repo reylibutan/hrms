@@ -1,10 +1,18 @@
 package com.ryad.hrms.dto;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.ryad.hrms.enums.SexType;
+
 public class VctDTO {
+	
+	// ========================================================================
+	// Patient Information
+	// ========================================================================
 	
 	private Long id;
 	
@@ -14,7 +22,7 @@ public class VctDTO {
 	
 	private String lastName;
 	
-	private String sex;
+	private String sex = SexType.MALE.toString(); // default value
 	
 	private String uniqueIdCode;
 	
@@ -42,6 +50,12 @@ public class VctDTO {
 	private Date createdDate;
 	
 	private Date updatedDate;
+	
+	// ========================================================================
+	// VCT Information
+	// ========================================================================
+	
+	private List<Long> hivRisks = new ArrayList<Long>();
 
 	private String fullName;
 	
@@ -189,6 +203,14 @@ public class VctDTO {
 
 	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
+	}
+	
+	public List<Long> getHivRisks() {
+		return hivRisks;
+	}
+
+	public void setHivRisks(List<Long> hivRisks) {
+		this.hivRisks = hivRisks;
 	}
 
 	public String getFullName() {
