@@ -5,12 +5,19 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import javax.validation.Valid;
+
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ryad.hrms.annotation.Layout;
 import com.ryad.hrms.dto.VctDTO;
@@ -26,7 +33,15 @@ public class VctController {
 	private final String VIEW_FOLDER = "vct/";
 	
 	@Autowired
+	private Validator validator;
+	
+	@Autowired
 	private VctService vctService;
+	
+	@InitBinder
+	protected void initBinder(WebDataBinder binder) {
+		binder.setValidator(validator);
+	}
 	
 	@RequestMapping("/")
 	public String index() {
@@ -59,24 +74,30 @@ public class VctController {
 	}
 	
 	@RequestMapping("/create")
-	public String create(Model model) {		
-		VctDTO vctDTO = new VctDTO();
+	public String create(Model model) {
+		if (!model.containsAttribute("vctDTO")) {
+	        model.addAttribute("vctDTO", new VctDTO());
+	    }
 		
-		model.addAttribute("vctDTO", vctDTO);
 		model.addAttribute("sexList", Arrays.asList(SexType.values()));
 		model.addAttribute("hivRiskList", vctService.getHivRisks());
 		return this.VIEW_FOLDER + "create";
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String save(VctDTO vctDTO, Model model) {
-		// ====================================================================
-		// ====================================================================
-		// @TODO:
-		//		- Continue binding the fields below HIV Risks
-		//		- Validation (annotations)
-		// ====================================================================
-		// ====================================================================
+	public String save(@Valid VctDTO vctDTO, BindingResult result, Model model, RedirectAttributes redirect) {
+		
+		if(result.hasErrors()) {
+			redirect.addFlashAttribute("org.springframework.validation.BindingResult.vctDTO", result);
+			redirect.addFlashAttribute("vctDTO", vctDTO);
+		    return "redirect:/vct/create";
+		} else {
+			// ======================================================================
+			// ======================================================================
+			// @TODO: Resume here, save()
+			// ======================================================================
+			// ======================================================================
+		}
 		
 		model.addAttribute("vctDTO", vctDTO);
 		model.addAttribute("sexList", Arrays.asList(SexType.values()));

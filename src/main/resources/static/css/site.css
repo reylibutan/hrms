@@ -2,10 +2,6 @@ body {
 	font-size: 12px;
 }
 
-.errorField {
-	border: 1px solid red;
-}
-
 .normalBtn {
 	text-transform: none;
 	font-size: 12px;
@@ -154,4 +150,12 @@ div.subHivRisk {
 
 input[name=hivRisks] + span:not(.radioLabel) {
 	display: none !important;
+}
+
+div.conditionalRow {
+	display: none;
+}
+
+div.conditionalRow.active {
+	display: block;
 }

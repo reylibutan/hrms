@@ -6,30 +6,37 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.ryad.hrms.annotation.NotNullOrEmpty;
 import com.ryad.hrms.enums.SexType;
 
 public class VctDTO {
 	
 	// ========================================================================
 	// Patient Information
+	//	@TODO:
+	//		1. Ask what are the required fields here
+	//		2. Ask any specific validation rules
 	// ========================================================================
 	
 	private Long id;
 	
+	@NotNullOrEmpty(message="{err.msg.required}", fieldName="First name")
 	private String firstName;
 	
 	private String middleName;
 	
+	@NotNullOrEmpty(message="{err.msg.required}", fieldName="Last name")
 	private String lastName;
 	
+	@NotNullOrEmpty(message="{err.msg.required}", fieldName="Sex")
 	private String sex = SexType.MALE.toString(); // default value
 	
+	@NotNullOrEmpty(message="{err.msg.required}", fieldName="Unique ID Code")
 	private String uniqueIdCode;
 	
+	@NotNullOrEmpty(message="{err.msg.required}", fieldName="Birthdate")
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private Date birthdate;
-	
-	private int age;
 	
 	private String momFirstName;
 	
@@ -56,10 +63,26 @@ public class VctDTO {
 	// ========================================================================
 	
 	private List<Long> hivRisks = new ArrayList<Long>();
+	
+	private Integer testedForHiv;
+	
+	private String reasonForNotTesting;
+	
+	private Integer positiveForHiv;
+	
+	private Integer providedCounselingAndResult;
+	
+	// ========================================================================
+	// List Information
+	// ========================================================================
 
 	private String fullName;
 	
 	private String codeName;
+	
+	// ========================================================================
+	// Getters and Setters
+	// ========================================================================
 
 	public Long getId() {
 		return id;
@@ -115,14 +138,6 @@ public class VctDTO {
 
 	public void setBirthdate(Date birthdate) {
 		this.birthdate = birthdate;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
 	}
 
 	public String getMomFirstName() {
@@ -211,6 +226,38 @@ public class VctDTO {
 
 	public void setHivRisks(List<Long> hivRisks) {
 		this.hivRisks = hivRisks;
+	}	
+
+	public Integer getTestedForHiv() {
+		return testedForHiv;
+	}
+
+	public void setTestedForHiv(Integer testedForHiv) {
+		this.testedForHiv = testedForHiv;
+	}
+
+	public String getReasonForNotTesting() {
+		return reasonForNotTesting;
+	}
+
+	public void setReasonForNotTesting(String reasonForNotTesting) {
+		this.reasonForNotTesting = reasonForNotTesting;
+	}
+
+	public Integer getPositiveForHiv() {
+		return positiveForHiv;
+	}
+
+	public void setPositiveForHiv(Integer positiveForHiv) {
+		this.positiveForHiv = positiveForHiv;
+	}
+
+	public Integer getProvidedCounselingAndResult() {
+		return providedCounselingAndResult;
+	}
+
+	public void setProvidedCounselingAndResult(Integer providedCounselingAndResult) {
+		this.providedCounselingAndResult = providedCounselingAndResult;
 	}
 
 	public String getFullName() {

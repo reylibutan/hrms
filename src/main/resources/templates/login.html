@@ -36,10 +36,6 @@
 						</div>
 						<form class="form" th:action="@{/login}" method="POST">
 							<div class="card-body">
-								<!-- @TODO: [Spring Security] - Displaying error messages
-									1. How to remove error message in session after displaying? Or how to use flash messages instead?
-									2. Is it possible to get error message not from resource but from UserDetailsServiceImpl?
-								 -->
 								<div class="row" th:if="${param.error}">
 									<br/>
 									<div class="alert alert-danger" role="alert">

@@ -1,328 +1,309 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title th:fragment="title">VCT | Create</title>
-	
-	<!-- BEGIN META -->
-	<meta charset="utf-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<meta name="keywords" content="your,keywords"/>
-	<meta name="description" content="Short explanation about this website"/>
-	<!-- END META -->
+<title th:fragment="title">VCT | Create</title>
 
-	<!-- BEGIN STYLESHEETS -->
-	<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900" />
-	<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/bootstrap.css}" href="../../static/theme/material-admin/assets/css/theme-default/bootstrap.css" />
-	<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/materialadmin.css}" href="../../static/theme/material-admin/assets/css/theme-default/materialadmin.css" />
-	<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/font-awesome.min.css}" href="../../static/theme/material-admin/assets/css/theme-default/font-awesome.min.css" />
-	<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/material-design-iconic-font.min.css}" href="../../static/theme/material-admin/assets/css/theme-default/material-design-iconic-font.min.css" />
-	<th:block th:fragment="styles">
-		<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/bootstrap-datepicker/datepicker3.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/bootstrap-datepicker/datepicker3.css" />
-	</th:block>
-	<link type="text/css" rel="stylesheet" th:href="@{/css/site.css}" href="../../static/css/site.css" />
-	<!-- END STYLESHEETS -->
+<!-- BEGIN META -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="keywords" content="your,keywords" />
+<meta name="description" content="Short explanation about this website" />
+<!-- END META -->
 
-	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
+<!-- BEGIN STYLESHEETS -->
+<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900" />
+<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/bootstrap.css}" href="../../static/theme/material-admin/assets/css/theme-default/bootstrap.css" />
+<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/materialadmin.css}" href="../../static/theme/material-admin/assets/css/theme-default/materialadmin.css" />
+<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/font-awesome.min.css}" href="../../static/theme/material-admin/assets/css/theme-default/font-awesome.min.css" />
+<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/material-design-iconic-font.min.css}" href="../../static/theme/material-admin/assets/css/theme-default/material-design-iconic-font.min.css" />
+<th:block th:fragment="styles">
+  <link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/bootstrap-datepicker/datepicker3.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/bootstrap-datepicker/datepicker3.css" />
+</th:block>
+<link type="text/css" rel="stylesheet" th:href="@{/css/site.css}" href="../../static/css/site.css" />
+<!-- END STYLESHEETS -->
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
 	<script type="text/javascript" th:src="@{/theme/material-admin/assets/js/libs/utils/html5shiv.js?1403934957"></script>
 	<script type="text/javascript" th:src="@{/theme/material-admin/assets/js/libs/utils/respond.min.js?1403934956"></script>
 	<![endif]-->
 </head>
 <body>
-<div id="content" th:fragment="content">
-	<section>
-		<div class="section-body">
-			<form class="form form-validate" autocomplete="off" method="POST" th:object="${vctDTO}" th:action="@{/vct/save}">
-				<div class="row">
-					<div class="col-md-5">
-						<div class="card noBottomMargin">
-							<div class="card-head card-head-sm style-primary">
-								<header>Patient Information</header>
-								<div class="tools">
-									<div class="btn-group">
-										<a class="btn btn-icon-toggle btn-collapse"><i class="fa fa-angle-down"></i></a>
-									</div>
-								</div>
-							</div>
-							<div class="card-body">
-								<fieldset>
-									<legend>Basic Information</legend>
-									<div class="row">
-							            <div class="col-md-6">    
-							                <div class="form-group floating-label">
-												<input type="text" class="form-control input-sm" th:field="*{firstName}" th:errorclass="errorField" required="required"/>
-												<label for="firstName">First name</label>
-											</div>
-							            </div>
-							            <div class="col-md-6">    
-							                <div class="form-group floating-label">
-												<input type="text" class="form-control input-sm" th:field="*{lastName}" th:errorclass="errorField" required="required"/>
-												<label for="lastName">Last name</label>
-											</div>
-							            </div>
-							        </div>
-							        <div class="row">
-							            <div class="col-md-6">    
-							                <div class="form-group floating-label">
-												<input type="text" class="form-control input-sm" th:field="*{middleName}" th:errorclass="errorField"/>
-												<label for="middleName">Middle name</label>
-											</div>
-							            </div>
-							            <div class="col-md-6">    
-							                <div class="form-group">
-												<input type="text" class="form-control input-sm" placeholder="XX-YY-99" data-inputmask="'mask': 'aa-aa-99'" th:field="*{uniqueIdCode}" required="required"/>
-												<label for="uniqueIdentifierCode">Unique Identifier Code</label>
-												<p class="help-block">XX-YY-99</p>
-											</div>
-							            </div>
-							        </div>
-							        <div class="row">
-							            <div class="col-md-6">    
-							                <div class="form-group">
-												<input type="text" class="form-control input-sm date_input" data-inputmask="'mask': '9999/99/99'" th:field="*{birthdate}" th:errorclass="errorField" required="required"/>
-												<label>Birthdate</label>
-												<p class="help-block">yyyy/mm/dd</p>
-											</div>
-							            </div>
-							            <div class="col-md-6">
-							            	<div class="form-group floating-label">
-												<input id="age" type="text" class="form-control input-sm" value="" readonly="readonly" th:field="*{age}"/>
-												<label for="age">Age</label>
-											</div>
-							            </div>
-							        </div>
-							        <div class="row">
-							            <div class="col-md-12">
-							            	<div class="form-group text-right">
-							            		<div class="customBtnGroup btn-group" data-toggle="buttons">
-													<label class="btn btn-sm ink-reaction btn-default" th:each="sexType, sexTypeStat : ${sexList}" th:classappend="${sexType.toString() == vctDTO.sex ? 'active' : ''}">
-														<input type="radio" th:field="*{sex}" th:value="${sexType}" required="required"/><i class="fa fa-fw" th:classappend="'fa-' + ${#strings.toLowerCase(sexType.getName())}" ></i><span th:text="${sexType.getName()}">Sex Type</span>
-													</label>
-												</div>
-							            	</div>
-							            </div>
-							        </div>
-						        </fieldset>
-						        <fieldset>
-									<legend>Contact Information</legend>
-									<div class="row">
-							            <div class="col-md-12">    
-							                <div class="form-group floating-label">
-												<input type="text" class="form-control input-sm" th:field="*{address}" th:errorclass="errorField"/>
-												<label for="address">Address</label>
-												<p class="help-block">Street, Purok, Barangay</p>
-											</div>
-							            </div>
-							        </div>
-							        <div class="row">
-							            <div class="col-md-6">    
-							                <div class="form-group floating-label">
-												<input type="text" class="form-control input-sm" th:field="*{city}" th:errorclass="errorField"/>
-												<label for="city">City</label>
-											</div>
-							            </div>
-							            <div class="col-md-6">    
-							                <div class="form-group floating-label">
-												<input type="text" class="form-control input-sm" th:field="*{contactNumber}" th:errorclass="errorField"/>
-												<label for="contactNumber">Contact Number</label>
-											</div>
-							            </div>
-							        </div>
-						        </fieldset>
-						        <div class="height-1"></div> 
-						        <fieldset>
-									<legend>Mother's Information</legend>
-									<div class="row">
-							            <div class="col-md-6">    
-							                <div class="form-group floating-label">
-												<input type="text" class="form-control input-sm" th:field="*{momFirstName}" th:errorclass="errorField"/>
-												<label for="momFirstName">First name</label>
-											</div>
-							            </div>
-							            <div class="col-md-6">    
-							                <div class="form-group floating-label">
-												<input type="text" class="form-control input-sm" th:field="*{momLastName}" th:errorclass="errorField"/>
-												<label for="momMiddleName">Last name</label>
-											</div>
-							            </div>
-							        </div>
-							        <div class="row">
-							            <div class="col-md-6">    
-							                <div class="form-group floating-label">
-												<input type="text" class="form-control input-sm" th:field="*{momMiddleName}" th:errorclass="errorField"/>
-												<label for="momMiddleName">Middle name</label>
-											</div>
-							            </div>
-							        </div>
-						        </fieldset>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-7">
-						<div class="card">
-							<div class="card-head card-head-sm style-primary">
-								<header>VCT Information</header>
-								<div class="tools">
-									<div class="btn-group">
-										<a class="btn btn-icon-toggle btn-collapse"><i class="fa fa-angle-down"></i></a>
-									</div>
-								</div>
-							</div>
-							<div class="card-body">
-								<!-- HIV Risks -->
-								<fieldset class="hivRisksFieldset">
-									<legend class="noBottomMargin">HIV Risks</legend>
-									<!-- <label class="btn btn-sm ink-reaction btn-default" th:each="sexType, sexTypeStat : ${sexList}" th:classappend="${sexType.toString() == vctDTO.sex ? 'active' : ''}">
-										<input type="radio" th:field="*{sex}" th:value="${sexType}" required="required"/><i class="fa fa-fw" th:classappend="'fa-' + ${#strings.toLowerCase(sexType.getName())}" ></i><span th:text="${sexType.getName()}">Sex Type</span>
-									</label> -->
-									<div th:unless="${#lists.isEmpty(hivRiskList)}" class="form-group">
-										<div class="row" th:each="hivRisk, stat : ${hivRiskList}" th:if="${stat.even or hivRisk.hasChildren}">
-											<th:block th:switch="${hivRisk.hasChildren}">
-												<th:block th:case="false">
-													<div class="col-md-6" th:with="leftRisk=${hivRiskList.get(stat.index)}">
-														<div class="checkbox checkbox-styled">
-															<label>
-																<input type="checkbox" value="-1" th:field="*{hivRisks}" th:value="${leftRisk.id}"/>
-																<span th:text="${leftRisk.name}">HIV Risk</span>
-															</label>
-														</div>
-													</div>
-													<div class="col-md-6" th:if="${stat.index + 1 &lt; hivRiskList.size()}" th:with="rightRisk=${hivRiskList.get(stat.index + 1)}">
-														<div class="checkbox checkbox-styled">
-															<label>
-																<input type="checkbox" value="-1" th:field="*{hivRisks}" th:value="${rightRisk.id}"/>
-																<span th:text="${rightRisk.name}">HIV Risk</span>
-															</label>
-														</div>
-													</div>
-												</th:block>
-												<th:block th:case="true">
-													<div class="col col-md-12">
-														<div class="checkbox checkbox-styled">
-															<label>
-																<input type="checkbox" value="-1" class="parentHivRisk" th:field="*{hivRisks}" th:value="${hivRisk.id}"/>
-																<span th:text="${hivRisk.name}">HIV Risk</span>
-															</label>
-														</div>
-													</div>
-													<div class="subHivRisk col-md-12" th:each="subHivRiskEntry, subStat : ${hivRisk.children}" th:classappend="${vctDTO.hivRisks.contains(hivRisk.id) ? '' : 'hdn'}">
-														<label th:text="${subHivRiskEntry.key}">Sub HIV Risk</label>
-														<div class="customBtnGroup subHivRiskBtnGroup btn-group" data-toggle="buttons">
-															<!-- th:classappend="${subRiskStat.first ? 'active' : ''}" -->
-															<label class="btn btn-sm ink-reaction btn-default" th:each="subHivRisk, subRiskStat : ${subHivRiskEntry.value}">
-																<input type="radio" th:field="*{hivRisks}" th:value="${subHivRisk.id}"/>
-																<span class="radioLabel" th:text="${subHivRisk.name}">Yes</span>
-															</label>
-														</div>
-													</div>
-												</th:block>
-											</th:block>
-										</div>
-									</div>
-								</fieldset>
-								<!-- end of HIV Risks -->
-								<div class="height-1"></div>
-								<fieldset>
-									<legend class="noBottomMargin">Test Information</legend>
-									<div class="row">
-						            	<div class="form-group">
-						            		<div class="col-md-7">
-						            			<label>Tested for HIV?</label>
-						            		</div>
-						            		<div class="col-md-5">
-						            			<div class="customBtnGroup btn-group" data-toggle="buttons">
-													<label class="btn btn-sm ink-reaction btn-default active">
-														<input type="radio" name="testedForHiv" value="1"/> Yes
-													</label>
-													<label class="btn btn-sm ink-reaction btn-default">
-														<input type="radio" name="testedForHiv" value="0"/> No
-													</label>
-												</div>
-						            		</div>
-						            	</div>
-							        </div>
-							        <div class="positiveForHivRow row">
-						            	<div class="form-group">
-						            		<div class="col-md-7">
-						            			<label>Positive for HIV?</label>
-						            		</div>
-						            		<div class="col-md-5">
-						            			<div class="customBtnGroup btn-group" data-toggle="buttons">
-													<label class="btn btn-sm ink-reaction btn-default">
-														<input type="radio" name="positiveForHiv" value="1"/> Yes
-													</label>
-													<label class="btn btn-sm ink-reaction btn-default active">
-														<input type="radio" name="positiveForHiv" value="0"/> No
-													</label>
-												</div>
-						            		</div>
-						            	</div>
-							        </div>
-							        <div class="hdn reasonForNotTestingRow row">
-							        	<div class="col-md-12">
-							        		<div class="form-group floating-label">
-												<textarea class="customTextArea form-control input-sm" rows="2"></textarea>
-												<label for="textarea2">Reason for not testing</label>
-											</div>
-							        	</div>
-							        </div>
-							        <div class="row">
-						            	<div class="form-group">
-						            		<div class="col-md-7">
-						            			<label>Provided Post-test Counseling and HIV Result?</label>
-						            		</div>
-						            		<div class="col-md-5">
-						            			<div class="customBtnGroup btn-group" data-toggle="buttons">
-													<label class="btn btn-sm ink-reaction btn-default">
-														<input type="radio" name="options" id="option1" /> Yes
-													</label>
-													<label class="btn btn-sm ink-reaction btn-default active">
-														<input type="radio" name="options" id="option2" />No
-													</label>
-												</div>
-						            		</div>
-						            	</div>
-							        </div>
-								</fieldset>
-							</div>
-							<div class="cardActionBarForm card-actionbar">
-								<div class="card-actionbar-row">
-									<input type="submit" class="cardActionBarBtn btn ink-reaction btn-raised btn-primary" value="Save"/>
-									<a class="cardActionBarBtn btn ink-reaction btn-raised btn-default" href="javascript:void(0);">Cancel</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</form>
-		</div>
-	</section>
-</div><!--end #content-->
+  <div id="content" th:fragment="content">
+    <section>
+      <div class="section-body">
+        <form class="form form-validate" autocomplete="off" method="POST" th:object="${vctDTO}" th:action="@{/vct/save}">
+          <div class="row" th:if="${#fields.hasErrors('*')}">
+            <div class="col-md-12">
+              <div class="alert alert-danger" role="alert">
+                <button type="button" class="close" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <th:block th:each="err : ${#fields.errors('*')}">
+                  <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+								<span th:text="${err}">Unable to submit form.</span>
+                  <br />
+                </th:block>
+              </div>
+            </div>
+          </div>
 
-<!-- BEGIN JAVASCRIPT -->
-<script th:src="@{/theme/material-admin/assets/js/libs/jquery/jquery-1.11.2.min.js}" src="../../static/theme/material-admin/assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
-<script th:src="@{/theme/material-admin/assets/js/libs/jquery/jquery-migrate-1.2.1.min.js}" src="../../static/theme/material-admin/assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
-<script th:src="@{/theme/material-admin/assets/js/libs/bootstrap/bootstrap.min.js}" src="../../static/theme/material-admin/assets/js/libs/bootstrap/bootstrap.min.js"></script>
-<script th:src="@{/theme/material-admin/assets/js/libs/spin.js/spin.min.js}" src="../../static/theme/material-admin/assets/js/libs/spin.js/spin.min.js"></script>
-<script th:src="@{/theme/material-admin/assets/js/libs/autosize/jquery.autosize.min.js}" src="../../static/theme/material-admin/assets/js/libs/autosize/jquery.autosize.min.js"></script>
-<script th:src="@{/theme/material-admin/assets/js/libs/nanoscroller/jquery.nanoscroller.min.js}" src="../../static/theme/material-admin/assets/js/libs/nanoscroller/jquery.nanoscroller.min.js"></script>
-<script th:src="@{/theme/material-admin/assets/js/core/source/App.js}" src="../../static/theme/material-admin/assets/js/core/source/App.js"></script>
-<script th:src="@{/theme/material-admin/assets/js/core/source/AppNavigation.js}" src="../../static/theme/material-admin/assets/js/core/source/AppNavigation.js"></script>
-<script th:src="@{/theme/material-admin/assets/js/core/source/AppOffcanvas.js}" src="../../static/theme/material-admin/assets/js/core/source/AppOffcanvas.js"></script>
-<script th:src="@{/theme/material-admin/assets/js/core/source/AppCard.js}" src="../../static/theme/material-admin/assets/js/core/source/AppCard.js"></script>
-<script th:src="@{/theme/material-admin/assets/js/core/source/AppForm.js}" src="../../static/theme/material-admin/assets/js/core/source/AppForm.js"></script>
-<script th:src="@{/theme/material-admin/assets/js/core/source/AppNavSearch.js}" src="../../static/theme/material-admin/assets/js/core/source/AppNavSearch.js"></script>
-<script th:src="@{/theme/material-admin/assets/js/core/source/AppVendor.js}" src="../../static/theme/material-admin/assets/js/core/source/AppVendor.js"></script>
-<th:block th:fragment="scripts">
-	<script th:src="@{/theme/material-admin/assets/js/libs/inputmask/jquery.inputmask.bundle.min.js}" src="../../static/theme/material-admin/assets/js/libs/inputmask/jquery.inputmask.bundle.min.js"></script>
-	<script th:src="@{/theme/material-admin/assets/js/libs/moment/moment.min.js}" src="../../static/theme/material-admin/assets/js/libs/moment/moment.min.js"></script>
-	<script th:src="@{/theme/material-admin/assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js}" src="../../static/theme/material-admin/assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
-	<script th:src="@{/theme/material-admin/assets/js/core/demo/Demo.js}" src="../../static/theme/material-admin/assets/js/core/demo/Demo.js"></script>
-	<script th:src="@{/theme/material-admin/assets/js/core/demo/DemoFormComponents.js}" src="../../static/theme/material-admin/assets/js/core/demo/DemoFormComponents.js"></script>
-	<script th:src="@{/theme/material-admin/assets/js/libs/jquery-validation/dist/jquery.validate.min.js}" src="../../static/theme/material-admin/assets/js/libs/jquery-validation/dist/jquery.validate.min.js"></script>
-	<script th:src="@{/theme/material-admin/assets/js/libs/jquery-validation/dist/additional-methods.min.js}" src="../../static/theme/material-admin/assets/js/libs/jquery-validation/dist/additional-methods.min.js"></script>
-	<script th:src="@{/js/vct/create.js}" src="../../static/js/vct/create.js"></script>
-</th:block>
-<!-- END JAVASCRIPT -->
+          <div class="row">
+            <div class="col-md-5">
+              <div class="card noBottomMargin">
+                <div class="card-head card-head-sm style-primary">
+                  <header>Patient Information</header>
+                  <div class="tools">
+                    <div class="btn-group">
+                      <a class="btn btn-icon-toggle btn-collapse"><i class="fa fa-angle-down"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <fieldset>
+                    <legend>Basic Information</legend>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group floating-label">
+                          <input type="text" class="form-control input-sm" th:field="*{firstName}" required="required" /> <label for="firstName">First name</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group floating-label">
+                          <input type="text" class="form-control input-sm" th:field="*{lastName}" /> <label for="lastName">Last name</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group floating-label">
+                          <input type="text" class="form-control input-sm" th:field="*{middleName}" /> <label for="middleName">Middle name</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <input type="text" class="form-control input-sm" placeholder="XX-YY-99" data-inputmask="'mask': 'aa-aa-99'" th:field="*{uniqueIdCode}" required="required" /> <label for="uniqueIdentifierCode">Unique Identifier Code</label>
+                          <p class="help-block">XX-YY-99</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <input type="text" class="form-control input-sm date_input" data-inputmask="'mask': '9999/99/99'" th:field="*{birthdate}" required="required" /> <label>Birthdate</label>
+                          <p class="help-block">yyyy/mm/dd</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group floating-label">
+                          <input id="age" type="text" class="form-control input-sm" value="" readonly="readonly" /> <label for="age">Age</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group text-right">
+                          <div class="customBtnGroup btn-group" data-toggle="buttons">
+                            <label class="btn btn-sm ink-reaction btn-default" th:each="sexType, sexTypeStat : ${sexList}" th:classappend="${sexType.toString() == vctDTO.sex ? 'active' : ''}"> <input type="radio" th:field="*{sex}" th:value="${sexType}" required="required" /><i class="fa fa-fw" th:classappend="'fa-' + ${#strings.toLowerCase(sexType.getName())}"></i><span th:text="${sexType.getName()}">Sex Type</span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                  <fieldset>
+                    <legend>Contact Information</legend>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group floating-label">
+                          <input type="text" class="form-control input-sm" th:field="*{address}" /> <label for="address">Address</label>
+                          <p class="help-block">Street, Purok, Barangay</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group floating-label">
+                          <input type="text" class="form-control input-sm" th:field="*{city}" /> <label for="city">City</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group floating-label">
+                          <input type="text" class="form-control input-sm" th:field="*{contactNumber}" /> <label for="contactNumber">Contact Number</label>
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                  <div class="height-1"></div>
+                  <fieldset>
+                    <legend>Mother's Information</legend>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group floating-label">
+                          <input type="text" class="form-control input-sm" th:field="*{momFirstName}" /> <label for="momFirstName">First name</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group floating-label">
+                          <input type="text" class="form-control input-sm" th:field="*{momLastName}" /> <label for="momMiddleName">Last name</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group floating-label">
+                          <input type="text" class="form-control input-sm" th:field="*{momMiddleName}" /> <label for="momMiddleName">Middle name</label>
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-7">
+              <div class="card">
+                <div class="card-head card-head-sm style-primary">
+                  <header>VCT Information</header>
+                  <div class="tools">
+                    <div class="btn-group">
+                      <a class="btn btn-icon-toggle btn-collapse"><i class="fa fa-angle-down"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <!-- HIV Risks -->
+                  <fieldset class="hivRisksFieldset">
+                    <legend class="noBottomMargin">HIV Risks</legend>
+                    <div th:unless="${#lists.isEmpty(hivRiskList)}" class="form-group">
+                      <div class="row" th:each="hivRisk, stat : ${hivRiskList}" th:if="${stat.even or hivRisk.hasChildren}">
+                        <th:block th:switch="${hivRisk.hasChildren}">
+                          <th:block th:case="false">
+                            <div class="col-md-6" th:with="leftRisk=${hivRiskList.get(stat.index)}">
+                              <div class="checkbox checkbox-styled">
+                                <label> <input type="checkbox" value="-1" th:field="*{hivRisks}" th:value="${leftRisk.id}" /> <span th:text="${leftRisk.name}">HIV Risk</span>
+                                </label>
+                              </div>
+                            </div>
+                            <div class="col-md-6" th:if="${stat.index + 1 &lt; hivRiskList.size()}" th:with="rightRisk=${hivRiskList.get(stat.index + 1)}">
+                              <div class="checkbox checkbox-styled">
+                                <label> <input type="checkbox" value="-1" th:field="*{hivRisks}" th:value="${rightRisk.id}" /> <span th:text="${rightRisk.name}">HIV Risk</span>
+                                </label>
+                              </div>
+                            </div>
+                          </th:block>
+                          <th:block th:case="true">
+                            <div class="col col-md-12">
+                              <div class="checkbox checkbox-styled">
+                                <label> <input type="checkbox" value="-1" class="parentHivRisk" th:field="*{hivRisks}" th:value="${hivRisk.id}" /> <span th:text="${hivRisk.name}">HIV Risk</span>
+                                </label>
+                              </div>
+                            </div>
+                            <div class="subHivRisk col-md-12" th:each="subHivRiskEntry, subStat : ${hivRisk.children}" th:classappend="${vctDTO.hivRisks != null and vctDTO.hivRisks.contains(hivRisk.id) ? '' : 'hdn'}">
+                              <label th:text="${subHivRiskEntry.key}">Sub HIV Risk</label>
+                              <div class="customBtnGroup subHivRiskBtnGroup btn-group" data-toggle="buttons">
+                                <label class="btn btn-sm ink-reaction btn-default" th:each="subHivRisk, subRiskStat : ${subHivRiskEntry.value}"> <input type="radio" th:field="*{hivRisks}" th:value="${subHivRisk.id}" /> <span class="radioLabel" th:text="${subHivRisk.name}">Yes</span>
+                                </label>
+                              </div>
+                            </div>
+                          </th:block>
+                        </th:block>
+                      </div>
+                    </div>
+                  </fieldset>
+                  <!-- end of HIV Risks -->
+                  <div class="height-1"></div>
+                  <fieldset>
+                    <legend class="noBottomMargin">Test Information</legend>
+                    <div class="row">
+                      <div class="form-group">
+                        <div class="col-md-7">
+                          <label>Tested for HIV?</label>
+                        </div>
+                        <div class="col-md-5">
+                          <div class="customBtnGroup btn-group" data-toggle="buttons">
+                            <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.testedForHiv == null or vctDTO.testedForHiv == 1 ? 'active' : ''}"> <input type="radio" name="testedForHiv" value="1" required="required" th:checked="${vctDTO.testedForHiv == null or vctDTO.testedForHiv == 1}" /> Yes
+                            </label> <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.testedForHiv == 0 ? 'active' : ''}"> <input type="radio" name="testedForHiv" value="0" required="required" th:checked="${vctDTO.testedForHiv == 0}" /> No
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="conditionalRow positiveForHivRow row" th:classappend="${vctDTO.testedForHiv == null or vctDTO.testedForHiv == 1 ? 'active' : ''}">
+                      <div class="form-group">
+                        <div class="col-md-7">
+                          <label>Positive for HIV?</label>
+                        </div>
+                        <div class="col-md-5">
+                          <div class="customBtnGroup btn-group" data-toggle="buttons">
+                            <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.positiveForHiv == null or vctDTO.positiveForHiv == 1 ? 'active' : ''}"> <input type="radio" name="positiveForHiv" value="1" required="required" th:checked="${vctDTO.testedForHiv == null or vctDTO.positiveForHiv == 1}" /> Yes
+                            </label> <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.positiveForHiv == 0 ? 'active' : ''}"> <input type="radio" name="positiveForHiv" value="0" required="required" th:checked="${vctDTO.positiveForHiv == 0}" /> No
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="conditionalRow reasonForNotTestingRow row" th:classappend="${vctDTO.testedForHiv == 0 ? 'active' : ''}">
+                      <div class="col-md-12">
+                        <div class="form-group floating-label">
+                          <textarea class="customTextArea form-control input-sm" rows="2" th:field="*{reasonForNotTesting}"></textarea>
+                          <label for="textarea2">Reason for not testing</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group">
+                        <div class="col-md-7">
+                          <label>Provided Post-test Counseling and HIV Result?</label>
+                        </div>
+                        <div class="col-md-5">
+                          <div class="customBtnGroup btn-group" data-toggle="buttons">
+                            <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.providedCounselingAndResult == null or vctDTO.providedCounselingAndResult == 1 ? 'active' : ''}"> <input type="radio" name="providedCounselingAndResult" value="1" th:checked="${vctDTO.testedForHiv == null or vctDTO.providedCounselingAndResult == 1}" /> Yes
+                            </label> <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.providedCounselingAndResult == 0 ? 'active' : ''}"> <input type="radio" name="providedCounselingAndResult" value="0" required="required" th:checked="${vctDTO.providedCounselingAndResult == 0}" /> No
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="cardActionBarForm card-actionbar">
+                  <div class="card-actionbar-row">
+                    <input type="submit" class="cardActionBarBtn btn ink-reaction btn-raised btn-primary" value="Save" /> <a class="cardActionBarBtn btn ink-reaction btn-raised btn-default" href="javascript:void(0);">Cancel</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+  <!--end #content-->
+
+  <!-- BEGIN JAVASCRIPT -->
+  <script th:src="@{/theme/material-admin/assets/js/libs/jquery/jquery-1.11.2.min.js}" src="../../static/theme/material-admin/assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/libs/jquery/jquery-migrate-1.2.1.min.js}" src="../../static/theme/material-admin/assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/libs/bootstrap/bootstrap.min.js}" src="../../static/theme/material-admin/assets/js/libs/bootstrap/bootstrap.min.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/libs/spin.js/spin.min.js}" src="../../static/theme/material-admin/assets/js/libs/spin.js/spin.min.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/libs/autosize/jquery.autosize.min.js}" src="../../static/theme/material-admin/assets/js/libs/autosize/jquery.autosize.min.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/libs/nanoscroller/jquery.nanoscroller.min.js}" src="../../static/theme/material-admin/assets/js/libs/nanoscroller/jquery.nanoscroller.min.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/core/source/App.js}" src="../../static/theme/material-admin/assets/js/core/source/App.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/core/source/AppNavigation.js}" src="../../static/theme/material-admin/assets/js/core/source/AppNavigation.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/core/source/AppOffcanvas.js}" src="../../static/theme/material-admin/assets/js/core/source/AppOffcanvas.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/core/source/AppCard.js}" src="../../static/theme/material-admin/assets/js/core/source/AppCard.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/core/source/AppForm.js}" src="../../static/theme/material-admin/assets/js/core/source/AppForm.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/core/source/AppNavSearch.js}" src="../../static/theme/material-admin/assets/js/core/source/AppNavSearch.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/core/source/AppVendor.js}" src="../../static/theme/material-admin/assets/js/core/source/AppVendor.js"></script>
+  <th:block th:fragment="scripts">
+    <script th:src="@{/theme/material-admin/assets/js/libs/inputmask/jquery.inputmask.bundle.min.js}" src="../../static/theme/material-admin/assets/js/libs/inputmask/jquery.inputmask.bundle.min.js"></script>
+    <script th:src="@{/theme/material-admin/assets/js/libs/moment/moment.min.js}" src="../../static/theme/material-admin/assets/js/libs/moment/moment.min.js"></script>
+    <script th:src="@{/theme/material-admin/assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js}" src="../../static/theme/material-admin/assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+    <script th:src="@{/theme/material-admin/assets/js/core/demo/Demo.js}" src="../../static/theme/material-admin/assets/js/core/demo/Demo.js"></script>
+    <script th:src="@{/theme/material-admin/assets/js/core/demo/DemoFormComponents.js}" src="../../static/theme/material-admin/assets/js/core/demo/DemoFormComponents.js"></script>
+    <script th:src="@{/theme/material-admin/assets/js/libs/jquery-validation/dist/jquery.validate.min.js}" src="../../static/theme/material-admin/assets/js/libs/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script th:src="@{/theme/material-admin/assets/js/libs/jquery-validation/dist/additional-methods.min.js}" src="../../static/theme/material-admin/assets/js/libs/jquery-validation/dist/additional-methods.min.js"></script>
+    <script th:src="@{/js/vct/create.js}" src="../../static/js/vct/create.js"></script>
+  </th:block>
+  <!-- END JAVASCRIPT -->
 </body>
 </html>
