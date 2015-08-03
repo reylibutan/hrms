@@ -1,6 +1,7 @@
 package com.ryad.hrms.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,15 +9,19 @@ import java.util.Map.Entry;
 
 import javax.transaction.Transactional;
 
+import org.joda.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.ryad.hrms.dto.HivRiskDTO;
 import com.ryad.hrms.dto.VctDTO;
 import com.ryad.hrms.entity.HivRisk;
 import com.ryad.hrms.entity.Patient;
+import com.ryad.hrms.entity.UserPrincipal;
 import com.ryad.hrms.mapper.GeneralMapper;
 import com.ryad.hrms.repository.HivRiskRepository;
+import com.ryad.hrms.repository.PatientRepository;
 import com.ryad.hrms.service.VctService;
 
 @Service
@@ -30,6 +35,9 @@ public class VctServiceImpl implements VctService {
 	
 	@Autowired
 	HivRiskRepository hivRiskRepo;
+	
+	@Autowired
+	PatientRepository patientRepository;
 	
 	@Override
 	public List<HivRiskDTO> getHivRisks() {
@@ -87,18 +95,15 @@ public class VctServiceImpl implements VctService {
 		return hivRiskDtoList;
 	}
 
-	
 	@Override
 	@Transactional
 	public void save(VctDTO vctDTO) {
 		Patient patient = generalMapper.vctDTOToPatient(vctDTO);
+		UserPrincipal principal = (UserPrincipal)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		
-		// =====================================================================================================
-		// =====================================================================================================
-		// @TODO: Research and implement a BaseDAO
-		//		- http://www.codeproject.com/Articles/251166/The-Generic-DAO-pattern-in-Java-with-Spring-3-and
-		// =====================================================================================================
-		// =====================================================================================================
+		patient.setCreatedBy(principal.getUser());
+		patient.setCreatedDate(new LocalDateTime().toDate());		
+		patient = patientRepository.save(patient);
 		
 		System.out.println(patient);
 	}

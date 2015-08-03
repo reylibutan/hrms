@@ -15,7 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.ryad.hrms.entity.CustomUser;
+import com.ryad.hrms.entity.UserPrincipal;
 import com.ryad.hrms.entity.Role;
 import com.ryad.hrms.entity.User;
 import com.ryad.hrms.repository.UserRepository;
@@ -34,12 +34,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			throw new UsernameNotFoundException("User with username: " + username + " does not exist.");
 		}
 		
-		return new CustomUser (
+		return new UserPrincipal (
 				user.getEmail(), 
 				user.getPassword(),
 				this.getAuthorities(user.getRoles()),
 				user.getDisplayName(),
-				user.getDisplayRole());
+				user.getDisplayRole(),
+				user);
 	}
 	
 	private Collection<? extends GrantedAuthority> getAuthorities(Set<Role> roles) {

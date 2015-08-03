@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Patient {
@@ -28,6 +29,7 @@ public class Patient {
 	private String lastName;
 	
 	@Column
+	@Size(max = 50)
 	private String sex;
 	
 	@Column
@@ -52,14 +54,15 @@ public class Patient {
 	private String city;
 	
 	@Column
+	@Size(max = 50)
 	private String contactNumber;
 	
 	@ManyToOne
-	@JoinColumn(referencedColumnName = "ID")
+	@JoinColumn(name = "created_by", referencedColumnName = "id")
 	private User createdBy;
 	
 	@ManyToOne
-	@JoinColumn(referencedColumnName = "ID")
+	@JoinColumn(name = "updated_by", referencedColumnName = "id")
 	private User updatedBy;
 	
 	@Column
@@ -172,36 +175,36 @@ public class Patient {
 		this.contactNumber = contactNumber;
 	}
 
-	public User getCreated_by() {
+	public User getCreatedBy() {
 		return createdBy;
 	}
 
-	public void setCreated_by(User created_by) {
-		this.createdBy = created_by;
+	public void setCreatedBy(User createdBy) {
+		this.createdBy = createdBy;
 	}
 
-	public User getUpdated_by() {
+	public User getUpdatedBy() {
 		return updatedBy;
 	}
 
-	public void setUpdated_by(User updated_by) {
-		this.updatedBy = updated_by;
+	public void setUpdatedBy(User updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
-	public Date getCreated_date() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreated_date(Date created_date) {
-		this.createdDate = created_date;
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 
-	public Date getUpdated_date() {
+	public Date getUpdatedDate() {
 		return updatedDate;
 	}
 
-	public void setUpdated_date(Date updated_date) {
-		this.updatedDate = updated_date;
+	public void setUpdatedDate(Date updatedDate) {
+		this.updatedDate = updatedDate;
 	}
 
 	@Override
