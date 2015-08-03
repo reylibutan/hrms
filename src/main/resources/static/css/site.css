@@ -61,6 +61,11 @@ textarea.customTextArea {
 	resize: vertical;
 }
 
+#content .customAlertCallOut {
+	color: #FF0000;
+	box-shadow: 0px 1px 3px 0 rgba(0, 0, 0, 0.33);
+}
+
 /* VCT Datatable =========================================================== */
 .dataTables_wrapper {
 	font-size: 12px;

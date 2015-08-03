@@ -35,13 +35,13 @@
         <form class="form form-validate" autocomplete="off" method="POST" th:object="${vctDTO}" th:action="@{/vct/save}">
           <div class="row" th:if="${#fields.hasErrors('*')}">
             <div class="col-md-12">
-              <div class="alert alert-danger" role="alert">
+              <div class="alert alert-danger alert-callout customAlertCallOut" role="alert">
                 <button type="button" class="close" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
                 <th:block th:each="err : ${#fields.errors('*')}">
                   <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
-								<span th:text="${err}">Unable to submit form.</span>
+				  <span th:text="${err}">Unable to submit form.</span>
                   <br />
                 </th:block>
               </div>
@@ -65,12 +65,12 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group floating-label">
-                          <input type="text" class="form-control input-sm" th:field="*{firstName}" required="required" /> <label for="firstName">First name</label>
+                          <input type="text" class="form-control input-sm" th:field="*{firstName}" required="required"/> <label for="firstName">First name</label>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group floating-label">
-                          <input type="text" class="form-control input-sm" th:field="*{lastName}" /> <label for="lastName">Last name</label>
+                          <input type="text" class="form-control input-sm" th:field="*{lastName}" required="required"/> <label for="lastName">Last name</label>
                         </div>
                       </div>
                     </div>
@@ -82,7 +82,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <input type="text" class="form-control input-sm" placeholder="XX-YY-99" data-inputmask="'mask': 'aa-aa-99'" th:field="*{uniqueIdCode}" required="required" /> <label for="uniqueIdentifierCode">Unique Identifier Code</label>
+                          <input type="text" class="form-control input-sm" placeholder="XX-YY-99" data-inputmask="'mask': 'aa-aa-99'" th:field="*{uniqueIdCode}" required="required"/> <label for="uniqueIdentifierCode">Unique Identifier Code</label>
                           <p class="help-block">XX-YY-99</p>
                         </div>
                       </div>
@@ -90,7 +90,7 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <input type="text" class="form-control input-sm date_input" data-inputmask="'mask': '9999/99/99'" th:field="*{birthdate}" required="required" /> <label>Birthdate</label>
+                          <input type="text" class="form-control input-sm date_input" data-inputmask="'mask': '9999/99/99'" th:field="*{birthdate}" required="required"/> <label>Birthdate</label>
                           <p class="help-block">yyyy/mm/dd</p>
                         </div>
                       </div>

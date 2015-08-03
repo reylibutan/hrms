@@ -13,7 +13,9 @@ function initDatePickers() {
 		autoclose: true,
 		todayHighlight: true,
 		format: "yyyy/mm/dd"
-	});
+	}).on("changeDate", function(e) {
+		computeAndSetAge();
+    });
 }
 
 function initDerivedValuesEvents() {
