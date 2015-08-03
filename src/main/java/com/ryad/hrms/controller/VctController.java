@@ -92,11 +92,7 @@ public class VctController {
 			redirect.addFlashAttribute("vctDTO", vctDTO);
 		    return "redirect:/vct/create";
 		} else {
-			// ======================================================================
-			// ======================================================================
-			// @TODO: Resume here, save()
-			// ======================================================================
-			// ======================================================================
+			vctService.save(vctDTO);
 		}
 		
 		model.addAttribute("vctDTO", vctDTO);

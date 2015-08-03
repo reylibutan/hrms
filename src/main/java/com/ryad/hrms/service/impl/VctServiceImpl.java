@@ -6,11 +6,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ryad.hrms.dto.HivRiskDTO;
+import com.ryad.hrms.dto.VctDTO;
 import com.ryad.hrms.entity.HivRisk;
+import com.ryad.hrms.entity.Patient;
 import com.ryad.hrms.mapper.GeneralMapper;
 import com.ryad.hrms.repository.HivRiskRepository;
 import com.ryad.hrms.service.VctService;
@@ -81,5 +85,21 @@ public class VctServiceImpl implements VctService {
 		}
 		
 		return hivRiskDtoList;
+	}
+
+	
+	@Override
+	@Transactional
+	public void save(VctDTO vctDTO) {
+		Patient patient = generalMapper.vctDTOToPatient(vctDTO);
+		
+		// =====================================================================================================
+		// =====================================================================================================
+		// @TODO: Research and implement a BaseDAO
+		//		- http://www.codeproject.com/Articles/251166/The-Generic-DAO-pattern-in-Java-with-Spring-3-and
+		// =====================================================================================================
+		// =====================================================================================================
+		
+		System.out.println(patient);
 	}
 }
