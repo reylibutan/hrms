@@ -1,13 +1,18 @@
 package com.ryad.hrms.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
 
@@ -57,17 +62,15 @@ public class Patient {
 	@Size(max = 50)
 	private String contactNumber;
 	
-	// ========================================================================
-	// ========================================================================
-	// @TODO:  Define relationship with HivRisk entity
-	// ========================================================================
-	// ========================================================================
+	@ManyToMany
+	@JoinTable(name = "patient_hiv_risk", joinColumns = @JoinColumn(name = "patient_id"), inverseJoinColumns = @JoinColumn(name = "hiv_risk_id"))
+	private List<HivRisk> hivRisks = new ArrayList<HivRisk>();
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "created_by", referencedColumnName = "id")
 	private User createdBy;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "updated_by", referencedColumnName = "id")
 	private User updatedBy;
 	
@@ -179,6 +182,14 @@ public class Patient {
 
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
+	}
+
+	public List<HivRisk> getHivRisks() {
+		return hivRisks;
+	}
+
+	public void setHivRisks(List<HivRisk> hivRisks) {
+		this.hivRisks = hivRisks;
 	}
 
 	public User getCreatedBy() {

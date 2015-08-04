@@ -1,6 +1,7 @@
 package com.ryad.hrms.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,7 @@ import com.ryad.hrms.dto.HivRiskDTO;
 import com.ryad.hrms.dto.VctDTO;
 import com.ryad.hrms.entity.HivRisk;
 import com.ryad.hrms.entity.Patient;
+import com.ryad.hrms.entity.User;
 import com.ryad.hrms.entity.UserPrincipal;
 import com.ryad.hrms.mapper.GeneralMapper;
 import com.ryad.hrms.repository.HivRiskRepository;
@@ -100,9 +102,14 @@ public class VctServiceImpl implements VctService {
 		Patient patient = generalMapper.vctDTOToPatient(vctDTO);
 		UserPrincipal principal = (UserPrincipal)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		
-		patient.setCreatedBy(principal.getUser());
-		patient.setCreatedDate(new LocalDateTime().toDate());		
+		User createdBy = principal.getUser();
+		Date createdDate = new LocalDateTime().toDate();
+		
+		patient.setCreatedBy(createdBy);
+		patient.setCreatedDate(createdDate);
 		patient = patientRepository.save(patient);
+		
+		
 		
 		return vctDTO;
 	}

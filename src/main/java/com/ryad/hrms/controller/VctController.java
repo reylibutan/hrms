@@ -17,11 +17,15 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ryad.hrms.annotation.Layout;
 import com.ryad.hrms.dto.VctDTO;
+import com.ryad.hrms.entity.Vct;
 import com.ryad.hrms.enums.SexType;
+import com.ryad.hrms.repository.PatientRepository;
+import com.ryad.hrms.repository.VctRepository;
 import com.ryad.hrms.service.VctService;
 import com.thedeanda.lorem.Lorem;
 
@@ -37,6 +41,12 @@ public class VctController {
 	
 	@Autowired
 	private VctService vctService;
+	
+	@Autowired
+	private PatientRepository patientRepo;
+	
+	@Autowired
+	private VctRepository vctRepo;
 	
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
@@ -100,6 +110,20 @@ public class VctController {
 		model.addAttribute("hivRiskList", vctService.getHivRisks());
 		return this.VIEW_FOLDER + "create";
 	}
+	
+	@RequestMapping(value = "/test")
+	@ResponseBody
+	public String test() {
+		Vct vct = vctRepo.findOne(1L);
+		
+		return vct.toString();
+	}
+	
+	// =============================================================
+	// =============================================================
+	// @TODO: create a /vct/view/{id} and /edit/ screens 
+	// =============================================================
+	// =============================================================
 	
 	private char getRandomChar() {
 		Random r = new Random();

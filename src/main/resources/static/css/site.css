@@ -140,6 +140,10 @@ fieldset.hivRisksFieldset div.checkbox span {
 }
 
 /* VCT Information ========================================================= */
+div.row.vctDateRow {
+	margin-bottom: 12px;
+}
+
 div.subHivRisk {
 	padding-left: 43px;
 	font-size: 12px;

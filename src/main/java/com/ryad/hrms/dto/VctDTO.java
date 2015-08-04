@@ -18,8 +18,6 @@ public class VctDTO {
 	//		2. Ask any specific validation rules
 	// ========================================================================
 	
-	private Long id;
-	
 	private Long patientId;
 	
 	@NotNullOrEmpty(message="{err.msg.required}", fieldName="First name")
@@ -52,17 +50,15 @@ public class VctDTO {
 	
 	private String contactNumber;
 	
-	private Long createdBy;
-	
-	private Long updatedBy;
-	
-	private Date createdDate;
-	
-	private Date updatedDate;
-	
 	// ========================================================================
 	// VCT Information
 	// ========================================================================
+	
+	private Long id;
+	
+	@NotNullOrEmpty(message="{err.msg.required}", fieldName="VCT Date")
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	private Date vctDate;
 	
 	private List<Long> hivRisks = new ArrayList<Long>();
 	
@@ -85,14 +81,6 @@ public class VctDTO {
 	// ========================================================================
 	// Getters and Setters
 	// ========================================================================
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public Long getPatientId() {
 		return patientId;
@@ -197,39 +185,23 @@ public class VctDTO {
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
 	}
-
-	public Long getCreatedBy() {
-		return createdBy;
+	
+	public Long getId() {
+		return id;
 	}
 
-	public void setCreatedBy(Long createdBy) {
-		this.createdBy = createdBy;
-	}
-
-	public Long getUpdatedBy() {
-		return updatedBy;
-	}
-
-	public void setUpdatedBy(Long updatedBy) {
-		this.updatedBy = updatedBy;
-	}
-
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
-
-	public Date getUpdatedDate() {
-		return updatedDate;
-	}
-
-	public void setUpdatedDate(Date updatedDate) {
-		this.updatedDate = updatedDate;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
+	public Date getVctDate() {
+		return vctDate;
+	}
+
+	public void setVctDate(Date vctDate) {
+		this.vctDate = vctDate;
+	}
+
 	public List<Long> getHivRisks() {
 		return hivRisks;
 	}

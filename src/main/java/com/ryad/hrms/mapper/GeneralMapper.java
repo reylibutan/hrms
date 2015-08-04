@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
 
 import com.ryad.hrms.dto.HivRiskDTO;
 import com.ryad.hrms.dto.VctDTO;
@@ -18,11 +17,6 @@ public interface GeneralMapper {
 	
 	List<HivRiskDTO> hivRisksToHivRiskDtos(List<HivRisk> hivRisks);
 	
-	@Mappings({
-        @Mapping(source = "patientId", target = "id"),
-        @Mapping(target = "createdBy", ignore = true),
-        @Mapping(target = "updatedBy", ignore = true)
-    })
 	@Mapping(source = "patientId", target = "id")
 	Patient vctDTOToPatient(VctDTO vctDTO);
 }
