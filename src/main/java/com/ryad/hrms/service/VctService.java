@@ -9,5 +9,5 @@ public interface VctService {
 	
 	public List<HivRiskDTO> getHivRisks();
 	
-	public void save(VctDTO vctDTO); 
+	public VctDTO save(VctDTO vctDTO); 
 }

@@ -92,7 +92,7 @@ public class VctController {
 			redirect.addFlashAttribute("vctDTO", vctDTO);
 		    return "redirect:/vct/create";
 		} else {
-			vctService.save(vctDTO);
+			vctDTO = vctService.save(vctDTO);
 		}
 		
 		model.addAttribute("vctDTO", vctDTO);

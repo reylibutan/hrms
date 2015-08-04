@@ -57,6 +57,12 @@ public class Patient {
 	@Size(max = 50)
 	private String contactNumber;
 	
+	// ========================================================================
+	// ========================================================================
+	// @TODO:  Define relationship with HivRisk entity
+	// ========================================================================
+	// ========================================================================
+	
 	@ManyToOne
 	@JoinColumn(name = "created_by", referencedColumnName = "id")
 	private User createdBy;
