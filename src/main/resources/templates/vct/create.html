@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-<title th:fragment="title">VCT | Create</title>
+<title th:fragment="title" th:text="${'VCT | ' + #strings.capitalizeWords(action)}">VCT | Record</title>
 
 <!-- BEGIN META -->
 <meta charset="utf-8" />
@@ -53,7 +53,7 @@
               <div class="card noBottomMargin">
                 <div class="card-head card-head-sm style-primary">
                   <header>Patient Information</header>
-                  <input type="hidden" th:field="*{patientId}"/>
+                  <input type="hidden" th:field="*{patientDTO.id}"/>
                   <div class="tools">
                     <div class="btn-group">
                       <a class="btn btn-icon-toggle btn-collapse"><i class="fa fa-angle-down"></i></a>
@@ -66,24 +66,24 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group floating-label">
-                          <input type="text" class="form-control input-sm" th:field="*{firstName}" required="required"/> <label for="firstName">First name</label>
+                          <input type="text" class="form-control input-sm" th:field="*{patientDTO.firstName}" required="required"/> <label for="firstName">First name</label>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group floating-label">
-                          <input type="text" class="form-control input-sm" th:field="*{lastName}" required="required"/> <label for="lastName">Last name</label>
+                          <input type="text" class="form-control input-sm" th:field="*{patientDTO.lastName}" required="required"/> <label for="lastName">Last name</label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group floating-label">
-                          <input type="text" class="form-control input-sm" th:field="*{middleName}" /> <label for="middleName">Middle name</label>
+                          <input type="text" class="form-control input-sm" th:field="*{patientDTO.middleName}" /> <label for="middleName">Middle name</label>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <input type="text" class="form-control input-sm" placeholder="XX-YY-99" data-inputmask="'mask': 'aa-aa-99'" th:field="*{uniqueIdCode}" required="required"/> <label for="uniqueIdentifierCode">Unique Identifier Code</label>
+                          <input type="text" class="form-control input-sm" placeholder="XX-YY-99" data-inputmask="'mask': 'aa-aa-99'" th:field="*{patientDTO.uniqueIdCode}" required="required"/> <label for="uniqueIdentifierCode">Unique Identifier Code</label>
                           <p class="help-block">XX-YY-99</p>
                         </div>
                       </div>
@@ -91,7 +91,7 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <input type="text" class="form-control input-sm date_input" data-inputmask="'mask': '9999/99/99'" th:field="*{birthdate}" required="required"/> <label>Birthdate</label>
+                          <input type="text" class="form-control input-sm date_input" data-inputmask="'mask': '9999/99/99'" th:field="*{patientDTO.birthdate}" required="required"/> <label>Birthdate</label>
                           <p class="help-block">yyyy/mm/dd</p>
                         </div>
                       </div>
@@ -105,7 +105,7 @@
                       <div class="col-md-12">
                         <div class="form-group text-right">
                           <div class="customBtnGroup btn-group" data-toggle="buttons">
-                            <label class="btn btn-sm ink-reaction btn-default" th:each="sexType, sexTypeStat : ${sexList}" th:classappend="${sexType.toString() == vctDTO.sex ? 'active' : ''}"> <input type="radio" th:field="*{sex}" th:value="${sexType}" required="required" /><i class="fa fa-fw" th:classappend="'fa-' + ${#strings.toLowerCase(sexType.getName())}"></i><span th:text="${sexType.getName()}">Sex Type</span>
+                            <label class="btn btn-sm ink-reaction btn-default" th:each="sexType, sexTypeStat : ${sexList}" th:classappend="${sexType.toString() == vctDTO.patientDTO.sex ? 'active' : ''}"> <input type="radio" th:field="*{patientDTO.sex}" th:value="${sexType}" required="required" /><i class="fa fa-fw" th:classappend="'fa-' + ${#strings.toLowerCase(sexType.getName())}"></i><span th:text="${sexType.getName()}">Sex Type</span>
                             </label>
                           </div>
                         </div>
@@ -117,7 +117,7 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group floating-label">
-                          <input type="text" class="form-control input-sm" th:field="*{address}" /> <label for="address">Address</label>
+                          <input type="text" class="form-control input-sm" th:field="*{patientDTO.address}" /> <label for="address">Address</label>
                           <p class="help-block">Street, Purok, Barangay</p>
                         </div>
                       </div>
@@ -125,12 +125,12 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group floating-label">
-                          <input type="text" class="form-control input-sm" th:field="*{city}" /> <label for="city">City</label>
+                          <input type="text" class="form-control input-sm" th:field="*{patientDTO.city}" /> <label for="city">City</label>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group floating-label">
-                          <input type="text" class="form-control input-sm" th:field="*{contactNumber}" /> <label for="contactNumber">Contact Number</label>
+                          <input type="text" class="form-control input-sm" th:field="*{patientDTO.contactNumber}" /> <label for="contactNumber">Contact Number</label>
                         </div>
                       </div>
                     </div>
@@ -141,19 +141,19 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group floating-label">
-                          <input type="text" class="form-control input-sm" th:field="*{momFirstName}" /> <label for="momFirstName">First name</label>
+                          <input type="text" class="form-control input-sm" th:field="*{patientDTO.momFirstName}" /> <label for="momFirstName">First name</label>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group floating-label">
-                          <input type="text" class="form-control input-sm" th:field="*{momLastName}" /> <label for="momMiddleName">Last name</label>
+                          <input type="text" class="form-control input-sm" th:field="*{patientDTO.momLastName}" /> <label for="momMiddleName">Last name</label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group floating-label">
-                          <input type="text" class="form-control input-sm" th:field="*{momMiddleName}" /> <label for="momMiddleName">Middle name</label>
+                          <input type="text" class="form-control input-sm" th:field="*{patientDTO.momMiddleName}" /> <label for="momMiddleName">Middle name</label>
                         </div>
                       </div>
                     </div>
@@ -191,13 +191,13 @@
                           <th:block th:case="false">
                             <div class="col-md-6" th:with="leftRisk=${hivRiskList.get(stat.index)}">
                               <div class="checkbox checkbox-styled">
-                                <label> <input type="checkbox" value="-1" th:field="*{hivRisks}" th:value="${leftRisk.id}" /> <span th:text="${leftRisk.name}">HIV Risk</span>
+                                <label> <input type="checkbox" value="-1" th:field="*{patientDTO.hivRisks}" th:value="${leftRisk.id}" /> <span th:text="${leftRisk.name}">HIV Risk</span>
                                 </label>
                               </div>
                             </div>
                             <div class="col-md-6" th:if="${stat.index + 1 &lt; hivRiskList.size()}" th:with="rightRisk=${hivRiskList.get(stat.index + 1)}">
                               <div class="checkbox checkbox-styled">
-                                <label> <input type="checkbox" value="-1" th:field="*{hivRisks}" th:value="${rightRisk.id}" /> <span th:text="${rightRisk.name}">HIV Risk</span>
+                                <label> <input type="checkbox" value="-1" th:field="*{patientDTO.hivRisks}" th:value="${rightRisk.id}" /> <span th:text="${rightRisk.name}">HIV Risk</span>
                                 </label>
                               </div>
                             </div>
@@ -205,14 +205,14 @@
                           <th:block th:case="true">
                             <div class="col col-md-12">
                               <div class="checkbox checkbox-styled">
-                                <label> <input type="checkbox" value="-1" class="parentHivRisk" th:field="*{hivRisks}" th:value="${hivRisk.id}" /> <span th:text="${hivRisk.name}">HIV Risk</span>
+                                <label> <input type="checkbox" value="-1" class="parentHivRisk" th:field="*{patientDTO.hivRisks}" th:value="${hivRisk.id}" /> <span th:text="${hivRisk.name}">HIV Risk</span>
                                 </label>
                               </div>
                             </div>
-                            <div class="subHivRisk col-md-12" th:each="subHivRiskEntry, subStat : ${hivRisk.children}" th:classappend="${vctDTO.hivRisks != null and vctDTO.hivRisks.contains(hivRisk.id) ? '' : 'hdn'}">
+                            <div class="subHivRisk col-md-12" th:each="subHivRiskEntry, subStat : ${hivRisk.children}" th:classappend="${vctDTO.patientDTO.hivRisks != null and vctDTO.patientDTO.hivRisks.contains(hivRisk.id) ? '' : 'hdn'}">
                               <label th:text="${subHivRiskEntry.key}">Sub HIV Risk</label>
                               <div class="customBtnGroup subHivRiskBtnGroup btn-group" data-toggle="buttons">
-                                <label class="btn btn-sm ink-reaction btn-default" th:each="subHivRisk, subRiskStat : ${subHivRiskEntry.value}"> <input type="radio" th:field="*{hivRisks}" th:value="${subHivRisk.id}" /> <span class="radioLabel" th:text="${subHivRisk.name}">Yes</span>
+                                <label class="btn btn-sm ink-reaction btn-default" th:each="subHivRisk, subRiskStat : ${subHivRiskEntry.value}"> <input type="radio" th:field="*{patientDTO.hivRisks}" th:value="${subHivRisk.id}" /> <span class="radioLabel" th:text="${subHivRisk.name}">Yes</span>
                                 </label>
                               </div>
                             </div>
@@ -232,28 +232,28 @@
                         </div>
                         <div class="col-md-5">
                           <div class="customBtnGroup btn-group" data-toggle="buttons">
-                            <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.testedForHiv == null or vctDTO.testedForHiv == 1 ? 'active' : ''}"> <input type="radio" name="testedForHiv" value="1" required="required" th:checked="${vctDTO.testedForHiv == null or vctDTO.testedForHiv == 1}" /> Yes
-                            </label> <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.testedForHiv == 0 ? 'active' : ''}"> <input type="radio" name="testedForHiv" value="0" required="required" th:checked="${vctDTO.testedForHiv == 0}" /> No
+                            <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.isHivTested == null or vctDTO.isHivTested == 1 ? 'active' : ''}"> <input type="radio" name="isHivTested" value="1" required="required" th:checked="${vctDTO.isHivTested == null or vctDTO.isHivTested == 1}" /> Yes
+                            </label> <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.isHivTested == 0 ? 'active' : ''}"> <input type="radio" name="isHivTested" value="0" required="required" th:checked="${vctDTO.isHivTested == 0}" /> No
                             </label>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="conditionalRow positiveForHivRow row" th:classappend="${vctDTO.testedForHiv == null or vctDTO.testedForHiv == 1 ? 'active' : ''}">
+                    <div class="conditionalRow positiveForHivRow row" th:classappend="${vctDTO.isHivTested == null or vctDTO.isHivTested == 1 ? 'active' : ''}">
                       <div class="form-group">
                         <div class="col-md-7">
                           <label>Positive for HIV?</label>
                         </div>
                         <div class="col-md-5">
                           <div class="customBtnGroup btn-group" data-toggle="buttons">
-                            <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.positiveForHiv == null or vctDTO.positiveForHiv == 1 ? 'active' : ''}"> <input type="radio" name="positiveForHiv" value="1" required="required" th:checked="${vctDTO.testedForHiv == null or vctDTO.positiveForHiv == 1}" /> Yes
-                            </label> <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.positiveForHiv == 0 ? 'active' : ''}"> <input type="radio" name="positiveForHiv" value="0" required="required" th:checked="${vctDTO.positiveForHiv == 0}" /> No
+                            <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.isHivPositive == null or vctDTO.isHivPositive == 1 ? 'active' : ''}"> <input type="radio" name="isHivPositive" value="1" required="required" th:checked="${vctDTO.isHivPositive == null or vctDTO.isHivPositive == 1}" /> Yes
+                            </label> <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.isHivPositive == 0 ? 'active' : ''}"> <input type="radio" name="isHivPositive" value="0" required="required" th:checked="${vctDTO.isHivPositive == 0}" /> No
                             </label>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="conditionalRow reasonForNotTestingRow row" th:classappend="${vctDTO.testedForHiv == 0 ? 'active' : ''}">
+                    <div class="conditionalRow reasonForNotTestingRow row" th:classappend="${vctDTO.isHivTested == 0 ? 'active' : ''}">
                       <div class="col-md-12">
                         <div class="form-group floating-label">
                           <textarea class="customTextArea form-control input-sm" rows="2" th:field="*{reasonForNotTesting}"></textarea>
@@ -268,7 +268,7 @@
                         </div>
                         <div class="col-md-5">
                           <div class="customBtnGroup btn-group" data-toggle="buttons">
-                            <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.providedCounselingAndResult == null or vctDTO.providedCounselingAndResult == 1 ? 'active' : ''}"> <input type="radio" name="providedCounselingAndResult" value="1" th:checked="${vctDTO.testedForHiv == null or vctDTO.providedCounselingAndResult == 1}" /> Yes
+                            <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.providedCounselingAndResult == null or vctDTO.providedCounselingAndResult == 1 ? 'active' : ''}"> <input type="radio" name="providedCounselingAndResult" value="1" th:checked="${vctDTO.providedCounselingAndResult == null or vctDTO.providedCounselingAndResult == 1}" /> Yes
                             </label> <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.providedCounselingAndResult == 0 ? 'active' : ''}"> <input type="radio" name="providedCounselingAndResult" value="0" required="required" th:checked="${vctDTO.providedCounselingAndResult == 0}" /> No
                             </label>
                           </div>
@@ -279,7 +279,7 @@
                 </div>
                 <div class="cardActionBarForm card-actionbar">
                   <div class="card-actionbar-row">
-                    <input type="submit" class="cardActionBarBtn btn ink-reaction btn-raised btn-primary" value="Save" /> <a class="cardActionBarBtn btn ink-reaction btn-raised btn-default" href="javascript:void(0);">Cancel</a>
+                    <input type="submit" class="cardActionBarBtn btn ink-reaction btn-raised btn-primary" value="Save" /> <a class="cardActionBarBtn btn ink-reaction btn-raised btn-default" href="javascript:void(0);" th:href="@{/vct/list}">Cancel</a>
                   </div>
                 </div>
               </div>

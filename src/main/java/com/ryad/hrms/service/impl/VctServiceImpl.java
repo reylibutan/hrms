@@ -1,7 +1,6 @@
 package com.ryad.hrms.service.impl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,20 +8,17 @@ import java.util.Map.Entry;
 
 import javax.transaction.Transactional;
 
-import org.joda.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.ryad.hrms.dto.HivRiskDTO;
 import com.ryad.hrms.dto.VctDTO;
 import com.ryad.hrms.entity.HivRisk;
-import com.ryad.hrms.entity.Patient;
-import com.ryad.hrms.entity.User;
-import com.ryad.hrms.entity.UserPrincipal;
-import com.ryad.hrms.mapper.GeneralMapper;
+import com.ryad.hrms.entity.Vct;
+import com.ryad.hrms.mapper.DecoratedGeneralMapper;
 import com.ryad.hrms.repository.HivRiskRepository;
 import com.ryad.hrms.repository.PatientRepository;
+import com.ryad.hrms.repository.VctRepository;
 import com.ryad.hrms.service.VctService;
 
 @Service
@@ -32,13 +28,57 @@ public class VctServiceImpl implements VctService {
 	private final String HIV_RISK_CHILD_SEPARATOR = "___";
 	
 	@Autowired
-	private GeneralMapper generalMapper;
+	private DecoratedGeneralMapper decoratedMapper;
 	
 	@Autowired
-	HivRiskRepository hivRiskRepo;
+	private VctRepository vctRepo;
 	
 	@Autowired
-	PatientRepository patientRepository;
+	private HivRiskRepository hivRiskRepo;
+	
+	@Autowired
+	private PatientRepository patientRepo;
+	
+	@Override
+	public VctDTO findById(Long id) {
+		VctDTO vctDTO = null;
+		Vct vct = vctRepo.findOne(id);
+		
+		if(vct != null) {
+			vctDTO = decoratedMapper.vctToVctDTO(vct);
+			
+			// ==========================================================================
+		    // @TODO: this should be removed after MapStruct fixes abstract Decorators
+		    // ==========================================================================
+			this.mapHivRisks(vctDTO, vct);
+		}
+		
+		return vctDTO;
+	}
+	
+	@Override
+	@Transactional
+	public VctDTO save(VctDTO vctDTO) {
+		/*Patient patient = generalMapper.vctDTOToPatient(vctDTO);
+		UserPrincipal principal = (UserPrincipal)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
+		User createdBy = principal.getUser();
+		Date createdDate = new LocalDateTime().toDate();
+		
+		patient.setCreatedBy(createdBy);
+		patient.setCreatedDate(createdDate);
+		patient = patientRepo.save(patient);
+		
+		// ====================================================================
+		// ====================================================================
+		// @TODO: save to vct, patient and patient_hiv_risks
+		// ====================================================================
+		// ====================================================================
+		
+		return vctDTO;*/
+		
+		return null;
+	}
 	
 	@Override
 	public List<HivRiskDTO> getHivRisks() {
@@ -48,7 +88,7 @@ public class VctServiceImpl implements VctService {
 		if(!(hivRiskList == null || hivRiskList.isEmpty())) {
 			Map<Long, HivRiskDTO> parents = new LinkedHashMap<Long, HivRiskDTO>();
 			hivRiskDtoList = new ArrayList<HivRiskDTO>();
-			List<HivRiskDTO> tempList = generalMapper.hivRisksToHivRiskDtos(hivRiskList);
+			List<HivRiskDTO> tempList = decoratedMapper.hivRisksToHivRiskDtos(hivRiskList);
 			
 			// segregate parents
 			// NOTE: this relies on the fact that parents have smaller IDs than children in the DB
@@ -95,22 +135,16 @@ public class VctServiceImpl implements VctService {
 		
 		return hivRiskDtoList;
 	}
-
-	@Override
-	@Transactional
-	public VctDTO save(VctDTO vctDTO) {
-		Patient patient = generalMapper.vctDTOToPatient(vctDTO);
-		UserPrincipal principal = (UserPrincipal)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		
-		User createdBy = principal.getUser();
-		Date createdDate = new LocalDateTime().toDate();
-		
-		patient.setCreatedBy(createdBy);
-		patient.setCreatedDate(createdDate);
-		patient = patientRepository.save(patient);
-		
-		
-		
-		return vctDTO;
+	
+	// ==========================================================================
+    // @TODO: this should be removed after MapStruct fixes abstract Decorators
+    // ==========================================================================
+	private void mapHivRisks(VctDTO vctDTO, Vct vct) {
+    	List<Long> hrs = new ArrayList<Long>();
+    	for(HivRisk hr : vct.getPatient().getHivRisks()) {
+    		hrs.add(hr.getId());
+    	}
+    	
+    	vctDTO.getPatientDTO().setHivRisks(hrs);
 	}
 }

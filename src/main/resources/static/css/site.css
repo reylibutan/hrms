@@ -157,7 +157,7 @@ div.subHivRisk {
 	display: none;
 }
 
-input[name=hivRisks] + span:not(.radioLabel) {
+input[name='patientDTO.hivRisks'] + span:not(.radioLabel) {
 	display: none !important;
 }
 

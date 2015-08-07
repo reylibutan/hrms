@@ -15,12 +15,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ryad.hrms.annotation.Layout;
+import com.ryad.hrms.dto.PatientDTO;
 import com.ryad.hrms.dto.VctDTO;
 import com.ryad.hrms.entity.Vct;
 import com.ryad.hrms.enums.SexType;
@@ -35,6 +37,9 @@ import com.thedeanda.lorem.Lorem;
 public class VctController {
 	
 	private final String VIEW_FOLDER = "vct/";
+	private final String ACTION_CREATE = "create";
+	private final String ACTION_VIEW = "view";
+	private final String ACTION_EDIT = "edit";
 	
 	@Autowired
 	private Validator validator;
@@ -52,49 +57,51 @@ public class VctController {
 	protected void initBinder(WebDataBinder binder) {
 		binder.setValidator(validator);
 	}
-	
-	@RequestMapping("/")
-	public String index() {
-		return "redirect:/vct/list";
-	}
-	
+		
 	@RequestMapping("/list")
 	public String list(Model model) {
 		int max = 3;
-		List<VctDTO> vctRecs = new ArrayList<VctDTO>(max);
+		List<VctDTO> vctDTOs = new ArrayList<VctDTO>(max);
 		
 		LocalDate localDate = new LocalDate();
 		//DateTimeFormatter dateDisplayFormat = DateTimeFormat.forPattern("MMM dd, yyyy");
 		
-		VctDTO vctRec;
+		VctDTO vctDTO;
 		for(int i = 0 ; i < max; i++) {
-			vctRec = new VctDTO();
-			vctRec.setFullName(i % 3 < 2 ? Lorem.getNameMale() : Lorem.getNameMale());
-			vctRec.setCodeName((i % 3 < 2 ? Lorem.getFirstNameMale() : Lorem.getFirstNameFemale()).toUpperCase());
-			vctRec.setUniqueIdCode("" + getRandomChar() + getRandomChar() + "-" + getRandomChar() + getRandomChar() + "-" + String.format("%02d", (i % 100)));
+			vctDTO = new VctDTO();
+			vctDTO.setFullName(i % 3 < 2 ? Lorem.getNameMale() : Lorem.getNameMale());
+			vctDTO.setCodeName((i % 3 < 2 ? Lorem.getFirstNameMale() : Lorem.getFirstNameFemale()).toUpperCase());
+			/*vctRec.setUniqueIdCode("" + getRandomChar() + getRandomChar() + "-" + getRandomChar() + getRandomChar() + "-" + String.format("%02d", (i % 100)));
 			vctRec.setBirthdate(localDate.plusDays(i).minusYears(20).toDate());
-			vctRec.setSex(i % 3 < 2 ? "Male" : "Female");
+			vctRec.setSex(i % 3 < 2 ? "Male" : "Female");*/
 			
-			vctRecs.add(vctRec);
+			PatientDTO patientDTO = new PatientDTO();
+			patientDTO.setUniqueIdCode("" + getRandomChar() + getRandomChar() + "-" + getRandomChar() + getRandomChar() + "-" + String.format("%02d", (i % 100)));
+			patientDTO.setBirthdate(localDate.plusDays(i).minusYears(20).toDate());
+			patientDTO.setSex(i % 3 < 2 ? "Male" : "Female");
+			vctDTO.setPatientDTO(patientDTO);
+			
+			vctDTOs.add(vctDTO);
 		}
 		
-		model.addAttribute("vctRecs", vctRecs);
+		model.addAttribute("vctDTOs", vctDTOs);
 		
 		return this.VIEW_FOLDER + "list";
 	}
 	
-	@RequestMapping("/create")
+	@RequestMapping("/")
 	public String create(Model model) {
 		if (!model.containsAttribute("vctDTO")) {
 	        model.addAttribute("vctDTO", new VctDTO());
 	    }
 		
+		model.addAttribute("action", this.ACTION_CREATE);
 		model.addAttribute("sexList", Arrays.asList(SexType.values()));
 		model.addAttribute("hivRiskList", vctService.getHivRisks());
 		return this.VIEW_FOLDER + "create";
 	}
 	
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public String save(@Valid VctDTO vctDTO, BindingResult result, Model model, RedirectAttributes redirect) {
 		
 		if(result.hasErrors()) {
@@ -111,6 +118,25 @@ public class VctController {
 		return this.VIEW_FOLDER + "create";
 	}
 	
+	@RequestMapping("/{id}")
+	public String view(@PathVariable Long id, Model model) {
+		VctDTO vctDTO = vctService.findById(id);
+		
+		// ====================================================================
+		// ====================================================================
+		// @TODO: finish this:
+		//			1. readonly for fields if view
+		//			2. Update button and redirect to edit()
+		// ====================================================================
+		// ====================================================================
+		
+		model.addAttribute("vctDTO", vctDTO);
+		model.addAttribute("action", this.ACTION_VIEW);
+		model.addAttribute("sexList", Arrays.asList(SexType.values()));
+		model.addAttribute("hivRiskList", vctService.getHivRisks());
+		return this.VIEW_FOLDER + "create";
+	}
+	
 	@RequestMapping(value = "/test")
 	@ResponseBody
 	public String test() {
@@ -119,11 +145,22 @@ public class VctController {
 		return vct.toString();
 	}
 	
-	// =============================================================
-	// =============================================================
-	// @TODO: create a /vct/view/{id} and /edit/ screens 
-	// =============================================================
-	// =============================================================
+	@RequestMapping("/edit/{id}")
+	public String edit(@PathVariable Long id, Model model) {
+		VctDTO vctDTO = vctService.findById(id);
+		
+		// ====================================================================
+		// ====================================================================
+		// @TODO: implement this
+		// ====================================================================
+		// ====================================================================
+		
+		model.addAttribute("vctDTO", vctDTO);
+		model.addAttribute("action", this.ACTION_EDIT);
+		model.addAttribute("sexList", Arrays.asList(SexType.values()));
+		model.addAttribute("hivRiskList", vctService.getHivRisks());
+		return this.VIEW_FOLDER + "create";
+	}
 	
 	private char getRandomChar() {
 		Random r = new Random();

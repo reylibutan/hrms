@@ -1,54 +1,21 @@
 package com.ryad.hrms.dto;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.ryad.hrms.annotation.NotNullOrEmpty;
-import com.ryad.hrms.enums.SexType;
 
 public class VctDTO {
 	
 	// ========================================================================
 	// Patient Information
-	//	@TODO:
-	//		1. Ask what are the required fields here
-	//		2. Ask any specific validation rules
 	// ========================================================================
 	
-	private Long patientId;
-	
-	@NotNullOrEmpty(message="{err.msg.required}", fieldName="First name")
-	private String firstName;
-	
-	private String middleName;
-	
-	@NotNullOrEmpty(message="{err.msg.required}", fieldName="Last name")
-	private String lastName;
-	
-	@NotNullOrEmpty(message="{err.msg.required}", fieldName="Sex")
-	private String sex = SexType.MALE.toString(); // default value
-	
-	@NotNullOrEmpty(message="{err.msg.required}", fieldName="Unique ID Code")
-	private String uniqueIdCode;
-	
-	@NotNullOrEmpty(message="{err.msg.required}", fieldName="Birthdate")
-	@DateTimeFormat(pattern = "yyyy/MM/dd")
-	private Date birthdate;
-	
-	private String momFirstName;
-	
-	private String momMiddleName;
-	
-	private String momLastName;
-	
-	private String address;
-	
-	private String city;
-	
-	private String contactNumber;
+	@Valid
+	private PatientDTO patientDTO;
 	
 	// ========================================================================
 	// VCT Information
@@ -60,13 +27,11 @@ public class VctDTO {
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private Date vctDate;
 	
-	private List<Long> hivRisks = new ArrayList<Long>();
+	private Integer isHivTested;
 	
-	private Integer testedForHiv;
+	private Integer isHivPositive;
 	
 	private String reasonForNotTesting;
-	
-	private Integer positiveForHiv;
 	
 	private Integer providedCounselingAndResult;
 	
@@ -82,108 +47,12 @@ public class VctDTO {
 	// Getters and Setters
 	// ========================================================================
 
-	public Long getPatientId() {
-		return patientId;
+	public PatientDTO getPatientDTO() {
+		return patientDTO;
 	}
 
-	public void setPatientId(Long patientId) {
-		this.patientId = patientId;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getMiddleName() {
-		return middleName;
-	}
-
-	public void setMiddleName(String middleName) {
-		this.middleName = middleName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getSex() {
-		return sex;
-	}
-
-	public void setSex(String sex) {
-		this.sex = sex;
-	}
-
-	public String getUniqueIdCode() {
-		return uniqueIdCode;
-	}
-
-	public void setUniqueIdCode(String uniqueIdCode) {
-		this.uniqueIdCode = uniqueIdCode;
-	}
-
-	public Date getBirthdate() {
-		return birthdate;
-	}
-
-	public void setBirthdate(Date birthdate) {
-		this.birthdate = birthdate;
-	}
-
-	public String getMomFirstName() {
-		return momFirstName;
-	}
-
-	public void setMomFirstName(String momFirstName) {
-		this.momFirstName = momFirstName;
-	}
-
-	public String getMomMiddleName() {
-		return momMiddleName;
-	}
-
-	public void setMomMiddleName(String momMiddleName) {
-		this.momMiddleName = momMiddleName;
-	}
-
-	public String getMomLastName() {
-		return momLastName;
-	}
-
-	public void setMomLastName(String momLastName) {
-		this.momLastName = momLastName;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getContactNumber() {
-		return contactNumber;
-	}
-
-	public void setContactNumber(String contactNumber) {
-		this.contactNumber = contactNumber;
+	public void setPatientDTO(PatientDTO patientDTO) {
+		this.patientDTO = patientDTO;
 	}
 	
 	public Long getId() {
@@ -202,20 +71,20 @@ public class VctDTO {
 		this.vctDate = vctDate;
 	}
 
-	public List<Long> getHivRisks() {
-		return hivRisks;
+	public Integer getIsHivTested() {
+		return isHivTested;
 	}
 
-	public void setHivRisks(List<Long> hivRisks) {
-		this.hivRisks = hivRisks;
-	}	
-
-	public Integer getTestedForHiv() {
-		return testedForHiv;
+	public void setIsHivTested(Integer isHivTested) {
+		this.isHivTested = isHivTested;
 	}
 
-	public void setTestedForHiv(Integer testedForHiv) {
-		this.testedForHiv = testedForHiv;
+	public Integer getIsHivPositive() {
+		return isHivPositive;
+	}
+
+	public void setIsHivPositive(Integer isHivPositive) {
+		this.isHivPositive = isHivPositive;
 	}
 
 	public String getReasonForNotTesting() {
@@ -224,14 +93,6 @@ public class VctDTO {
 
 	public void setReasonForNotTesting(String reasonForNotTesting) {
 		this.reasonForNotTesting = reasonForNotTesting;
-	}
-
-	public Integer getPositiveForHiv() {
-		return positiveForHiv;
-	}
-
-	public void setPositiveForHiv(Integer positiveForHiv) {
-		this.positiveForHiv = positiveForHiv;
 	}
 
 	public Integer getProvidedCounselingAndResult() {
@@ -260,8 +121,10 @@ public class VctDTO {
 
 	@Override
 	public String toString() {
-		return "PatientDTO [id=" + id + ", firstName=" + firstName
-				+ ", middleName=" + middleName + ", lastName=" + lastName
-				+ ", sex=" + sex + ", uniqueIdCode=" + uniqueIdCode + "]";
+		return "VctDTO [id=" + id + ", vctDate=" + vctDate + ", isHivTested="
+				+ isHivTested + ", isHivPositive=" + isHivPositive
+				+ ", reasonForNotTesting=" + reasonForNotTesting
+				+ ", providedCounselingAndResult="
+				+ providedCounselingAndResult + "]";
 	}
 }

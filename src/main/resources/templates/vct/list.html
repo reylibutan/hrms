@@ -104,12 +104,12 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="vctRec : ${vctRecs}">
-									        <td th:text="${vctRec.fullName}">Juan de la Cruz</td>
-									        <td th:text="${vctRec.codeName}">JUAN</td>
-									        <td th:text="${vctRec.uniqueIdCode}">LI-TE-01</td>
-									        <td th:text="${vctRec.birthdate}">Jun 11, 1992</td>
-									        <td th:text="${vctRec.sex}">male</td>
+										<tr th:each="vctDTO : ${vctDTOs}">
+									        <td th:text="${vctDTO.fullName}">Juan de la Cruz</td>
+									        <td th:text="${vctDTO.codeName}">JUAN</td>
+									        <td th:text="${vctDTO.patientDTO.uniqueIdCode}">LI-TE-01</td>
+									        <td th:text="${vctDTO.patientDTO.birthdate}">Jun 11, 1992</td>
+									        <td th:text="${vctDTO.patientDTO.sex}">male</td>
 									        <td class="text-right">
 												<button type="button" class="updateVctBtn btn btn-icon-toggle style-default"><i class="fa fa-pencil"></i></button>
 											</td>

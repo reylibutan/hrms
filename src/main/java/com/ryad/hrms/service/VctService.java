@@ -7,7 +7,9 @@ import com.ryad.hrms.dto.VctDTO;
 
 public interface VctService {
 	
-	public List<HivRiskDTO> getHivRisks();
+	public VctDTO findById(Long id);
 	
-	public VctDTO save(VctDTO vctDTO); 
+	public VctDTO save(VctDTO vctDTO);
+	
+	public List<HivRiskDTO> getHivRisks();
 }

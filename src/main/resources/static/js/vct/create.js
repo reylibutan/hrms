@@ -59,11 +59,11 @@ function initSubHivRiskEvents() {
 		}
 	});
 	
-	$("input[name=hivRisks]:checked").closest("label").addClass("active");
+	$("input[name='patientDTO.hivRisks']:checked").closest("label").addClass("active");
 }
 
 function initResultsEvents() {
-	$("input[type=radio][name=testedForHiv]").change(function() {
+	$("input[type=radio][name=isHivTested]").change(function() {
 		var $this = $(this);
 		if($this.val() === HRMS.YES_VAL) {
 			$this.closest("div.row").siblings("div.positiveForHivRow").slideDown(HRMS.DEFAULT_EASE_TIME);

@@ -98,6 +98,9 @@
 	                <processors>
 	                    <processor>org.mapstruct.ap.MappingProcessor</processor>
 	                </processors>
+	                <options>
+			            <mapstruct.unmappedTargetPolicy>IGNORE</mapstruct.unmappedTargetPolicy>
+			        </options>
 	            </configuration>
 	            <executions>
 	                <execution>
