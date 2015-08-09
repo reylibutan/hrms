@@ -101,7 +101,7 @@ public class VctController {
 		return this.VIEW_FOLDER + "create";
 	}
 	
-	@RequestMapping(value = "/", method = RequestMethod.POST)
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(@Valid VctDTO vctDTO, BindingResult result, Model model, RedirectAttributes redirect) {
 		
 		if(result.hasErrors()) {
@@ -121,14 +121,6 @@ public class VctController {
 	@RequestMapping("/{id}")
 	public String view(@PathVariable Long id, Model model) {
 		VctDTO vctDTO = vctService.findById(id);
-		
-		// ====================================================================
-		// ====================================================================
-		// @TODO: finish this:
-		//			1. readonly for fields if view
-		//			2. Update button and redirect to edit()
-		// ====================================================================
-		// ====================================================================
 		
 		model.addAttribute("vctDTO", vctDTO);
 		model.addAttribute("action", this.ACTION_VIEW);

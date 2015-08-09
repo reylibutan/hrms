@@ -27,7 +27,7 @@ function initDerivedValuesEvents() {
 	
 	// add event
 	// compute Age based on Birthdate
-	$("#birthdate").on("keyup blur", function() {	
+	$("#patientDTO\\.birthdate").on("keyup blur", function() {	
 		computeAndSetAge();
 	});
 }
@@ -35,7 +35,7 @@ function initDerivedValuesEvents() {
 function computeAndSetAge() {
 	var age = "";
 	var $age = $("#age");
-	var birthdate = $("#birthdate").val();
+	var birthdate = $("#patientDTO\\.birthdate").val();
 	
 	if(birthdate) {
 		var result = moment().diff(birthdate, "year");

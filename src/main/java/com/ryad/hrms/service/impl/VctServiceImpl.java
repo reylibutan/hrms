@@ -59,6 +59,12 @@ public class VctServiceImpl implements VctService {
 	@Override
 	@Transactional
 	public VctDTO save(VctDTO vctDTO) {
+		// ====================================================================
+		// ====================================================================
+		// @TODO: RESUME HERE. save to vct, patient and patient_hiv_risks
+		// ====================================================================
+		// ====================================================================
+		
 		/*Patient patient = generalMapper.vctDTOToPatient(vctDTO);
 		UserPrincipal principal = (UserPrincipal)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		
@@ -67,17 +73,9 @@ public class VctServiceImpl implements VctService {
 		
 		patient.setCreatedBy(createdBy);
 		patient.setCreatedDate(createdDate);
-		patient = patientRepo.save(patient);
+		patient = patientRepo.save(patient);*/
 		
-		// ====================================================================
-		// ====================================================================
-		// @TODO: save to vct, patient and patient_hiv_risks
-		// ====================================================================
-		// ====================================================================
-		
-		return vctDTO;*/
-		
-		return null;
+		return vctDTO;
 	}
 	
 	@Override
@@ -140,9 +138,9 @@ public class VctServiceImpl implements VctService {
     // @TODO: this should be removed after MapStruct fixes abstract Decorators
     // ==========================================================================
 	private void mapHivRisks(VctDTO vctDTO, Vct vct) {
-    	List<Long> hrs = new ArrayList<Long>();
+    	List<String> hrs = new ArrayList<String>();
     	for(HivRisk hr : vct.getPatient().getHivRisks()) {
-    		hrs.add(hr.getId());
+    		hrs.add(hr.getId() + "");
     	}
     	
     	vctDTO.getPatientDTO().setHivRisks(hrs);
