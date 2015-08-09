@@ -48,11 +48,12 @@
             </div>
           </div>
 
-          <div class="row">
+          <div class="sameHeightColsRow row">
             <div class="col-md-5">
               <div class="card noBottomMargin">
                 <div class="card-head card-head-sm style-primary">
                   <header>Patient Information</header>
+                  <input type="hidden" id="view_action" th:value="${action}"/>
                   <input type="hidden" th:field="*{patientDTO.id}"/>
                   <div class="tools">
                     <div class="btn-group">
@@ -279,7 +280,9 @@
                 </div>
                 <div class="cardActionBarForm card-actionbar">
                   <div class="card-actionbar-row">
-                    <input type="submit" class="cardActionBarBtn btn ink-reaction btn-raised btn-primary" value="Save" /> <a class="cardActionBarBtn btn ink-reaction btn-raised btn-default" href="javascript:void(0);" th:href="@{/vct/list}">Cancel</a>
+                    <input type="submit" class="cardActionBarBtn btn ink-reaction btn-raised btn-primary" value="Save" th:if="${action == 'create' or action == 'edit'}"/>
+                    <a class="cardActionBarBtn btn ink-reaction btn-raised btn-primary" href="javascript:void(0);" th:href="@{/vct/edit} + '/' + ${vctDTO.id}" th:if="${action == 'view'}">Edit</a>
+                    <a class="cardActionBarBtn btn ink-reaction btn-raised btn-default" href="javascript:void(0);" th:href="@{/vct/list}">Cancel</a>
                   </div>
                 </div>
               </div>

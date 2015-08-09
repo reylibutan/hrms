@@ -2,14 +2,17 @@ var YES = "1";
 var NO = "0";
 
 $(document).ready(function() {
+	HRMS.initViewAction();
+	
 	initDatePickers();
 	initDerivedValuesEvents();
-	initSubHivRiskEvents();	
+	initSubHivRiskEvents();
 	initResultsEvents();
+	initSameHeightColumns();
 });
 
 function initDatePickers() {
-	$(".date_input").datepicker({
+	$(".date_input:not([readonly])").datepicker({
 		autoclose: true,
 		todayHighlight: true,
 		format: "yyyy/mm/dd"
@@ -71,6 +74,37 @@ function initResultsEvents() {
 		} else {
 			$this.closest("div.row").siblings("div.positiveForHivRow").slideUp(HRMS.DEFAULT_EASE_TIME);
 			$this.closest("div.row").siblings("div.reasonForNotTestingRow").slideDown(HRMS.DEFAULT_EASE_TIME);
+		}
+	});
+}
+
+function initSameHeightColumns() {
+	var $row = $("div.sameHeightColsRow");
+	var highest = 0;
+	
+	// find highest
+	$row.find("> div[class^=col-]").each(function() {
+		var $this = $(this);
+		var bodyHeight = $this.find("div.card-body").innerHeight();
+		
+		var actionBarHeight = 0;
+		var $actionBar = $(this).find("div.card-actionbar");
+		if($actionBar.length) {
+			actionBarHeight = $actionBar.outerHeight(true);
+		}
+
+		if(highest < bodyHeight + actionBarHeight) {
+			highest = bodyHeight + actionBarHeight;
+		}
+	});
+	
+	// apply highest (apply but consider actionBar)
+	$row.find("> div[class^=col-]").each(function() {
+		var $actionBar = $(this).find("div.card-actionbar");
+		if($actionBar.length) {
+			$(this).find("div.card-body").innerHeight(highest - $actionBar.outerHeight(true));
+		} else {
+			$(this).find("div.card-body").innerHeight(highest);
 		}
 	});
 }

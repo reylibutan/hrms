@@ -1,11 +1,6 @@
 $(document).ready(function() {
 	initButtonEvents();
 	initAlertEvents();
-	
-	// ======================================================
-	// @TODO: 
-	// 		initSameHeightColumns(); 
-	// ======================================================
 });
 
 function initButtonEvents() {
@@ -36,5 +31,22 @@ function initAlertEvents() {
     HRMS.YES_VAL = "1";
     HRMS.NO_VAL = "0";
     HRMS.DEFAULT_EASE_TIME = 150;
+    
+    //Public Method
+    HRMS.initViewAction = function() {
+    	var ACTION_VIEW = "view";
+    	var ACTION_UPDATE = "update";
+    	var action = $("#view_action").val();
+    	
+    	if(action === ACTION_VIEW) {
+    		$("form textarea").prop("readonly", "readonly");
+    		$("form input[type=text]").prop("readonly", "readonly");
+    		$("form input[type=radio], form input[type=checkbox]").prop("disabled", "disabled");
+    		
+    		$(".customBtnGroup label.btn").click(function(e) {
+    			return false;
+    		});
+    	}
+    };
     
 }(window.HRMS = window.skillet || {}, jQuery));
