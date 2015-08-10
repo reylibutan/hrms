@@ -18,13 +18,12 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ryad.hrms.annotation.Layout;
 import com.ryad.hrms.dto.PatientDTO;
 import com.ryad.hrms.dto.VctDTO;
-import com.ryad.hrms.entity.Vct;
 import com.ryad.hrms.enums.SexType;
 import com.ryad.hrms.repository.PatientRepository;
 import com.ryad.hrms.repository.VctRepository;
@@ -86,7 +85,30 @@ public class VctController {
 		
 		model.addAttribute("vctDTOs", vctDTOs);
 		
-		return this.VIEW_FOLDER + "list";
+		return VIEW_FOLDER + "list";
+	}
+	
+	@RequestMapping("/{id}")
+	public String viewOrEdit(@PathVariable Long id, @RequestParam(required = false) String mode, Model model) {
+		VctDTO vctDTO = vctService.findById(id);
+		
+		if(vctDTO == null) {
+			// ================================================================
+			// @TODO: display a message or something using flash attributes
+			// ================================================================
+			return "redirect:/" + VIEW_FOLDER;
+		} else {
+			String action = ACTION_VIEW; // default
+			if(ACTION_EDIT.equals(mode)) {
+				action = ACTION_EDIT;
+			}
+			
+			model.addAttribute("vctDTO", vctDTO);
+			model.addAttribute("action", action);
+			model.addAttribute("sexList", Arrays.asList(SexType.values()));
+			model.addAttribute("hivRiskList", vctService.getHivRisks());
+			return VIEW_FOLDER + "create";
+		}
 	}
 	
 	@RequestMapping("/")
@@ -98,7 +120,7 @@ public class VctController {
 		model.addAttribute("action", this.ACTION_CREATE);
 		model.addAttribute("sexList", Arrays.asList(SexType.values()));
 		model.addAttribute("hivRiskList", vctService.getHivRisks());
-		return this.VIEW_FOLDER + "create";
+		return VIEW_FOLDER + "create";
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -107,41 +129,11 @@ public class VctController {
 		if(result.hasErrors()) {
 			redirect.addFlashAttribute("org.springframework.validation.BindingResult.vctDTO", result);
 			redirect.addFlashAttribute("vctDTO", vctDTO);
-		    return "redirect:/vct/create";
+		    return "redirect:/" + VIEW_FOLDER;
 		} else {
 			vctDTO = vctService.save(vctDTO);
-			return "redirect:/vct/" + vctDTO.getId();
+			return "redirect:/" + VIEW_FOLDER + vctDTO.getId();
 		}
-	}
-	
-	@RequestMapping("/{id}")
-	public String view(@PathVariable Long id, Model model) {
-		VctDTO vctDTO = vctService.findById(id);
-		
-		model.addAttribute("vctDTO", vctDTO);
-		model.addAttribute("action", this.ACTION_VIEW);
-		model.addAttribute("sexList", Arrays.asList(SexType.values()));
-		model.addAttribute("hivRiskList", vctService.getHivRisks());
-		return this.VIEW_FOLDER + "create";
-	}
-	
-	@RequestMapping(value = "/test")
-	@ResponseBody
-	public String test() {
-		Vct vct = vctRepo.findOne(1L);
-		
-		return vct.toString();
-	}
-	
-	@RequestMapping("/edit/{id}")
-	public String edit(@PathVariable Long id, Model model) {
-		VctDTO vctDTO = vctService.findById(id);
-		
-		model.addAttribute("vctDTO", vctDTO);
-		model.addAttribute("action", this.ACTION_EDIT);
-		model.addAttribute("sexList", Arrays.asList(SexType.values()));
-		model.addAttribute("hivRiskList", vctService.getHivRisks());
-		return this.VIEW_FOLDER + "create";
 	}
 	
 	private char getRandomChar() {

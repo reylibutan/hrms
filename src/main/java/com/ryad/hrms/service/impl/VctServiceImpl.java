@@ -59,12 +59,6 @@ public class VctServiceImpl implements VctService {
 	@Override
 	@Transactional
 	public VctDTO save(VctDTO vctDTO) {		
-		// ====================================================================
-		// ====================================================================
-		// @TODO: this method must also be able to entertain saveEdit();
-		// ====================================================================
-		// ====================================================================
-		
 		Vct vct = generalMapper.vctDTOToVct(vctDTO);
 		
 		UserPrincipal principal = (UserPrincipal)SecurityContextHolder.getContext().getAuthentication().getPrincipal();

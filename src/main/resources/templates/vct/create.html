@@ -281,7 +281,7 @@
                 <div class="cardActionBarForm card-actionbar">
                   <div class="card-actionbar-row">
                     <input type="submit" class="cardActionBarBtn btn ink-reaction btn-raised btn-primary" value="Save" th:if="${action == 'create' or action == 'edit'}"/>
-                    <a class="cardActionBarBtn btn ink-reaction btn-raised btn-primary" href="javascript:void(0);" th:href="@{/vct/edit} + '/' + ${vctDTO.id}" th:if="${action == 'view'}">Edit</a>
+                    <a class="cardActionBarBtn btn ink-reaction btn-raised btn-primary" href="javascript:void(0);" th:href="@{/vct/} + ${vctDTO.id} + '?mode=edit'" th:if="${action == 'view'}">Edit</a>
                     <a class="cardActionBarBtn btn ink-reaction btn-raised btn-default" href="javascript:void(0);" th:href="@{/vct/list}">Cancel</a>
                   </div>
                 </div>
