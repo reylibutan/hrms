@@ -2,7 +2,6 @@ package com.ryad.hrms.mapper;
 
 import java.util.List;
 
-import org.mapstruct.DecoratedWith;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -13,17 +12,20 @@ import com.ryad.hrms.entity.HivRisk;
 import com.ryad.hrms.entity.Patient;
 import com.ryad.hrms.entity.Vct;
 
-@Mapper(componentModel = "spring")
-@DecoratedWith(GeneralMapperDecorator.class)
-public interface DecoratedGeneralMapper {
+@Mapper(componentModel = "spring", uses = HivRiskMapper.class)
+public interface GeneralMapper {
 	
 	HivRiskDTO hivRiskToHivRiskDto(HivRisk hivRisks);
 	
 	List<HivRiskDTO> hivRisksToHivRiskDtos(List<HivRisk> hivRisks);
 	
-	@Mapping(target = "hivRisks", ignore = true)
 	PatientDTO patientToPatientDTO(Patient patient);
 	
 	@Mapping(source = "patient", target = "patientDTO")
 	VctDTO vctToVctDTO(Vct vct);
+	
+	Patient patientDTOToPatient(PatientDTO patientDTO);
+	
+	@Mapping(source = "patientDTO", target = "patient")
+	Vct vctDTOToVct(VctDTO vctDTO);
 }

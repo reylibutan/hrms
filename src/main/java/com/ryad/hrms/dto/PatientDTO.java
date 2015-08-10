@@ -50,7 +50,7 @@ public class PatientDTO {
 	
 	private String contactNumber;
 	
-	private List<String> hivRisks = new ArrayList<String>();
+	private List<Long> hivRisks = new ArrayList<Long>();
 	
 	// ========================================================================
 	// Getters and Setters
@@ -160,11 +160,11 @@ public class PatientDTO {
 		this.contactNumber = contactNumber;
 	}
 
-	public List<String> getHivRisks() {
+	public List<Long> getHivRisks() {
 		return hivRisks;
 	}
 
-	public void setHivRisks(List<String> hivRisks) {
+	public void setHivRisks(List<Long> hivRisks) {
 		this.hivRisks = hivRisks;
 	}
 

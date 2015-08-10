@@ -110,12 +110,8 @@ public class VctController {
 		    return "redirect:/vct/create";
 		} else {
 			vctDTO = vctService.save(vctDTO);
+			return "redirect:/vct/" + vctDTO.getId();
 		}
-		
-		model.addAttribute("vctDTO", vctDTO);
-		model.addAttribute("sexList", Arrays.asList(SexType.values()));
-		model.addAttribute("hivRiskList", vctService.getHivRisks());
-		return this.VIEW_FOLDER + "create";
 	}
 	
 	@RequestMapping("/{id}")
