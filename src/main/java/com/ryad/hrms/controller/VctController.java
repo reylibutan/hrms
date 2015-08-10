@@ -59,7 +59,7 @@ public class VctController {
 		
 	@RequestMapping("/list")
 	public String list(Model model) {
-		int max = 3;
+		int max = 100;
 		List<VctDTO> vctDTOs = new ArrayList<VctDTO>(max);
 		
 		LocalDate localDate = new LocalDate();
