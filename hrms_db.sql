@@ -2,9 +2,29 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.4.4
--- Dumped by pg_dump version 9.4.0
--- Started on 2015-08-05 03:01:34
+-- Dumped from database version 9.3.6
+-- Dumped by pg_dump version 9.3.6
+-- Started on 2015-08-10 15:49:44
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+DROP DATABASE hrms_db;
+--
+-- TOC entry 2015 (class 1262 OID 41084)
+-- Name: hrms_db; Type: DATABASE; Schema: -; Owner: hrms_user
+--
+
+CREATE DATABASE hrms_db WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'English_United States.1252' LC_CTYPE = 'English_United States.1252';
+
+
+ALTER DATABASE hrms_db OWNER TO hrms_user;
+
+\connect hrms_db
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -14,7 +34,7 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 --
--- TOC entry 7 (class 2615 OID 16456)
+-- TOC entry 7 (class 2615 OID 49370)
 -- Name: hrms; Type: SCHEMA; Schema: -; Owner: hrms_user
 --
 
@@ -23,6 +43,42 @@ CREATE SCHEMA hrms;
 
 ALTER SCHEMA hrms OWNER TO hrms_user;
 
+--
+-- TOC entry 6 (class 2615 OID 2200)
+-- Name: public; Type: SCHEMA; Schema: -; Owner: postgres
+--
+
+CREATE SCHEMA public;
+
+
+ALTER SCHEMA public OWNER TO postgres;
+
+--
+-- TOC entry 2016 (class 0 OID 0)
+-- Dependencies: 6
+-- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: postgres
+--
+
+COMMENT ON SCHEMA public IS 'standard public schema';
+
+
+--
+-- TOC entry 183 (class 3079 OID 11750)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2018 (class 0 OID 0)
+-- Dependencies: 183
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
 SET search_path = hrms, pg_catalog;
 
 SET default_tablespace = '';
@@ -30,7 +86,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 179 (class 1259 OID 16499)
+-- TOC entry 171 (class 1259 OID 49371)
 -- Name: hiv_risk; Type: TABLE; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -42,10 +98,10 @@ CREATE TABLE hiv_risk (
 );
 
 
-ALTER TABLE hiv_risk OWNER TO hrms_user;
+ALTER TABLE hrms.hiv_risk OWNER TO hrms_user;
 
 --
--- TOC entry 178 (class 1259 OID 16497)
+-- TOC entry 172 (class 1259 OID 49374)
 -- Name: hiv_risk_id_seq; Type: SEQUENCE; Schema: hrms; Owner: hrms_user
 --
 
@@ -57,11 +113,11 @@ CREATE SEQUENCE hiv_risk_id_seq
     CACHE 1;
 
 
-ALTER TABLE hiv_risk_id_seq OWNER TO hrms_user;
+ALTER TABLE hrms.hiv_risk_id_seq OWNER TO hrms_user;
 
 --
--- TOC entry 2075 (class 0 OID 0)
--- Dependencies: 178
+-- TOC entry 2019 (class 0 OID 0)
+-- Dependencies: 172
 -- Name: hiv_risk_id_seq; Type: SEQUENCE OWNED BY; Schema: hrms; Owner: hrms_user
 --
 
@@ -69,7 +125,7 @@ ALTER SEQUENCE hiv_risk_id_seq OWNED BY hiv_risk.id;
 
 
 --
--- TOC entry 181 (class 1259 OID 24691)
+-- TOC entry 173 (class 1259 OID 49376)
 -- Name: patient; Type: TABLE; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -94,10 +150,10 @@ CREATE TABLE patient (
 );
 
 
-ALTER TABLE patient OWNER TO hrms_user;
+ALTER TABLE hrms.patient OWNER TO hrms_user;
 
 --
--- TOC entry 182 (class 1259 OID 24728)
+-- TOC entry 174 (class 1259 OID 49382)
 -- Name: patient_hiv_risk; Type: TABLE; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -107,10 +163,10 @@ CREATE TABLE patient_hiv_risk (
 );
 
 
-ALTER TABLE patient_hiv_risk OWNER TO hrms_user;
+ALTER TABLE hrms.patient_hiv_risk OWNER TO hrms_user;
 
 --
--- TOC entry 180 (class 1259 OID 24689)
+-- TOC entry 175 (class 1259 OID 49385)
 -- Name: patient_id_seq; Type: SEQUENCE; Schema: hrms; Owner: hrms_user
 --
 
@@ -122,11 +178,11 @@ CREATE SEQUENCE patient_id_seq
     CACHE 1;
 
 
-ALTER TABLE patient_id_seq OWNER TO hrms_user;
+ALTER TABLE hrms.patient_id_seq OWNER TO hrms_user;
 
 --
--- TOC entry 2076 (class 0 OID 0)
--- Dependencies: 180
+-- TOC entry 2020 (class 0 OID 0)
+-- Dependencies: 175
 -- Name: patient_id_seq; Type: SEQUENCE OWNED BY; Schema: hrms; Owner: hrms_user
 --
 
@@ -134,7 +190,7 @@ ALTER SEQUENCE patient_id_seq OWNED BY patient.id;
 
 
 --
--- TOC entry 176 (class 1259 OID 16472)
+-- TOC entry 176 (class 1259 OID 49387)
 -- Name: role; Type: TABLE; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -145,10 +201,10 @@ CREATE TABLE role (
 );
 
 
-ALTER TABLE role OWNER TO hrms_user;
+ALTER TABLE hrms.role OWNER TO hrms_user;
 
 --
--- TOC entry 175 (class 1259 OID 16470)
+-- TOC entry 177 (class 1259 OID 49390)
 -- Name: role_id_seq; Type: SEQUENCE; Schema: hrms; Owner: hrms_user
 --
 
@@ -160,11 +216,11 @@ CREATE SEQUENCE role_id_seq
     CACHE 1;
 
 
-ALTER TABLE role_id_seq OWNER TO hrms_user;
+ALTER TABLE hrms.role_id_seq OWNER TO hrms_user;
 
 --
--- TOC entry 2077 (class 0 OID 0)
--- Dependencies: 175
+-- TOC entry 2021 (class 0 OID 0)
+-- Dependencies: 177
 -- Name: role_id_seq; Type: SEQUENCE OWNED BY; Schema: hrms; Owner: hrms_user
 --
 
@@ -172,7 +228,7 @@ ALTER SEQUENCE role_id_seq OWNED BY role.id;
 
 
 --
--- TOC entry 174 (class 1259 OID 16459)
+-- TOC entry 178 (class 1259 OID 49392)
 -- Name: user; Type: TABLE; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -187,10 +243,10 @@ CREATE TABLE "user" (
 );
 
 
-ALTER TABLE "user" OWNER TO hrms_user;
+ALTER TABLE hrms."user" OWNER TO hrms_user;
 
 --
--- TOC entry 173 (class 1259 OID 16457)
+-- TOC entry 179 (class 1259 OID 49398)
 -- Name: user_id_seq; Type: SEQUENCE; Schema: hrms; Owner: hrms_user
 --
 
@@ -202,11 +258,11 @@ CREATE SEQUENCE user_id_seq
     CACHE 1;
 
 
-ALTER TABLE user_id_seq OWNER TO hrms_user;
+ALTER TABLE hrms.user_id_seq OWNER TO hrms_user;
 
 --
--- TOC entry 2078 (class 0 OID 0)
--- Dependencies: 173
+-- TOC entry 2022 (class 0 OID 0)
+-- Dependencies: 179
 -- Name: user_id_seq; Type: SEQUENCE OWNED BY; Schema: hrms; Owner: hrms_user
 --
 
@@ -214,7 +270,7 @@ ALTER SEQUENCE user_id_seq OWNED BY "user".id;
 
 
 --
--- TOC entry 177 (class 1259 OID 16480)
+-- TOC entry 180 (class 1259 OID 49400)
 -- Name: user_role; Type: TABLE; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -224,10 +280,10 @@ CREATE TABLE user_role (
 );
 
 
-ALTER TABLE user_role OWNER TO hrms_user;
+ALTER TABLE hrms.user_role OWNER TO hrms_user;
 
 --
--- TOC entry 183 (class 1259 OID 24787)
+-- TOC entry 181 (class 1259 OID 49403)
 -- Name: vct; Type: TABLE; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -246,10 +302,10 @@ CREATE TABLE vct (
 );
 
 
-ALTER TABLE vct OWNER TO hrms_user;
+ALTER TABLE hrms.vct OWNER TO hrms_user;
 
 --
--- TOC entry 184 (class 1259 OID 24790)
+-- TOC entry 182 (class 1259 OID 49406)
 -- Name: vct_id_seq; Type: SEQUENCE; Schema: hrms; Owner: hrms_user
 --
 
@@ -261,11 +317,11 @@ CREATE SEQUENCE vct_id_seq
     CACHE 1;
 
 
-ALTER TABLE vct_id_seq OWNER TO hrms_user;
+ALTER TABLE hrms.vct_id_seq OWNER TO hrms_user;
 
 --
--- TOC entry 2079 (class 0 OID 0)
--- Dependencies: 184
+-- TOC entry 2023 (class 0 OID 0)
+-- Dependencies: 182
 -- Name: vct_id_seq; Type: SEQUENCE OWNED BY; Schema: hrms; Owner: hrms_user
 --
 
@@ -273,7 +329,7 @@ ALTER SEQUENCE vct_id_seq OWNED BY vct.id;
 
 
 --
--- TOC entry 1918 (class 2604 OID 16502)
+-- TOC entry 1858 (class 2604 OID 49408)
 -- Name: id; Type: DEFAULT; Schema: hrms; Owner: hrms_user
 --
 
@@ -281,7 +337,7 @@ ALTER TABLE ONLY hiv_risk ALTER COLUMN id SET DEFAULT nextval('hiv_risk_id_seq':
 
 
 --
--- TOC entry 1919 (class 2604 OID 24694)
+-- TOC entry 1859 (class 2604 OID 49409)
 -- Name: id; Type: DEFAULT; Schema: hrms; Owner: hrms_user
 --
 
@@ -289,7 +345,7 @@ ALTER TABLE ONLY patient ALTER COLUMN id SET DEFAULT nextval('patient_id_seq'::r
 
 
 --
--- TOC entry 1917 (class 2604 OID 16475)
+-- TOC entry 1860 (class 2604 OID 49410)
 -- Name: id; Type: DEFAULT; Schema: hrms; Owner: hrms_user
 --
 
@@ -297,7 +353,7 @@ ALTER TABLE ONLY role ALTER COLUMN id SET DEFAULT nextval('role_id_seq'::regclas
 
 
 --
--- TOC entry 1916 (class 2604 OID 16462)
+-- TOC entry 1861 (class 2604 OID 49411)
 -- Name: id; Type: DEFAULT; Schema: hrms; Owner: hrms_user
 --
 
@@ -305,7 +361,7 @@ ALTER TABLE ONLY "user" ALTER COLUMN id SET DEFAULT nextval('user_id_seq'::regcl
 
 
 --
--- TOC entry 1920 (class 2604 OID 24792)
+-- TOC entry 1862 (class 2604 OID 49412)
 -- Name: id; Type: DEFAULT; Schema: hrms; Owner: hrms_user
 --
 
@@ -313,8 +369,8 @@ ALTER TABLE ONLY vct ALTER COLUMN id SET DEFAULT nextval('vct_id_seq'::regclass)
 
 
 --
--- TOC entry 2065 (class 0 OID 16499)
--- Dependencies: 179
+-- TOC entry 1999 (class 0 OID 49371)
+-- Dependencies: 171
 -- Data for Name: hiv_risk; Type: TABLE DATA; Schema: hrms; Owner: hrms_user
 --
 
@@ -334,8 +390,8 @@ INSERT INTO hiv_risk (id, name, parent_id, has_children) VALUES (11, 'Occupation
 
 
 --
--- TOC entry 2080 (class 0 OID 0)
--- Dependencies: 178
+-- TOC entry 2024 (class 0 OID 0)
+-- Dependencies: 172
 -- Name: hiv_risk_id_seq; Type: SEQUENCE SET; Schema: hrms; Owner: hrms_user
 --
 
@@ -343,38 +399,56 @@ SELECT pg_catalog.setval('hiv_risk_id_seq', 13, true);
 
 
 --
--- TOC entry 2067 (class 0 OID 24691)
--- Dependencies: 181
+-- TOC entry 2001 (class 0 OID 49376)
+-- Dependencies: 173
 -- Data for Name: patient; Type: TABLE DATA; Schema: hrms; Owner: hrms_user
 --
 
 INSERT INTO patient (id, first_name, middle_name, last_name, sex, unique_id_code, birthdate, mom_first_name, mom_middle_name, mom_last_name, address, city, contact_number, created_by, updated_by, created_date, updated_date) VALUES (3, 'Rey', 'Patigas', 'Libutan', 'MALE', 'XX-YY-99', '1992-06-27', 'Belle', 'Cerna', 'Patigas', 'Deca Homes Baywalk, Brgy. Dumlog', 'Talisay City', '09432935645', 1, NULL, '2015-08-03 23:06:52.275', NULL);
 INSERT INTO patient (id, first_name, middle_name, last_name, sex, unique_id_code, birthdate, mom_first_name, mom_middle_name, mom_last_name, address, city, contact_number, created_by, updated_by, created_date, updated_date) VALUES (4, 'Rey', 'Patigas', 'Libutan', 'MALE', 'XX-YY-99', '2015-08-26', '', '', '', '', '', '', 1, NULL, '2015-08-04 23:57:35.171', NULL);
 INSERT INTO patient (id, first_name, middle_name, last_name, sex, unique_id_code, birthdate, mom_first_name, mom_middle_name, mom_last_name, address, city, contact_number, created_by, updated_by, created_date, updated_date) VALUES (5, 'Rey', 'Patigas', 'Libutan', 'MALE', 'XX-YY-99', '1992-06-27', '', '', '', '', '', '', 1, NULL, '2015-08-04 23:59:30.411', NULL);
+INSERT INTO patient (id, first_name, middle_name, last_name, sex, unique_id_code, birthdate, mom_first_name, mom_middle_name, mom_last_name, address, city, contact_number, created_by, updated_by, created_date, updated_date) VALUES (7, 'Jin', '', 'Kazama', 'MALE', 'JJ-KK-99', '1982-08-10', 'Jun', '', 'Kazama', 'Mishima Corporation, Japan', 'Tokyo', '09992748562', 1, NULL, '2015-08-10 15:31:46.099', NULL);
+INSERT INTO patient (id, first_name, middle_name, last_name, sex, unique_id_code, birthdate, mom_first_name, mom_middle_name, mom_last_name, address, city, contact_number, created_by, updated_by, created_date, updated_date) VALUES (8, 'Lee', '', 'Chaolan', 'MALE', 'LL-CC-99', '1929-09-02', 'Alisa', '', 'Boskonovitch', 'Mishima Corporation, Japan', 'Tokyo', '09991823467', 1, NULL, '2015-08-10 15:44:37.132', NULL);
+INSERT INTO patient (id, first_name, middle_name, last_name, sex, unique_id_code, birthdate, mom_first_name, mom_middle_name, mom_last_name, address, city, contact_number, created_by, updated_by, created_date, updated_date) VALUES (9, 'Feng', '', 'Wei', 'MALE', 'FF-WW-99', '1900-08-10', '', '', '', 'Shaolin Temple, Japan', 'Tokyo', '09991029572', 1, NULL, '2015-08-10 15:46:56.964', NULL);
 
 
 --
--- TOC entry 2068 (class 0 OID 24728)
--- Dependencies: 182
+-- TOC entry 2002 (class 0 OID 49382)
+-- Dependencies: 174
 -- Data for Name: patient_hiv_risk; Type: TABLE DATA; Schema: hrms; Owner: hrms_user
 --
 
 INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (3, 1);
 INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (3, 2);
 INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (3, 11);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (7, 2);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (7, 4);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (7, 6);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (7, 8);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (7, 10);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (7, 11);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (7, 13);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (8, 1);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (8, 3);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (8, 11);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (8, 13);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (9, 1);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (9, 2);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (9, 3);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (9, 4);
 
 
 --
--- TOC entry 2081 (class 0 OID 0)
--- Dependencies: 180
+-- TOC entry 2025 (class 0 OID 0)
+-- Dependencies: 175
 -- Name: patient_id_seq; Type: SEQUENCE SET; Schema: hrms; Owner: hrms_user
 --
 
-SELECT pg_catalog.setval('patient_id_seq', 5, true);
+SELECT pg_catalog.setval('patient_id_seq', 9, true);
 
 
 --
--- TOC entry 2062 (class 0 OID 16472)
+-- TOC entry 2004 (class 0 OID 49387)
 -- Dependencies: 176
 -- Data for Name: role; Type: TABLE DATA; Schema: hrms; Owner: hrms_user
 --
@@ -384,8 +458,8 @@ INSERT INTO role (id, code, name) VALUES (2, 'ROLE_USER', 'User');
 
 
 --
--- TOC entry 2082 (class 0 OID 0)
--- Dependencies: 175
+-- TOC entry 2026 (class 0 OID 0)
+-- Dependencies: 177
 -- Name: role_id_seq; Type: SEQUENCE SET; Schema: hrms; Owner: hrms_user
 --
 
@@ -393,8 +467,8 @@ SELECT pg_catalog.setval('role_id_seq', 2, true);
 
 
 --
--- TOC entry 2060 (class 0 OID 16459)
--- Dependencies: 174
+-- TOC entry 2006 (class 0 OID 49392)
+-- Dependencies: 178
 -- Data for Name: user; Type: TABLE DATA; Schema: hrms; Owner: hrms_user
 --
 
@@ -402,8 +476,8 @@ INSERT INTO "user" (id, first_name, middle_name, last_name, email, password, use
 
 
 --
--- TOC entry 2083 (class 0 OID 0)
--- Dependencies: 173
+-- TOC entry 2027 (class 0 OID 0)
+-- Dependencies: 179
 -- Name: user_id_seq; Type: SEQUENCE SET; Schema: hrms; Owner: hrms_user
 --
 
@@ -411,8 +485,8 @@ SELECT pg_catalog.setval('user_id_seq', 1, true);
 
 
 --
--- TOC entry 2063 (class 0 OID 16480)
--- Dependencies: 177
+-- TOC entry 2008 (class 0 OID 49400)
+-- Dependencies: 180
 -- Data for Name: user_role; Type: TABLE DATA; Schema: hrms; Owner: hrms_user
 --
 
@@ -421,25 +495,28 @@ INSERT INTO user_role (user_id, role_id) VALUES (1, 2);
 
 
 --
--- TOC entry 2069 (class 0 OID 24787)
--- Dependencies: 183
+-- TOC entry 2009 (class 0 OID 49403)
+-- Dependencies: 181
 -- Data for Name: vct; Type: TABLE DATA; Schema: hrms; Owner: hrms_user
 --
 
 INSERT INTO vct (id, patient_id, vct_date, is_hiv_tested, is_hiv_positive, reason_for_not_testing, provided_counseling_and_result, created_by, updated_by, created_date, updated_date) VALUES (1, 3, '2017-11-28', 0, 1, 'Because I am afraid', 1, 1, NULL, '2015-08-05 01:46:34.842', NULL);
+INSERT INTO vct (id, patient_id, vct_date, is_hiv_tested, is_hiv_positive, reason_for_not_testing, provided_counseling_and_result, created_by, updated_by, created_date, updated_date) VALUES (2, 7, '2015-08-08', 1, 0, '', 0, 1, NULL, '2015-08-10 15:31:46.099', NULL);
+INSERT INTO vct (id, patient_id, vct_date, is_hiv_tested, is_hiv_positive, reason_for_not_testing, provided_counseling_and_result, created_by, updated_by, created_date, updated_date) VALUES (3, 8, '2015-08-01', 0, 1, 'I''m awesome', 0, 1, NULL, '2015-08-10 15:44:37.132', NULL);
+INSERT INTO vct (id, patient_id, vct_date, is_hiv_tested, is_hiv_positive, reason_for_not_testing, provided_counseling_and_result, created_by, updated_by, created_date, updated_date) VALUES (4, 9, '2015-08-08', 1, 1, '', 1, 1, NULL, '2015-08-10 15:46:56.964', NULL);
 
 
 --
--- TOC entry 2084 (class 0 OID 0)
--- Dependencies: 184
+-- TOC entry 2028 (class 0 OID 0)
+-- Dependencies: 182
 -- Name: vct_id_seq; Type: SEQUENCE SET; Schema: hrms; Owner: hrms_user
 --
 
-SELECT pg_catalog.setval('vct_id_seq', 1, false);
+SELECT pg_catalog.setval('vct_id_seq', 4, true);
 
 
 --
--- TOC entry 1934 (class 2606 OID 16504)
+-- TOC entry 1864 (class 2606 OID 49414)
 -- Name: hiv_risk_id_pkey; Type: CONSTRAINT; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -448,7 +525,7 @@ ALTER TABLE ONLY hiv_risk
 
 
 --
--- TOC entry 1938 (class 2606 OID 24732)
+-- TOC entry 1868 (class 2606 OID 49416)
 -- Name: patient_hiv_risk_pkey; Type: CONSTRAINT; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -457,7 +534,7 @@ ALTER TABLE ONLY patient_hiv_risk
 
 
 --
--- TOC entry 1936 (class 2606 OID 24699)
+-- TOC entry 1866 (class 2606 OID 49418)
 -- Name: patient_id_pkey; Type: CONSTRAINT; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -466,7 +543,7 @@ ALTER TABLE ONLY patient
 
 
 --
--- TOC entry 1928 (class 2606 OID 16479)
+-- TOC entry 1870 (class 2606 OID 49420)
 -- Name: role_code_key; Type: CONSTRAINT; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -475,7 +552,7 @@ ALTER TABLE ONLY role
 
 
 --
--- TOC entry 1930 (class 2606 OID 16477)
+-- TOC entry 1872 (class 2606 OID 49422)
 -- Name: role_id_pkey; Type: CONSTRAINT; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -484,7 +561,7 @@ ALTER TABLE ONLY role
 
 
 --
--- TOC entry 1922 (class 2606 OID 16469)
+-- TOC entry 1874 (class 2606 OID 49424)
 -- Name: user_email_key; Type: CONSTRAINT; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -493,7 +570,7 @@ ALTER TABLE ONLY "user"
 
 
 --
--- TOC entry 1924 (class 2606 OID 16467)
+-- TOC entry 1876 (class 2606 OID 49426)
 -- Name: user_id_pkey; Type: CONSTRAINT; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -502,7 +579,7 @@ ALTER TABLE ONLY "user"
 
 
 --
--- TOC entry 1932 (class 2606 OID 16484)
+-- TOC entry 1880 (class 2606 OID 49428)
 -- Name: user_role_ids_pkey; Type: CONSTRAINT; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -511,7 +588,7 @@ ALTER TABLE ONLY user_role
 
 
 --
--- TOC entry 1926 (class 2606 OID 16496)
+-- TOC entry 1878 (class 2606 OID 49430)
 -- Name: user_username_key; Type: CONSTRAINT; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -520,7 +597,7 @@ ALTER TABLE ONLY "user"
 
 
 --
--- TOC entry 1940 (class 2606 OID 24794)
+-- TOC entry 1882 (class 2606 OID 49432)
 -- Name: vct_id_pkey; Type: CONSTRAINT; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -529,7 +606,7 @@ ALTER TABLE ONLY vct
 
 
 --
--- TOC entry 1943 (class 2606 OID 24700)
+-- TOC entry 1883 (class 2606 OID 49433)
 -- Name: patient_created_by_fkey; Type: FK CONSTRAINT; Schema: hrms; Owner: hrms_user
 --
 
@@ -538,7 +615,7 @@ ALTER TABLE ONLY patient
 
 
 --
--- TOC entry 1946 (class 2606 OID 24738)
+-- TOC entry 1885 (class 2606 OID 49438)
 -- Name: patient_hiv_risk_hiv_risk_id_fkey; Type: FK CONSTRAINT; Schema: hrms; Owner: hrms_user
 --
 
@@ -547,7 +624,7 @@ ALTER TABLE ONLY patient_hiv_risk
 
 
 --
--- TOC entry 1945 (class 2606 OID 24733)
+-- TOC entry 1886 (class 2606 OID 49443)
 -- Name: patient_hiv_risk_patient_id_fkey; Type: FK CONSTRAINT; Schema: hrms; Owner: hrms_user
 --
 
@@ -556,7 +633,7 @@ ALTER TABLE ONLY patient_hiv_risk
 
 
 --
--- TOC entry 1944 (class 2606 OID 24705)
+-- TOC entry 1884 (class 2606 OID 49448)
 -- Name: patient_updated_by_fkey; Type: FK CONSTRAINT; Schema: hrms; Owner: hrms_user
 --
 
@@ -565,7 +642,7 @@ ALTER TABLE ONLY patient
 
 
 --
--- TOC entry 1942 (class 2606 OID 16490)
+-- TOC entry 1887 (class 2606 OID 49453)
 -- Name: user_role_role_id_fkey; Type: FK CONSTRAINT; Schema: hrms; Owner: hrms_user
 --
 
@@ -574,7 +651,7 @@ ALTER TABLE ONLY user_role
 
 
 --
--- TOC entry 1941 (class 2606 OID 16485)
+-- TOC entry 1888 (class 2606 OID 49458)
 -- Name: user_role_user_id_fkey; Type: FK CONSTRAINT; Schema: hrms; Owner: hrms_user
 --
 
@@ -583,7 +660,7 @@ ALTER TABLE ONLY user_role
 
 
 --
--- TOC entry 1947 (class 2606 OID 24795)
+-- TOC entry 1889 (class 2606 OID 49463)
 -- Name: vct_created_by_fkey; Type: FK CONSTRAINT; Schema: hrms; Owner: hrms_user
 --
 
@@ -592,7 +669,7 @@ ALTER TABLE ONLY vct
 
 
 --
--- TOC entry 1948 (class 2606 OID 24800)
+-- TOC entry 1890 (class 2606 OID 49468)
 -- Name: vct_patient_id_fkey; Type: FK CONSTRAINT; Schema: hrms; Owner: hrms_user
 --
 
@@ -601,7 +678,7 @@ ALTER TABLE ONLY vct
 
 
 --
--- TOC entry 1949 (class 2606 OID 24805)
+-- TOC entry 1891 (class 2606 OID 49473)
 -- Name: vct_updated_by_fkey; Type: FK CONSTRAINT; Schema: hrms; Owner: hrms_user
 --
 
@@ -609,7 +686,19 @@ ALTER TABLE ONLY vct
     ADD CONSTRAINT vct_updated_by_fkey FOREIGN KEY (updated_by) REFERENCES "user"(id);
 
 
--- Completed on 2015-08-05 03:01:34
+--
+-- TOC entry 2017 (class 0 OID 0)
+-- Dependencies: 6
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2015-08-10 15:49:45
 
 --
 -- PostgreSQL database dump complete

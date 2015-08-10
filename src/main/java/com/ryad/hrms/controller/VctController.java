@@ -137,12 +137,6 @@ public class VctController {
 	public String edit(@PathVariable Long id, Model model) {
 		VctDTO vctDTO = vctService.findById(id);
 		
-		// ====================================================================
-		// ====================================================================
-		// @TODO: implement this
-		// ====================================================================
-		// ====================================================================
-		
 		model.addAttribute("vctDTO", vctDTO);
 		model.addAttribute("action", this.ACTION_EDIT);
 		model.addAttribute("sexList", Arrays.asList(SexType.values()));
