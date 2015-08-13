@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:ddl="http://www.thymeleaf.org/dandelion"
+      xmlns:dt="http://www.thymeleaf.org/dandelion/datatables">
+<head lang="en"></head>
+<body>
+    <table id="vctList" dt:table="true" dt:url="@{/vct/search}" dt:serverside="true">
+		<thead>
+           <tr>
+				<th dt:property="patientDTO.firstName">First name</th>
+				<th dt:property="patientDTO.lastName">Middle name</th>
+			</tr>
+		</thead>
+	</table>
+</body>
+</html>

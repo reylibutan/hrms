@@ -23,12 +23,4 @@ public class LoginController {
 	public String login() {
 		return "login";
 	}
-	
-	@RequestMapping("/test")
-	@ResponseBody
-	public User test() {
-		User user = userRepo.findByEmail("gregory.house@hrms.com");
-		user.getRoles();
-		return user;
-	}
 }

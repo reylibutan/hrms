@@ -44,6 +44,15 @@ public class VctServiceImpl implements VctService {
 	@Autowired
 	private PatientRepository patientRepo;
 	
+	/*@Override
+	public DataSet<VctDTO> findVctWithDatatablesCriteria(DatatablesCriterias criteria) {
+		List<Vct> vcts = vctRepo.findVctWithDatatablesCriteria(criteria);
+		Long count = vctRepo.count();
+		Long countFiltered = vctRepo.getFilteredCount(criteria);
+
+		return new DataSet<VctDTO>(generalMapper.vctsToVctDTOs(vcts), count, countFiltered);
+	}*/
+
 	@Override
 	public VctDTO findById(Long id) {
 		VctDTO vctDTO = null;

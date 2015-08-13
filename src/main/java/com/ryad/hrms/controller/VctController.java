@@ -21,18 +21,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.ryad.hrms.annotation.Layout;
 import com.ryad.hrms.dto.PatientDTO;
 import com.ryad.hrms.dto.VctDTO;
 import com.ryad.hrms.enums.SexType;
-import com.ryad.hrms.repository.PatientRepository;
 import com.ryad.hrms.repository.VctRepository;
 import com.ryad.hrms.service.VctService;
 import com.thedeanda.lorem.Lorem;
 
 @Controller
 @RequestMapping("/vct")
-@Layout("layouts/default")
+//@Layout("layouts/default")
 public class VctController {
 	
 	private final String VIEW_FOLDER = "vct/";
@@ -45,9 +43,6 @@ public class VctController {
 	
 	@Autowired
 	private VctService vctService;
-	
-	@Autowired
-	private PatientRepository patientRepo;
 	
 	@Autowired
 	private VctRepository vctRepo;
@@ -70,9 +65,6 @@ public class VctController {
 			vctDTO = new VctDTO();
 			vctDTO.setFullName(i % 3 < 2 ? Lorem.getNameMale() : Lorem.getNameMale());
 			vctDTO.setCodeName((i % 3 < 2 ? Lorem.getFirstNameMale() : Lorem.getFirstNameFemale()).toUpperCase());
-			/*vctRec.setUniqueIdCode("" + getRandomChar() + getRandomChar() + "-" + getRandomChar() + getRandomChar() + "-" + String.format("%02d", (i % 100)));
-			vctRec.setBirthdate(localDate.plusDays(i).minusYears(20).toDate());
-			vctRec.setSex(i % 3 < 2 ? "Male" : "Female");*/
 			
 			PatientDTO patientDTO = new PatientDTO();
 			patientDTO.setUniqueIdCode("" + getRandomChar() + getRandomChar() + "-" + getRandomChar() + getRandomChar() + "-" + String.format("%02d", (i % 100)));
@@ -86,29 +78,6 @@ public class VctController {
 		model.addAttribute("vctDTOs", vctDTOs);
 		
 		return VIEW_FOLDER + "list";
-	}
-	
-	@RequestMapping("/{id}")
-	public String viewOrEdit(@PathVariable Long id, @RequestParam(required = false) String mode, Model model) {
-		VctDTO vctDTO = vctService.findById(id);
-		
-		if(vctDTO == null) {
-			// ================================================================
-			// @TODO: display a message or something using flash attributes
-			// ================================================================
-			return "redirect:/" + VIEW_FOLDER;
-		} else {
-			String action = ACTION_VIEW; // default
-			if(ACTION_EDIT.equals(mode)) {
-				action = ACTION_EDIT;
-			}
-			
-			model.addAttribute("vctDTO", vctDTO);
-			model.addAttribute("action", action);
-			model.addAttribute("sexList", Arrays.asList(SexType.values()));
-			model.addAttribute("hivRiskList", vctService.getHivRisks());
-			return VIEW_FOLDER + "create";
-		}
 	}
 	
 	@RequestMapping("/")
@@ -133,6 +102,63 @@ public class VctController {
 		} else {
 			vctDTO = vctService.save(vctDTO);
 			return "redirect:/" + VIEW_FOLDER + vctDTO.getId();
+		}
+	}
+	
+	/*@RequestMapping(value = "/search")
+	@ResponseBody
+	public DatatablesResponse<VctDTO> search(@DatatablesParams DatatablesCriterias criteria) {
+		DataSet<VctDTO> dataSet = vctService.findVctWithDatatablesCriteria(criteria);
+		return DatatablesResponse.build(dataSet, criteria);
+	}*/
+	
+	@RequestMapping(value = "/searchTest")
+	public String searchTest(Model model) {
+		int max = 100;
+		List<VctDTO> vctDTOs = new ArrayList<VctDTO>(max);
+		
+		LocalDate localDate = new LocalDate();
+		//DateTimeFormatter dateDisplayFormat = DateTimeFormat.forPattern("MMM dd, yyyy");
+		
+		VctDTO vctDTO;
+		for(int i = 0 ; i < max; i++) {
+			vctDTO = new VctDTO();
+			vctDTO.setFullName(i % 3 < 2 ? Lorem.getNameMale() : Lorem.getNameMale());
+			vctDTO.setCodeName((i % 3 < 2 ? Lorem.getFirstNameMale() : Lorem.getFirstNameFemale()).toUpperCase());
+			
+			PatientDTO patientDTO = new PatientDTO();
+			patientDTO.setUniqueIdCode("" + getRandomChar() + getRandomChar() + "-" + getRandomChar() + getRandomChar() + "-" + String.format("%02d", (i % 100)));
+			patientDTO.setBirthdate(localDate.plusDays(i).minusYears(20).toDate());
+			patientDTO.setSex(i % 3 < 2 ? "Male" : "Female");
+			vctDTO.setPatientDTO(patientDTO);
+			
+			vctDTOs.add(vctDTO);
+		}
+		
+		model.addAttribute("vctDTOs", vctDTOs);
+		
+		return "vct/test";
+	}
+	@RequestMapping("/{id}")
+	public String viewOrEdit(@PathVariable Long id, @RequestParam(required = false) String mode, Model model) {
+		VctDTO vctDTO = vctService.findById(id);
+		
+		if(vctDTO == null) {
+			// ================================================================
+			// @TODO: display a message or something using flash attributes
+			// ================================================================
+			return "redirect:/" + VIEW_FOLDER;
+		} else {
+			String action = ACTION_VIEW; // default
+			if(ACTION_EDIT.equals(mode)) {
+				action = ACTION_EDIT;
+			}
+			
+			model.addAttribute("vctDTO", vctDTO);
+			model.addAttribute("action", action);
+			model.addAttribute("sexList", Arrays.asList(SexType.values()));
+			model.addAttribute("hivRiskList", vctService.getHivRisks());
+			return VIEW_FOLDER + "create";
 		}
 	}
 	

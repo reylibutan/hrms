@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.ryad.hrms.entity.Vct;
 
 @Repository
-public interface VctRepository extends JpaRepository<Vct, Long> {
+public interface VctRepository extends JpaRepository<Vct, Long>, VctRepositoryCustom {
 	
 }

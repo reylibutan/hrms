@@ -7,6 +7,8 @@ import com.ryad.hrms.dto.VctDTO;
 
 public interface VctService {
 	
+	/*public DataSet<VctDTO> findVctWithDatatablesCriteria(DatatablesCriterias criteria);*/
+	
 	public VctDTO findById(Long id);
 	
 	public VctDTO save(VctDTO vctDTO);

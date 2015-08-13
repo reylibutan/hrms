@@ -13,7 +13,7 @@ public class CommonViewDataInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 		User activeUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		if (activeUser != null) {
+		if (activeUser != null && modelAndView != null) {
 			modelAndView.addObject("activeUser", activeUser);
 		}
 	}

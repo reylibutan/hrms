@@ -42,21 +42,21 @@
 		</dependency>
 		<!-- Added to make a deployable WAR file -->
 		<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-        	<groupId>org.springframework.boot</groupId>
-        	<artifactId>spring-boot-starter-logging</artifactId>
-        </dependency>
-        <dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-data-jpa</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-data-rest</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-logging</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-rest</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
@@ -69,21 +69,32 @@
 		</dependency>
 		<!-- MapStruct: for DTO <-> Entity conversion -->
 		<dependency>
-	        <groupId>org.mapstruct</groupId>
-	        <artifactId>mapstruct</artifactId>
-	        <version>${org.mapstruct.version}</version>
-	    </dependency>
-	    <dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${org.mapstruct.version}</version>
+		</dependency>
+		<!-- Dandelion-DataTables -->
+		<dependency>
+			<groupId>com.github.dandelion</groupId>
+			<artifactId>datatables-thymeleaf</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.dandelion</groupId>
+			<artifactId>datatables-spring3</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 		</dependency>
 		<dependency>
-		    <groupId>com.thedeanda</groupId>
-		    <artifactId>lorem</artifactId>
-		    <version>1.2</version>
+			<groupId>com.thedeanda</groupId>
+			<artifactId>lorem</artifactId>
+			<version>1.2</version>
 		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<plugins>
 			<plugin>
@@ -92,42 +103,44 @@
 			</plugin>
 			<!-- MapStruct: for DTO <-> Entity conversion -->
 			<plugin>
-	            <groupId>org.bsc.maven</groupId>
-	            <artifactId>maven-processor-plugin</artifactId>
-	            <version>2.2.3</version>
-	            <configuration>
-	                <defaultOutputDirectory>
-	                    ${project.build.directory}/generated-sources
-	                </defaultOutputDirectory>
-	                <processors>
-	                    <processor>org.mapstruct.ap.MappingProcessor</processor>
-	                </processors>
-	                <options>
-			            <mapstruct.unmappedTargetPolicy>IGNORE</mapstruct.unmappedTargetPolicy>
-			        </options>
-	            </configuration>
-	            <executions>
-	                <execution>
-	                    <id>process</id>
-	                    <phase>generate-sources</phase>
-	                    <goals>
-	                        <goal>process</goal>
-	                    </goals>
-	                </execution>
-	            </executions>
-	            <dependencies>
-	                <dependency>
-	                    <groupId>org.mapstruct</groupId>
-	                    <artifactId>mapstruct-processor</artifactId>
-	                    <version>${org.mapstruct.version}</version>
-	                </dependency>
-	            </dependencies>
-	        </plugin>
+				<groupId>org.bsc.maven</groupId>
+				<artifactId>maven-processor-plugin</artifactId>
+				<version>2.2.3</version>
+				<configuration>
+					<defaultOutputDirectory>
+						${project.build.directory}/generated-sources
+					</defaultOutputDirectory>
+					<processors>
+						<processor>org.mapstruct.ap.MappingProcessor</processor>
+					</processors>
+					<options>
+						<mapstruct.unmappedTargetPolicy>IGNORE</mapstruct.unmappedTargetPolicy>
+					</options>
+				</configuration>
+				<executions>
+					<execution>
+						<id>process</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>process</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.mapstruct</groupId>
+						<artifactId>mapstruct-processor</artifactId>
+						<version>${org.mapstruct.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
 		</plugins>
 		<pluginManagement>
 			<plugins>
-				<!-- Added to suppress errors after adding MapStruct plugin saying "Plugin execution not covered by lifecycle configuration" -->
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<!-- Added to suppress errors after adding MapStruct plugin saying "Plugin 
+					execution not covered by lifecycle configuration" -->
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>

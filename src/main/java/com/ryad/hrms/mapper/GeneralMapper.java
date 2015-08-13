@@ -28,4 +28,6 @@ public interface GeneralMapper {
 	
 	@Mapping(source = "patientDTO", target = "patient")
 	Vct vctDTOToVct(VctDTO vctDTO);
+	
+	List<VctDTO> vctsToVctDTOs(List<Vct> vcts);
 }
