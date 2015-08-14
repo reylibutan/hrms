@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.joda.time.LocalDate;
@@ -19,8 +20,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.ryad.hrms.annotation.Layout;
+import com.ryad.hrms.dto.DTCriteria;
+import com.ryad.hrms.dto.DTDataSet;
+import com.ryad.hrms.dto.DTResponse;
 import com.ryad.hrms.dto.PatientDTO;
 import com.ryad.hrms.dto.VctDTO;
 import com.ryad.hrms.enums.SexType;
@@ -30,7 +36,7 @@ import com.thedeanda.lorem.Lorem;
 
 @Controller
 @RequestMapping("/vct")
-//@Layout("layouts/default")
+@Layout("layouts/default")
 public class VctController {
 	
 	private final String VIEW_FOLDER = "vct/";
@@ -51,7 +57,7 @@ public class VctController {
 	protected void initBinder(WebDataBinder binder) {
 		binder.setValidator(validator);
 	}
-		
+	
 	@RequestMapping("/list")
 	public String list(Model model) {
 		int max = 100;
@@ -105,39 +111,16 @@ public class VctController {
 		}
 	}
 	
-	/*@RequestMapping(value = "/search")
+	@RequestMapping(value = "/search")
 	@ResponseBody
-	public DatatablesResponse<VctDTO> search(@DatatablesParams DatatablesCriterias criteria) {
-		DataSet<VctDTO> dataSet = vctService.findVctWithDatatablesCriteria(criteria);
-		return DatatablesResponse.build(dataSet, criteria);
-	}*/
-	
-	@RequestMapping(value = "/searchTest")
-	public String searchTest(Model model) {
-		int max = 100;
-		List<VctDTO> vctDTOs = new ArrayList<VctDTO>(max);
+	public DTResponse<VctDTO> search(HttpServletRequest request) {
+		String[] customFilterNames = {"codeName", "sacclCode", "firstName", "lastName"};
+		DTCriteria criteria = DTCriteria.getFromRequest(request);
+		DTCriteria.extractCustomFilters(criteria, request, customFilterNames);
 		
-		LocalDate localDate = new LocalDate();
-		//DateTimeFormatter dateDisplayFormat = DateTimeFormat.forPattern("MMM dd, yyyy");
+		DTDataSet<VctDTO> dataSet = vctService.findVctWithDatatablesCriteria(criteria);
 		
-		VctDTO vctDTO;
-		for(int i = 0 ; i < max; i++) {
-			vctDTO = new VctDTO();
-			vctDTO.setFullName(i % 3 < 2 ? Lorem.getNameMale() : Lorem.getNameMale());
-			vctDTO.setCodeName((i % 3 < 2 ? Lorem.getFirstNameMale() : Lorem.getFirstNameFemale()).toUpperCase());
-			
-			PatientDTO patientDTO = new PatientDTO();
-			patientDTO.setUniqueIdCode("" + getRandomChar() + getRandomChar() + "-" + getRandomChar() + getRandomChar() + "-" + String.format("%02d", (i % 100)));
-			patientDTO.setBirthdate(localDate.plusDays(i).minusYears(20).toDate());
-			patientDTO.setSex(i % 3 < 2 ? "Male" : "Female");
-			vctDTO.setPatientDTO(patientDTO);
-			
-			vctDTOs.add(vctDTO);
-		}
-		
-		model.addAttribute("vctDTOs", vctDTOs);
-		
-		return "vct/test";
+		return DTResponse.build(dataSet, criteria);
 	}
 	@RequestMapping("/{id}")
 	public String viewOrEdit(@PathVariable Long id, @RequestParam(required = false) String mode, Model model) {

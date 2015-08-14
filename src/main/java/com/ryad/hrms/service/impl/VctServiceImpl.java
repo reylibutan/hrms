@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import com.ryad.hrms.dto.DTCriteria;
+import com.ryad.hrms.dto.DTDataSet;
 import com.ryad.hrms.dto.HivRiskDTO;
 import com.ryad.hrms.dto.VctDTO;
 import com.ryad.hrms.entity.HivRisk;
@@ -44,14 +46,14 @@ public class VctServiceImpl implements VctService {
 	@Autowired
 	private PatientRepository patientRepo;
 	
-	/*@Override
-	public DataSet<VctDTO> findVctWithDatatablesCriteria(DatatablesCriterias criteria) {
+	@Override
+	public DTDataSet<VctDTO> findVctWithDatatablesCriteria(DTCriteria criteria) {
 		List<Vct> vcts = vctRepo.findVctWithDatatablesCriteria(criteria);
 		Long count = vctRepo.count();
 		Long countFiltered = vctRepo.getFilteredCount(criteria);
 
-		return new DataSet<VctDTO>(generalMapper.vctsToVctDTOs(vcts), count, countFiltered);
-	}*/
+		return new DTDataSet<VctDTO>(generalMapper.vctsToVctDTOs(vcts), count, countFiltered);
+	}
 
 	@Override
 	public VctDTO findById(Long id) {

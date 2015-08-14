@@ -1,28 +1,32 @@
 package com.ryad.hrms.utility;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class DatatablesUtils {
+import com.ryad.hrms.dto.DTColumnDef;
+import com.ryad.hrms.dto.DTCriteria;
+
+public class DTUtil {
 
 	/**
 	 * 
 	 * @param select
-	 * @param criterias
+	 * @param criteria
 	 * @return
-	 *//*
-	public static StringBuilder getFilterQuery(DatatablesCriterias criterias){
+	 */
+	public static StringBuilder getFilterQuery(DTCriteria criteria) {
 		StringBuilder queryBuilder = new StringBuilder();
 		List<String> paramList = new ArrayList<String>();
 		
-		*//**
-		 * Step 1.1: global filtering
-		 *//*
-		if (StringUtils.isNotBlank(criterias.getSearch()) && criterias.hasOneSearchableColumn()) {
+		// Step 1.1: global filtering
+		if (DTStringUtil.isNotBlank(criteria.getSearch()) && criteria.hasOneSearchableColumn()) {
 			queryBuilder.append(" WHERE ");
 
-			for (ColumnDef columnDef : criterias.getColumnDefs()) {
-				if (columnDef.isSearchable() && StringUtils.isBlank(columnDef.getSearch())) {
+			for (DTColumnDef columnDef : criteria.getColumnDefs()) {
+				if (columnDef.isSearchable() && DTStringUtil.isBlank(columnDef.getSearch())) {
 					paramList.add(" LOWER(p." + columnDef.getName()
-							+ ") LIKE '%?%'".replace("?", criterias.getSearch().toLowerCase()));
+							+ ") LIKE '%?%'".replace("?", criteria.getSearch().toLowerCase()));
 				}
 			}
 
@@ -35,10 +39,8 @@ public class DatatablesUtils {
 			}
 		}
 
-		*//**
-		 * Step 1.2: individual column filtering
-		 *//*
-		if (criterias.hasOneSearchableColumn() && criterias.hasOneFilteredColumn()) {
+		// Step 1.2: individual column filtering
+		if (criteria.hasOneSearchableColumn() && criteria.hasOneFilteredColumn()) {
 			paramList = new ArrayList<String>();
 			
 			if(!queryBuilder.toString().contains("WHERE")){
@@ -48,9 +50,9 @@ public class DatatablesUtils {
 				queryBuilder.append(" AND ");
 			}
 
-			for (ColumnDef columnDef : criterias.getColumnDefs()) {
+			for (DTColumnDef columnDef : criteria.getColumnDefs()) {
 				if (columnDef.isSearchable()){
-					if (StringUtils.isNotBlank(columnDef.getSearchFrom())) {
+					if (DTStringUtil.isNotBlank(columnDef.getSearchFrom())) {
 						if (columnDef.getName().equalsIgnoreCase("birthDate")) {
 							paramList.add("p." + columnDef.getName() + " >= '" + columnDef.getSearchFrom() + "'");
 						}
@@ -59,7 +61,7 @@ public class DatatablesUtils {
 						}
 					}
 
-					if (StringUtils.isNotBlank(columnDef.getSearchTo())) {
+					if (DTStringUtil.isNotBlank(columnDef.getSearchTo())) {
 						if (columnDef.getName().equalsIgnoreCase("birthDate")) {
 							paramList.add("p." + columnDef.getName() + " < '" + columnDef.getSearchTo() + "'");
 						}
@@ -68,7 +70,7 @@ public class DatatablesUtils {
 						}
 					}
 					
-					if(StringUtils.isNotBlank(columnDef.getSearch())) {
+					if(DTStringUtil.isNotBlank(columnDef.getSearch())) {
 						paramList.add(" LOWER(p." + columnDef.getName()
 								+ ") LIKE '%?%'".replace("?", columnDef.getSearch().toLowerCase()));
 					}
@@ -85,5 +87,5 @@ public class DatatablesUtils {
 		}
 		
 		return queryBuilder;
-	}*/
+	}
 }

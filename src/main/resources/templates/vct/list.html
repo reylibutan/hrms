@@ -45,33 +45,34 @@
 				</div>
 				<div class="card-body noBottomPadding">
 					<form class="form" autocomplete="off">
+						<input type="hidden" id="contextPath" th:value="@{/}" />
 						<div class="row">
 							<div class="col-md-2">
 								<div class="form-group">
-									<input type="text" class="form-control input-sm"/>
+									<input id="codeName" type="text" class="form-control input-sm"/>
 									<label for="codeName">Code name</label>
 								</div>
 							</div>
 							<div class="col-md-2">
 								<div class="form-group">
-									<input type="text" class="form-control input-sm"/>
+									<input id="sacclCode" type="text" class="form-control input-sm"/>
 									<label for="sacclCode">SACCL code</label>
 								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="form-group">
-									<input type="text" class="form-control input-sm"/>
+									<input id="firstName" type="text" class="form-control input-sm"/>
 									<label for="firstName">First name</label>
 								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="form-group">
-									<input type="text" class="form-control input-sm"/>
+									<input id="lastName" type="text" class="form-control input-sm"/>
 									<label for="lastName">Last name</label>
 								</div>
 							</div>
 							<div id="searchBtnDiv" class="col-md-2">
-								<button type="button" class="normalBtn widerBtn btn ink-reaction btn-raised btn-default-bright normalizeButton">
+								<button id="searchBtn" type="button" class="normalBtn widerBtn btn ink-reaction btn-raised btn-default-bright btn-loading-state normalizeButton" data-loading-text="&lt;i class='fa fa-spinner fa-spin'&gt;&lt;/i&gt;  Loading...">
 									<i class="fa fa-search"></i>
 									<span class="btnLblWithIcon">Search</span>
 								</button>
@@ -88,7 +89,7 @@
 					<!-- BEGIN DATATABLE 1 -->
 					<div class="row">
 						<div class="col-lg-12">
-							<a th:href="@{/vct/}" href="#" id="addVctBtn" type="button" class="btn ink-reaction btn-floating-action btn-primary" data-toggle="tooltip" data-placement="top" data-original-title="Create VCT record">
+							<a th:href="@{/vct/}" href="#" id="addVctBtn" type="button" class="btn ink-reaction btn-floating-action btn-primary btn-loading-state" data-loading-text="&lt;i class='fa fa-spinner fa-spin'&gt;&lt;/i&gt;" data-toggle="tooltip" data-placement="top" data-original-title="Create VCT record">
 								<i class="fa fa-plus"></i>
 							</a>
 							<div class="table-responsive">
@@ -96,25 +97,12 @@
 									<thead>
 										<tr>
 											<th class="sort-alpha">Full Name</th>
-											<th class="sort-alpha">Code Name</th>
 											<th class="sort-alpha">Unique Identifier Code</th>
 											<th>Birthdate</th>
 											<th>Sex</th>
 											<th class="actionsCol text-right">Update</th>
 										</tr>
 									</thead>
-									<tbody>
-										<tr th:each="vctDTO : ${vctDTOs}">
-									        <td th:text="${vctDTO.fullName}">Juan de la Cruz</td>
-									        <td th:text="${vctDTO.codeName}">JUAN</td>
-									        <td th:text="${vctDTO.patientDTO.uniqueIdCode}">LI-TE-01</td>
-									        <td th:text="${vctDTO.patientDTO.birthdate}">Jun 11, 1992</td>
-									        <td th:text="${vctDTO.patientDTO.sex}">male</td>
-									        <td class="text-right">
-												<button type="button" class="updateVctBtn btn btn-icon-toggle style-default"><i class="fa fa-pencil"></i></button>
-											</td>
-									      </tr>
-									</tbody>
 								</table>
 							</div><!--end .table-responsive -->
 						</div><!--end .col -->
