@@ -27,10 +27,12 @@ public class HivRiskMapper {
 	public List<HivRisk> longToHivRisk(List<Long> hivRiskIds) {
 		List<HivRisk> hivRisks = new ArrayList<HivRisk>();
 		
-		for(Long hivRiskId : hivRiskIds) {
-			HivRisk hivRisk = hivRiskRepo.findOne(hivRiskId);
-			if(hivRisk != null) {
-				hivRisks.add(hivRisk);
+		if(hivRiskIds != null) {
+			for(Long hivRiskId : hivRiskIds) {
+				HivRisk hivRisk = hivRiskRepo.findOne(hivRiskId);
+				if(hivRisk != null) {
+					hivRisks.add(hivRisk);
+				}
 			}
 		}
 		
