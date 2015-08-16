@@ -1,14 +1,10 @@
 package com.ryad.hrms.controller;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,12 +23,10 @@ import com.ryad.hrms.annotation.Layout;
 import com.ryad.hrms.dto.DTCriteria;
 import com.ryad.hrms.dto.DTDataSet;
 import com.ryad.hrms.dto.DTResponse;
-import com.ryad.hrms.dto.PatientDTO;
 import com.ryad.hrms.dto.VctDTO;
 import com.ryad.hrms.enums.SexType;
 import com.ryad.hrms.repository.VctRepository;
 import com.ryad.hrms.service.VctService;
-import com.thedeanda.lorem.Lorem;
 
 @Controller
 @RequestMapping("/vct")
@@ -59,31 +53,20 @@ public class VctController {
 	}
 	
 	@RequestMapping("/list")
-	public String list(Model model) {
-		int max = 100;
-		List<VctDTO> vctDTOs = new ArrayList<VctDTO>(max);
-		
-		LocalDate localDate = new LocalDate();
-		//DateTimeFormatter dateDisplayFormat = DateTimeFormat.forPattern("MMM dd, yyyy");
-		
-		VctDTO vctDTO;
-		for(int i = 0 ; i < max; i++) {
-			vctDTO = new VctDTO();
-			vctDTO.setFullName(i % 3 < 2 ? Lorem.getNameMale() : Lorem.getNameMale());
-			vctDTO.setCodeName((i % 3 < 2 ? Lorem.getFirstNameMale() : Lorem.getFirstNameFemale()).toUpperCase());
-			
-			PatientDTO patientDTO = new PatientDTO();
-			patientDTO.setUniqueIdCode("" + getRandomChar() + getRandomChar() + "-" + getRandomChar() + getRandomChar() + "-" + String.format("%02d", (i % 100)));
-			patientDTO.setBirthdate(localDate.plusDays(i).minusYears(20).toDate());
-			patientDTO.setSex(i % 3 < 2 ? "Male" : "Female");
-			vctDTO.setPatientDTO(patientDTO);
-			
-			vctDTOs.add(vctDTO);
-		}
-		
-		model.addAttribute("vctDTOs", vctDTOs);
-		
+	public String list() {
 		return VIEW_FOLDER + "list";
+	}
+	
+	@RequestMapping(value = "/search")
+	@ResponseBody
+	public DTResponse<VctDTO> search(HttpServletRequest request) {
+		String[] customFilterNames = {"vctName", "uniqueIdCode"};
+		DTCriteria criteria = DTCriteria.getFromRequest(request);
+		DTCriteria.extractCustomFilters(criteria, request, customFilterNames);
+		
+		DTDataSet<VctDTO> dataSet = vctService.findVctWithDatatablesCriteria(criteria);
+		
+		return DTResponse.build(dataSet, criteria);
 	}
 	
 	@RequestMapping("/")
@@ -109,18 +92,6 @@ public class VctController {
 			vctDTO = vctService.save(vctDTO);
 			return "redirect:/" + VIEW_FOLDER + vctDTO.getId();
 		}
-	}
-	
-	@RequestMapping(value = "/search")
-	@ResponseBody
-	public DTResponse<VctDTO> search(HttpServletRequest request) {
-		String[] customFilterNames = {"codeName", "sacclCode", "firstName", "lastName"};
-		DTCriteria criteria = DTCriteria.getFromRequest(request);
-		DTCriteria.extractCustomFilters(criteria, request, customFilterNames);
-		
-		DTDataSet<VctDTO> dataSet = vctService.findVctWithDatatablesCriteria(criteria);
-		
-		return DTResponse.build(dataSet, criteria);
 	}
 	@RequestMapping("/{id}")
 	public String viewOrEdit(@PathVariable Long id, @RequestParam(required = false) String mode, Model model) {
@@ -143,10 +114,5 @@ public class VctController {
 			model.addAttribute("hivRiskList", vctService.getHivRisks());
 			return VIEW_FOLDER + "create";
 		}
-	}
-	
-	private char getRandomChar() {
-		Random r = new Random();
-		return (char)(r.nextInt(26) + 'A');
 	}
 }

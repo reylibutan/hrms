@@ -31,6 +31,7 @@ function initAlertEvents() {
     HRMS.YES_VAL = "1";
     HRMS.NO_VAL = "0";
     HRMS.DEFAULT_EASE_TIME = 150;
+    HRMS.ENTER_KEY = 13;
     
     //Public Method
     HRMS.initViewAction = function() {

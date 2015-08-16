@@ -86,7 +86,7 @@ public class VctServiceImpl implements VctService {
 		
 		// update IDs
 		vctDTO.setId(vct.getId());
-		vctDTO.getPatientDTO().setId(vct.getPatient().getId());
+		vctDTO.getPatient().setId(vct.getPatient().getId());
 		
 		return vctDTO;
 	}

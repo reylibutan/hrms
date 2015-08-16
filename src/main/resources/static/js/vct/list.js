@@ -1,6 +1,28 @@
 var oVctDataTable = null;
 
 $(document).ready(function() {
+	initDatatable();
+	initSearchForm();
+});
+
+function initSearchForm() {
+	$("#vctName, #uniqueIdCode").keyup(function(e) {
+		if(e.which == HRMS.ENTER_KEY) {
+			$("#searchBtn").trigger("click");
+	    }
+	});
+	
+	$("#searchBtn").click(function() {
+		oVctDataTable.fnDraw();
+	});
+	
+	$("#clearBtn").click(function() {
+		$("#vctName, #uniqueIdCode").val("");
+		$("#searchBtn").trigger("click");
+	});
+}
+
+function initDatatable() {
 	oVctDataTable = $("#vctDataTable").dataTable({
 		"searching": false,
 		"processing": false,
@@ -8,32 +30,30 @@ $(document).ready(function() {
 		"ajax": {
             "url": "search",
             "data": function (d) {
-                d.codeName = $("#codeName").val();
-                d.sacclCode = $("#sacclCode").val();
-                d.firstName = $("#firstName").val();
-                d.lastName = $("#lastName").val();
+                d.vctName = $("#vctName").val().trim();
+                d.uniqueIdCode = $("#uniqueIdCode").val().trim();
             }
         },
         "aoColumns": [
           	{"mData": "fullName"},
-          	{"mData": "patientDTO.uniqueIdCode"},
-			{"mData": "patientDTO.birthdate"},
-			{"mData": "patientDTO.sex"},
+          	{"mData": "patient.uniqueIdCode"},
+			{"mData": "patient.birthdate"},
+			{"mData": "patient.sex"},
 			{"mData": null},
         ],
 		"columnDefs" : [
             {"targets": 0, "render": function(data, type, row) {
             	var contextPath = $("#contextPath").val();
-            	var fullName = row.patientDTO.firstName + " " + row.patientDTO.lastName;
+            	var fullName = row.patient.firstName + " " + row.patient.lastName;
             	var markup = "<a href='" + contextPath + "vct/" + row.id + "'>" + fullName + "</a>";
             	
             	return markup;
             }},
             {"targets": 2, "render": function(data, type, row) {
-            	return moment.unix(row.patientDTO.birthdate / 1000).format("MMM DD, YYYY");
+            	return moment.unix(row.patient.birthdate / 1000).format("MMM DD, YYYY");
             }},
             {"targets": 3, "render": function(data, type, row) {
-            	return HRMS.toTitleCase(row.patientDTO.sex);
+            	return HRMS.toTitleCase(row.patient.sex);
             }},
             {"targets": 4, "sortable": false, "render": function(data, type, row) {
             	var contextPath = $("#contextPath").val();
@@ -59,17 +79,11 @@ $(document).ready(function() {
 		// ====================================================================
 		// ====================================================================
 		"fnPreDrawCallback": function() { 
-            $("#searchBtn").button("loading").prop("disabled", true);
-            $("#addVctBtn").button("loading").prop("disabled", true);
+            $(".btn-loading-state").button("loading").prop("disabled", true);
             return true;
         },
         "fnDrawCallback": function() {
-        	$("#searchBtn").button("reset").prop("disabled", false);
-        	$("#addVctBtn").button("reset").prop("disabled", false);
+        	$(".btn-loading-state").button("reset").prop("disabled", false);
         }
-	})
-	
-	$("#searchBtn").click(function() {
-		oVctDataTable.fnDraw();
 	});
-});
+}

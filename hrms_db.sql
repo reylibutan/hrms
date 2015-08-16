@@ -2,29 +2,9 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.3.6
--- Dumped by pg_dump version 9.3.6
--- Started on 2015-08-10 15:49:44
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SET check_function_bodies = false;
-SET client_min_messages = warning;
-
-DROP DATABASE hrms_db;
---
--- TOC entry 2015 (class 1262 OID 41084)
--- Name: hrms_db; Type: DATABASE; Schema: -; Owner: hrms_user
---
-
-CREATE DATABASE hrms_db WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'English_United States.1252' LC_CTYPE = 'English_United States.1252';
-
-
-ALTER DATABASE hrms_db OWNER TO hrms_user;
-
-\connect hrms_db
+-- Dumped from database version 9.1.18
+-- Dumped by pg_dump version 9.4.0
+-- Started on 2015-08-15 21:10:14
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -34,7 +14,7 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 --
--- TOC entry 7 (class 2615 OID 49370)
+-- TOC entry 6 (class 2615 OID 102344390)
 -- Name: hrms; Type: SCHEMA; Schema: -; Owner: hrms_user
 --
 
@@ -43,42 +23,6 @@ CREATE SCHEMA hrms;
 
 ALTER SCHEMA hrms OWNER TO hrms_user;
 
---
--- TOC entry 6 (class 2615 OID 2200)
--- Name: public; Type: SCHEMA; Schema: -; Owner: postgres
---
-
-CREATE SCHEMA public;
-
-
-ALTER SCHEMA public OWNER TO postgres;
-
---
--- TOC entry 2016 (class 0 OID 0)
--- Dependencies: 6
--- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: postgres
---
-
-COMMENT ON SCHEMA public IS 'standard public schema';
-
-
---
--- TOC entry 183 (class 3079 OID 11750)
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- TOC entry 2018 (class 0 OID 0)
--- Dependencies: 183
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
-
 SET search_path = hrms, pg_catalog;
 
 SET default_tablespace = '';
@@ -86,7 +30,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 171 (class 1259 OID 49371)
+-- TOC entry 162 (class 1259 OID 102344391)
 -- Name: hiv_risk; Type: TABLE; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -98,10 +42,10 @@ CREATE TABLE hiv_risk (
 );
 
 
-ALTER TABLE hrms.hiv_risk OWNER TO hrms_user;
+ALTER TABLE hiv_risk OWNER TO hrms_user;
 
 --
--- TOC entry 172 (class 1259 OID 49374)
+-- TOC entry 163 (class 1259 OID 102344394)
 -- Name: hiv_risk_id_seq; Type: SEQUENCE; Schema: hrms; Owner: hrms_user
 --
 
@@ -113,11 +57,11 @@ CREATE SEQUENCE hiv_risk_id_seq
     CACHE 1;
 
 
-ALTER TABLE hrms.hiv_risk_id_seq OWNER TO hrms_user;
+ALTER TABLE hiv_risk_id_seq OWNER TO hrms_user;
 
 --
--- TOC entry 2019 (class 0 OID 0)
--- Dependencies: 172
+-- TOC entry 2799 (class 0 OID 0)
+-- Dependencies: 163
 -- Name: hiv_risk_id_seq; Type: SEQUENCE OWNED BY; Schema: hrms; Owner: hrms_user
 --
 
@@ -125,7 +69,7 @@ ALTER SEQUENCE hiv_risk_id_seq OWNED BY hiv_risk.id;
 
 
 --
--- TOC entry 173 (class 1259 OID 49376)
+-- TOC entry 164 (class 1259 OID 102344396)
 -- Name: patient; Type: TABLE; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -150,10 +94,10 @@ CREATE TABLE patient (
 );
 
 
-ALTER TABLE hrms.patient OWNER TO hrms_user;
+ALTER TABLE patient OWNER TO hrms_user;
 
 --
--- TOC entry 174 (class 1259 OID 49382)
+-- TOC entry 165 (class 1259 OID 102344402)
 -- Name: patient_hiv_risk; Type: TABLE; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -163,10 +107,10 @@ CREATE TABLE patient_hiv_risk (
 );
 
 
-ALTER TABLE hrms.patient_hiv_risk OWNER TO hrms_user;
+ALTER TABLE patient_hiv_risk OWNER TO hrms_user;
 
 --
--- TOC entry 175 (class 1259 OID 49385)
+-- TOC entry 166 (class 1259 OID 102344405)
 -- Name: patient_id_seq; Type: SEQUENCE; Schema: hrms; Owner: hrms_user
 --
 
@@ -178,11 +122,11 @@ CREATE SEQUENCE patient_id_seq
     CACHE 1;
 
 
-ALTER TABLE hrms.patient_id_seq OWNER TO hrms_user;
+ALTER TABLE patient_id_seq OWNER TO hrms_user;
 
 --
--- TOC entry 2020 (class 0 OID 0)
--- Dependencies: 175
+-- TOC entry 2800 (class 0 OID 0)
+-- Dependencies: 166
 -- Name: patient_id_seq; Type: SEQUENCE OWNED BY; Schema: hrms; Owner: hrms_user
 --
 
@@ -190,7 +134,7 @@ ALTER SEQUENCE patient_id_seq OWNED BY patient.id;
 
 
 --
--- TOC entry 176 (class 1259 OID 49387)
+-- TOC entry 167 (class 1259 OID 102344407)
 -- Name: role; Type: TABLE; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -201,10 +145,10 @@ CREATE TABLE role (
 );
 
 
-ALTER TABLE hrms.role OWNER TO hrms_user;
+ALTER TABLE role OWNER TO hrms_user;
 
 --
--- TOC entry 177 (class 1259 OID 49390)
+-- TOC entry 168 (class 1259 OID 102344410)
 -- Name: role_id_seq; Type: SEQUENCE; Schema: hrms; Owner: hrms_user
 --
 
@@ -216,11 +160,11 @@ CREATE SEQUENCE role_id_seq
     CACHE 1;
 
 
-ALTER TABLE hrms.role_id_seq OWNER TO hrms_user;
+ALTER TABLE role_id_seq OWNER TO hrms_user;
 
 --
--- TOC entry 2021 (class 0 OID 0)
--- Dependencies: 177
+-- TOC entry 2801 (class 0 OID 0)
+-- Dependencies: 168
 -- Name: role_id_seq; Type: SEQUENCE OWNED BY; Schema: hrms; Owner: hrms_user
 --
 
@@ -228,7 +172,7 @@ ALTER SEQUENCE role_id_seq OWNED BY role.id;
 
 
 --
--- TOC entry 178 (class 1259 OID 49392)
+-- TOC entry 169 (class 1259 OID 102344412)
 -- Name: user; Type: TABLE; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -243,10 +187,10 @@ CREATE TABLE "user" (
 );
 
 
-ALTER TABLE hrms."user" OWNER TO hrms_user;
+ALTER TABLE "user" OWNER TO hrms_user;
 
 --
--- TOC entry 179 (class 1259 OID 49398)
+-- TOC entry 170 (class 1259 OID 102344418)
 -- Name: user_id_seq; Type: SEQUENCE; Schema: hrms; Owner: hrms_user
 --
 
@@ -258,11 +202,11 @@ CREATE SEQUENCE user_id_seq
     CACHE 1;
 
 
-ALTER TABLE hrms.user_id_seq OWNER TO hrms_user;
+ALTER TABLE user_id_seq OWNER TO hrms_user;
 
 --
--- TOC entry 2022 (class 0 OID 0)
--- Dependencies: 179
+-- TOC entry 2802 (class 0 OID 0)
+-- Dependencies: 170
 -- Name: user_id_seq; Type: SEQUENCE OWNED BY; Schema: hrms; Owner: hrms_user
 --
 
@@ -270,7 +214,7 @@ ALTER SEQUENCE user_id_seq OWNED BY "user".id;
 
 
 --
--- TOC entry 180 (class 1259 OID 49400)
+-- TOC entry 171 (class 1259 OID 102344420)
 -- Name: user_role; Type: TABLE; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -280,10 +224,10 @@ CREATE TABLE user_role (
 );
 
 
-ALTER TABLE hrms.user_role OWNER TO hrms_user;
+ALTER TABLE user_role OWNER TO hrms_user;
 
 --
--- TOC entry 181 (class 1259 OID 49403)
+-- TOC entry 172 (class 1259 OID 102344423)
 -- Name: vct; Type: TABLE; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -302,10 +246,10 @@ CREATE TABLE vct (
 );
 
 
-ALTER TABLE hrms.vct OWNER TO hrms_user;
+ALTER TABLE vct OWNER TO hrms_user;
 
 --
--- TOC entry 182 (class 1259 OID 49406)
+-- TOC entry 173 (class 1259 OID 102344426)
 -- Name: vct_id_seq; Type: SEQUENCE; Schema: hrms; Owner: hrms_user
 --
 
@@ -317,11 +261,11 @@ CREATE SEQUENCE vct_id_seq
     CACHE 1;
 
 
-ALTER TABLE hrms.vct_id_seq OWNER TO hrms_user;
+ALTER TABLE vct_id_seq OWNER TO hrms_user;
 
 --
--- TOC entry 2023 (class 0 OID 0)
--- Dependencies: 182
+-- TOC entry 2803 (class 0 OID 0)
+-- Dependencies: 173
 -- Name: vct_id_seq; Type: SEQUENCE OWNED BY; Schema: hrms; Owner: hrms_user
 --
 
@@ -329,7 +273,7 @@ ALTER SEQUENCE vct_id_seq OWNED BY vct.id;
 
 
 --
--- TOC entry 1858 (class 2604 OID 49408)
+-- TOC entry 2648 (class 2604 OID 102344428)
 -- Name: id; Type: DEFAULT; Schema: hrms; Owner: hrms_user
 --
 
@@ -337,7 +281,7 @@ ALTER TABLE ONLY hiv_risk ALTER COLUMN id SET DEFAULT nextval('hiv_risk_id_seq':
 
 
 --
--- TOC entry 1859 (class 2604 OID 49409)
+-- TOC entry 2649 (class 2604 OID 102344429)
 -- Name: id; Type: DEFAULT; Schema: hrms; Owner: hrms_user
 --
 
@@ -345,7 +289,7 @@ ALTER TABLE ONLY patient ALTER COLUMN id SET DEFAULT nextval('patient_id_seq'::r
 
 
 --
--- TOC entry 1860 (class 2604 OID 49410)
+-- TOC entry 2650 (class 2604 OID 102344430)
 -- Name: id; Type: DEFAULT; Schema: hrms; Owner: hrms_user
 --
 
@@ -353,7 +297,7 @@ ALTER TABLE ONLY role ALTER COLUMN id SET DEFAULT nextval('role_id_seq'::regclas
 
 
 --
--- TOC entry 1861 (class 2604 OID 49411)
+-- TOC entry 2651 (class 2604 OID 102344431)
 -- Name: id; Type: DEFAULT; Schema: hrms; Owner: hrms_user
 --
 
@@ -361,7 +305,7 @@ ALTER TABLE ONLY "user" ALTER COLUMN id SET DEFAULT nextval('user_id_seq'::regcl
 
 
 --
--- TOC entry 1862 (class 2604 OID 49412)
+-- TOC entry 2652 (class 2604 OID 102344432)
 -- Name: id; Type: DEFAULT; Schema: hrms; Owner: hrms_user
 --
 
@@ -369,8 +313,8 @@ ALTER TABLE ONLY vct ALTER COLUMN id SET DEFAULT nextval('vct_id_seq'::regclass)
 
 
 --
--- TOC entry 1999 (class 0 OID 49371)
--- Dependencies: 171
+-- TOC entry 2783 (class 0 OID 102344391)
+-- Dependencies: 162
 -- Data for Name: hiv_risk; Type: TABLE DATA; Schema: hrms; Owner: hrms_user
 --
 
@@ -390,8 +334,8 @@ INSERT INTO hiv_risk (id, name, parent_id, has_children) VALUES (11, 'Occupation
 
 
 --
--- TOC entry 2024 (class 0 OID 0)
--- Dependencies: 172
+-- TOC entry 2804 (class 0 OID 0)
+-- Dependencies: 163
 -- Name: hiv_risk_id_seq; Type: SEQUENCE SET; Schema: hrms; Owner: hrms_user
 --
 
@@ -399,28 +343,32 @@ SELECT pg_catalog.setval('hiv_risk_id_seq', 13, true);
 
 
 --
--- TOC entry 2001 (class 0 OID 49376)
--- Dependencies: 173
+-- TOC entry 2785 (class 0 OID 102344396)
+-- Dependencies: 164
 -- Data for Name: patient; Type: TABLE DATA; Schema: hrms; Owner: hrms_user
 --
 
-INSERT INTO patient (id, first_name, middle_name, last_name, sex, unique_id_code, birthdate, mom_first_name, mom_middle_name, mom_last_name, address, city, contact_number, created_by, updated_by, created_date, updated_date) VALUES (3, 'Rey', 'Patigas', 'Libutan', 'MALE', 'XX-YY-99', '1992-06-27', 'Belle', 'Cerna', 'Patigas', 'Deca Homes Baywalk, Brgy. Dumlog', 'Talisay City', '09432935645', 1, NULL, '2015-08-03 23:06:52.275', NULL);
 INSERT INTO patient (id, first_name, middle_name, last_name, sex, unique_id_code, birthdate, mom_first_name, mom_middle_name, mom_last_name, address, city, contact_number, created_by, updated_by, created_date, updated_date) VALUES (4, 'Rey', 'Patigas', 'Libutan', 'MALE', 'XX-YY-99', '2015-08-26', '', '', '', '', '', '', 1, NULL, '2015-08-04 23:57:35.171', NULL);
 INSERT INTO patient (id, first_name, middle_name, last_name, sex, unique_id_code, birthdate, mom_first_name, mom_middle_name, mom_last_name, address, city, contact_number, created_by, updated_by, created_date, updated_date) VALUES (5, 'Rey', 'Patigas', 'Libutan', 'MALE', 'XX-YY-99', '1992-06-27', '', '', '', '', '', '', 1, NULL, '2015-08-04 23:59:30.411', NULL);
 INSERT INTO patient (id, first_name, middle_name, last_name, sex, unique_id_code, birthdate, mom_first_name, mom_middle_name, mom_last_name, address, city, contact_number, created_by, updated_by, created_date, updated_date) VALUES (7, 'Jin', '', 'Kazama', 'MALE', 'JJ-KK-99', '1982-08-10', 'Jun', '', 'Kazama', 'Mishima Corporation, Japan', 'Tokyo', '09992748562', 1, NULL, '2015-08-10 15:31:46.099', NULL);
-INSERT INTO patient (id, first_name, middle_name, last_name, sex, unique_id_code, birthdate, mom_first_name, mom_middle_name, mom_last_name, address, city, contact_number, created_by, updated_by, created_date, updated_date) VALUES (8, 'Lee', '', 'Chaolan', 'MALE', 'LL-CC-99', '1929-09-02', 'Alisa', '', 'Boskonovitch', 'Mishima Corporation, Japan', 'Tokyo', '09991823467', 1, NULL, '2015-08-10 15:44:37.132', NULL);
-INSERT INTO patient (id, first_name, middle_name, last_name, sex, unique_id_code, birthdate, mom_first_name, mom_middle_name, mom_last_name, address, city, contact_number, created_by, updated_by, created_date, updated_date) VALUES (9, 'Feng', '', 'Wei', 'MALE', 'FF-WW-99', '1900-08-10', '', '', '', 'Shaolin Temple, Japan', 'Tokyo', '09991029572', 1, NULL, '2015-08-10 15:46:56.964', NULL);
+INSERT INTO patient (id, first_name, middle_name, last_name, sex, unique_id_code, birthdate, mom_first_name, mom_middle_name, mom_last_name, address, city, contact_number, created_by, updated_by, created_date, updated_date) VALUES (3, 'Rey', 'Patigas', 'Libutan', 'MALE', 'XX-YY-99', '1992-06-27', 'Belle', 'Cerna', 'Patigas', 'Deca Homes Baywalk, Brgy. Dumlog', 'Talisay City', '09432935645', 1, NULL, '2015-08-13 08:12:54.511', NULL);
+INSERT INTO patient (id, first_name, middle_name, last_name, sex, unique_id_code, birthdate, mom_first_name, mom_middle_name, mom_last_name, address, city, contact_number, created_by, updated_by, created_date, updated_date) VALUES (11, 'Craig', '', 'Marduk', 'MALE', 'CC-MM-22', '1979-08-14', '', '', '', 'Mishima Corporation, Japan', 'Tokyo', '091029356', 1, NULL, '2015-08-14 15:06:39.06', NULL);
+INSERT INTO patient (id, first_name, middle_name, last_name, sex, unique_id_code, birthdate, mom_first_name, mom_middle_name, mom_last_name, address, city, contact_number, created_by, updated_by, created_date, updated_date) VALUES (8, 'Lee', '', 'Chaolan', 'MALE', 'LL-CC-99', '1989-08-11', 'Alisa', '', 'Boskonovitch', 'Mishima Corporation, Japan', 'Tokyo', '09991823467', 1, NULL, '2015-08-14 15:30:18.884', NULL);
+INSERT INTO patient (id, first_name, middle_name, last_name, sex, unique_id_code, birthdate, mom_first_name, mom_middle_name, mom_last_name, address, city, contact_number, created_by, updated_by, created_date, updated_date) VALUES (9, 'Feng', '', 'Wei', 'MALE', 'FF-WW-99', '1982-04-02', '', '', '', 'Shaolin Temple, Japan', 'Tokyo', '09991029572', 1, NULL, '2015-08-14 15:30:55.356', NULL);
+INSERT INTO patient (id, first_name, middle_name, last_name, sex, unique_id_code, birthdate, mom_first_name, mom_middle_name, mom_last_name, address, city, contact_number, created_by, updated_by, created_date, updated_date) VALUES (10, 'Wang', '', 'Jinrei', 'MALE', 'WW-JJ-23', '1980-04-04', '', '', '', 'Mishima Corporation, Japan', 'Tokyo', '09998924062', 1, NULL, '2015-08-14 15:32:08.31', NULL);
+INSERT INTO patient (id, first_name, middle_name, last_name, sex, unique_id_code, birthdate, mom_first_name, mom_middle_name, mom_last_name, address, city, contact_number, created_by, updated_by, created_date, updated_date) VALUES (12, 'Kuma', '', 'Panda', 'MALE', 'KK-MM-01', '1999-08-14', '', '', '', '', '', '', 1, NULL, '2015-08-14 16:37:01.395', NULL);
+INSERT INTO patient (id, first_name, middle_name, last_name, sex, unique_id_code, birthdate, mom_first_name, mom_middle_name, mom_last_name, address, city, contact_number, created_by, updated_by, created_date, updated_date) VALUES (13, 'Eleonore', '', 'Kliesen', 'FEMALE', 'EE-KK-09', '1992-08-14', '', '', '', 'Mishima Corporation, Japan', 'Tokyo', '', 1, NULL, '2015-08-14 16:38:05.398', NULL);
+INSERT INTO patient (id, first_name, middle_name, last_name, sex, unique_id_code, birthdate, mom_first_name, mom_middle_name, mom_last_name, address, city, contact_number, created_by, updated_by, created_date, updated_date) VALUES (15, 'Eddie', '', 'Gordo', 'MALE', 'EE-GG-00', '1990-08-14', '', '', '', '', '', '', 1, NULL, '2015-08-14 16:44:10.827', NULL);
+INSERT INTO patient (id, first_name, middle_name, last_name, sex, unique_id_code, birthdate, mom_first_name, mom_middle_name, mom_last_name, address, city, contact_number, created_by, updated_by, created_date, updated_date) VALUES (16, 'Christie', '', 'Monteiro', 'FEMALE', 'CC-MM-21', '1991-08-14', '', '', '', '', '', '', 1, NULL, '2015-08-14 16:44:33.349', NULL);
+INSERT INTO patient (id, first_name, middle_name, last_name, sex, unique_id_code, birthdate, mom_first_name, mom_middle_name, mom_last_name, address, city, contact_number, created_by, updated_by, created_date, updated_date) VALUES (14, 'Alisa', '', 'Boskonovitch', 'FEMALE', 'AA-BB-90', '2014-08-14', '', '', '', '', '', '', 1, NULL, '2015-08-14 16:45:11.788', NULL);
 
 
 --
--- TOC entry 2002 (class 0 OID 49382)
--- Dependencies: 174
+-- TOC entry 2786 (class 0 OID 102344402)
+-- Dependencies: 165
 -- Data for Name: patient_hiv_risk; Type: TABLE DATA; Schema: hrms; Owner: hrms_user
 --
 
-INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (3, 1);
-INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (3, 2);
-INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (3, 11);
 INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (7, 2);
 INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (7, 4);
 INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (7, 6);
@@ -428,6 +376,19 @@ INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (7, 8);
 INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (7, 10);
 INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (7, 11);
 INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (7, 13);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (3, 1);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (3, 2);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (3, 3);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (3, 4);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (3, 5);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (3, 6);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (3, 7);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (3, 8);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (3, 9);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (3, 10);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (3, 11);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (3, 12);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (11, 1);
 INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (8, 1);
 INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (8, 3);
 INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (8, 11);
@@ -436,20 +397,29 @@ INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (9, 1);
 INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (9, 2);
 INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (9, 3);
 INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (9, 4);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (10, 2);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (10, 4);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (10, 6);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (10, 8);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (12, 5);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (12, 6);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (12, 7);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (12, 8);
+INSERT INTO patient_hiv_risk (patient_id, hiv_risk_id) VALUES (13, 5);
 
 
 --
--- TOC entry 2025 (class 0 OID 0)
--- Dependencies: 175
+-- TOC entry 2805 (class 0 OID 0)
+-- Dependencies: 166
 -- Name: patient_id_seq; Type: SEQUENCE SET; Schema: hrms; Owner: hrms_user
 --
 
-SELECT pg_catalog.setval('patient_id_seq', 9, true);
+SELECT pg_catalog.setval('patient_id_seq', 16, true);
 
 
 --
--- TOC entry 2004 (class 0 OID 49387)
--- Dependencies: 176
+-- TOC entry 2788 (class 0 OID 102344407)
+-- Dependencies: 167
 -- Data for Name: role; Type: TABLE DATA; Schema: hrms; Owner: hrms_user
 --
 
@@ -458,8 +428,8 @@ INSERT INTO role (id, code, name) VALUES (2, 'ROLE_USER', 'User');
 
 
 --
--- TOC entry 2026 (class 0 OID 0)
--- Dependencies: 177
+-- TOC entry 2806 (class 0 OID 0)
+-- Dependencies: 168
 -- Name: role_id_seq; Type: SEQUENCE SET; Schema: hrms; Owner: hrms_user
 --
 
@@ -467,8 +437,8 @@ SELECT pg_catalog.setval('role_id_seq', 2, true);
 
 
 --
--- TOC entry 2006 (class 0 OID 49392)
--- Dependencies: 178
+-- TOC entry 2790 (class 0 OID 102344412)
+-- Dependencies: 169
 -- Data for Name: user; Type: TABLE DATA; Schema: hrms; Owner: hrms_user
 --
 
@@ -476,8 +446,8 @@ INSERT INTO "user" (id, first_name, middle_name, last_name, email, password, use
 
 
 --
--- TOC entry 2027 (class 0 OID 0)
--- Dependencies: 179
+-- TOC entry 2807 (class 0 OID 0)
+-- Dependencies: 170
 -- Name: user_id_seq; Type: SEQUENCE SET; Schema: hrms; Owner: hrms_user
 --
 
@@ -485,8 +455,8 @@ SELECT pg_catalog.setval('user_id_seq', 1, true);
 
 
 --
--- TOC entry 2008 (class 0 OID 49400)
--- Dependencies: 180
+-- TOC entry 2792 (class 0 OID 102344420)
+-- Dependencies: 171
 -- Data for Name: user_role; Type: TABLE DATA; Schema: hrms; Owner: hrms_user
 --
 
@@ -495,28 +465,35 @@ INSERT INTO user_role (user_id, role_id) VALUES (1, 2);
 
 
 --
--- TOC entry 2009 (class 0 OID 49403)
--- Dependencies: 181
+-- TOC entry 2793 (class 0 OID 102344423)
+-- Dependencies: 172
 -- Data for Name: vct; Type: TABLE DATA; Schema: hrms; Owner: hrms_user
 --
 
-INSERT INTO vct (id, patient_id, vct_date, is_hiv_tested, is_hiv_positive, reason_for_not_testing, provided_counseling_and_result, created_by, updated_by, created_date, updated_date) VALUES (1, 3, '2017-11-28', 0, 1, 'Because I am afraid', 1, 1, NULL, '2015-08-05 01:46:34.842', NULL);
 INSERT INTO vct (id, patient_id, vct_date, is_hiv_tested, is_hiv_positive, reason_for_not_testing, provided_counseling_and_result, created_by, updated_by, created_date, updated_date) VALUES (2, 7, '2015-08-08', 1, 0, '', 0, 1, NULL, '2015-08-10 15:31:46.099', NULL);
-INSERT INTO vct (id, patient_id, vct_date, is_hiv_tested, is_hiv_positive, reason_for_not_testing, provided_counseling_and_result, created_by, updated_by, created_date, updated_date) VALUES (3, 8, '2015-08-01', 0, 1, 'I''m awesome', 0, 1, NULL, '2015-08-10 15:44:37.132', NULL);
-INSERT INTO vct (id, patient_id, vct_date, is_hiv_tested, is_hiv_positive, reason_for_not_testing, provided_counseling_and_result, created_by, updated_by, created_date, updated_date) VALUES (4, 9, '2015-08-08', 1, 1, '', 1, 1, NULL, '2015-08-10 15:46:56.964', NULL);
+INSERT INTO vct (id, patient_id, vct_date, is_hiv_tested, is_hiv_positive, reason_for_not_testing, provided_counseling_and_result, created_by, updated_by, created_date, updated_date) VALUES (1, 3, '2017-12-04', 1, 1, 'Because I am afraid', 1, 1, NULL, '2015-08-13 08:12:54.511', NULL);
+INSERT INTO vct (id, patient_id, vct_date, is_hiv_tested, is_hiv_positive, reason_for_not_testing, provided_counseling_and_result, created_by, updated_by, created_date, updated_date) VALUES (6, 11, '2015-08-01', 1, 1, '', 1, 1, NULL, '2015-08-14 15:06:39.06', NULL);
+INSERT INTO vct (id, patient_id, vct_date, is_hiv_tested, is_hiv_positive, reason_for_not_testing, provided_counseling_and_result, created_by, updated_by, created_date, updated_date) VALUES (3, 8, '2015-08-01', 0, 1, 'I''m awesome', 0, 1, NULL, '2015-08-14 15:30:18.884', NULL);
+INSERT INTO vct (id, patient_id, vct_date, is_hiv_tested, is_hiv_positive, reason_for_not_testing, provided_counseling_and_result, created_by, updated_by, created_date, updated_date) VALUES (4, 9, '2015-08-08', 1, 1, '', 1, 1, NULL, '2015-08-14 15:30:55.356', NULL);
+INSERT INTO vct (id, patient_id, vct_date, is_hiv_tested, is_hiv_positive, reason_for_not_testing, provided_counseling_and_result, created_by, updated_by, created_date, updated_date) VALUES (5, 10, '2016-05-06', 1, 1, '', 1, 1, NULL, '2015-08-14 15:32:08.31', NULL);
+INSERT INTO vct (id, patient_id, vct_date, is_hiv_tested, is_hiv_positive, reason_for_not_testing, provided_counseling_and_result, created_by, updated_by, created_date, updated_date) VALUES (7, 12, '2015-08-08', 1, 1, '', 1, 1, NULL, '2015-08-14 16:37:01.395', NULL);
+INSERT INTO vct (id, patient_id, vct_date, is_hiv_tested, is_hiv_positive, reason_for_not_testing, provided_counseling_and_result, created_by, updated_by, created_date, updated_date) VALUES (8, 13, '2015-08-01', 1, 1, '', 1, 1, NULL, '2015-08-14 16:38:05.398', NULL);
+INSERT INTO vct (id, patient_id, vct_date, is_hiv_tested, is_hiv_positive, reason_for_not_testing, provided_counseling_and_result, created_by, updated_by, created_date, updated_date) VALUES (10, 15, '2015-08-04', 1, 1, '', 1, 1, NULL, '2015-08-14 16:44:10.827', NULL);
+INSERT INTO vct (id, patient_id, vct_date, is_hiv_tested, is_hiv_positive, reason_for_not_testing, provided_counseling_and_result, created_by, updated_by, created_date, updated_date) VALUES (11, 16, '2015-07-30', 1, 1, '', 1, 1, NULL, '2015-08-14 16:44:33.349', NULL);
+INSERT INTO vct (id, patient_id, vct_date, is_hiv_tested, is_hiv_positive, reason_for_not_testing, provided_counseling_and_result, created_by, updated_by, created_date, updated_date) VALUES (9, 14, '2015-08-08', 1, 1, '', 1, 1, NULL, '2015-08-14 16:45:11.788', NULL);
 
 
 --
--- TOC entry 2028 (class 0 OID 0)
--- Dependencies: 182
+-- TOC entry 2808 (class 0 OID 0)
+-- Dependencies: 173
 -- Name: vct_id_seq; Type: SEQUENCE SET; Schema: hrms; Owner: hrms_user
 --
 
-SELECT pg_catalog.setval('vct_id_seq', 4, true);
+SELECT pg_catalog.setval('vct_id_seq', 11, true);
 
 
 --
--- TOC entry 1864 (class 2606 OID 49414)
+-- TOC entry 2654 (class 2606 OID 102344434)
 -- Name: hiv_risk_id_pkey; Type: CONSTRAINT; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -525,7 +502,7 @@ ALTER TABLE ONLY hiv_risk
 
 
 --
--- TOC entry 1868 (class 2606 OID 49416)
+-- TOC entry 2658 (class 2606 OID 102344436)
 -- Name: patient_hiv_risk_pkey; Type: CONSTRAINT; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -534,7 +511,7 @@ ALTER TABLE ONLY patient_hiv_risk
 
 
 --
--- TOC entry 1866 (class 2606 OID 49418)
+-- TOC entry 2656 (class 2606 OID 102344438)
 -- Name: patient_id_pkey; Type: CONSTRAINT; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -543,7 +520,7 @@ ALTER TABLE ONLY patient
 
 
 --
--- TOC entry 1870 (class 2606 OID 49420)
+-- TOC entry 2660 (class 2606 OID 102344440)
 -- Name: role_code_key; Type: CONSTRAINT; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -552,7 +529,7 @@ ALTER TABLE ONLY role
 
 
 --
--- TOC entry 1872 (class 2606 OID 49422)
+-- TOC entry 2662 (class 2606 OID 102344442)
 -- Name: role_id_pkey; Type: CONSTRAINT; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -561,7 +538,7 @@ ALTER TABLE ONLY role
 
 
 --
--- TOC entry 1874 (class 2606 OID 49424)
+-- TOC entry 2664 (class 2606 OID 102344444)
 -- Name: user_email_key; Type: CONSTRAINT; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -570,7 +547,7 @@ ALTER TABLE ONLY "user"
 
 
 --
--- TOC entry 1876 (class 2606 OID 49426)
+-- TOC entry 2666 (class 2606 OID 102344446)
 -- Name: user_id_pkey; Type: CONSTRAINT; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -579,7 +556,7 @@ ALTER TABLE ONLY "user"
 
 
 --
--- TOC entry 1880 (class 2606 OID 49428)
+-- TOC entry 2670 (class 2606 OID 102344448)
 -- Name: user_role_ids_pkey; Type: CONSTRAINT; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -588,7 +565,7 @@ ALTER TABLE ONLY user_role
 
 
 --
--- TOC entry 1878 (class 2606 OID 49430)
+-- TOC entry 2668 (class 2606 OID 102344450)
 -- Name: user_username_key; Type: CONSTRAINT; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -597,7 +574,7 @@ ALTER TABLE ONLY "user"
 
 
 --
--- TOC entry 1882 (class 2606 OID 49432)
+-- TOC entry 2672 (class 2606 OID 102344452)
 -- Name: vct_id_pkey; Type: CONSTRAINT; Schema: hrms; Owner: hrms_user; Tablespace: 
 --
 
@@ -606,7 +583,7 @@ ALTER TABLE ONLY vct
 
 
 --
--- TOC entry 1883 (class 2606 OID 49433)
+-- TOC entry 2673 (class 2606 OID 102344453)
 -- Name: patient_created_by_fkey; Type: FK CONSTRAINT; Schema: hrms; Owner: hrms_user
 --
 
@@ -615,7 +592,7 @@ ALTER TABLE ONLY patient
 
 
 --
--- TOC entry 1885 (class 2606 OID 49438)
+-- TOC entry 2675 (class 2606 OID 102344458)
 -- Name: patient_hiv_risk_hiv_risk_id_fkey; Type: FK CONSTRAINT; Schema: hrms; Owner: hrms_user
 --
 
@@ -624,7 +601,7 @@ ALTER TABLE ONLY patient_hiv_risk
 
 
 --
--- TOC entry 1886 (class 2606 OID 49443)
+-- TOC entry 2676 (class 2606 OID 102344463)
 -- Name: patient_hiv_risk_patient_id_fkey; Type: FK CONSTRAINT; Schema: hrms; Owner: hrms_user
 --
 
@@ -633,7 +610,7 @@ ALTER TABLE ONLY patient_hiv_risk
 
 
 --
--- TOC entry 1884 (class 2606 OID 49448)
+-- TOC entry 2674 (class 2606 OID 102344468)
 -- Name: patient_updated_by_fkey; Type: FK CONSTRAINT; Schema: hrms; Owner: hrms_user
 --
 
@@ -642,7 +619,7 @@ ALTER TABLE ONLY patient
 
 
 --
--- TOC entry 1887 (class 2606 OID 49453)
+-- TOC entry 2677 (class 2606 OID 102344473)
 -- Name: user_role_role_id_fkey; Type: FK CONSTRAINT; Schema: hrms; Owner: hrms_user
 --
 
@@ -651,7 +628,7 @@ ALTER TABLE ONLY user_role
 
 
 --
--- TOC entry 1888 (class 2606 OID 49458)
+-- TOC entry 2678 (class 2606 OID 102344478)
 -- Name: user_role_user_id_fkey; Type: FK CONSTRAINT; Schema: hrms; Owner: hrms_user
 --
 
@@ -660,7 +637,7 @@ ALTER TABLE ONLY user_role
 
 
 --
--- TOC entry 1889 (class 2606 OID 49463)
+-- TOC entry 2679 (class 2606 OID 102344483)
 -- Name: vct_created_by_fkey; Type: FK CONSTRAINT; Schema: hrms; Owner: hrms_user
 --
 
@@ -669,7 +646,7 @@ ALTER TABLE ONLY vct
 
 
 --
--- TOC entry 1890 (class 2606 OID 49468)
+-- TOC entry 2680 (class 2606 OID 102344488)
 -- Name: vct_patient_id_fkey; Type: FK CONSTRAINT; Schema: hrms; Owner: hrms_user
 --
 
@@ -678,7 +655,7 @@ ALTER TABLE ONLY vct
 
 
 --
--- TOC entry 1891 (class 2606 OID 49473)
+-- TOC entry 2681 (class 2606 OID 102344493)
 -- Name: vct_updated_by_fkey; Type: FK CONSTRAINT; Schema: hrms; Owner: hrms_user
 --
 
@@ -686,19 +663,7 @@ ALTER TABLE ONLY vct
     ADD CONSTRAINT vct_updated_by_fkey FOREIGN KEY (updated_by) REFERENCES "user"(id);
 
 
---
--- TOC entry 2017 (class 0 OID 0)
--- Dependencies: 6
--- Name: public; Type: ACL; Schema: -; Owner: postgres
---
-
-REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM postgres;
-GRANT ALL ON SCHEMA public TO postgres;
-GRANT ALL ON SCHEMA public TO PUBLIC;
-
-
--- Completed on 2015-08-10 15:49:45
+-- Completed on 2015-08-15 21:11:08
 
 --
 -- PostgreSQL database dump complete

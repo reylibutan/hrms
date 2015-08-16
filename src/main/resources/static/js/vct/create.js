@@ -27,7 +27,7 @@ function initDerivedValuesEvents() {
 	
 	// add event
 	// compute Age based on Birthdate
-	$("#patientDTO\\.birthdate").on("keyup blur", function() {	
+	$("#patient\\.birthdate").on("keyup blur", function() {	
 		computeAndSetAge();
 	});
 }
@@ -35,7 +35,7 @@ function initDerivedValuesEvents() {
 function computeAndSetAge() {
 	var age = "";
 	var $age = $("#age");
-	var birthdate = $("#patientDTO\\.birthdate").val();
+	var birthdate = $("#patient\\.birthdate").val();
 	
 	if(birthdate) {
 		var result = moment().diff(birthdate, "year");
@@ -62,7 +62,7 @@ function initSubHivRiskEvents() {
 		}
 	});
 	
-	$("input[name='patientDTO.hivRisks']:checked").closest("label").addClass("active");
+	$("input[name='patient.hivRisks']:checked").closest("label").addClass("active");
 }
 
 function initResultsEvents() {

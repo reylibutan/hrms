@@ -15,7 +15,7 @@ public class VctDTO {
 	// ========================================================================
 	
 	@Valid
-	private PatientDTO patientDTO;
+	private PatientDTO patient;
 	
 	// ========================================================================
 	// VCT Information
@@ -47,12 +47,12 @@ public class VctDTO {
 	// Getters and Setters
 	// ========================================================================
 
-	public PatientDTO getPatientDTO() {
-		return patientDTO;
+	public PatientDTO getPatient() {
+		return patient;
 	}
 
-	public void setPatientDTO(PatientDTO patientDTO) {
-		this.patientDTO = patientDTO;
+	public void setPatient(PatientDTO patient) {
+		this.patient = patient;
 	}
 	
 	public Long getId() {

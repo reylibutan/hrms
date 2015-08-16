@@ -47,35 +47,28 @@
 					<form class="form" autocomplete="off">
 						<input type="hidden" id="contextPath" th:value="@{/}" />
 						<div class="row">
-							<div class="col-md-2">
-								<div class="form-group">
-									<input id="codeName" type="text" class="form-control input-sm"/>
-									<label for="codeName">Code name</label>
-								</div>
-							</div>
-							<div class="col-md-2">
-								<div class="form-group">
-									<input id="sacclCode" type="text" class="form-control input-sm"/>
-									<label for="sacclCode">SACCL code</label>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="form-group">
-									<input id="firstName" type="text" class="form-control input-sm"/>
-									<label for="firstName">First name</label>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="form-group">
-									<input id="lastName" type="text" class="form-control input-sm"/>
-									<label for="lastName">Last name</label>
-								</div>
-							</div>
-							<div id="searchBtnDiv" class="col-md-2">
-								<button id="searchBtn" type="button" class="normalBtn widerBtn btn ink-reaction btn-raised btn-default-bright btn-loading-state normalizeButton" data-loading-text="&lt;i class='fa fa-spinner fa-spin'&gt;&lt;/i&gt;  Loading...">
-									<i class="fa fa-search"></i>
+                            <div class="col-md-4">
+                              <div class="form-group">
+                                <input id="vctName" name="vctName" type="text" class="form-control input-sm"/>
+                                <label for="vctName">Name</label>
+                              </div>
+                            </div>
+                            <div class="col-md-4">
+                              <div class="form-group">
+                                <input id="uniqueIdCode" name="uniqueIdCode" type="text" class="form-control input-sm"/>
+                                <label for="uniqueIdCode">Unique Identifier Code</label>
+                              </div>
+                            </div>
+							<div id="searchBtnDiv" class="col-md-4">
+								<button id="searchBtn" type="button" class="normalBtn widerBtn btn ink-reaction btn-raised btn-primary btn-loading-state normalizeButton" data-loading-text="&lt;i class='fa fa-spinner fa-spin'&gt;&lt;/i&gt;  Loading...">
+									<i class="md md-search"></i>
 									<span class="btnLblWithIcon">Search</span>
 								</button>
+                                &nbsp;
+                                <button id="clearBtn" type="button" class="normalBtn widerBtn btn ink-reaction btn-raised btn-default-bright btn-loading-state normalizeButton" data-loading-text="&lt;i class='fa fa-spinner fa-spin'&gt;&lt;/i&gt;  Loading...">
+                                  <i class="md md-restore"></i>
+                                  <span class="btnLblWithIcon">Clear</span>
+                                </button>
 							</div>
 						</div>
 					</form>
