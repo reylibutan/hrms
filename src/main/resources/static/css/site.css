@@ -166,6 +166,16 @@ div.conditionalRow.active {
 }
 
 /* Enrollment ============================================================== */
+div.enrollmentCard > ul.card-head > li > a {
+	padding-top: 10px;
+}
+
+div.enrollmentCard > ul.card-head i {
+	font-size: 2em;
+}
+
 div.enrollmentCard > ul.card-head h4 {
+	font-size: 14px;
 	text-transform: none;
+	margin-top: -10px;
 }
