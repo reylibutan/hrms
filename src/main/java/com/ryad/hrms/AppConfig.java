@@ -106,7 +106,7 @@ public class AppConfig extends SpringBootServletInitializer {
             	registry.addInterceptor(localeChangeInterceptor());
             	registry.addInterceptor(new ThymeleafLayoutInterceptor());
             	registry.addInterceptor(new SampleInterceptor()).addPathPatterns("/sample/*");
-            	registry.addInterceptor(new CommonViewDataInterceptor()).addPathPatterns("/vct/**");
+            	registry.addInterceptor(new CommonViewDataInterceptor()).addPathPatterns("/vct/**", "/enrollment/**");
             }
         };
     }

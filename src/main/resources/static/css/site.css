@@ -164,3 +164,8 @@ div.conditionalRow {
 div.conditionalRow.active {
 	display: block;
 }
+
+/* Enrollment ============================================================== */
+div.enrollmentCard > ul.card-head h4 {
+	text-transform: none;
+}
