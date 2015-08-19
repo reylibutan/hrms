@@ -41,7 +41,7 @@
                 </div>
                 <ul class="card-head nav nav-tabs text-center" data-toggle="tabs">
                   <li class="active">
-                    <a href="#first6">
+                    <a href="#demographics">
                       <i class="md-4x md-accessibility"></i>
                       <h4>Demographics<br/>
                         <small>Personal details</small>
@@ -50,7 +50,7 @@
                   </li>
                   <li>
                     <a href="#second6">
-                      <i class="fa fa-lg fa-clock-o"></i>
+                      <i class="fa fa-stethoscope"></i>
                       <h4>Clinical &amp; <br/>Immunologic<br/>
                         <small>Profile</small>
                       </h4>
@@ -66,7 +66,7 @@
                   </li>
                   <li>
                     <a href="#fourth6">
-                      <i class="md md-local-pharmacy"></i>
+                      <i class="fa fa-medkit"></i>
                       <h4>Medications<br/>
                         <small>Profile</small>
                       </h4>
@@ -74,20 +74,111 @@
                   </li>
                 </ul>
                 <div class="card-body tab-content style-default-bright">
-                  <div class="tab-pane active" id="first6">
-                    <h3 class="text-light">
-                      Daniel <strong>Johnson</strong>
-                    </h3>
-                    <p>Per at postea mediocritatem, vim numquam aliquid eu, in nam sale gubergren. Fuisset delicatissimi duo, qui ut animal noluisse erroribus. Ea eum veniam audire. Dicant vituperata consequuntur.</p>
-                    <dl class="dl-horizontal">
-                      <dt>Description lists</dt>
-                      <dd>A description list is perfect for defining terms.</dd>
-                      <dt>Euismod</dt>
-                      <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-                      <dd>Donec id elit non mi porta gravida.</dd>
-                      <dt>Malesuada porta</dt>
-                      <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-                    </dl>
+                  <div class="tab-pane active" id="demographics">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <fieldset>
+                          <legend>Basic Information</legend>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group floating-label">
+                                <input type="text" class="form-control input-sm" /> <label for="firstName">First name</label>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group floating-label">
+                                <input type="text" class="form-control input-sm" required="required"/> <label for="lastName">Last name</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group floating-label">
+                                <input type="text" class="form-control input-sm" /> <label for="middleName">Middle name</label>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <input type="text" class="form-control input-sm" placeholder="XX-YY-99" data-inputmask="'mask': 'aa-aa-99'" required="required"/> <label for="uniqueIdentifierCode">Unique Identifier Code</label>
+                                <p class="help-block">XX-YY-99</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <input type="text" class="form-control input-sm date_input" data-inputmask="'mask': '9999/99/99'" required="required"/> <label>Birthdate</label>
+                                <p class="help-block">yyyy/mm/dd</p>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group floating-label">
+                                <input id="age" type="text" class="form-control input-sm" value="" readonly="readonly" /> <label for="age">Age</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="form-group text-right">
+                                <!-- <div class="customBtnGroup btn-group" data-toggle="buttons">
+                                  <label class="btn btn-sm ink-reaction btn-default" th:each="sexType, sexTypeStat : ${sexList}" th:classappend="${sexType.toString() == vctDTO.patient.sex ? 'active' : ''}"> <input type="radio" th:field="*{patient.sex}" th:value="${sexType}" required="required" /><i class="fa fa-fw" th:classappend="'fa-' + ${#strings.toLowerCase(sexType.getName())}"></i><span th:text="${sexType.getName()}">Sex Type</span>
+                                  </label>
+                                </div> -->
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                        <fieldset>
+                          <legend>Contact Information</legend>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="form-group floating-label">
+                                <input type="text" class="form-control input-sm" /> <label for="address">Address</label>
+                                <p class="help-block">Street, Purok, Barangay</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group floating-label">
+                                <input type="text" class="form-control input-sm" /> <label for="city">City</label>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group floating-label">
+                                <input type="text" class="form-control input-sm" /> <label for="contactNumber">Contact Number</label>
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                        <div class="height-1"></div>
+                        <fieldset>
+                          <legend>Mother's Information</legend>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group floating-label">
+                                <input type="text" class="form-control input-sm" /> <label for="momFirstName">First name</label>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group floating-label">
+                                <input type="text" class="form-control input-sm" /> <label for="momMiddleName">Last name</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group floating-label">
+                                <input type="text" class="form-control input-sm" /> <label for="momMiddleName">Middle name</label>
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </div>
+                      <div class="col-md-6">
+                        
+                      </div>
+                    </div>
                   </div>
                   <div class="tab-pane" id="second6">
                     <h1>
