@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title th:fragment="title" th:text="${'Enrollment | ' + #strings.capitalizeWords(action)}">Enrollment | Record</title>
+
+<!-- BEGIN META -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="keywords" content="your,keywords" />
+<meta name="description" content="Short explanation about this website" />
+<!-- END META -->
+
+<!-- BEGIN STYLESHEETS -->
+<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900" />
+<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/bootstrap.css}" href="../../static/theme/material-admin/assets/css/theme-default/bootstrap.css" />
+<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/materialadmin.css}" href="../../static/theme/material-admin/assets/css/theme-default/materialadmin.css" />
+<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/font-awesome.min.css}" href="../../static/theme/material-admin/assets/css/theme-default/font-awesome.min.css" />
+<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/material-design-iconic-font.min.css}" href="../../static/theme/material-admin/assets/css/theme-default/material-design-iconic-font.min.css" />
+<th:block th:fragment="styles">
+  <link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/bootstrap-datepicker/datepicker3.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/bootstrap-datepicker/datepicker3.css" />
+  <link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/select2/select2.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/select2/select2.css" />
+</th:block>
+<link type="text/css" rel="stylesheet" th:href="@{/css/site.css}" href="../../static/css/site.css" />
+<!-- END STYLESHEETS -->
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+	<script type="text/javascript" th:src="@{/theme/material-admin/assets/js/libs/utils/html5shiv.js?1403934957"></script>
+	<script type="text/javascript" th:src="@{/theme/material-admin/assets/js/libs/utils/respond.min.js?1403934956"></script>
+	<![endif]-->
+</head>
+<body>
+  <div class="tab-pane active" id="demographics" th:fragment="content">
+    <fieldset>
+      <legend class="large">Demographics</legend>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <input type="text" class="form-control input-sm date_input" data-inputmask="'mask': '9999/99/99'" data-rule-required="true" /> <label>Date of Initial Contact</label>
+            <p class="help-block">yyyy/mm/dd</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <input type="text" class="form-control input-sm date_input" data-inputmask="'mask': '9999/99/99'" data-rule-required="true" /> <label>Date of Enrollment</label>
+            <p class="help-block">yyyy/mm/dd</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <input type="text" class="form-control input-sm date_input" data-inputmask="'mask': '9999/99/99'" data-rule-required="true" /> <label>Date of Diagnosis</label>
+            <p class="help-block">yyyy/mm/dd</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group floating-label">
+            <input type="text" class="form-control input-sm" data-rule-required="true" /> <label for="firstName">First name</label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group floating-label">
+            <input type="text" class="form-control input-sm" data-rule-required="true" /> <label for="middleName">Middle name</label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group floating-label">
+            <input type="text" class="form-control input-sm" data-rule-required="true" /> <label for="lastName">Last name</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group floating-label">
+            <input type="text" class="form-control input-sm" data-rule-required="true" style="text-transform: uppercase;" /> <label for="codeName">Code Name</label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group floating-label">
+            <input type="text" class="form-control input-sm" data-rule-required="true" /> <label for="sacclCode">SACCL Code</label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <input type="text" class="form-control input-sm" placeholder="XX-YY-99" data-inputmask="'mask': 'aa-aa-99'" data-rule-required="true" /> <label for="uniqueIdentifierCode">Unique Identifier Code</label>
+            <p class="help-block">XX-YY-99</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <input type="text" class="form-control input-sm date_input" data-inputmask="'mask': '9999/99/99'" data-rule-required="true" /> <label>Birthdate</label>
+            <p class="help-block">yyyy/mm/dd</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group floating-label">
+            <input id="age" type="text" class="form-control input-sm" value="" readonly="readonly" /> <label for="age">Age</label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <div class="customBtnGroup btn-group" data-toggle="buttons">
+              <label class="btn btn-sm ink-reaction btn-default" th:each="sexType, sexTypeStat : ${sexList}" th:classappend="${sexTypeStat.first ? 'active' : ''}"> <input type="radio" th:value="${sexType}" data-rule-required="true" /><i class="fa fa-fw" th:classappend="'fa-' + ${#strings.toLowerCase(sexType.getName())}"></i><span th:text="${sexType.getName()}">Sex Type</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="civilStatusFormGroup form-group">
+          <label class="col-md-2 control-label">Civil Status</label>
+          <div class="col-md-10">
+            <label class="radio-inline radio-styled radio-primary"> <input type="radio" name="civilStatus" checked="checked" /><span>Single</span>
+            </label> <label class="radio-inline radio-styled radio-primary"> <input type="radio" name="civilStatus" /><span>Married</span>
+            </label> <label class="radio-inline radio-styled radio-primary"> <input type="radio" name="civilStatus" /><span>Separated</span>
+            </label> <label class="radio-inline radio-styled radio-primary"> <input type="radio" name="civilStatus" /><span>Widowed</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="height-1"></div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group floating-label">
+            <input type="text" class="form-control input-sm" /> <label for="momFirstName">Mother's first name</label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group floating-label">
+            <input type="text" class="form-control input-sm" /> <label for="momMiddleName">Mother's middle name</label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group floating-label">
+            <input type="text" class="form-control input-sm" /> <label for="momLastName">Mother's last name</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group floating-label">
+            <input type="text" class="form-control input-sm" /> <label for="address">Address</label>
+            <p class="help-block">Street, Purok, Barangay</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group floating-label">
+            <input type="text" class="form-control input-sm" /> <label for="address">Address</label>
+            <p class="help-block">City</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group floating-label">
+            <input type="text" class="form-control input-sm" /> <label for="placeOfBirth">Place of birth</label>
+            <p class="help-block">City</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group floating-label">
+            <input type="text" class="form-control input-sm" /> <label for="placeOfBirth">Place of birth</label>
+            <p class="help-block">Province</p>
+          </div>
+        </div>
+      </div>
+      <div class="height-1"></div>
+      <div class="attendingPhysicianRow row">
+        <div class="col-md-4">
+          <div class="form-group floating-label">
+            <input type="text" class="form-control" /> <label for="contactNumber">Contact number</label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group floating-label">
+            <input type="text" class="form-control" data-rule-required="true" /> <label for="philhealthNumber">Philhealth number</label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Attending Physician</label>
+            <select id="attendingPhysician" class="form-control input-sm select2-list" data-placeholder="Select an item">
+              <option value="0">Libutan, MD</option>
+              <option value="1">Cerrada, MD</option>
+              <option value="2">De Castro, MD</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+    <div class="height-1"></div>
+    <!-- HIV Risks -->
+    <fieldset class="hivRisksFieldset">
+      <legend class="noBottomMargin">HIV Risks</legend>
+      <div th:unless="${#lists.isEmpty(hivRiskList)}" class="form-group">
+        <div class="row" th:each="hivRisk, stat : ${hivRiskList}" th:if="${stat.even or hivRisk.hasChildren}">
+          <th:block th:switch="${hivRisk.hasChildren}">
+            <th:block th:case="false">
+              <div class="col-md-6" th:with="leftRisk=${hivRiskList.get(stat.index)}">
+                <div class="checkbox checkbox-styled">
+                  <label> <input type="checkbox" value="-1" th:value="${leftRisk.id}" /> <span th:text="${leftRisk.name}">HIV Risk</span>
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-6" th:if="${stat.index + 1 &lt; hivRiskList.size()}" th:with="rightRisk=${hivRiskList.get(stat.index + 1)}">
+                <div class="checkbox checkbox-styled">
+                  <label> <input type="checkbox" value="-1" th:value="${rightRisk.id}" /> <span th:text="${rightRisk.name}">HIV Risk</span>
+                  </label>
+                </div>
+              </div>
+            </th:block>
+            <th:block th:case="true">
+              <div class="col col-md-12">
+                <div class="checkbox checkbox-styled">
+                  <label> <input type="checkbox" value="-1" class="parentHivRisk" th:value="${hivRisk.id}" /> <span th:text="${hivRisk.name}">HIV Risk</span>
+                  </label>
+                </div>
+              </div>
+              <div class="subHivRisk col-md-12" th:each="subHivRiskEntry, subStat : ${hivRisk.children}" th:classappend="${true ? '' : 'hdn'}">
+                <label th:text="${subHivRiskEntry.key}">Sub HIV Risk</label>
+                <div class="customBtnGroup subHivRiskBtnGroup btn-group" data-toggle="buttons">
+                  <label class="btn btn-sm ink-reaction btn-default" th:each="subHivRisk, subRiskStat : ${subHivRiskEntry.value}"> <input type="radio" th:value="${subHivRisk.id}" /> <span class="radioLabel" th:text="${subHivRisk.name}">Yes</span>
+                  </label>
+                </div>
+              </div>
+            </th:block>
+          </th:block>
+        </div>
+      </div>
+    </fieldset>
+    <!-- end of HIV Risks -->
+  </div>
+  <!--end #content-->
+
+  <!-- BEGIN JAVASCRIPT -->
+  <script th:src="@{/theme/material-admin/assets/js/libs/jquery/jquery-1.11.2.min.js}" src="../../static/theme/material-admin/assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/libs/jquery/jquery-migrate-1.2.1.min.js}" src="../../static/theme/material-admin/assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/libs/bootstrap/bootstrap.min.js}" src="../../static/theme/material-admin/assets/js/libs/bootstrap/bootstrap.min.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/libs/spin.js/spin.min.js}" src="../../static/theme/material-admin/assets/js/libs/spin.js/spin.min.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/libs/autosize/jquery.autosize.min.js}" src="../../static/theme/material-admin/assets/js/libs/autosize/jquery.autosize.min.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/libs/nanoscroller/jquery.nanoscroller.min.js}" src="../../static/theme/material-admin/assets/js/libs/nanoscroller/jquery.nanoscroller.min.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/core/source/App.js}" src="../../static/theme/material-admin/assets/js/core/source/App.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/core/source/AppNavigation.js}" src="../../static/theme/material-admin/assets/js/core/source/AppNavigation.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/core/source/AppOffcanvas.js}" src="../../static/theme/material-admin/assets/js/core/source/AppOffcanvas.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/core/source/AppCard.js}" src="../../static/theme/material-admin/assets/js/core/source/AppCard.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/core/source/AppForm.js}" src="../../static/theme/material-admin/assets/js/core/source/AppForm.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/core/source/AppNavSearch.js}" src="../../static/theme/material-admin/assets/js/core/source/AppNavSearch.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/core/source/AppVendor.js}" src="../../static/theme/material-admin/assets/js/core/source/AppVendor.js"></script>
+  <th:block th:fragment="scripts">
+    <script th:src="@{/theme/material-admin/assets/js/libs/inputmask/jquery.inputmask.bundle.min.js}" src="../../static/theme/material-admin/assets/js/libs/inputmask/jquery.inputmask.bundle.min.js"></script>
+    <script th:src="@{/theme/material-admin/assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js}" src="../../static/theme/material-admin/assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+    <script th:src="@{/theme/material-admin/assets/js/core/demo/Demo.js}" src="../../static/theme/material-admin/assets/js/core/demo/Demo.js"></script>
+    <script th:src="@{/theme/material-admin/assets/js/core/demo/DemoFormComponents.js}" src="../../static/theme/material-admin/assets/js/core/demo/DemoFormComponents.js"></script>
+    <script th:src="@{/theme/material-admin/assets/js/libs/jquery-validation/dist/jquery.validate.min.js}" src="../../static/theme/material-admin/assets/js/libs/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script th:src="@{/theme/material-admin/assets/js/libs/jquery-validation/dist/additional-methods.min.js}" src="../../static/theme/material-admin/assets/js/libs/jquery-validation/dist/additional-methods.min.js"></script>
+    <script th:src="@{/theme/material-admin/assets/js/libs/select2/select2.min.js}" src="../../static/theme/material-admin/assets/js/libs/select2/select2.min.js"></script>
+    <script th:src="@{/js/enrollment/create.js}" src="../../static/js/enrollment/create.js"></script>
+  </th:block>
+  <!-- END JAVASCRIPT -->
+</body>
+</html>

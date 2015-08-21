@@ -18,6 +18,7 @@
 <link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/material-design-iconic-font.min.css}" href="../../static/theme/material-admin/assets/css/theme-default/material-design-iconic-font.min.css" />
 <th:block th:fragment="styles">
   <link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/bootstrap-datepicker/datepicker3.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/bootstrap-datepicker/datepicker3.css" />
+  <link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/select2/select2.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/select2/select2.css"/>
 </th:block>
 <link type="text/css" rel="stylesheet" th:href="@{/css/site.css}" href="../../static/css/site.css" />
 <!-- END STYLESHEETS -->
@@ -32,7 +33,7 @@
   <div id="content" th:fragment="content">
     <section>
       <div class="section-body">
-        <form class="form form-validate" autocomplete="off" method="POST" th:object="${enrollmentDTO}" th:action="@{/enrollment/save}">
+        <form class="form form-validate" autocomplete="off" method="POST" th:object="${enrollmentDTO}" th:action="@{/enrollment/save}" role="form">
           <div class="row">
             <div class="col-md-12">
               <div class="card tabs-left style-default-light noBottomMargin enrollmentCard">
@@ -49,7 +50,7 @@
                     </a>
                   </li>
                   <li>
-                    <a href="#second6">
+                    <a href="#clinicalAndImmunologic">
                       <i class="fa fa-stethoscope"></i>
                       <h4>Clinical &amp; <br/>Immunologic<br/>
                         <small>Profile</small>
@@ -74,119 +75,8 @@
                   </li>
                 </ul>
                 <div class="card-body tab-content style-default-bright">
-                  <div class="tab-pane active" id="demographics">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <fieldset>
-                          <legend>Basic Information</legend>
-                          <div class="row">
-                            <div class="col-md-6">
-                              <div class="form-group floating-label">
-                                <input type="text" class="form-control input-sm" /> <label for="firstName">First name</label>
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group floating-label">
-                                <input type="text" class="form-control input-sm" required="required"/> <label for="lastName">Last name</label>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-6">
-                              <div class="form-group floating-label">
-                                <input type="text" class="form-control input-sm" /> <label for="middleName">Middle name</label>
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <input type="text" class="form-control input-sm" placeholder="XX-YY-99" data-inputmask="'mask': 'aa-aa-99'" required="required"/> <label for="uniqueIdentifierCode">Unique Identifier Code</label>
-                                <p class="help-block">XX-YY-99</p>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <input type="text" class="form-control input-sm date_input" data-inputmask="'mask': '9999/99/99'" required="required"/> <label>Birthdate</label>
-                                <p class="help-block">yyyy/mm/dd</p>
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group floating-label">
-                                <input id="age" type="text" class="form-control input-sm" value="" readonly="readonly" /> <label for="age">Age</label>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-12">
-                              <div class="form-group text-right">
-                                <!-- <div class="customBtnGroup btn-group" data-toggle="buttons">
-                                  <label class="btn btn-sm ink-reaction btn-default" th:each="sexType, sexTypeStat : ${sexList}" th:classappend="${sexType.toString() == vctDTO.patient.sex ? 'active' : ''}"> <input type="radio" th:field="*{patient.sex}" th:value="${sexType}" required="required" /><i class="fa fa-fw" th:classappend="'fa-' + ${#strings.toLowerCase(sexType.getName())}"></i><span th:text="${sexType.getName()}">Sex Type</span>
-                                  </label>
-                                </div> -->
-                              </div>
-                            </div>
-                          </div>
-                        </fieldset>
-                        <fieldset>
-                          <legend>Contact Information</legend>
-                          <div class="row">
-                            <div class="col-md-12">
-                              <div class="form-group floating-label">
-                                <input type="text" class="form-control input-sm" /> <label for="address">Address</label>
-                                <p class="help-block">Street, Purok, Barangay</p>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-6">
-                              <div class="form-group floating-label">
-                                <input type="text" class="form-control input-sm" /> <label for="city">City</label>
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group floating-label">
-                                <input type="text" class="form-control input-sm" /> <label for="contactNumber">Contact Number</label>
-                              </div>
-                            </div>
-                          </div>
-                        </fieldset>
-                        <div class="height-1"></div>
-                        <fieldset>
-                          <legend>Mother's Information</legend>
-                          <div class="row">
-                            <div class="col-md-6">
-                              <div class="form-group floating-label">
-                                <input type="text" class="form-control input-sm" /> <label for="momFirstName">First name</label>
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group floating-label">
-                                <input type="text" class="form-control input-sm" /> <label for="momMiddleName">Last name</label>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-6">
-                              <div class="form-group floating-label">
-                                <input type="text" class="form-control input-sm" /> <label for="momMiddleName">Middle name</label>
-                              </div>
-                            </div>
-                          </div>
-                        </fieldset>
-                      </div>
-                      <div class="col-md-6">
-                        
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tab-pane" id="second6">
-                    <h1>
-                      <i class="fa fa-clock-o text-accent"></i> History
-                    </h1>
-                    <p class="lead">Ad ius duis dissentiunt, an sit harum primis persecuti, adipisci tacimates mediocrem sit et. Id illud voluptaria omittantur qui, te affert nostro mel. Cu conceptam vituperata temporibus has.</p>
-                    <p>Per at postea mediocritatem, vim numquam aliquid eu, in nam sale gubergren. Fuisset delicatissimi duo, qui ut animal noluisse erroribus. Ea eum veniam audire. Dicant vituperata consequuntur.</p>
-                  </div>
+                  <div id="demographics" class="tab-pane active" th:replace="enrollment/_demographics :: content"></div>
+                  <div id="clinicalAndImmunologic" class="tab-pane" th:replace="enrollment/_clinical_and_immunologic :: content"></div>
                 </div>
               </div>
             </div>
@@ -218,6 +108,7 @@
     <script th:src="@{/theme/material-admin/assets/js/core/demo/DemoFormComponents.js}" src="../../static/theme/material-admin/assets/js/core/demo/DemoFormComponents.js"></script>
     <script th:src="@{/theme/material-admin/assets/js/libs/jquery-validation/dist/jquery.validate.min.js}" src="../../static/theme/material-admin/assets/js/libs/jquery-validation/dist/jquery.validate.min.js"></script>
     <script th:src="@{/theme/material-admin/assets/js/libs/jquery-validation/dist/additional-methods.min.js}" src="../../static/theme/material-admin/assets/js/libs/jquery-validation/dist/additional-methods.min.js"></script>
+    <script th:src="@{/theme/material-admin/assets/js/libs/select2/select2.min.js}" src="../../static/theme/material-admin/assets/js/libs/select2/select2.min.js"></script>
     <script th:src="@{/js/enrollment/create.js}" src="../../static/js/enrollment/create.js"></script>
   </th:block>
   <!-- END JAVASCRIPT -->

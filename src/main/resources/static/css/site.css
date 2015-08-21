@@ -179,3 +179,25 @@ div.enrollmentCard > ul.card-head h4 {
 	text-transform: none;
 	margin-top: -10px;
 }
+
+fieldset > legend.large {
+	font-size: 16px;
+}
+
+.form .civilStatusFormGroup {
+	margin-top: 15px;
+}
+
+.form .civilStatusFormGroup > label {
+	position: relative;
+}
+
+.form div.attendingPhysicianRow label[for=contactNumber],
+.form div.attendingPhysicianRow label[for=philhealthNumber] {
+	top: 25px;
+}
+
+.form div.attendingPhysicianRow label,
+.form div.attendingPhysicianRow .form-control {
+	font-size: 1em;
+}

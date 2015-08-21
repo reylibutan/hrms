@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title th:fragment="title" th:text="${'Enrollment | ' + #strings.capitalizeWords(action)}">Enrollment | Record</title>
+
+<!-- BEGIN META -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="keywords" content="your,keywords" />
+<meta name="description" content="Short explanation about this website" />
+<!-- END META -->
+
+<!-- BEGIN STYLESHEETS -->
+<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900" />
+<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/bootstrap.css}" href="../../static/theme/material-admin/assets/css/theme-default/bootstrap.css" />
+<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/materialadmin.css}" href="../../static/theme/material-admin/assets/css/theme-default/materialadmin.css" />
+<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/font-awesome.min.css}" href="../../static/theme/material-admin/assets/css/theme-default/font-awesome.min.css" />
+<link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/material-design-iconic-font.min.css}" href="../../static/theme/material-admin/assets/css/theme-default/material-design-iconic-font.min.css" />
+<th:block th:fragment="styles">
+  <link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/bootstrap-datepicker/datepicker3.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/bootstrap-datepicker/datepicker3.css" />
+  <link type="text/css" rel="stylesheet" th:href="@{/theme/material-admin/assets/css/theme-default/libs/select2/select2.css}" href="../../static/theme/material-admin/assets/css/theme-default/libs/select2/select2.css" />
+</th:block>
+<link type="text/css" rel="stylesheet" th:href="@{/css/site.css}" href="../../static/css/site.css" />
+<!-- END STYLESHEETS -->
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+	<script type="text/javascript" th:src="@{/theme/material-admin/assets/js/libs/utils/html5shiv.js?1403934957"></script>
+	<script type="text/javascript" th:src="@{/theme/material-admin/assets/js/libs/utils/respond.min.js?1403934956"></script>
+	<![endif]-->
+</head>
+<body>
+  <div class="tab-pane" id="clinicalAndImmunologic" th:fragment="content">
+    <fieldset>
+      <legend class="large">Clinical &amp; Immunologic Profile</legend>
+      
+      <fieldset>
+        <legend class="noBottomMargin">CD4</legend>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <input type="text" class="form-control input-sm date_input" data-inputmask="'mask': '9999/99/99'"/> <label>Date</label>
+              <p class="help-block">yyyy/mm/dd</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group floating-label">
+              <input type="text" class="form-control input-sm" data-rule-number="true"/> <label>CD4</label>
+              <p class="help-block">cells / uL</p>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      
+      <fieldset>
+        <legend class="noBottomMargin">Viral Load</legend>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group floating-label">
+              <input type="text" class="form-control input-sm" data-rule-number="true"/> <label>Viral Load</label>
+              <p class="help-block">copies / mL</p>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      
+      <fieldset>
+        <legend class="noBottomMargin">CBC</legend>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group floating-label">
+              <input type="text" class="form-control input-sm" data-rule-number="true"/> <label>Hgb</label>
+              <p class="help-block">g / L</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group floating-label">
+              <input type="text" class="form-control input-sm" data-rule-number="true"/> <label>RBC</label>
+              <p class="help-block">10¹² / L</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group floating-label">
+              <input type="text" class="form-control input-sm" data-rule-number="true"/> <label>WBC</label>
+              <p class="help-block">10⁹ / L</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group floating-label">
+              <input type="text" class="form-control input-sm" data-rule-number="true"/> <label>Plt</label>
+              <p class="help-block">10⁹ / L</p>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      
+      <fieldset>
+        <legend class="noBottomMargin">Creatinine</legend>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group floating-label">
+              <input type="text" class="form-control input-sm" data-rule-number="true"/> <label>Creatinine</label>
+              <p class="help-block">mg / dL</p>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      
+      <fieldset>
+        <legend class="noBottomMargin">SGPT</legend>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group floating-label">
+              <input type="text" class="form-control input-sm" data-rule-number="true"/> <label>SGPT</label>
+              <p class="help-block">U / L</p>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      
+      <fieldset>
+        <legend class="noBottomMargin">Lipid Profile</legend>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group floating-label">
+              <input type="text" class="form-control input-sm" data-rule-number="true"/> <label>Total Cholesterol</label>
+              <p class="help-block">mg / dL</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group floating-label">
+              <input type="text" class="form-control input-sm" data-rule-number="true"/> <label>High Density Lipoprotein (HDL)</label>
+              <p class="help-block">mg / dL</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group floating-label">
+              <input type="text" class="form-control input-sm" data-rule-number="true"/> <label>Low Density Lipoprotein (LDL)</label>
+              <p class="help-block">mg / dL</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group floating-label">
+              <input type="text" class="form-control input-sm" data-rule-number="true"/> <label>Triglycerides</label>
+              <p class="help-block">mg / dL</p>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      
+      <fieldset>
+        <legend class="noBottomMargin">FBS</legend>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group floating-label">
+              <input type="text" class="form-control input-sm" data-rule-number="true"/> <label>FBS</label>
+              <p class="help-block">mg / dL</p>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      
+      <div class="height-2"></div>
+      
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>RPR</label>
+            <select class="form-control input-sm">
+              <option></option>
+              <option value="0">Reactive</option>
+              <option value="1">Non-reactive</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>HbsAg</label>
+            <select class="form-control input-sm">
+              <option></option>
+              <option value="0">Reactive</option>
+              <option value="1">Non-reactive</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>HCV</label>
+            <select id="attendingPhysician" class="form-control input-sm">
+              <option></option>
+              <option value="0">Reactive</option>
+              <option value="1">Non-reactive</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group floating-label">
+            <input type="text" class="form-control input-sm"/> <label>Urinalysis</label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group floating-label">
+            <input type="text" class="form-control input-sm"/> <label>Stool Exam</label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group floating-label">
+            <input type="text" class="form-control input-sm"/> <label>Chest X-ray</label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group floating-label">
+            <input type="text" class="form-control input-sm"/> <label>DSSM <sup>1st</sup></label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group floating-label">
+            <input type="text" class="form-control input-sm"/> <label>DSSM <sup>2nd</sup></label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group floating-label">
+            <input type="text" class="form-control input-sm"/> <label>Genexpert</label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="height-2"></div>
+      
+      <fieldset>
+        <legend class="noBottomMargin">Others</legend>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group floating-label">
+              <input type="text" class="form-control input-sm"/> <label>Lab Test</label>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <input type="text" class="form-control input-sm date_input" data-inputmask="'mask': '9999/99/99'"/> <label>Date</label>
+              <p class="help-block">yyyy/mm/dd</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group floating-label">
+              <input type="text" class="form-control input-sm"/> <label>Result</label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      
+    </fieldset>
+  </div>
+  <!--end #content-->
+
+  <!-- BEGIN JAVASCRIPT -->
+  <script th:src="@{/theme/material-admin/assets/js/libs/jquery/jquery-1.11.2.min.js}" src="../../static/theme/material-admin/assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/libs/jquery/jquery-migrate-1.2.1.min.js}" src="../../static/theme/material-admin/assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/libs/bootstrap/bootstrap.min.js}" src="../../static/theme/material-admin/assets/js/libs/bootstrap/bootstrap.min.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/libs/spin.js/spin.min.js}" src="../../static/theme/material-admin/assets/js/libs/spin.js/spin.min.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/libs/autosize/jquery.autosize.min.js}" src="../../static/theme/material-admin/assets/js/libs/autosize/jquery.autosize.min.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/libs/nanoscroller/jquery.nanoscroller.min.js}" src="../../static/theme/material-admin/assets/js/libs/nanoscroller/jquery.nanoscroller.min.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/core/source/App.js}" src="../../static/theme/material-admin/assets/js/core/source/App.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/core/source/AppNavigation.js}" src="../../static/theme/material-admin/assets/js/core/source/AppNavigation.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/core/source/AppOffcanvas.js}" src="../../static/theme/material-admin/assets/js/core/source/AppOffcanvas.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/core/source/AppCard.js}" src="../../static/theme/material-admin/assets/js/core/source/AppCard.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/core/source/AppForm.js}" src="../../static/theme/material-admin/assets/js/core/source/AppForm.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/core/source/AppNavSearch.js}" src="../../static/theme/material-admin/assets/js/core/source/AppNavSearch.js"></script>
+  <script th:src="@{/theme/material-admin/assets/js/core/source/AppVendor.js}" src="../../static/theme/material-admin/assets/js/core/source/AppVendor.js"></script>
+  <th:block th:fragment="scripts">
+    <script th:src="@{/theme/material-admin/assets/js/libs/inputmask/jquery.inputmask.bundle.min.js}" src="../../static/theme/material-admin/assets/js/libs/inputmask/jquery.inputmask.bundle.min.js"></script>
+    <script th:src="@{/theme/material-admin/assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js}" src="../../static/theme/material-admin/assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+    <script th:src="@{/theme/material-admin/assets/js/core/demo/Demo.js}" src="../../static/theme/material-admin/assets/js/core/demo/Demo.js"></script>
+    <script th:src="@{/theme/material-admin/assets/js/core/demo/DemoFormComponents.js}" src="../../static/theme/material-admin/assets/js/core/demo/DemoFormComponents.js"></script>
+    <script th:src="@{/theme/material-admin/assets/js/libs/jquery-validation/dist/jquery.validate.min.js}" src="../../static/theme/material-admin/assets/js/libs/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script th:src="@{/theme/material-admin/assets/js/libs/jquery-validation/dist/additional-methods.min.js}" src="../../static/theme/material-admin/assets/js/libs/jquery-validation/dist/additional-methods.min.js"></script>
+    <script th:src="@{/theme/material-admin/assets/js/libs/select2/select2.min.js}" src="../../static/theme/material-admin/assets/js/libs/select2/select2.min.js"></script>
+    <script th:src="@{/js/enrollment/create.js}" src="../../static/js/enrollment/create.js"></script>
+  </th:block>
+  <!-- END JAVASCRIPT -->
+</body>
+</html>

@@ -68,12 +68,12 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group floating-label">
-                          <input type="text" class="form-control input-sm" th:field="*{patient.firstName}"/> <label for="firstName">First name</label>
+                          <input type="text" class="form-control input-sm" th:field="*{patient.firstName}" data-rule-required="true"/> <label for="firstName">First name</label>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group floating-label">
-                          <input type="text" class="form-control input-sm" th:field="*{patient.lastName}" required="required"/> <label for="lastName">Last name</label>
+                          <input type="text" class="form-control input-sm" th:field="*{patient.lastName}" data-rule-required="true"/> <label for="lastName">Last name</label>
                         </div>
                       </div>
                     </div>
@@ -85,7 +85,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <input type="text" class="form-control input-sm" placeholder="XX-YY-99" data-inputmask="'mask': 'aa-aa-99'" th:field="*{patient.uniqueIdCode}" required="required"/> <label for="uniqueIdentifierCode">Unique Identifier Code</label>
+                          <input type="text" class="form-control input-sm" placeholder="XX-YY-99" data-inputmask="'mask': 'aa-aa-99'" th:field="*{patient.uniqueIdCode}" data-rule-required="true"/> <label for="uniqueIdentifierCode">Unique Identifier Code</label>
                           <p class="help-block">XX-YY-99</p>
                         </div>
                       </div>
@@ -93,7 +93,7 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <input type="text" class="form-control input-sm date_input" data-inputmask="'mask': '9999/99/99'" th:field="*{patient.birthdate}" required="required"/> <label>Birthdate</label>
+                          <input type="text" class="form-control input-sm date_input" data-inputmask="'mask': '9999/99/99'" th:field="*{patient.birthdate}" data-rule-required="true"/> <label>Birthdate</label>
                           <p class="help-block">yyyy/mm/dd</p>
                         </div>
                       </div>
@@ -107,7 +107,7 @@
                       <div class="col-md-12">
                         <div class="form-group text-right">
                           <div class="customBtnGroup btn-group" data-toggle="buttons">
-                            <label class="btn btn-sm ink-reaction btn-default" th:each="sexType, sexTypeStat : ${sexList}" th:classappend="${sexType.toString() == vctDTO.patient.sex ? 'active' : ''}"> <input type="radio" th:field="*{patient.sex}" th:value="${sexType}" required="required" /><i class="fa fa-fw" th:classappend="'fa-' + ${#strings.toLowerCase(sexType.getName())}"></i><span th:text="${sexType.getName()}">Sex Type</span>
+                            <label class="btn btn-sm ink-reaction btn-default" th:each="sexType, sexTypeStat : ${sexList}" th:classappend="${sexType.toString() == vctDTO.patient.sex ? 'active' : ''}"> <input type="radio" th:field="*{patient.sex}" th:value="${sexType}" data-rule-required="true" /><i class="fa fa-fw" th:classappend="'fa-' + ${#strings.toLowerCase(sexType.getName())}"></i><span th:text="${sexType.getName()}">Sex Type</span>
                             </label>
                           </div>
                         </div>
@@ -148,7 +148,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group floating-label">
-                          <input type="text" class="form-control input-sm" th:field="*{patient.momLastName}" /> <label for="momMiddleName">Last name</label>
+                          <input type="text" class="form-control input-sm" th:field="*{patient.momLastName}" /> <label for="momLastName">Last name</label>
                         </div>
                       </div>
                     </div>
@@ -177,7 +177,7 @@
                   <div class="vctDateRow row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <input type="text" class="form-control input-lg date_input" data-inputmask="'mask': '9999/99/99'" th:field="*{vctDate}" required="required"/> <label>VCT Date</label>
+                        <input type="text" class="form-control input-lg date_input" data-inputmask="'mask': '9999/99/99'" th:field="*{vctDate}" data-rule-required="true"/> <label>VCT Date</label>
                         <p class="help-block">yyyy/mm/dd</p>
                       </div>
                     </div>
@@ -233,8 +233,8 @@
                         </div>
                         <div class="col-md-5">
                           <div class="customBtnGroup btn-group" data-toggle="buttons">
-                            <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.isHivTested == null or vctDTO.isHivTested == 1 ? 'active' : ''}"> <input type="radio" name="isHivTested" value="1" required="required" th:checked="${vctDTO.isHivTested == null or vctDTO.isHivTested == 1}" /> Yes
-                            </label> <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.isHivTested == 0 ? 'active' : ''}"> <input type="radio" name="isHivTested" value="0" required="required" th:checked="${vctDTO.isHivTested == 0}" /> No
+                            <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.isHivTested == null or vctDTO.isHivTested == 1 ? 'active' : ''}"> <input type="radio" name="isHivTested" value="1" data-rule-required="true" th:checked="${vctDTO.isHivTested == null or vctDTO.isHivTested == 1}" /> Yes
+                            </label> <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.isHivTested == 0 ? 'active' : ''}"> <input type="radio" name="isHivTested" value="0" data-rule-required="true" th:checked="${vctDTO.isHivTested == 0}" /> No
                             </label>
                           </div>
                         </div>
@@ -247,8 +247,8 @@
                         </div>
                         <div class="col-md-5">
                           <div class="customBtnGroup btn-group" data-toggle="buttons">
-                            <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.isHivPositive == null or vctDTO.isHivPositive == 1 ? 'active' : ''}"> <input type="radio" name="isHivPositive" value="1" required="required" th:checked="${vctDTO.isHivPositive == null or vctDTO.isHivPositive == 1}" /> Yes
-                            </label> <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.isHivPositive == 0 ? 'active' : ''}"> <input type="radio" name="isHivPositive" value="0" required="required" th:checked="${vctDTO.isHivPositive == 0}" /> No
+                            <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.isHivPositive == null or vctDTO.isHivPositive == 1 ? 'active' : ''}"> <input type="radio" name="isHivPositive" value="1" data-rule-required="true" th:checked="${vctDTO.isHivPositive == null or vctDTO.isHivPositive == 1}" /> Yes
+                            </label> <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.isHivPositive == 0 ? 'active' : ''}"> <input type="radio" name="isHivPositive" value="0" data-rule-required="true" th:checked="${vctDTO.isHivPositive == 0}" /> No
                             </label>
                           </div>
                         </div>
@@ -270,7 +270,7 @@
                         <div class="col-md-5">
                           <div class="customBtnGroup btn-group" data-toggle="buttons">
                             <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.providedCounselingAndResult == null or vctDTO.providedCounselingAndResult == 1 ? 'active' : ''}"> <input type="radio" name="providedCounselingAndResult" value="1" th:checked="${vctDTO.providedCounselingAndResult == null or vctDTO.providedCounselingAndResult == 1}" /> Yes
-                            </label> <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.providedCounselingAndResult == 0 ? 'active' : ''}"> <input type="radio" name="providedCounselingAndResult" value="0" required="required" th:checked="${vctDTO.providedCounselingAndResult == 0}" /> No
+                            </label> <label class="btn btn-sm ink-reaction btn-default" th:classappend="${vctDTO.providedCounselingAndResult == 0 ? 'active' : ''}"> <input type="radio" name="providedCounselingAndResult" value="0" data-rule-required="true" th:checked="${vctDTO.providedCounselingAndResult == 0}" /> No
                             </label>
                           </div>
                         </div>
