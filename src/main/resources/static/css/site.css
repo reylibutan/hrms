@@ -192,12 +192,28 @@ fieldset > legend.large {
 	position: relative;
 }
 
-.form div.attendingPhysicianRow label[for=contactNumber],
-.form div.attendingPhysicianRow label[for=philhealthNumber] {
-	top: 25px;
-}
-
 .form div.attendingPhysicianRow label,
 .form div.attendingPhysicianRow .form-control {
 	font-size: 1em;
 }
+
+div.othersRow {
+	position: relative;
+}
+
+div.othersRow div.resultsCol {
+	padding-right: 50px;
+}
+
+div.othersRow button.othersClose {
+	position: absolute;
+    top: 25px;
+    right: 15px;
+}
+
+#baseOthersRow button.othersClose {
+	display: none;
+}
+
+
+

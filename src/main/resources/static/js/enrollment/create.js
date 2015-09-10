@@ -1,6 +1,26 @@
 $(document).ready(function() {
 	initSelect2();
 	initDatePickers();
+	
+	$("#addOtherBtn").click(function() {
+		var $othersRowClone = $("#baseOthersRow").clone();
+		$othersRowClone.removeAttr("id");
+		
+		$("#othersContainer").append($othersRowClone);
+		
+		initDatePickers();		
+		HRMS.initInputMask();		
+		scrollToBottom();
+	});
+	
+	$("#othersContainer").on("click", "button.othersClose", function() {
+		var $othersRow = $(this).closest("div.othersRow");
+		if(!$othersRow.attr("id")) {
+			$othersRow.slideUp(HRMS.DEFAULT_EASE_TIME, function() {
+				$othersRow.remove();
+			});
+		}
+	});
 });
 
 function initSelect2() {
@@ -15,4 +35,8 @@ function initDatePickers() {
 	}).on("changeDate", function(e) {
 		computeAndSetAge();
     });
+}
+
+function scrollToBottom() {
+	window.scrollTo(0, document.body.scrollHeight);
 }

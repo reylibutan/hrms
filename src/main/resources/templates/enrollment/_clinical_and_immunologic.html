@@ -238,22 +238,33 @@
       
       <fieldset>
         <legend class="noBottomMargin">Others</legend>
+        <div id="othersContainer">
+          <div id="baseOthersRow" class="othersRow row">
+            <div class="col-md-5">
+              <div class="form-group floating-label">
+                <input type="text" class="form-control input-sm"/> <label>Lab Test</label>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group">
+                <input type="text" class="form-control input-sm date_input" data-inputmask="'mask': '9999/99/99'"/> <label>Date</label>
+                <p class="help-block">yyyy/mm/dd</p>
+              </div>
+            </div>
+            <div class="col-md-5 resultsCol">
+              <div class="form-group floating-label">
+                <input type="text" class="form-control input-sm"/> <label>Result</label>
+              </div>
+            </div>
+            <button type="button" class="othersClose close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+        </div>
         <div class="row">
-          <div class="col-md-4">
-            <div class="form-group floating-label">
-              <input type="text" class="form-control input-sm"/> <label>Lab Test</label>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="form-group">
-              <input type="text" class="form-control input-sm date_input" data-inputmask="'mask': '9999/99/99'"/> <label>Date</label>
-              <p class="help-block">yyyy/mm/dd</p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="form-group floating-label">
-              <input type="text" class="form-control input-sm"/> <label>Result</label>
-            </div>
+          <div class="col-md-12">
+            <button id="addOtherBtn" type="button" class="normalBtn btn ink-reaction btn-raised btn-default normalizeButton">
+				<i class="md md-add"></i>
+				<span class="btnLblWithIcon">Add other test</span>
+			</button>
           </div>
         </div>
       </fieldset>

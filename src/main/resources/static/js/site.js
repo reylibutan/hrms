@@ -54,4 +54,15 @@ function initAlertEvents() {
         return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
     }
     
+    HRMS.initInputMask = function () {
+    	if (!$.isFunction($.fn.inputmask)) {
+			return;
+		}
+		$(":input").inputmask();
+		$(".form-control.dollar-mask").inputmask('$ 999,999,999.99', {numericInput: true, rightAlignNumerics: false});
+		$(".form-control.euro-mask").inputmask('€ 999.999.999,99', {numericInput: true, rightAlignNumerics: false});
+		$(".form-control.time-mask").inputmask('h:s', {placeholder: 'hh:mm'});
+		$(".form-control.time12-mask").inputmask('hh:mm t', {placeholder: 'hh:mm xm', alias: 'time12', hourFormat: '12'});
+    }
+    
 }(window.HRMS = window.skillet || {}, jQuery));
